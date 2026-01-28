@@ -22,8 +22,8 @@ with st.sidebar:
         Click an example or type your own question.
         """
     )
-    st.divider()
-    st.caption("Deployed on Streamlit Cloud")
+    #st.divider()
+    #st.caption("Deployed on Streamlit Cloud")
 
 # ---------- Main Header ----------
 st.markdown(

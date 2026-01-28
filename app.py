@@ -13,8 +13,8 @@ st.markdown(
     """
     <style>
         body {
-            background-color: #f9fafb;
-            color: #111827;
+            background-color: #64798f;
+            color: #a1c2d1;
         }
         .main {
             padding-top: 1.2rem;
@@ -23,7 +23,7 @@ st.markdown(
             text-align: center;
             font-size: 1.4rem;
             font-weight: 600;
-            color: #111827;
+            color: #a1c2d1;
         }
         .header-subtitle {
             text-align: center;

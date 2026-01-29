@@ -47,7 +47,7 @@ HARBOUR_TRAINS = {
 
 
 # --------------------------------------------------
-# ✅ STEP 1: NEARBY LOCATION → STATION MAPPING
+# NEARBY LOCATION → STATION MAPPING
 # --------------------------------------------------
 
 NEARBY_LOCATIONS = {
@@ -78,11 +78,6 @@ def find_stations(query):
 
     return list(dict.fromkeys(found))
 
-
-# --------------------------------------------------
-# ✅ STEP 2: HELPER FUNCTION
-# --------------------------------------------------
-
 def find_nearest_station_from_location(query):
     q = query.lower()
     for place, stations in NEARBY_LOCATIONS.items():
@@ -90,12 +85,10 @@ def find_nearest_station_from_location(query):
             return place.title(), stations
     return None, None
 
-
 def determine_line(src, dst):
     if src in HARBOUR_STATIONS or dst in HARBOUR_STATIONS:
         return "harbour"
     return "western"
-
 
 def find_trains(src, dst, line):
     src_key = normalize(src)
@@ -128,7 +121,7 @@ def find_trains(src, dst, line):
 def chatbot_response(user_input):
     stations = find_stations(user_input)
 
-    # No station detected
+    # Case 1: No station detected
     if len(stations) == 0:
         place, nearby = find_nearest_station_from_location(user_input)
 
@@ -149,16 +142,14 @@ def chatbot_response(user_input):
             "- Andheri to Dadar"
         )
 
-    # --------------------------------------------------
-    # ✅ STEP 3: MODIFIED len(stations) == 1 BLOCK
-    # --------------------------------------------------
+    # Case 2: Only one station detected
     if len(stations) == 1:
         place, nearby = find_nearest_station_from_location(user_input)
 
         if nearby:
             return (
                 f"📍 **{place} is not a local train station.**\n\n"
-                f"🚉 Nearest local stations:\n"
+                "🚉 Nearest local stations:\n"
                 + "\n".join([f"• {s}" for s in nearby]) +
                 "\n\nYou can take a local train till one of these stations "
                 "and then continue by taxi / bus / metro."
@@ -169,7 +160,7 @@ def chatbot_response(user_input):
             "Please mention a valid Mumbai local station or a known area."
         )
 
-    # Normal case
+    # Case 3: Normal route
     src, dst = stations[0], stations[1]
     line = determine_line(src, dst)
     trains = find_trains(src, dst, line)

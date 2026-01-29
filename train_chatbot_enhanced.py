@@ -22,7 +22,6 @@ HARBOUR_STATIONS = [
 
 ALL_STATIONS = WR_STATIONS + HARBOUR_STATIONS
 
-
 # ---------------- TRAIN DATA (SAMPLE) ----------------
 
 WR_TRAINS = {
@@ -45,9 +44,8 @@ HARBOUR_TRAINS = {
     ],
 }
 
-
 # --------------------------------------------------
-# NEARBY LOCATION → STATION MAPPING
+# NON-STATION LOCATIONS → NEARBY STATIONS
 # --------------------------------------------------
 
 NEARBY_LOCATIONS = {
@@ -55,11 +53,20 @@ NEARBY_LOCATIONS = {
     "bkc": ["Bandra", "Kurla"],
     "bandra kurla complex": ["Bandra", "Kurla"],
     "powai": ["Kanjurmarg"],
-    "lower parel": ["Prabhadevi", "Lower Parel"],
+    "lower parel": ["Lower Parel", "Prabhadevi"],
     "andheri west": ["Andheri"],
     "andheri east": ["Andheri"],
 }
 
+# --------------------------------------------------
+# INTERCHANGE SUGGESTIONS (NO DIRECT TRAIN)
+# --------------------------------------------------
+
+INTERCHANGE_HINTS = {
+    ("Charni Road", "Prabhadevi"): ["Mumbai Central", "Dadar"],
+    ("Grant Road", "Prabhadevi"): ["Mumbai Central", "Dadar"],
+    ("Lower Parel", "Charni Road"): ["Mumbai Central"],
+}
 
 # --------------------------------------------------
 # HELPERS
@@ -73,7 +80,7 @@ def find_stations(query):
     found = []
 
     for station in ALL_STATIONS:
-        if normalize(station) in q or q in normalize(station):
+        if normalize(station) in q:
             found.append(station)
 
     return list(dict.fromkeys(found))
@@ -108,11 +115,12 @@ def find_trains(src, dst, line):
     results = []
     for t in trains[direction]:
         if src_key in t and dst_key in t:
-            results.append(
-                f"Train {t['train']} — {t[src_key]} → {t[dst_key]}"
-            )
+            results.append(f"Train {t['train']} — {t[src_key]} → {t[dst_key]}")
+
     return results
 
+def suggest_interchange(src, dst):
+    return INTERCHANGE_HINTS.get((src, dst)) or INTERCHANGE_HINTS.get((dst, src))
 
 # --------------------------------------------------
 # CHATBOT LOGIC
@@ -121,7 +129,7 @@ def find_trains(src, dst, line):
 def chatbot_response(user_input):
     stations = find_stations(user_input)
 
-    # Case 1: No station detected
+    # Case 1: No station detected → maybe a location
     if len(stations) == 0:
         place, nearby = find_nearest_station_from_location(user_input)
 
@@ -130,8 +138,7 @@ def chatbot_response(user_input):
                 f"📍 **{place} is not a local train station.**\n\n"
                 "🚉 Nearest local stations:\n"
                 + "\n".join([f"• {s}" for s in nearby]) +
-                "\n\nYou can take a local train till one of these stations "
-                "and then continue by taxi / bus / metro."
+                "\n\nYou can take a local train till one of these stations and then continue by taxi / bus / metro."
             )
 
         return (
@@ -142,7 +149,7 @@ def chatbot_response(user_input):
             "- Andheri to Dadar"
         )
 
-    # Case 2: Only one station detected
+    # Case 2: Only one station found
     if len(stations) == 1:
         place, nearby = find_nearest_station_from_location(user_input)
 
@@ -151,26 +158,37 @@ def chatbot_response(user_input):
                 f"📍 **{place} is not a local train station.**\n\n"
                 "🚉 Nearest local stations:\n"
                 + "\n".join([f"• {s}" for s in nearby]) +
-                "\n\nYou can take a local train till one of these stations "
-                "and then continue by taxi / bus / metro."
+                "\n\nYou can take a local train till one of these stations and then continue by taxi / bus / metro."
             )
 
         return (
             f"⚠️ I found **{stations[0]}**, but couldn’t identify the destination.\n\n"
-            "Please mention a valid Mumbai local station or a known area."
+            "Please mention both source and destination."
         )
 
-    # Case 3: Normal route
+    # Case 3: Normal source → destination
     src, dst = stations[0], stations[1]
     line = determine_line(src, dst)
     trains = find_trains(src, dst, line)
 
+    # No direct train → suggest interchange
     if not trains:
+        interchanges = suggest_interchange(src, dst)
+
+        if interchanges:
+            return (
+                f"🚫 **No direct local trains run from {src} to {dst}.**\n\n"
+                "🔁 Suggested route:\n"
+                + "\n".join([f"• Change at **{s}**" for s in interchanges]) +
+                "\n\nYou can take a train till one of these stations and then continue onward."
+            )
+
         return (
-            f"❌ No direct local trains found from **{src}** to **{dst}**.\n\n"
-            "Try nearby stations or check the route."
+            f"🚫 No direct local trains found from **{src}** to **{dst}**.\n\n"
+            "Try travelling via a major interchange like **Dadar** or **Mumbai Central**."
         )
 
+    # Direct trains found
     response = f"🚆 **Available trains from {src} to {dst}:**\n\n"
     for t in trains:
         response += f"• {t}\n"

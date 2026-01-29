@@ -12,25 +12,46 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-        body { background-color: #f9fafb; color: #111827; }
-        .header-title { text-align:center; font-size:1.4rem; font-weight:600; }
-        .header-subtitle { text-align:center; color:#6b7280; font-size:0.9rem; margin-bottom:1rem; }
+        body {
+            background-color: #f9fafb;
+            color: #111827;
+        }
+
+        .header-title {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .header-subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* 🔥 FIX FOR SUGGESTED QUERY BUTTONS */
         .stButton > button {
-            background-color: #ffffff;
-            border: 1px solid #e5e7eb;
+            background-color: #ffffff !important;
+            border: 1px solid #e5e7eb !important;
+            color: #1f2937 !important;   /* <-- TEXT COLOR FIX */
             border-radius: 999px;
             padding: 0.45rem 0.9rem;
             font-size: 0.82rem;
             text-align: left;
         }
+
         .stButton > button:hover {
-            background-color: #f3f4f6;
-            border-color: #d1d5db;
+            background-color: #f3f4f6 !important;
+            border-color: #d1d5db !important;
+            color: #111827 !important;
         }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 # ---------------- Header ----------------
 st.markdown("<div class='header-title'>Mumbai Local Train Assistant</div>", unsafe_allow_html=True)

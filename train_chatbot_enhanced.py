@@ -85,12 +85,22 @@ def fuzzy_match(word):
     return matches[0] if matches else None
 
 def extract_stations(query):
+    q = normalize(query)
     found = []
-    for word in query.split():
-        match = fuzzy_match(word.title())
-        if match and match not in found:
-            found.append(match)
-    return found
+
+    for station in ALL_STATIONS:
+        if normalize(station) in q:
+            found.append(station)
+
+    # fallback to fuzzy (single-word typos)
+    if len(found) < 2:
+        for word in query.split():
+            match = fuzzy_match(word.title())
+            if match and match not in found:
+                found.append(match)
+
+    return found[:2]
+
 
 def find_nearby_location(query):
     q = normalize(query)
@@ -123,11 +133,14 @@ def determine_platform(line, direction):
         return "Usually Platform 1–2 (Up) or 3–4 (Down)"
     return "Harbour Line platforms vary by station"
 
-def train_type(src, dst):
-    if src in WESTERN_STATIONS and dst in WESTERN_STATIONS:
+def train_type(src, dst, line):
+    if line == "Western Line":
         distance = abs(WESTERN_STATIONS.index(src) - WESTERN_STATIONS.index(dst))
         return "Fast or Slow" if distance > 6 else "Slow"
-    return "Regular Harbour Local"
+    if line == "Central Line":
+        return "Fast or Slow"
+    return "Harbour Local"
+
 
 def is_timetable_query(query):
     q = normalize(query)

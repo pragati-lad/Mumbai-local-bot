@@ -29,7 +29,14 @@ HARBOUR_STATIONS = [
     "Belapur CBD", "Panvel"
 ]
 
-ALL_STATIONS = list(set(WESTERN_STATIONS + CENTRAL_STATIONS + HARBOUR_STATIONS))
+ALL_STATIONS = list(set(CENTRAL_STATIONS + WESTERN_STATIONS + HARBOUR_STATIONS))
+
+NEARBY_LOCATIONS = {
+    "malabar hills": ["Charni Road", "Grant Road"],
+    "bkc": ["Bandra", "Kurla"],
+    "bandra kurla complex": ["Bandra", "Kurla"],
+    "powai": ["Kanjurmarg"],
+}
 
 # --------------------------------------------------
 # HELPERS
@@ -50,29 +57,28 @@ def extract_stations(query):
             found.append(match)
     return found
 
-def determine_line(station):
+def station_line(station):
     if station in CENTRAL_STATIONS:
         return "Central Line"
     if station in HARBOUR_STATIONS:
         return "Harbour Line"
     return "Western Line"
 
-def find_interchange(src, dst):
-    src_line = determine_line(src)
-    dst_line = determine_line(dst)
-
+def find_interchange(src_line, dst_line):
     if src_line == dst_line:
-        return None, None, None
-
-    # Central ↔ Western
+        return None
     if {"Central Line", "Western Line"} == {src_line, dst_line}:
-        return "Dadar", src_line, dst_line
-
-    # Central ↔ Harbour
+        return "Dadar"
     if {"Central Line", "Harbour Line"} == {src_line, dst_line}:
-        return "Kurla", src_line, dst_line
+        return "Kurla"
+    return None
 
-    return None, None, None
+def is_rules_query(query):
+    q = query.lower()
+    return any(k in q for k in [
+        "luggage", "concession", "refund", "cancel",
+        "student", "senior", "rules", "allowance"
+    ])
 
 # --------------------------------------------------
 # CHATBOT LOGIC
@@ -80,98 +86,95 @@ def find_interchange(src, dst):
 
 def chatbot_response(query):
 
-    # Progress bar (visual only)
+    # progress bar (UI only)
     bar = st.progress(0)
     for i in range(100):
         bar.progress(i + 1)
         time.sleep(0.002)
     bar.empty()
 
+    q = normalize(query)
+
+    # ---------------- RULES INTENT ----------------
+    if is_rules_query(query):
+
+        if "luggage" in q:
+            return (
+                "🎒 **Luggage Allowance (Indian Railways)**\n\n"
+                "• Free luggage depends on class\n"
+                "• Excess luggage must be declared and paid\n"
+                "• Oversized items go in the brake van\n\n"
+                "Source: Indian Railways (CRIS)"
+            )
+
+        if "concession" in q:
+            return (
+                "🎟️ **Railway Concessions**\n\n"
+                "• Students, senior citizens & disabled passengers eligible\n"
+                "• Valid documents required\n"
+                "• Concession varies by category\n\n"
+                "Source: Indian Railways circulars"
+            )
+
+        if "refund" in q:
+            return (
+                "💰 **Ticket Refund Rules**\n\n"
+                "• Depends on ticket type & cancellation time\n"
+                "• Online tickets follow IRCTC policy\n"
+                "• Deductions may apply\n\n"
+                "Source: Indian Railways / IRCTC"
+            )
+
+    # ---------------- ROUTE LOGIC ----------------
     stations = extract_stations(query)
 
-    # No stations
     if len(stations) == 0:
+        for place, nearby in NEARBY_LOCATIONS.items():
+            if place in q:
+                return (
+                    f"📍 **{place.title()} is not a local station**\n\n"
+                    f"🚉 Nearest stations: {', '.join(nearby)}\n\n"
+                    "Travel by local train till one of these, then continue by road."
+                )
+
         return (
             "❌ I couldn’t identify Mumbai local stations.\n\n"
-            "Try examples like:\n"
-            "• Dadar to Churchgate\n"
-            "• Sion to Grant Road\n"
-            "• Western line timetable"
+            "Try:\n• Dadar to Churchgate\n• Sion to Grant Road\n• Western line timetable"
         )
 
-    # One station
     if len(stations) == 1:
         return (
-            f"⚠️ I found **{stations[0]}**, but couldn’t identify the destination.\n\n"
+            f"⚠️ I found **{stations[0]}**, but couldn’t identify the destination.\n"
             "Please mention both source and destination."
         )
 
-    # Preserve user order
     src, dst = stations[0], stations[1]
+    src_line = station_line(src)
+    dst_line = station_line(dst)
 
-    if src == dst:
-        return "⚠️ Source and destination cannot be the same."
-
-    src_line = determine_line(src)
-    dst_line = determine_line(dst)
-
-    interchange, _, _ = find_interchange(src, dst)
-
-    # --------------------------------------------------
-    # INTERCHANGE ROUTE (FIXED LOGIC)
-    # --------------------------------------------------
-    if interchange:
-
-        steps = []
-
-        # Case 1: Source IS the interchange
-        if src == interchange:
-            steps.append(
-                f"• You are already at **{interchange}**.\n"
-                f"• Move to the **{dst_line}** platforms."
-            )
-
-        # Case 2: Destination IS the interchange
-        elif dst == interchange:
-            steps.append(
-                f"• Take a **{src_line}** local from **{src} → {interchange}**."
-            )
-
-        # Case 3: Normal interchange travel
-        else:
-            steps.append(
-                f"• Take a **{src_line}** local from **{src} → {interchange}**."
-            )
-            steps.append(
-                f"• Change from **{src_line} → {dst_line}** at **{interchange}**."
-            )
-
-        # Continue after interchange (only if needed)
-        if dst != interchange:
-            steps.append(
-                f"• Continue on **{dst_line}** from **{interchange} → {dst}**."
-            )
-
-        steps_text = "\n".join(steps)
-
+    # ---------------- SAME LINE ----------------
+    if src_line == dst_line:
         return (
-            "🔁 **Route Information**\n\n"
-            f"**From:** {src} ({src_line})\n"
-            f"**To:** {dst} ({dst_line})\n\n"
-            f"🚉 **Interchange at:** {interchange}\n\n"
-            f"**Steps:**\n{steps_text}\n\n"
-            "⚠️ Platform numbers may vary. Check station display boards."
+            f"🚆 **Route Information**\n\n"
+            f"From: {src}\n"
+            f"To: {dst}\n\n"
+            f"Line: {src_line}\n\n"
+            "• Direct local trains available\n"
+            "• Platform depends on direction\n\n"
+            "⚠️ Check station display boards."
         )
 
-    # --------------------------------------------------
-    # SAME LINE ROUTE
-    # --------------------------------------------------
+    # ---------------- INTERCHANGE ----------------
+    interchange = find_interchange(src_line, dst_line)
+
     return (
-        "🚆 **Route Information**\n\n"
-        f"**From:** {src}\n"
-        f"**To:** {dst}\n\n"
-        f"**Line:** {src_line}\n\n"
-        "• Direct local trains available\n"
-        "• Fast / Slow depends on time of day\n\n"
-        "⚠️ Platform numbers may vary. Check station display boards."
+        f"🔁 **Route Information**\n\n"
+        f"From: {src} ({src_line})\n"
+        f"To: {dst} ({dst_line})\n\n"
+        f"🚉 Change at: **{interchange}**\n\n"
+        "Steps:\n"
+        f"1. Travel from **{src} → {interchange}** on **{src_line}**\n"
+        f"2. Change to **{dst_line}** at **{interchange}**\n"
+        f"3. Continue from **{interchange} → {dst}**\n\n"
+        "⚠️ Platform numbers may vary. Check station boards."
     )

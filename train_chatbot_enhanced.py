@@ -15,7 +15,7 @@ st.set_page_config(
 # DATA
 # --------------------------------------------------
 
-WR_STATIONS = [
+WESTERN_STATIONS = [
     "Churchgate", "Marine Lines", "Charni Road", "Grant Road", "Mumbai Central",
     "Mahalakshmi", "Lower Parel", "Prabhadevi", "Dadar", "Matunga Road",
     "Mahim Junction", "Bandra", "Khar Road", "Santacruz", "Vile Parle",
@@ -31,7 +31,7 @@ HARBOUR_STATIONS = [
     "Belapur CBD", "Panvel"
 ]
 
-ALL_STATIONS = WR_STATIONS + HARBOUR_STATIONS
+ALL_STATIONS = WESTERN_STATIONS + HARBOUR_STATIONS
 
 NEARBY_LOCATIONS = {
     "malabar hills": ["Charni Road", "Grant Road"],
@@ -47,21 +47,21 @@ NEARBY_LOCATIONS = {
 # --------------------------------------------------
 
 st.title("Mumbai Local Train Assistant")
-st.caption("Routes • Stations • Railway guidance")
+st.caption("Routes • Train Types • Practical Guidance")
 
 st.markdown("### Suggested queries")
-suggested_queries = [
+suggested = [
     "Virar to Churchgate",
     "Panvel to CSMT",
+    "Prabhadevi to Dadar",
     "Virar to Malabar Hills",
-    "Andheri to Bandra",
-    "What are luggage rules?"
+    "Andheri to Bandra"
 ]
 
 cols = st.columns(2)
-for i, q in enumerate(suggested_queries):
+for i, q in enumerate(suggested):
     if cols[i % 2].button(q):
-        st.session_state.user_query = q
+        st.session_state.query = q
 
 st.divider()
 
@@ -72,15 +72,14 @@ st.divider()
 def normalize(text):
     return text.lower().strip()
 
-def fuzzy_station_match(word):
+def fuzzy_match(word):
     matches = get_close_matches(word, ALL_STATIONS, n=1, cutoff=0.7)
     return matches[0] if matches else None
 
 def extract_stations(query):
-    words = query.split()
     found = []
-    for w in words:
-        match = fuzzy_station_match(w.title())
+    for word in query.split():
+        match = fuzzy_match(word.title())
         if match and match not in found:
             found.append(match)
     return found
@@ -92,6 +91,20 @@ def find_nearby_location(query):
             return place.title(), stations
     return None, None
 
+def determine_line(src, dst):
+    if src in HARBOUR_STATIONS or dst in HARBOUR_STATIONS:
+        return "Harbour Line"
+    return "Western Line"
+
+def determine_direction(line, src, dst):
+    stations = HARBOUR_STATIONS if line == "Harbour Line" else WESTERN_STATIONS
+    return "Up" if stations.index(src) < stations.index(dst) else "Down"
+
+def train_type(src, dst):
+    distance = abs(WESTERN_STATIONS.index(src) - WESTERN_STATIONS.index(dst)) \
+        if src in WESTERN_STATIONS and dst in WESTERN_STATIONS else 3
+    return "Fast or Slow" if distance > 6 else "Slow"
+
 # --------------------------------------------------
 # CHATBOT LOGIC
 # --------------------------------------------------
@@ -99,44 +112,34 @@ def find_nearby_location(query):
 def chatbot_response(query):
     stations = extract_stations(query)
 
-    # ---------------- PROGRESS BAR ----------------
-    progress = st.progress(0)
-    status = st.empty()
-
+    # Progress bar
+    bar = st.progress(0)
     for i in range(100):
-        progress.progress(i + 1)
-        status.text(f"Analyzing query… {i + 1}%")
-        time.sleep(0.01)
+        bar.progress(i + 1)
+        time.sleep(0.005)
+    bar.empty()
 
-    progress.empty()
-    status.empty()
-    # ----------------------------------------------
-
-    # No station detected
+    # No stations
     if len(stations) == 0:
         place, nearby = find_nearby_location(query)
-
         if nearby:
             st.info(
                 f"📍 **{place} is not a local train station.**\n\n"
                 f"🚉 Nearest local stations: {', '.join(nearby)}\n\n"
-                "You can take a local train till one of these stations "
-                "and continue by taxi / bus / metro."
+                "You can take a local train till one of these stations and "
+                "continue by taxi / bus / metro."
             )
             return
 
         st.warning(
-            "I couldn’t identify valid stations.\n\n"
-            "Example queries:\n"
-            "- Virar to Churchgate\n"
-            "- Panvel to CSMT"
+            "I couldn’t identify Mumbai local stations.\n\n"
+            "Try:\n• Virar to Churchgate\n• Panvel to CSMT"
         )
         return
 
-    # Only one station found
+    # One station
     if len(stations) == 1:
         place, nearby = find_nearby_location(query)
-
         if nearby:
             st.info(
                 f"📍 **{place} is not a local train station.**\n\n"
@@ -145,22 +148,40 @@ def chatbot_response(query):
             return
 
         st.warning(
-            f"I found **{stations[0]}**, but couldn’t identify the destination.\n\n"
+            f"I found **{stations[0]}**, but couldn’t identify the destination.\n"
             "Please mention both source and destination."
         )
         return
 
     # Normal case
     src, dst = stations[0], stations[1]
-
     if src == dst:
         st.error("Source and destination cannot be the same.")
         return
 
-    st.success(
-        f"✅ **Route processed successfully**\n\n"
-        f"From **{src}** → **{dst}**\n\n"
-        "Local trains are available on this route."
+    line = determine_line(src, dst)
+    direction = determine_direction(line, src, dst)
+    ttype = train_type(src, dst)
+
+    st.success("Route processed successfully")
+
+    st.markdown(
+        f"""
+### 🚆 Route Details
+
+**From:** {src}  
+**To:** {dst}  
+
+**Line:** {line}  
+**Direction:** {direction}  
+**Train Type:** {ttype}  
+
+**Frequency:**  
+• Every 3–5 minutes during peak hours  
+• Every 5–8 minutes otherwise  
+
+📍 *Platform numbers may vary. Please check station display boards for real-time updates.*
+"""
     )
 
 # --------------------------------------------------
@@ -168,9 +189,9 @@ def chatbot_response(query):
 # --------------------------------------------------
 
 query = st.text_input(
-    "Ask about routes, stations, or travel help",
-    key="user_query",
-    placeholder="e.g. Virar to Churchgate"
+    "Ask about routes or stations",
+    key="query",
+    placeholder="e.g. Prabhadevi to Dadar"
 )
 
 if query:

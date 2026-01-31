@@ -1,88 +1,86 @@
 # --------------------------------------------------
-# MUMBAI LOCAL TRAIN CHATBOT (ENHANCED)
+# MUMBAI LOCAL TRAIN CHATBOT (FULL + CENTRAL LINE)
 # --------------------------------------------------
 
 # ---------------- STATION DATA ----------------
 
 WR_STATIONS = [
-    "Churchgate", "Marine Lines", "Charni Road", "Grant Road", "Mumbai Central",
-    "Mahalakshmi", "Lower Parel", "Prabhadevi", "Dadar", "Matunga Road",
-    "Mahim Junction", "Bandra", "Khar Road", "Santa Cruz", "Vile Parle",
-    "Andheri", "Jogeshwari", "Ram Mandir", "Goregaon", "Malad",
-    "Kandivali", "Borivali", "Dahisar", "Mira Road", "Bhayandar",
-    "Naigaon", "Vasai Road", "Nalla Sopara", "Virar"
+    "Churchgate","Marine Lines","Charni Road","Grant Road","Mumbai Central",
+    "Mahalakshmi","Lower Parel","Prabhadevi","Dadar","Matunga Road",
+    "Mahim Junction","Bandra","Khar Road","Santa Cruz","Vile Parle",
+    "Andheri","Jogeshwari","Ram Mandir","Goregaon","Malad",
+    "Kandivali","Borivali","Dahisar","Mira Road","Bhayandar",
+    "Naigaon","Vasai Road","Nalla Sopara","Virar"
 ]
 
 HARBOUR_STATIONS = [
-    "Mumbai CSMT", "Masjid", "Sandhurst Road", "Dockyard Road",
-    "Sewri", "Vadala Road", "Kurla", "Chembur",
-    "Govandi", "Mankhurd", "Vashi", "Sanpada",
-    "Belapur CBD", "Panvel"
+    "Mumbai CSMT","Masjid","Sandhurst Road","Dockyard Road",
+    "Sewri","Vadala Road","Kurla","Chembur","Govandi",
+    "Mankhurd","Vashi","Sanpada","Belapur CBD","Panvel"
 ]
 
-ALL_STATIONS = WR_STATIONS + HARBOUR_STATIONS
+CENTRAL_STATIONS = [
+    "Mumbai CSMT","Masjid","Sandhurst Road","Byculla","Chinchpokli",
+    "Currey Road","Parel","Dadar","Matunga","Sion","Kurla",
+    "Vidyavihar","Ghatkopar","Vikhroli","Kanjurmarg",
+    "Bhandup","Nahur","Mulund","Thane","Kalwa","Mumbra",
+    "Diva","Dombivli","Kalyan","Ulhasnagar","Badlapur","Karjat","Kasara"
+]
+
+ALL_STATIONS = list(set(WR_STATIONS + HARBOUR_STATIONS + CENTRAL_STATIONS))
 
 # ---------------- TRAIN DATA (SAMPLE) ----------------
 
 WR_TRAINS = {
     "UP": [
-        {"train": "94002", "virar": "04:00", "borivali": "04:31", "andheri": "04:51", "bandra": "05:05", "dadar": "05:14", "churchgate": "05:36"},
-        {"train": "94008", "virar": "07:15", "borivali": "07:53", "andheri": "08:15", "bandra": "08:24", "dadar": "08:30", "churchgate": "08:49"},
+        {"train":"94002","virar":"04:00","borivali":"04:31","andheri":"04:51","bandra":"05:05","dadar":"05:14","churchgate":"05:36"},
     ],
     "DOWN": [
-        {"train": "94001", "churchgate": "05:40", "dadar": "06:01", "bandra": "06:11", "andheri": "06:24", "borivali": "06:45", "virar": "07:52"},
+        {"train":"94001","churchgate":"05:40","dadar":"06:01","bandra":"06:11","andheri":"06:24","borivali":"06:45","virar":"07:52"},
     ],
 }
 
 HARBOUR_TRAINS = {
     "UP": [
-        {"train": "98002", "panvel": "04:03", "vashi": "04:25", "kurla": "04:44", "csmt": "05:04"},
-        {"train": "98004", "panvel": "04:33", "vashi": "04:50", "kurla": "05:09", "csmt": "05:30"},
+        {"train":"98002","panvel":"04:03","vashi":"04:25","kurla":"04:44","mumbai csmt":"05:04"},
     ],
     "DOWN": [
-        {"train": "98001", "csmt": "00:13", "kurla": "00:42", "vashi": "01:02", "panvel": "01:33"},
+        {"train":"98001","mumbai csmt":"00:13","kurla":"00:42","vashi":"01:02","panvel":"01:33"},
     ],
 }
 
-# --------------------------------------------------
-# NON-STATION LOCATIONS → NEARBY STATIONS
-# --------------------------------------------------
+CENTRAL_TRAINS = {
+    "UP": [
+        {"train":"11001","kalyan":"06:00","thane":"06:35","kurla":"06:55","dadar":"07:05","mumbai csmt":"07:25"},
+    ],
+    "DOWN": [
+        {"train":"11002","mumbai csmt":"18:00","dadar":"18:20","kurla":"18:30","thane":"18:55","kalyan":"19:30"},
+    ],
+}
+
+# ---------------- NON-STATION LOCATIONS ----------------
 
 NEARBY_LOCATIONS = {
-    "malabar hills": ["Charni Road", "Grant Road"],
-    "bkc": ["Bandra", "Kurla"],
-    "bandra kurla complex": ["Bandra", "Kurla"],
-    "powai": ["Kanjurmarg"],
-    "lower parel": ["Lower Parel", "Prabhadevi"],
-    "andheri west": ["Andheri"],
-    "andheri east": ["Andheri"],
+    "malabar hills":["Charni Road","Grant Road"],
+    "bkc":["Bandra","Kurla"],
+    "bandra kurla complex":["Bandra","Kurla"],
+    "powai":["Kanjurmarg"],
+    "lower parel":["Lower Parel","Prabhadevi"],
+    "andheri west":["Andheri"],
+    "andheri east":["Andheri"],
 }
 
-# --------------------------------------------------
-# INTERCHANGE SUGGESTIONS (NO DIRECT TRAIN)
-# --------------------------------------------------
-
-INTERCHANGE_HINTS = {
-    ("Charni Road", "Prabhadevi"): ["Mumbai Central", "Dadar"],
-    ("Grant Road", "Prabhadevi"): ["Mumbai Central", "Dadar"],
-    ("Lower Parel", "Charni Road"): ["Mumbai Central"],
-}
-
-# --------------------------------------------------
-# HELPERS
-# --------------------------------------------------
+# ---------------- HELPERS ----------------
 
 def normalize(text):
-    return text.lower().replace(" ", "")
+    return text.lower().replace(" ", "").replace("-", "")
 
 def find_stations(query):
     q = normalize(query)
     found = []
-
-    for station in ALL_STATIONS:
-        if normalize(station) in q:
-            found.append(station)
-
+    for s in ALL_STATIONS:
+        if normalize(s) in q:
+            found.append(s)
     return list(dict.fromkeys(found))
 
 def find_nearest_station_from_location(query):
@@ -93,20 +91,24 @@ def find_nearest_station_from_location(query):
     return None, None
 
 def determine_line(src, dst):
+    if src in CENTRAL_STATIONS or dst in CENTRAL_STATIONS:
+        return "central"
     if src in HARBOUR_STATIONS or dst in HARBOUR_STATIONS:
         return "harbour"
     return "western"
 
 def find_trains(src, dst, line):
-    src_key = normalize(src)
-    dst_key = normalize(dst)
+    src_key, dst_key = normalize(src), normalize(dst)
 
-    trains = HARBOUR_TRAINS if line == "harbour" else WR_TRAINS
-    stations = HARBOUR_STATIONS if line == "harbour" else WR_STATIONS
+    if line == "central":
+        trains, stations = CENTRAL_TRAINS, CENTRAL_STATIONS
+    elif line == "harbour":
+        trains, stations = HARBOUR_TRAINS, HARBOUR_STATIONS
+    else:
+        trains, stations = WR_TRAINS, WR_STATIONS
 
     try:
-        s_idx = stations.index(src)
-        d_idx = stations.index(dst)
+        s_idx, d_idx = stations.index(src), stations.index(dst)
     except ValueError:
         return []
 
@@ -115,82 +117,51 @@ def find_trains(src, dst, line):
     results = []
     for t in trains[direction]:
         if src_key in t and dst_key in t:
-            results.append(f"Train {t['train']} — {t[src_key]} → {t[dst_key]}")
-
+            results.append(f"🚆 Train {t['train']} — {t[src_key]} → {t[dst_key]}")
     return results
 
-def suggest_interchange(src, dst):
-    return INTERCHANGE_HINTS.get((src, dst)) or INTERCHANGE_HINTS.get((dst, src))
-
-# --------------------------------------------------
-# CHATBOT LOGIC
-# --------------------------------------------------
+# ---------------- CHATBOT CORE ----------------
 
 def chatbot_response(user_input):
     stations = find_stations(user_input)
 
-    # Case 1: No station detected → maybe a location
+    # No station
     if len(stations) == 0:
         place, nearby = find_nearest_station_from_location(user_input)
-
         if nearby:
             return (
                 f"📍 **{place} is not a local train station.**\n\n"
                 "🚉 Nearest local stations:\n"
-                + "\n".join([f"• {s}" for s in nearby]) +
-                "\n\nYou can take a local train till one of these stations and then continue by taxi / bus / metro."
+                + "\n".join(f"• {s}" for s in nearby) +
+                "\n\nTake a local train till one of these stations and continue by taxi / bus / metro."
             )
+        return "❌ I couldn’t identify any Mumbai local stations."
 
-        return (
-            "❌ I couldn't identify any Mumbai local stations.\n\n"
-            "Try examples like:\n"
-            "- Virar to Churchgate\n"
-            "- Panvel to CSMT\n"
-            "- Andheri to Dadar"
-        )
-
-    # Case 2: Only one station found
+    # Only one station
     if len(stations) == 1:
         place, nearby = find_nearest_station_from_location(user_input)
-
         if nearby:
             return (
                 f"📍 **{place} is not a local train station.**\n\n"
                 "🚉 Nearest local stations:\n"
-                + "\n".join([f"• {s}" for s in nearby]) +
-                "\n\nYou can take a local train till one of these stations and then continue by taxi / bus / metro."
+                + "\n".join(f"• {s}" for s in nearby)
             )
-
         return (
-            f"⚠️ I found **{stations[0]}**, but couldn’t identify the destination.\n\n"
+            f"⚠️ I found **{stations[0]}**, but couldn’t identify the destination.\n"
             "Please mention both source and destination."
         )
 
-    # Case 3: Normal source → destination
+    # Normal flow
     src, dst = stations[0], stations[1]
     line = determine_line(src, dst)
     trains = find_trains(src, dst, line)
 
-    # No direct train → suggest interchange
     if not trains:
-        interchanges = suggest_interchange(src, dst)
-
-        if interchanges:
-            return (
-                f"🚫 **No direct local trains run from {src} to {dst}.**\n\n"
-                "🔁 Suggested route:\n"
-                + "\n".join([f"• Change at **{s}**" for s in interchanges]) +
-                "\n\nYou can take a train till one of these stations and then continue onward."
-            )
-
         return (
-            f"🚫 No direct local trains found from **{src}** to **{dst}**.\n\n"
-            "Try travelling via a major interchange like **Dadar** or **Mumbai Central**."
+            f"❌ No direct local trains found from **{src}** to **{dst}**.\n"
+            "Try nearby stations or interchanges."
         )
 
-    # Direct trains found
-    response = f"🚆 **Available trains from {src} to {dst}:**\n\n"
-    for t in trains:
-        response += f"• {t}\n"
-
+    response = f"🚉 **Available {line.title()} line trains ({src} → {dst}):**\n\n"
+    response += "\n".join(trains)
     return response

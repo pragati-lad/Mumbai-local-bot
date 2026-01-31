@@ -15,6 +15,13 @@ st.set_page_config(
 # DATA
 # --------------------------------------------------
 
+CENTRAL_STATIONS = [
+    "CSMT", "Masjid", "Byculla", "Chinchpokli", "Currey Road",
+    "Parel", "Dadar", "Matunga", "Sion", "Kurla",
+    "Vidyavihar", "Ghatkopar", "Vikhroli", "Kanjurmarg",
+    "Bhandup", "Nahur", "Mulund", "Thane", "Kalyan"
+]
+
 WESTERN_STATIONS = [
     "Churchgate", "Marine Lines", "Charni Road", "Grant Road", "Mumbai Central",
     "Mahalakshmi", "Lower Parel", "Prabhadevi", "Dadar", "Matunga Road",
@@ -31,7 +38,8 @@ HARBOUR_STATIONS = [
     "Belapur CBD", "Panvel"
 ]
 
-ALL_STATIONS = WESTERN_STATIONS + HARBOUR_STATIONS
+ALL_STATIONS = WESTERN_STATIONS + HARBOUR_STATIONS + CENTRAL_STATIONS
+
 
 NEARBY_LOCATIONS = {
     "malabar hills": ["Charni Road", "Grant Road"],
@@ -92,13 +100,23 @@ def find_nearby_location(query):
     return None, None
 
 def determine_line(src, dst):
+    if src in CENTRAL_STATIONS or dst in CENTRAL_STATIONS:
+        return "Central Line"
     if src in HARBOUR_STATIONS or dst in HARBOUR_STATIONS:
         return "Harbour Line"
     return "Western Line"
 
+
 def determine_direction(line, src, dst):
-    stations = HARBOUR_STATIONS if line == "Harbour Line" else WESTERN_STATIONS
+    if line == "Central Line":
+        stations = CENTRAL_STATIONS
+    elif line == "Harbour Line":
+        stations = HARBOUR_STATIONS
+    else:
+        stations = WESTERN_STATIONS
+
     return "Up (towards city)" if stations.index(src) < stations.index(dst) else "Down (outbound)"
+
 
 def determine_platform(line, direction):
     if line == "Western Line":

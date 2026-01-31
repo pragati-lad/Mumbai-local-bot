@@ -1,5 +1,5 @@
 # ==================================================
-# Mumbai Local Train Assistant – Core Logic
+# Mumbai Local Train Assistant – Core Logic (FIXED)
 # ==================================================
 
 from difflib import get_close_matches
@@ -35,77 +35,61 @@ HARBOUR_STATIONS = [
 ALL_STATIONS = list(set(CENTRAL_STATIONS + WESTERN_STATIONS + HARBOUR_STATIONS))
 
 # --------------------------------------------------
-# NEARBY LOCATIONS (NON-STATION AREAS)
+# RULES (SEPARATED PROPERLY)
 # --------------------------------------------------
 
-NEARBY_LOCATIONS = {
-    "malabar hills": ["Charni Road", "Grant Road"],
-    "bkc": ["Bandra", "Kurla"],
-    "bandra kurla complex": ["Bandra", "Kurla"],
-    "powai": ["Kanjurmarg"],
-}
+STUDENT_CONCESSION = """
+🎓 **Student Concession – Mumbai Local Trains**
 
-# --------------------------------------------------
-# AC TRAIN INFORMATION (HONEST DATA)
-# --------------------------------------------------
+Eligible for **Monthly / Quarterly Season Pass** at concessional rates.
 
-AC_TRAIN_INFO = {
-    "Western Line": {
-        "route": "Churchgate ↔ Virar",
-        "availability": "Available on selected services",
-        "frequency": "Every 20–30 minutes (peak)",
-        "fare": "Approx. 1.3× First Class fare",
-        "notes": [
-            "Limited stops",
-            "UTS / smart card supported",
-            "Platform varies by station"
-        ]
-    },
-    "Central Line": {
-        "route": "CSMT ↔ Kalyan",
-        "availability": "Available on selected services",
-        "frequency": "Every 30–40 minutes",
-        "fare": "Approx. 1.3× First Class fare",
-        "notes": [
-            "High peak-hour demand",
-            "Check station boards for timings"
-        ]
-    },
-    "Harbour Line": {
-        "route": "CSMT ↔ Panvel",
-        "availability": "Very limited services",
-        "frequency": "Few trains per day",
-        "fare": "Approx. 1.3× First Class fare",
-        "notes": [
-            "Pilot basis",
-            "Subject to change"
-        ]
-    }
-}
+📄 **Documents Required:**
+• Bonafide certificate from school/college  
+• Valid ID card  
+• Filled railway concession form  
+• Recent passport-size photo  
 
-# --------------------------------------------------
-# RULES DATA (FROM OFFICIAL PDFs)
-# --------------------------------------------------
-
-LUGGAGE_RULES = """
-🎒 **Luggage Rules in Mumbai Local Trains**
-
-• Free luggage allowed up to **25 kg** (Second class)  
-• Up to **40 kg** in First Class  
-• Oversized luggage must be booked separately  
-• No inflammable or dangerous items allowed  
+📍 Issued at suburban ticket counters only  
+⚠️ Not applicable on single journey tickets  
 
 _Source: Indian Railways_
 """
 
-CONCESSION_RULES = """
-🎟️ **Railway Concessions**
+SENIOR_CONCESSION = """
+👴 **Senior Citizen Concession**
 
-• Students: Monthly / Quarterly pass concession  
-• Senior citizens: 40%–50% depending on age  
-• Persons with disabilities: Up to 75%  
+• Men: 60+ years → 40% concession  
+• Women: 58+ years → 50% concession  
+
+Valid on:
+• Single journey tickets  
+• Season tickets  
 
 _Source: Indian Railways_
+"""
+
+DISABILITY_CONCESSION = """
+♿ **Concession for Persons with Disabilities**
+
+• Up to **75% concession**  
+• Applicable for season & single journey tickets  
+
+📄 Disability certificate required  
+
+_Source: Indian Railways_
+"""
+
+GENERAL_CONCESSION = """
+🎟️ **Railway Concessions (Summary)**
+
+• Students – Monthly / Quarterly pass  
+• Senior citizens – 40–50%  
+• Persons with disabilities – Up to 75%  
+
+Ask specifically for:
+• Student concession  
+• Senior citizen concession  
+• Disability concession
 """
 
 # --------------------------------------------------
@@ -157,62 +141,32 @@ def chatbot_response(query: str):
 
     q = normalize(query)
 
-    # ---------- RULE QUERIES ----------
-    if "luggage" in q:
-        return LUGGAGE_RULES
+    # ---------- CONCESSION INTENT (FIXED) ----------
+    if "student" in q:
+        return STUDENT_CONCESSION
 
-    if "concession" in q or "student" in q or "senior" in q:
-        return CONCESSION_RULES
+    if "senior" in q:
+        return SENIOR_CONCESSION
 
-    # ---------- AC TRAIN QUERIES ----------
-    if "ac" in q:
-        if "western" in q:
-            info = AC_TRAIN_INFO["Western Line"]
-        elif "central" in q:
-            info = AC_TRAIN_INFO["Central Line"]
-        elif "harbour" in q:
-            info = AC_TRAIN_INFO["Harbour Line"]
-        else:
-            return (
-                "🚆 **AC locals are available on Western, Central and Harbour lines.**\n\n"
-                "Try:\n• AC trains on Western line\n• AC trains on Central line"
-            )
+    if "disable" in q or "disability" in q:
+        return DISABILITY_CONCESSION
 
-        notes = "\n".join([f"• {n}" for n in info["notes"]])
-        return f"""
-🚆 **AC Local Trains – {info['route']}**
+    if "concession" in q:
+        return GENERAL_CONCESSION
 
-Availability: {info['availability']}  
-Frequency: {info['frequency']}  
-Fare: {info['fare']}  
-
-📌 Notes:
-{notes}
-"""
-
-    # ---------- LOCATION (NON-STATION) ----------
-    for place, nearby in NEARBY_LOCATIONS.items():
-        if place in q:
-            return (
-                f"📍 **{place.title()} is not a local train station.**\n\n"
-                f"Nearest local stations:\n• " + " • ".join(nearby) +
-                "\n\nTake a local train till one of these and continue by taxi / bus."
-            )
-
-    # ---------- ROUTE QUERIES ----------
+    # ---------- ROUTE ----------
     stations = extract_stations(query)
 
     if len(stations) < 2:
         return (
             "❌ I couldn’t identify both source and destination.\n\n"
-            "Try:\n• Sion to Grant Road\n• Dadar to Churchgate\n• Western line timetable"
+            "Try:\n• Sion to Grant Road\n• Dadar to Churchgate\n• Student concession documents"
         )
 
     src, dst = stations[0], stations[1]
     src_line = determine_line(src)
     dst_line = determine_line(dst)
 
-    # ---------- INTERCHANGE REQUIRED ----------
     interchange = find_interchange(src, dst)
     if interchange:
         return f"""
@@ -231,7 +185,6 @@ Steps:
 ⚠️ Platform numbers depend on station boards.
 """
 
-    # ---------- SAME LINE ----------
     return f"""
 🚆 **Route Information**
 

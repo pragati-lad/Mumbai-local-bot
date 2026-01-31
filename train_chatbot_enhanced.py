@@ -43,19 +43,19 @@ NEARBY_LOCATIONS = {
 }
 
 # --------------------------------------------------
-# UI
+# UI HEADER
 # --------------------------------------------------
 
-st.title("🚆 Mumbai Local Train Assistant")
-st.caption("Train routes, stations & railway rules — simplified")
+st.title("Mumbai Local Train Assistant")
+st.caption("Routes • Stations • Railway guidance")
 
 st.markdown("### Suggested queries")
 suggested_queries = [
-    "Train from Virar to Churchgate",
-    "Harbour line trains from Panvel to CSMT",
+    "Virar to Churchgate",
+    "Panvel to CSMT",
     "Virar to Malabar Hills",
-    "What are student concessions?",
-    "Luggage rules in Mumbai local trains"
+    "Andheri to Bandra",
+    "What are luggage rules?"
 ]
 
 cols = st.columns(2)
@@ -79,12 +79,10 @@ def fuzzy_station_match(word):
 def extract_stations(query):
     words = query.split()
     found = []
-
     for w in words:
         match = fuzzy_station_match(w.title())
         if match and match not in found:
             found.append(match)
-
     return found
 
 def find_nearby_location(query):
@@ -101,35 +99,48 @@ def find_nearby_location(query):
 def chatbot_response(query):
     stations = extract_stations(query)
 
-    # Spinner for realism
-    with st.spinner("Finding best route for you..."):
-        time.sleep(1)
+    # ---------------- PROGRESS BAR ----------------
+    progress = st.progress(0)
+    status = st.empty()
 
-    # No station found
+    for i in range(100):
+        progress.progress(i + 1)
+        status.text(f"Analyzing query… {i + 1}%")
+        time.sleep(0.01)
+
+    progress.empty()
+    status.empty()
+    # ----------------------------------------------
+
+    # No station detected
     if len(stations) == 0:
         place, nearby = find_nearby_location(query)
+
         if nearby:
             st.info(
                 f"📍 **{place} is not a local train station.**\n\n"
-                f"🚉 Nearest stations: {', '.join(nearby)}\n\n"
+                f"🚉 Nearest local stations: {', '.join(nearby)}\n\n"
                 "You can take a local train till one of these stations "
-                "and then continue by taxi / bus / metro."
+                "and continue by taxi / bus / metro."
             )
             return
 
         st.warning(
-            "Please mention **both source and destination stations**.\n\n"
-            "Example: *Virar to Churchgate*"
+            "I couldn’t identify valid stations.\n\n"
+            "Example queries:\n"
+            "- Virar to Churchgate\n"
+            "- Panvel to CSMT"
         )
         return
 
     # Only one station found
     if len(stations) == 1:
         place, nearby = find_nearby_location(query)
+
         if nearby:
             st.info(
                 f"📍 **{place} is not a local train station.**\n\n"
-                f"🚉 Nearest stations: {', '.join(nearby)}"
+                f"🚉 Nearest local stations: {', '.join(nearby)}"
             )
             return
 
@@ -147,7 +158,7 @@ def chatbot_response(query):
         return
 
     st.success(
-        f"🚆 **Route found successfully!**\n\n"
+        f"✅ **Route processed successfully**\n\n"
         f"From **{src}** → **{dst}**\n\n"
         "Local trains are available on this route."
     )
@@ -157,7 +168,7 @@ def chatbot_response(query):
 # --------------------------------------------------
 
 query = st.text_input(
-    "Ask about train timings, routes, or railway rules",
+    "Ask about routes, stations, or travel help",
     key="user_query",
     placeholder="e.g. Virar to Churchgate"
 )

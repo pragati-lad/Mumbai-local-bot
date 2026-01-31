@@ -38,8 +38,7 @@ HARBOUR_STATIONS = [
     "Belapur CBD", "Panvel"
 ]
 
-ALL_STATIONS = WESTERN_STATIONS + HARBOUR_STATIONS + CENTRAL_STATIONS
-
+ALL_STATIONS = list(set(WESTERN_STATIONS + CENTRAL_STATIONS + HARBOUR_STATIONS))
 
 NEARBY_LOCATIONS = {
     "malabar hills": ["Charni Road", "Grant Road"],
@@ -60,7 +59,7 @@ st.caption("Routes • Timetables • Platform Guidance")
 st.markdown("### Suggested queries")
 suggested = [
     "Virar to Churchgate",
-    "Prabhadevi to Dadar",
+    "Sion to Grant Road",
     "Panvel to CSMT",
     "Western line timetable",
     "Virar to Malabar Hills"
@@ -85,22 +84,12 @@ def fuzzy_match(word):
     return matches[0] if matches else None
 
 def extract_stations(query):
-    q = normalize(query)
     found = []
-
-    for station in ALL_STATIONS:
-        if normalize(station) in q:
-            found.append(station)
-
-    # fallback to fuzzy (single-word typos)
-    if len(found) < 2:
-        for word in query.split():
-            match = fuzzy_match(word.title())
-            if match and match not in found:
-                found.append(match)
-
-    return found[:2]
-
+    for word in query.split():
+        match = fuzzy_match(word.title())
+        if match and match not in found:
+            found.append(match)
+    return found
 
 def find_nearby_location(query):
     q = normalize(query)
@@ -116,6 +105,16 @@ def determine_line(src, dst):
         return "Harbour Line"
     return "Western Line"
 
+def find_interchange(src, dst):
+    if src in CENTRAL_STATIONS and dst in WESTERN_STATIONS:
+        return "Dadar"
+    if src in WESTERN_STATIONS and dst in CENTRAL_STATIONS:
+        return "Dadar"
+    if src in CENTRAL_STATIONS and dst in HARBOUR_STATIONS:
+        return "Kurla"
+    if src in HARBOUR_STATIONS and dst in CENTRAL_STATIONS:
+        return "Kurla"
+    return None
 
 def determine_direction(line, src, dst):
     if line == "Central Line":
@@ -127,20 +126,18 @@ def determine_direction(line, src, dst):
 
     return "Up (towards city)" if stations.index(src) < stations.index(dst) else "Down (outbound)"
 
-
 def determine_platform(line, direction):
     if line == "Western Line":
         return "Usually Platform 1–2 (Up) or 3–4 (Down)"
-    return "Harbour Line platforms vary by station"
+    if line == "Central Line":
+        return "Usually Platform 1–4 depending on destination"
+    return "Harbour platforms vary by station"
 
 def train_type(src, dst, line):
     if line == "Western Line":
         distance = abs(WESTERN_STATIONS.index(src) - WESTERN_STATIONS.index(dst))
         return "Fast or Slow" if distance > 6 else "Slow"
-    if line == "Central Line":
-        return "Fast or Slow"
-    return "Harbour Local"
-
+    return "Regular Local"
 
 def is_timetable_query(query):
     q = normalize(query)
@@ -156,31 +153,34 @@ def is_timetable_query(query):
 
 def chatbot_response(query):
 
-    # ---------------- Progress bar ----------------
     bar = st.progress(0)
     for i in range(100):
         bar.progress(i + 1)
-        time.sleep(0.004)
+        time.sleep(0.003)
     bar.empty()
-    # ---------------------------------------------
 
     q = normalize(query)
 
-    # -------- TIMETABLE INTENT (FIRST) ------------
+    # -------- TIMETABLE QUERIES --------
     if is_timetable_query(query):
-
         if "western" in q:
             st.success("Western Line Timetable")
             st.markdown(
                 """
 **Route:** Churchgate ↔ Virar  
+• Peak: every 3–5 mins  
+• Off-peak: every 5–8 mins  
+"""
+            )
+            return
 
-• Slow & fast locals  
-• Peak hours: every 3–5 minutes  
-• Off-peak: every 5–8 minutes  
-
-📍 Platforms depend on direction  
-⚠️ Check station display boards for live updates
+        if "central" in q:
+            st.success("Central Line Timetable")
+            st.markdown(
+                """
+**Route:** CSMT ↔ Kalyan  
+• Very frequent locals  
+• Fast & slow trains  
 """
             )
             return
@@ -190,51 +190,27 @@ def chatbot_response(query):
             st.markdown(
                 """
 **Route:** CSMT ↔ Panvel  
-
-• Regular harbour locals  
-• Frequency: every 10–15 minutes  
-
-📍 Platforms vary by station
+• Frequency: every 10–15 mins  
 """
             )
             return
-
-        if "central" in q:
-            st.success("Central Line Timetable")
-            st.markdown(
-                """
-**Route:** CSMT ↔ Kasara / Karjat  
-
-• Slow & fast locals  
-• Very high peak-hour frequency  
-
-📍 Platforms depend on destination
-"""
-            )
-            return
-    # ---------------------------------------------
 
     stations = extract_stations(query)
 
-    # No stations
+    # -------- NO STATION --------
     if len(stations) == 0:
         place, nearby = find_nearby_location(query)
         if nearby:
             st.info(
                 f"📍 **{place} is not a local train station.**\n\n"
-                f"🚉 Nearest local stations: {', '.join(nearby)}\n\n"
-                "You can take a local train till one of these stations "
-                "and continue by taxi / bus / metro."
+                f"🚉 Nearest stations: {', '.join(nearby)}"
             )
             return
 
-        st.warning(
-            "I couldn’t identify Mumbai local stations.\n\n"
-            "Try:\n• Virar to Churchgate\n• Western line timetable"
-        )
+        st.warning("Couldn’t identify Mumbai local stations.")
         return
 
-    # One station
+    # -------- ONE STATION --------
     if len(stations) == 1:
         st.warning(
             f"I found **{stations[0]}**, but couldn’t identify the destination.\n"
@@ -242,16 +218,37 @@ def chatbot_response(query):
         )
         return
 
-    # Normal route case
+    # -------- ROUTE --------
     src, dst = stations[0], stations[1]
+
     if src == dst:
         st.error("Source and destination cannot be the same.")
+        return
+
+    interchange = find_interchange(src, dst)
+    if interchange:
+        st.success("Route requires interchange")
+        st.markdown(
+            f"""
+### 🔁 Route Information
+
+**From:** {src}  
+**To:** {dst}
+
+🚉 **Change at:** **{interchange}**
+
+• Travel till **{interchange}**  
+• Switch lines and continue
+
+⚠️ Platform numbers depend on station boards.
+"""
+        )
         return
 
     line = determine_line(src, dst)
     direction = determine_direction(line, src, dst)
     platform = determine_platform(line, direction)
-    ttype = train_type(src, dst)
+    ttype = train_type(src, dst, line)
 
     st.success("Route processed successfully")
 
@@ -269,11 +266,9 @@ def chatbot_response(query):
 **Platform Info:**  
 • {platform}
 
-⏱️ **Frequency:**  
-• Peak: 3–5 minutes  
-• Off-peak: 5–8 minutes  
-
-⚠️ *Platform numbers are indicative and may change.*
+⏱️ Frequency:  
+• Peak: 3–5 mins  
+• Off-peak: 5–8 mins
 """
     )
 
@@ -284,7 +279,7 @@ def chatbot_response(query):
 query = st.text_input(
     "Ask about routes, stations, or timetables",
     key="query",
-    placeholder="e.g. Western line timetable"
+    placeholder="e.g. Sion to Grant Road"
 )
 
 if query:

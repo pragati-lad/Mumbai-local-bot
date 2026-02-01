@@ -4,9 +4,7 @@
 
 from difflib import get_close_matches
 
-# --------------------------------------------------
-# STATION DATA
-# --------------------------------------------------
+# ---------------- STATION DATA ----------------
 
 CENTRAL_STATIONS = [
     "CSMT", "Masjid", "Byculla", "Chinchpokli", "Currey Road",
@@ -34,96 +32,7 @@ HARBOUR_STATIONS = [
 
 ALL_STATIONS = list(set(CENTRAL_STATIONS + WESTERN_STATIONS + HARBOUR_STATIONS))
 
-# --------------------------------------------------
-# INFORMATION / RULES
-# --------------------------------------------------
-
-STUDENT_CONCESSION = """
-🎓 **Student Concession – Mumbai Local Trains**
-
-Eligible for **Monthly / Quarterly Season Pass** at concessional rates.
-
-📄 **Documents Required**
-• Bonafide certificate from school / college  
-• Valid student ID card  
-• Filled railway concession form  
-• Passport-size photograph  
-
-⚠️ Not valid for single-journey tickets  
-📍 Issued at suburban ticket counters only  
-
-_Source: Indian Railways_
-"""
-
-SENIOR_CITIZEN = """
-👴 **Senior Citizen Concession – Mumbai Local Trains**
-
-• Applicable for passengers aged **60 years & above**
-• Valid government photo ID required
-• Concession available on **Monthly & Quarterly passes**
-• Discount varies by distance & class
-
-📍 Issued at suburban ticket counters only  
-
-_Source: Indian Railways_
-"""
-
-MONTHLY_PASS = """
-🎟️ **Monthly / Quarterly Pass Rules**
-
-• Available for **First & Second Class**
-• Student & Senior Citizen concession applicable
-• Valid between selected source & destination only
-• No refund after pass activation
-
-💰 **Approximate Pass Fees (Distance-based)**
-
-Second Class:
-• Monthly: ₹100 – ₹300
-• Quarterly: ₹300 – ₹900
-
-First Class:
-• Monthly: ₹400 – ₹1200
-• Quarterly: ₹1200 – ₹3600
-
-_Source: Indian Railways_
-"""
-
-LUGGAGE_RULES = """
-🎒 **Luggage Rules – Mumbai Local Trains**
-
-✅ **Free allowance**
-• Up to **15 kg** in Second Class  
-• Up to **20 kg** in First Class  
-
-📦 **Size limit**
-• Max: **100 cm × 60 cm × 25 cm**
-
-❌ Dangerous / inflammable items not allowed  
-📍 Oversized luggage must be booked separately  
-
-_Source: Indian Railways_
-"""
-
-AC_TRAINS = """
-❄️ **AC Local Trains (Mumbai)**
-
-🚆 Available on:
-• Western Line  
-• Central Line  
-
-💺 Fully air-conditioned coaches  
-🎟️ Higher fare than First Class  
-⏱️ Lower frequency than regular locals  
-
-📍 Platforms may differ — check display boards  
-
-_Source: Indian Railways_
-"""
-
-# --------------------------------------------------
-# HELPERS
-# --------------------------------------------------
+# ---------------- HELPERS ----------------
 
 def normalize(text):
     return text.lower().strip()
@@ -156,31 +65,10 @@ def find_interchange(src_line, dst_line):
         return "Kurla"
     return None
 
-# --------------------------------------------------
-# CHATBOT RESPONSE
-# --------------------------------------------------
+# ---------------- CHATBOT RESPONSE ----------------
 
 def chatbot_response(query: str):
 
-    q = normalize(query)
-
-    # ---------- INFORMATION INTENTS FIRST ----------
-    if "senior" in q:
-        return SENIOR_CITIZEN
-
-    if "student" in q:
-        return STUDENT_CONCESSION
-
-    if "monthly" in q or "quarterly" in q or "season" in q or "pass" in q:
-        return MONTHLY_PASS
-
-    if "luggage" in q:
-        return LUGGAGE_RULES
-
-    if "ac train" in q or "ac local" in q:
-        return AC_TRAINS
-
-    # ---------- ROUTE LOGIC ----------
     stations = extract_stations(query)
 
     if len(stations) < 2:
@@ -189,9 +77,7 @@ def chatbot_response(query: str):
             "Try:\n"
             "• Dadar to Churchgate\n"
             "• Sion to Grant Road\n"
-            "• Senior citizen concession\n"
-            "• Monthly pass fees\n"
-            "• Luggage rules"
+            "• Western line timetable"
         )
 
     src, dst = stations[0], stations[1]
@@ -214,11 +100,11 @@ To: **{dst}** ({dst_line})
 🚉 **Change at:** {interchange}
 
 Steps:
-1. Take a **{src_line}** local from **{src} → {interchange}**
+1. Take **{src_line}** local from **{src} → {interchange}**
 2. Change to **{dst_line}**
-3. Continue from **{interchange} → {dst}**
+3. Continue **{interchange} → {dst}**
 
-⚠️ Platform numbers may vary. Check station display boards.
+⚠️ Platform numbers may vary.
 """
 
     return f"""
@@ -230,7 +116,7 @@ To: **{dst}**
 Line: **{src_line}**
 
 • Direct local trains available  
-• Frequency depends on time of day  
+• Frequency depends on time  
 
-⚠️ Check station display boards for platform numbers.
+⚠️ Check station boards for platform numbers.
 """

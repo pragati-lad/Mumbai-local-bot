@@ -8,29 +8,9 @@ st.set_page_config(
     layout="centered"
 )
 
-# ---------------- CSS ----------------
-st.markdown(
-    """
-    <style>
-    body { background-color: #f9fafb; }
-    .title { text-align:center; font-size:1.4rem; font-weight:600; }
-    .subtitle { text-align:center; color:#6b7280; font-size:0.9rem; }
-    .stButton>button {
-        background:#fff;
-        border:1px solid #e5e7eb;
-        border-radius:999px;
-        color:#111827;
-        font-size:0.82rem;
-        padding:0.45rem 0.9rem;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 # ---------------- Header ----------------
-st.markdown("<div class='title'>Mumbai Local Train Assistant</div>", unsafe_allow_html=True)
-st.markdown("<div class='subtitle'>Routes • Timetables • Railway rules</div>", unsafe_allow_html=True)
+st.markdown("## Mumbai Local Train Assistant")
+st.caption("Routes • Concessions • Luggage • Pass rules")
 
 # ---------------- Session State ----------------
 if "messages" not in st.session_state:
@@ -41,10 +21,12 @@ if "suggestions" not in st.session_state:
         "Sion to Grant Road",
         "Dadar to Churchgate",
         "Virar to Andheri",
-        "Western line timetable",
+        "Student concession",
+        "Senior citizen concession",
+        "Luggage rules",
+        "Monthly pass price",
     ]
 
-# ---------------- Suggestion Click Handler (🔥 FIX) ----------------
 def handle_suggestion_click(text):
     st.session_state.chat_input = text
 
@@ -65,9 +47,9 @@ for i, s in enumerate(st.session_state.suggestions):
         args=(s,)
     )
 
-# ---------------- Chat Input (FIXED) ----------------
+# ---------------- Chat Input ----------------
 user_input = st.chat_input(
-    "Ask about routes, stations, or railway rules",
+    "Ask about routes, concessions, luggage, passes",
     key="chat_input"
 )
 

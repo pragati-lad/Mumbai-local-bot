@@ -1,5 +1,5 @@
 # ==================================================
-# Mumbai Local Train Assistant – Core Logic (FIXED)
+# Mumbai Local Train Assistant – Core Logic (FINAL)
 # ==================================================
 
 from difflib import get_close_matches
@@ -35,7 +35,7 @@ HARBOUR_STATIONS = [
 ALL_STATIONS = list(set(CENTRAL_STATIONS + WESTERN_STATIONS + HARBOUR_STATIONS))
 
 # --------------------------------------------------
-# RULES (SEPARATED PROPERLY)
+# RULES / INFORMATION
 # --------------------------------------------------
 
 STUDENT_CONCESSION = """
@@ -43,53 +43,59 @@ STUDENT_CONCESSION = """
 
 Eligible for **Monthly / Quarterly Season Pass** at concessional rates.
 
-📄 **Documents Required:**
-• Bonafide certificate from school/college  
-• Valid ID card  
+📄 **Documents Required**
+• Bonafide certificate from school / college  
+• Valid student ID card  
 • Filled railway concession form  
-• Recent passport-size photo  
+• Passport-size photograph  
 
+⚠️ Not valid for single-journey tickets  
 📍 Issued at suburban ticket counters only  
-⚠️ Not applicable on single journey tickets  
 
 _Source: Indian Railways_
 """
 
-SENIOR_CONCESSION = """
-👴 **Senior Citizen Concession**
+MONTHLY_PASS = """
+🎟️ **Monthly / Quarterly Pass Rules**
 
-• Men: 60+ years → 40% concession  
-• Women: 58+ years → 50% concession  
-
-Valid on:
-• Single journey tickets  
-• Season tickets  
+• Available for **First & Second Class**  
+• Student concession applicable (with documents)  
+• Valid between selected source & destination only  
+• No refund after pass activation  
 
 _Source: Indian Railways_
 """
 
-DISABILITY_CONCESSION = """
-♿ **Concession for Persons with Disabilities**
+LUGGAGE_RULES = """
+🎒 **Luggage Rules – Mumbai Local Trains**
 
-• Up to **75% concession**  
-• Applicable for season & single journey tickets  
+✅ **Free allowance**
+• Up to **15 kg** in Second Class  
+• Up to **20 kg** in First Class  
 
-📄 Disability certificate required  
+📦 **Size limit**
+• Max: **100 cm × 60 cm × 25 cm**
+
+❌ Dangerous / inflammable items not allowed  
+📍 Oversized luggage must be booked separately  
 
 _Source: Indian Railways_
 """
 
-GENERAL_CONCESSION = """
-🎟️ **Railway Concessions (Summary)**
+AC_TRAINS = """
+❄️ **AC Local Trains (Mumbai)**
 
-• Students – Monthly / Quarterly pass  
-• Senior citizens – 40–50%  
-• Persons with disabilities – Up to 75%  
+🚆 Available on:
+• Western Line  
+• Central Line  
 
-Ask specifically for:
-• Student concession  
-• Senior citizen concession  
-• Disability concession
+💺 Fully air-conditioned coaches  
+🎟️ Higher fare than First Class  
+⏱️ Lower frequency than regular locals  
+
+📍 Platforms may differ — check display boards  
+
+_Source: Indian Railways_
 """
 
 # --------------------------------------------------
@@ -118,19 +124,13 @@ def determine_line(station):
         return "Harbour Line"
     return "Western Line"
 
-def find_interchange(src, dst):
-    src_line = determine_line(src)
-    dst_line = determine_line(dst)
-
+def find_interchange(src_line, dst_line):
     if src_line == dst_line:
         return None
-
     if {"Central Line", "Western Line"} == {src_line, dst_line}:
         return "Dadar"
-
     if {"Central Line", "Harbour Line"} == {src_line, dst_line}:
         return "Kurla"
-
     return None
 
 # --------------------------------------------------
@@ -141,57 +141,66 @@ def chatbot_response(query: str):
 
     q = normalize(query)
 
-    # ---------- CONCESSION INTENT (FIXED) ----------
+    # ---------- INFORMATION INTENTS FIRST ----------
     if "student" in q:
         return STUDENT_CONCESSION
 
-    if "senior" in q:
-        return SENIOR_CONCESSION
+    if "monthly" in q or "season" in q or "pass" in q:
+        return MONTHLY_PASS
 
-    if "disable" in q or "disability" in q:
-        return DISABILITY_CONCESSION
+    if "luggage" in q:
+        return LUGGAGE_RULES
 
-    if "concession" in q:
-        return GENERAL_CONCESSION
+    if "ac train" in q or "ac local" in q:
+        return AC_TRAINS
 
-    # ---------- ROUTE ----------
+    # ---------- ROUTE LOGIC ----------
     stations = extract_stations(query)
 
     if len(stations) < 2:
         return (
             "❌ I couldn’t identify both source and destination.\n\n"
-            "Try:\n• Sion to Grant Road\n• Dadar to Churchgate\n• Student concession documents"
+            "Try:\n"
+            "• Sion to Grant Road\n"
+            "• Dadar to Churchgate\n"
+            "• Student concession documents\n"
+            "• Luggage rules"
         )
 
     src, dst = stations[0], stations[1]
+
+    if src == dst:
+        return "⚠️ Source and destination cannot be the same."
+
     src_line = determine_line(src)
     dst_line = determine_line(dst)
 
-    interchange = find_interchange(src, dst)
+    interchange = find_interchange(src_line, dst_line)
+
     if interchange:
         return f"""
 🔁 **Route Information**
 
-From: {src} ({src_line})  
-To: {dst} ({dst_line})  
+From: **{src}** ({src_line})  
+To: **{dst}** ({dst_line})
 
 🚉 **Change at:** {interchange}
 
 Steps:
-1. Take a {src_line} local from **{src} → {interchange}**
+1. Take a **{src_line}** local from **{src} → {interchange}**
 2. Change to **{dst_line}**
 3. Continue from **{interchange} → {dst}**
 
-⚠️ Platform numbers depend on station boards.
+⚠️ Platform numbers may vary. Check station display boards.
 """
 
     return f"""
 🚆 **Route Information**
 
-From: {src}  
-To: {dst}  
+From: **{src}**  
+To: **{dst}**
 
-Line: {src_line}
+Line: **{src_line}**
 
 • Direct local trains available  
 • Frequency depends on time of day  

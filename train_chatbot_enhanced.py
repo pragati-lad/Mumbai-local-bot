@@ -64,12 +64,24 @@ Oversized luggage must be booked separately
 """
 
 MONTHLY_PASS = """
-🎟️ **Monthly / Quarterly Pass**
+🎟️ **Monthly / Quarterly Pass – Mumbai Local Trains**
 
-• First & Second Class available  
-• Concessions applicable  
-• Price depends on distance
+📌 Prices depend on **distance & class** (approximate ranges):
+
+**Second Class**
+• Monthly: ₹100 – ₹300  
+• Quarterly: ₹300 – ₹900  
+
+**First Class**
+• Monthly: ₹400 – ₹1200  
+• Quarterly: ₹1200 – ₹3600  
+
+🎓 Student & 👴 Senior citizen concessions applicable  
+📍 Issued at suburban ticket counters  
+
+_Source: Indian Railways_
 """
+
 
 # ---------------- HELPERS ----------------
 

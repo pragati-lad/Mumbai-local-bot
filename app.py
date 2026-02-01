@@ -8,7 +8,7 @@ st.set_page_config(
     layout="centered"
 )
 
-# ---------------- CSS ----------------
+# ---------------- CSS (KEEP OLD DESIGN) ----------------
 st.markdown(
     """
     <style>
@@ -17,20 +17,28 @@ st.markdown(
             font-size: 1.4rem;
             font-weight: 600;
         }
+
         .header-subtitle {
             text-align: center;
-            color: #6b7280;
+            color: #9ca3af;
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
+
         .stButton > button {
             background-color: #ffffff !important;
             border: 1px solid #e5e7eb !important;
-            color: #1f2937 !important;
+            color: #111827 !important;
             border-radius: 999px;
             padding: 0.45rem 0.9rem;
             font-size: 0.82rem;
             text-align: left;
+            width: 100%;
+        }
+
+        .stButton > button:hover {
+            background-color: #f3f4f6 !important;
+            border-color: #d1d5db !important;
         }
     </style>
     """,
@@ -40,7 +48,7 @@ st.markdown(
 # ---------------- Header ----------------
 st.markdown("<div class='header-title'>Mumbai Local Train Assistant</div>", unsafe_allow_html=True)
 st.markdown(
-    "<div class='header-subtitle'>Timetables, routes, passes & railway rules</div>",
+    "<div class='header-subtitle'>Routes • Timetables • Passes • Railway rules</div>",
     unsafe_allow_html=True
 )
 
@@ -68,32 +76,32 @@ if not st.session_state.messages:
         {
             "role": "assistant",
             "content": (
-                "Hi 👋 I’m the **Mumbai Local Train Assistant**.\n\n"
+                "Hello 👋 I’m the **Mumbai Local Train Assistant**.\n\n"
                 "Ask me about routes, passes, concessions, luggage rules or timetables."
             )
         }
     )
 
+# ---------------- Chat Input (TOP) ----------------
+user_input = st.chat_input("Ask about Mumbai local trains...")
+
+# ---------------- Suggested Queries (JUST BELOW INPUT) ----------------
+st.markdown("**Suggested queries**")
+
+cols = st.columns(2)
+for i, q in enumerate(st.session_state.suggestions):
+    if cols[i % 2].button(q, key=f"sugg_{i}"):
+        st.session_state.pending_query = q
+
+# 🔥 Auto-run when suggestion clicked
+if st.session_state.pending_query:
+    user_input = st.session_state.pending_query
+    st.session_state.pending_query = None
+
 # ---------------- Chat History ----------------
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
-
-# ---------------- Suggested Queries (BELOW CHAT INPUT) ----------------
-st.markdown("**Suggested queries**")
-cols = st.columns(2)
-
-for i, q in enumerate(st.session_state.suggestions):
-    if cols[i % 2].button(q, key=f"suggest_{i}"):
-        st.session_state.pending_query = q
-
-# ---------------- Chat Input ----------------
-user_input = st.chat_input("Ask about Mumbai local trains...")
-
-# 🔥 If suggestion clicked → auto execute
-if st.session_state.pending_query:
-    user_input = st.session_state.pending_query
-    st.session_state.pending_query = None
 
 # ---------------- Handle Input ----------------
 if user_input:

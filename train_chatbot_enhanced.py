@@ -35,7 +35,7 @@ HARBOUR_STATIONS = [
 ALL_STATIONS = list(set(CENTRAL_STATIONS + WESTERN_STATIONS + HARBOUR_STATIONS))
 
 # --------------------------------------------------
-# RULES / INFORMATION
+# INFORMATION / RULES
 # --------------------------------------------------
 
 STUDENT_CONCESSION = """
@@ -55,13 +55,36 @@ Eligible for **Monthly / Quarterly Season Pass** at concessional rates.
 _Source: Indian Railways_
 """
 
+SENIOR_CITIZEN = """
+👴 **Senior Citizen Concession – Mumbai Local Trains**
+
+• Applicable for passengers aged **60 years & above**
+• Valid government photo ID required
+• Concession available on **Monthly & Quarterly passes**
+• Discount varies by distance & class
+
+📍 Issued at suburban ticket counters only  
+
+_Source: Indian Railways_
+"""
+
 MONTHLY_PASS = """
 🎟️ **Monthly / Quarterly Pass Rules**
 
-• Available for **First & Second Class**  
-• Student concession applicable (with documents)  
-• Valid between selected source & destination only  
-• No refund after pass activation  
+• Available for **First & Second Class**
+• Student & Senior Citizen concession applicable
+• Valid between selected source & destination only
+• No refund after pass activation
+
+💰 **Approximate Pass Fees (Distance-based)**
+
+Second Class:
+• Monthly: ₹100 – ₹300
+• Quarterly: ₹300 – ₹900
+
+First Class:
+• Monthly: ₹400 – ₹1200
+• Quarterly: ₹1200 – ₹3600
 
 _Source: Indian Railways_
 """
@@ -142,10 +165,13 @@ def chatbot_response(query: str):
     q = normalize(query)
 
     # ---------- INFORMATION INTENTS FIRST ----------
+    if "senior" in q:
+        return SENIOR_CITIZEN
+
     if "student" in q:
         return STUDENT_CONCESSION
 
-    if "monthly" in q or "season" in q or "pass" in q:
+    if "monthly" in q or "quarterly" in q or "season" in q or "pass" in q:
         return MONTHLY_PASS
 
     if "luggage" in q:
@@ -161,9 +187,10 @@ def chatbot_response(query: str):
         return (
             "❌ I couldn’t identify both source and destination.\n\n"
             "Try:\n"
-            "• Sion to Grant Road\n"
             "• Dadar to Churchgate\n"
-            "• Student concession documents\n"
+            "• Sion to Grant Road\n"
+            "• Senior citizen concession\n"
+            "• Monthly pass fees\n"
             "• Luggage rules"
         )
 

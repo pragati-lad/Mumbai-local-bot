@@ -107,154 +107,169 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS - Notebook Doodle Theme ----------------
+# ---------------- CSS - Vintage Mumbai Theme ----------------
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600&display=swap');
 
-        /* FORCE notebook background */
+        /* Kraft paper background */
         .stApp, [data-testid="stAppViewContainer"], .main, .block-container {
-            background-color: #f5f3eb !important;
-            background-image:
-                linear-gradient(#ddd 1px, transparent 1px),
-                linear-gradient(90deg, #ddd 1px, transparent 1px) !important;
-            background-size: 20px 20px !important;
-        }
-
-        /* Red margin line */
-        [data-testid="stAppViewContainer"]::before {
-            content: "";
-            position: fixed;
-            left: 80px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #e74c3c;
-            z-index: 1000;
+            background: #b8a088 !important;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E") !important;
+            background-blend-mode: multiply !important;
         }
 
         * {
-            font-family: 'Patrick Hand', cursive !important;
+            font-family: 'Poppins', sans-serif !important;
         }
 
         .main-title {
-            color: #2d2d2d !important;
-            font-size: 2.6rem !important;
+            font-family: 'Bebas Neue', sans-serif !important;
+            color: #8B0000 !important;
+            font-size: 3.5rem !important;
             font-weight: 400 !important;
             text-align: center;
-            margin-bottom: 5px;
+            margin-bottom: 0;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .subtitle {
-            color: #555 !important;
+            color: #3d3d3d !important;
             text-align: center;
-            font-size: 1.2rem !important;
+            font-size: 1rem !important;
             margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .line-badge {
             display: inline-block;
-            padding: 3px 10px;
-            font-size: 0.9rem;
-            margin: 0 3px;
-            border: 2px solid #2d2d2d;
-            border-radius: 0;
-            background: transparent;
-            color: #2d2d2d !important;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            margin: 0 4px;
+            border-radius: 3px;
+            font-weight: 600;
+            color: #fff !important;
         }
+        .western { background: #1a5276 !important; }
+        .central { background: #8B0000 !important; }
+        .harbour { background: #196f3d !important; }
 
-        /* Buttons - sketchy style */
+        /* Buttons - Mumbai taxi yellow */
         .stButton > button {
-            background: transparent !important;
-            border: 2px solid #2d2d2d !important;
-            color: #2d2d2d !important;
-            border-radius: 0 !important;
-            padding: 0.4rem 1rem;
-            font-size: 1rem !important;
+            background: #d4a017 !important;
+            border: none !important;
+            color: #1a1a1a !important;
+            border-radius: 5px !important;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem !important;
+            font-weight: 600 !important;
+            transition: all 0.2s ease;
         }
 
         .stButton > button:hover {
-            background: #2d2d2d !important;
-            color: #f5f3eb !important;
+            background: #8B0000 !important;
+            color: #fff !important;
         }
 
-        /* Review cards */
+        /* Review cards - like old paper */
         .review-card {
-            background: #fff !important;
-            padding: 12px 14px;
-            margin: 8px 0;
-            border: 2px solid #2d2d2d;
+            background: #f5e6d3 !important;
+            padding: 14px 16px;
+            margin: 10px 0;
+            border-left: 4px solid #8B0000;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
         }
 
         .review-card b {
             color: #2d2d2d !important;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         .review-card small {
-            color: #666 !important;
+            color: #555 !important;
         }
 
         .section-header {
-            color: #2d2d2d !important;
-            font-size: 1.3rem !important;
+            color: #8B0000 !important;
+            font-family: 'Bebas Neue', sans-serif !important;
+            font-size: 1.5rem !important;
+            letter-spacing: 2px;
             margin-bottom: 0.5rem;
-            border-bottom: 2px solid #2d2d2d;
-            padding-bottom: 4px;
+            border-bottom: 3px solid #8B0000;
+            padding-bottom: 5px;
             display: inline-block;
         }
 
         /* Chat messages */
         .stChatMessage, [data-testid="stChatMessage"] {
-            background: #fff !important;
-            border: 2px solid #2d2d2d !important;
-            border-radius: 0 !important;
+            background: #f5e6d3 !important;
+            border-radius: 8px !important;
+            border: none !important;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1) !important;
         }
 
-        /* All text dark */
-        p, span, label, div, h1, h2, h3 {
+        /* All text */
+        p, span, label, div {
             color: #2d2d2d !important;
+        }
+
+        h1, h2, h3 {
+            color: #8B0000 !important;
         }
 
         /* Input fields */
         .stChatInput > div, .stChatInput textarea, [data-testid="stChatInput"] > div {
-            background: #fff !important;
-            border: 2px solid #2d2d2d !important;
-            border-radius: 0 !important;
+            background: #f5e6d3 !important;
+            border: 2px solid #8B0000 !important;
+            border-radius: 8px !important;
         }
 
         input, textarea, select {
-            background: #fff !important;
-            border: 2px solid #2d2d2d !important;
+            background: #f5e6d3 !important;
+            border: 1px solid #a08060 !important;
             color: #2d2d2d !important;
-            border-radius: 0 !important;
+            border-radius: 5px !important;
         }
 
         .stTextInput > div > div > input,
         .stSelectbox > div > div,
         .stTextArea textarea {
-            background: #fff !important;
-            border: 2px solid #2d2d2d !important;
-            border-radius: 0 !important;
+            background: #f5e6d3 !important;
+            border: 1px solid #a08060 !important;
+            border-radius: 5px !important;
             color: #2d2d2d !important;
         }
 
         /* Labels */
         .stSelectbox label, .stTextInput label, .stTextArea label, .stSlider label {
-            color: #2d2d2d !important;
-            font-size: 1.1rem !important;
+            color: #3d3d3d !important;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
         }
 
-        /* Stars */
+        /* Stars - yellow like auto */
         .stars {
-            color: #2d2d2d !important;
+            color: #d4a017 !important;
         }
 
         /* Dividers */
         hr {
             border: none !important;
-            border-top: 2px solid #2d2d2d !important;
+            border-top: 2px solid #8B0000 !important;
+        }
+
+        /* Slider */
+        .stSlider > div > div > div {
+            background: #8B0000 !important;
+        }
+
+        /* Caption */
+        .stCaption p {
+            color: #666 !important;
         }
 
         /* Hide streamlit branding */
@@ -273,11 +288,11 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">Mumbai Local ⚡</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">MUMBAI LOCAL</h1>', unsafe_allow_html=True)
     st.markdown('''<p class="subtitle">
-        <span class="line-badge">Western</span>
-        <span class="line-badge">Central</span>
-        <span class="line-badge">Harbour</span>
+        <span class="line-badge western">Western</span>
+        <span class="line-badge central">Central</span>
+        <span class="line-badge harbour">Harbour</span>
         &nbsp;•&nbsp; 7,500+ trains
     </p>''', unsafe_allow_html=True)
 
@@ -294,13 +309,13 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "hey! welcome to mumbai local\n\n"
-                    "i can help you with train timings, routes & more\n\n"
-                    "**try asking:**\n"
-                    "• andheri to churchgate\n"
-                    "• ac trains on western line\n"
-                    "• reviews for dadar\n"
-                    "• monthly pass price"
+                    "Welcome to Mumbai Local! 🚃\n\n"
+                    "I can help you with train timings, routes & more.\n\n"
+                    "**Try asking:**\n"
+                    "• Andheri to Churchgate\n"
+                    "• AC trains on Western line\n"
+                    "• Reviews for Dadar\n"
+                    "• Monthly pass price"
                 )
             }
         )
@@ -311,10 +326,10 @@ with main_col:
             st.markdown(msg["content"])
 
     # -------- Chat Input --------
-    user_input = st.chat_input("search trains, routes...")
+    user_input = st.chat_input("Search trains, routes...")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="section-header">try these →</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">QUICK SEARCH</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -335,12 +350,12 @@ with main_col:
                 if station.lower() in user_input.lower():
                     review_summary = get_review_summary(station)
                     if review_summary:
-                        response = f"**{station} station**\n" + review_summary
+                        response = f"**{station} Station**\n" + review_summary
                     else:
-                        response = f"no reviews for {station} yet! be the first to write one"
+                        response = f"No reviews for {station} yet. Be the first to write one!"
                     break
             else:
-                response = "which station? try: *reviews for andheri*"
+                response = "Which station? Try: *Reviews for Andheri*"
         else:
             response = chatbot_response(user_input)
 
@@ -366,7 +381,7 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="section-header">write a review</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">WRITE A REVIEW</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
@@ -417,7 +432,7 @@ with review_col:
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="section-header">recent reviews</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">RECENT REVIEWS</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
 

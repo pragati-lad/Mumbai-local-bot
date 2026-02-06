@@ -1,0 +1,1305 @@
+id,line,time,source,dest,type
+CR_0086,CR,4:12 am,Mumbai CSMT,Kasara,SLOW
+CR_0087,CR,4:25 am,Mumbai CSMT,Khopoli,SLOW
+CR_0088,CR,4:50 am,Mumbai CSMT,Karjat,SLOW
+CR_0089,CR,5:02 am,Mumbai CSMT,Kasara,SLOW
+CR_0090,CR,5:14 am,Mumbai CSMT,Asangaon,SLOW
+CR_0091,CR,5:22 am,Mumbai CSMT,Karjat,SLOW
+CR_0092,CR,5:26 am,Mumbai CSMT,Ambernath,SLOW
+CR_0093,CR,5:30 am,Mumbai CSMT,Titwala,SLOW
+CR_0094,CR,5:48 am,Mumbai CSMT,Ambernath,SLOW
+CR_0095,CR,5:56 am,Mumbai CSMT,Titwala,SLOW
+CR_0096,CR,6:04 am,Mumbai CSMT,Kalyan,SLOW
+CR_0097,CR,6:06 am,Mumbai CSMT,Kalyan,FAST
+CR_0098,CR,6:08 am,Mumbai CSMT,Asangaon,SLOW
+CR_0099,CR,6:10 am,Mumbai CSMT,Karjat,FAST
+CR_0100,CR,6:16 am,Mumbai CSMT,Ambernath,SLOW
+CR_0101,CR,6:24 am,Mumbai CSMT,Kalyan,SLOW
+CR_0102,CR,6:27 am,Mumbai CSMT,Badlapur,FAST
+CR_0103,CR,6:32 am,Mumbai CSMT,Titwala,SLOW
+CR_0104,CR,6:50 am,Mumbai CSMT,Karjat,FAST
+CR_0105,CR,6:52 am,Mumbai CSMT,Ambernath,SLOW
+CR_0106,CR,6:55 am,Mumbai CSMT,Kasara,FAST
+CR_0107,CR,6:56 am,Mumbai CSMT,Titwala,SLOW
+CR_0108,CR,7:00 am,Mumbai CSMT,Kalyan,SLOW
+CR_0109,CR,7:05 am,Mumbai CSMT,Ambernath,FAST
+CR_0110,CR,7:18 am,Mumbai CSMT,Asangaon,MEDIUM
+CR_0111,CR,7:24 am,Mumbai CSMT,Kalyan,SLOW
+CR_0112,CR,7:25 am,Mumbai CSMT,Badlapur,FAST
+CR_0113,CR,7:29 am,Mumbai CSMT,Kalyan,FAST
+CR_0114,CR,7:32 am,Mumbai CSMT,Kalyan,SLOW
+CR_0115,CR,7:40 am,Mumbai CSMT,Asangaon,SLOW
+CR_0116,CR,7:53 am,Mumbai CSMT,Khopoli,FAST
+CR_0117,CR,7:57 am,Mumbai CSMT,Badlapur,FAST
+CR_0118,CR,8:00 am,Mumbai CSMT,Kalyan,SLOW
+CR_0119,CR,8:04 am,Mumbai CSMT,Kalyan,SLOW
+CR_0120,CR,8:16 am,Mumbai CSMT,Kalyan,SLOW
+CR_0121,CR,8:25 am,Mumbai CSMT,Kalyan,FAST
+CR_0122,CR,8:29 am,Mumbai CSMT,Karjat,FAST
+CR_0123,CR,8:36 am,Mumbai CSMT,Kasara,FAST
+CR_0124,CR,8:37 am,Mumbai CSMT,Kalyan,SLOW
+CR_0125,CR,8:50 am,Mumbai CSMT,Badlapur,FAST
+CR_0126,CR,8:51 am,Mumbai CSMT,Kalyan,SLOW
+CR_0127,CR,8:53 am,Mumbai CSMT,Ambernath,FAST
+CR_0128,CR,9:00 am,Mumbai CSMT,Kalyan,MEDIUM
+CR_0129,CR,9:08 am,Mumbai CSMT,Karjat,FAST
+CR_0130,CR,9:12 am,Mumbai CSMT,Titwala,FAST
+CR_0131,CR,9:15 am,Mumbai CSMT,Badlapur,FAST
+CR_0132,CR,9:18 am,Mumbai CSMT,Titwala,MEDIUM
+CR_0133,CR,9:22 am,Mumbai CSMT,Ambernath,FAST
+CR_0134,CR,9:26 am,Mumbai CSMT,Asangaon,FAST
+CR_0135,CR,9:30 am,Mumbai CSMT,Badlapur,FAST
+CR_0136,CR,9:31 am,Mumbai CSMT,Kalyan,SLOW
+CR_0137,CR,9:34 am,Mumbai CSMT,Titwala,MEDIUM
+CR_0138,CR,9:37 am,Mumbai CSMT,Karjat,FAST
+CR_0139,CR,9:41 am,Mumbai CSMT,Kasara,FAST
+CR_0140,CR,9:43 am,Mumbai CSMT,Titwala,SLOW
+CR_0141,CR,9:44 am,Mumbai CSMT,Badlapur,FAST
+CR_0142,CR,9:53 am,Mumbai CSMT,Ambernath,FAST
+CR_0143,CR,9:59 am,Mumbai CSMT,Ambernath,SLOW
+CR_0144,CR,10:01 am,Mumbai CSMT,Kalyan,MEDIUM
+CR_0145,CR,10:08 am,Mumbai CSMT,Badlapur,FAST
+CR_0146,CR,10:11 am,Mumbai CSMT,Kalyan,SLOW
+CR_0147,CR,10:12 am,Mumbai CSMT,Ambernath,FAST
+CR_0148,CR,10:16 am,Mumbai CSMT,Kalyan,MEDIUM
+CR_0149,CR,10:20 am,Mumbai CSMT,Kasara,FAST
+CR_0150,CR,10:28 am,Mumbai CSMT,Badlapur,FAST
+CR_0151,CR,10:37 am,Mumbai CSMT,Karjat,FAST
+CR_0152,CR,10:40 am,Mumbai CSMT,Titwala,MEDIUM
+CR_0153,CR,10:48 am,Mumbai CSMT,Badlapur,FAST
+CR_0154,CR,10:53 am,Mumbai CSMT,Ambernath,FAST
+CR_0155,CR,10:57 am,Mumbai CSMT,Titwala,MEDIUM
+CR_0156,CR,11:00 am,Mumbai CSMT,Kalyan,SLOW
+CR_0157,CR,11:08 am,Mumbai CSMT,Titwala,SLOW
+CR_0158,CR,11:12 am,Mumbai CSMT,Kalyan,SLOW
+CR_0159,CR,11:15 am,Mumbai CSMT,Karjat,FAST
+CR_0160,CR,11:22 am,Mumbai CSMT,Ambernath,FAST
+CR_0161,CR,11:33 am,Mumbai CSMT,Titwala,SLOW
+CR_0162,CR,11:34 am,Mumbai CSMT,Kasara,MEDIUM
+CR_0163,CR,11:43 am,Mumbai CSMT,Kalyan,MEDIUM
+CR_0164,CR,11:46 am,Mumbai CSMT,Ambernath,SLOW
+CR_0165,CR,11:50 am,Mumbai CSMT,Badlapur,FAST
+CR_0166,CR,11:50 am,Mumbai CSMT,Kalyan,SLOW
+CR_0167,CR,12:00 pm,Mumbai CSMT,Titwala,SLOW
+CR_0168,CR,12:04 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0169,CR,12:08 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0170,CR,12:19 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0171,CR,12:22 pm,Mumbai CSMT,Khopoli,FAST
+CR_0172,CR,12:27 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0173,CR,12:28 pm,Mumbai CSMT,Kasara,MEDIUM
+CR_0174,CR,12:31 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0175,CR,12:35 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0176,CR,12:43 pm,Mumbai CSMT,Titwala,SLOW
+CR_0177,CR,12:55 pm,Mumbai CSMT,Kalyan,FAST
+CR_0178,CR,12:55 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0179,CR,12:59 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0180,CR,1:03 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0181,CR,1:05 pm,Mumbai CSMT,Asangaon,MEDIUM
+CR_0182,CR,1:13 pm,Mumbai CSMT,Titwala,SLOW
+CR_0183,CR,1:15 pm,Mumbai CSMT,Karjat,FAST
+CR_0184,CR,1:17 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0185,CR,1:21 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0186,CR,1:25 pm,Mumbai CSMT,Badlapur,SLOW
+CR_0187,CR,1:29 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0188,CR,1:34 pm,Mumbai CSMT,Asangaon,SLOW
+CR_0189,CR,1:40 pm,Mumbai CSMT,Karjat,FAST
+CR_0190,CR,1:42 pm,Mumbai CSMT,Titwala,SLOW
+CR_0191,CR,1:46 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0192,CR,1:51 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0193,CR,2:08 pm,Mumbai CSMT,Badlapur,FAST
+CR_0194,CR,2:08 pm,Mumbai CSMT,Titwala,SLOW
+CR_0195,CR,2:12 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0196,CR,2:16 pm,Mumbai CSMT,Badlapur,SLOW
+CR_0197,CR,2:24 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0198,CR,2:25 pm,Mumbai CSMT,Kasara,FAST
+CR_0199,CR,2:36 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0200,CR,2:40 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0201,CR,2:42 pm,Mumbai CSMT,Asangaon,MEDIUM
+CR_0202,CR,2:48 pm,Mumbai CSMT,Titwala,SLOW
+CR_0203,CR,2:52 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0204,CR,2:54 pm,Mumbai CSMT,Karjat,FAST
+CR_0205,CR,2:57 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0206,CR,3:02 pm,Mumbai CSMT,Asangaon,SLOW
+CR_0207,CR,3:17 pm,Mumbai CSMT,Kalyan,FAST
+CR_0208,CR,3:20 pm,Mumbai CSMT,Titwala,SLOW
+CR_0209,CR,3:24 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0210,CR,3:29 pm,Mumbai CSMT,Khopoli,FAST
+CR_0211,CR,3:34 pm,Mumbai CSMT,Titwala,SLOW
+CR_0212,CR,3:40 pm,Mumbai CSMT,Kasara,MEDIUM
+CR_0213,CR,3:44 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0214,CR,3:52 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0215,CR,3:53 pm,Mumbai CSMT,Badlapur,FAST
+CR_0216,CR,3:58 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0217,CR,4:03 pm,Mumbai CSMT,Ambernath,FAST
+CR_0218,CR,4:14 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0219,CR,4:17 pm,Mumbai CSMT,Asangaon,MEDIUM
+CR_0220,CR,4:23 pm,Mumbai CSMT,Titwala,SLOW
+CR_0221,CR,4:30 pm,Mumbai CSMT,Karjat,FAST
+CR_0222,CR,4:45 pm,Mumbai CSMT,Badlapur,FAST
+CR_0223,CR,4:48 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0224,CR,4:52 pm,Mumbai CSMT,Kasara,MEDIUM
+CR_0225,CR,5:00 pm,Mumbai CSMT,Ambernath,MEDIUM
+CR_0226,CR,5:00 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0227,CR,5:12 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0228,CR,5:18 pm,Mumbai CSMT,Asangaon,FAST
+CR_0229,CR,5:22 pm,Mumbai CSMT,Kalyan,MEDIUM
+CR_0230,CR,5:25 pm,Mumbai CSMT,Badlapur,FAST
+CR_0231,CR,5:29 pm,Mumbai CSMT,Titwala,FAST
+CR_0232,CR,5:33 pm,Mumbai CSMT,Khopoli,FAST
+CR_0233,CR,5:36 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0234,CR,5:41 pm,Mumbai CSMT,Asangaon,FAST
+CR_0235,CR,5:44 pm,Mumbai CSMT,Ambernath,FAST
+CR_0236,CR,5:56 pm,Mumbai CSMT,Badlapur,FAST
+CR_0237,CR,5:59 pm,Mumbai CSMT,Titwala,FAST
+CR_0238,CR,6:03 pm,Mumbai CSMT,Kalyan,MEDIUM
+CR_0239,CR,6:06 pm,Mumbai CSMT,Ambernath,FAST
+CR_0240,CR,6:08 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0241,CR,6:18 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0242,CR,6:21 pm,Mumbai CSMT,Karjat,FAST
+CR_0243,CR,6:25 pm,Mumbai CSMT,Kasara,FAST
+CR_0244,CR,6:29 pm,Mumbai CSMT,Kalyan,MEDIUM
+CR_0245,CR,6:32 pm,Mumbai CSMT,Ambernath,FAST
+CR_0246,CR,6:38 pm,Mumbai CSMT,Titwala,SLOW
+CR_0247,CR,6:40 pm,Mumbai CSMT,Asangaon,FAST
+CR_0248,CR,6:44 pm,Mumbai CSMT,Badlapur,FAST
+CR_0249,CR,6:47 pm,Mumbai CSMT,Titwala,FAST
+CR_0250,CR,6:53 pm,Mumbai CSMT,Ambernath,FAST
+CR_0251,CR,6:57 pm,Mumbai CSMT,Kalyan,MEDIUM
+CR_0252,CR,7:01 pm,Mumbai CSMT,Karjat,FAST
+CR_0253,CR,7:01 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0254,CR,7:14 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0255,CR,7:17 pm,Mumbai CSMT,Badlapur,FAST
+CR_0256,CR,7:18 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0257,CR,7:21 pm,Mumbai CSMT,Kasara,FAST
+CR_0258,CR,7:24 pm,Mumbai CSMT,Badlapur,FAST
+CR_0259,CR,7:30 pm,Mumbai CSMT,Titwala,FAST
+CR_0260,CR,7:31 pm,Mumbai CSMT,Badlapur,SLOW
+CR_0261,CR,7:33 pm,Mumbai CSMT,Kalyan,FAST
+CR_0262,CR,7:43 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0263,CR,7:47 pm,Mumbai CSMT,Ambernath,FAST
+CR_0264,CR,7:51 pm,Mumbai CSMT,Titwala,FAST
+CR_0265,CR,7:55 pm,Mumbai CSMT,Badlapur,SLOW
+CR_0266,CR,7:55 pm,Mumbai CSMT,Karjat,FAST
+CR_0267,CR,8:00 pm,Mumbai CSMT,Asangaon,MEDIUM
+CR_0268,CR,8:05 pm,Mumbai CSMT,Titwala,SLOW
+CR_0269,CR,8:13 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0270,CR,8:33 pm,Mumbai CSMT,Titwala,SLOW
+CR_0271,CR,8:41 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0272,CR,8:44 pm,Mumbai CSMT,Kalyan,MEDIUM
+CR_0273,CR,8:48 pm,Mumbai CSMT,Khopoli,FAST
+CR_0274,CR,8:52 pm,Mumbai CSMT,Kasara,FAST
+CR_0275,CR,8:53 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0276,CR,8:57 pm,Mumbai CSMT,Titwala,SLOW
+CR_0277,CR,9:09 pm,Mumbai CSMT,Badlapur,SLOW
+CR_0278,CR,9:22 pm,Mumbai CSMT,Asangaon,SLOW
+CR_0279,CR,9:26 pm,Mumbai CSMT,Karjat,FAST
+CR_0280,CR,9:30 pm,Mumbai CSMT,Badlapur,SLOW
+CR_0281,CR,9:38 pm,Mumbai CSMT,Titwala,SLOW
+CR_0282,CR,9:41 pm,Mumbai CSMT,Kalyan,MEDIUM
+CR_0283,CR,9:42 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0284,CR,9:50 pm,Mumbai CSMT,Badlapur,SLOW
+CR_0285,CR,9:54 pm,Mumbai CSMT,Kalyan,FAST
+CR_0286,CR,9:54 pm,Mumbai CSMT,Titwala,SLOW
+CR_0287,CR,9:58 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0288,CR,10:04 pm,Mumbai CSMT,Khopoli,FAST
+CR_0289,CR,10:06 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0290,CR,10:16 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0291,CR,10:20 pm,Mumbai CSMT,Titwala,SLOW
+CR_0292,CR,10:24 pm,Mumbai CSMT,Kalyan,SLOW
+CR_0293,CR,10:29 pm,Mumbai CSMT,Badlapur,FAST
+CR_0294,CR,10:31 pm,Mumbai CSMT,Karjat,SLOW
+CR_0295,CR,10:43 pm,Mumbai CSMT,Badlapur,SLOW
+CR_0296,CR,10:50 pm,Mumbai CSMT,Kasara,MEDIUM
+CR_0297,CR,10:51 pm,Mumbai CSMT,Titwala,SLOW
+CR_0298,CR,11:05 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0299,CR,11:18 pm,Mumbai CSMT,Karjat,FAST
+CR_0300,CR,11:20 pm,Mumbai CSMT,Titwala,SLOW
+CR_0301,CR,11:30 pm,Mumbai CSMT,Karjat,SLOW
+CR_0302,CR,11:46 pm,Mumbai CSMT,Titwala,SLOW
+CR_0303,CR,11:52 pm,Mumbai CSMT,Ambernath,SLOW
+CR_0304,CR,4:17 am,Titwala,Mumbai Cst,SLOW
+CR_0305,CR,4:24 am,Ambernath,Mumbai Cst,SLOW
+CR_0306,CR,4:33 am,Karjat,Mumbai Cst,SLOW
+CR_0307,CR,4:41 am,Kalyan,Mumbai Cst,SLOW
+CR_0308,CR,4:53 am,Titwala,Mumbai Cst,SLOW
+CR_0309,CR,5:05 am,Ambernath,Mumbai Cst,SLOW
+CR_0310,CR,5:19 am,Ambernath,Mumbai Cst,SLOW
+CR_0311,CR,5:23 am,Karjat,Mumbai Cst,SLOW
+CR_0312,CR,5:33 am,Kasara,Mumbai Cst,SLOW
+CR_0313,CR,5:39 am,Karjat,Mumbai Cst,FAST
+CR_0314,CR,5:44 am,Kalyan,Mumbai Cst,SLOW
+CR_0315,CR,5:53 am,Titwala,Mumbai Cst,SLOW
+CR_0316,CR,6:00 am,Badlapur,Mumbai Cst,SLOW
+CR_0317,CR,6:04 am,Kalyan,Mumbai Cst,SLOW
+CR_0318,CR,6:09 am,Asangaon,Mumbai Cst,SLOW
+CR_0319,CR,6:11 am,Karjat,Mumbai Cst,FAST
+CR_0320,CR,6:13 am,Kalyan,Mumbai Cst,SLOW
+CR_0321,CR,6:23 am,Ambernath,Mumbai Cst,SLOW
+CR_0322,CR,6:29 am,Titwala,Mumbai Cst,SLOW
+CR_0323,CR,6:32 am,Badlapur,Mumbai Cst,SLOW
+CR_0324,CR,6:44 am,Karjat,Mumbai Cst,FAST
+CR_0325,CR,6:45 am,Asangaon,Mumbai Cst,SLOW
+CR_0326,CR,6:48 am,Kalyan,Mumbai Cst,SLOW
+CR_0327,CR,7:02 am,Titwala,Mumbai Cst,SLOW
+CR_0328,CR,7:05 am,Badlapur,Mumbai Cst,SLOW
+CR_0329,CR,7:13 am,Kalyan,Mumbai Cst,SLOW
+CR_0330,CR,7:14 am,Kalyan,Mumbai Cst,FAST
+CR_0331,CR,7:17 am,Kalyan,Mumbai Cst,SLOW
+CR_0332,CR,7:19 am,Badlapur,Mumbai Cst,FAST
+CR_0333,CR,7:22 am,Kasara,Mumbai Cst,FAST
+CR_0334,CR,7:25 am,Karjat,Mumbai Cst,FAST
+CR_0335,CR,7:30 am,Ambernath,Mumbai Cst,FAST
+CR_0336,CR,7:34 am,Khopoli,Mumbai Cst,FAST
+CR_0337,CR,7:35 am,Kalyan,Mumbai Cst,SLOW
+CR_0338,CR,7:40 am,Titwala,Mumbai Cst,FAST
+CR_0339,CR,7:44 am,Asangaon,Mumbai Cst,SLOW
+CR_0340,CR,7:47 am,Kalyan,Mumbai Cst,MEDIUM
+CR_0341,CR,7:49 am,Ambernath,Mumbai Cst,FAST
+CR_0342,CR,7:51 am,Kalyan,Mumbai Cst,SLOW
+CR_0343,CR,7:53 am,Karjat,Mumbai Cst,FAST
+CR_0344,CR,7:56 am,Kasara,Mumbai Cst,FAST
+CR_0345,CR,7:58 am,Kalyan,Mumbai Cst,SLOW
+CR_0346,CR,8:02 am,Kalyan,Mumbai Cst,SLOW
+CR_0347,CR,8:04 am,Ambernath,Mumbai Cst,FAST
+CR_0348,CR,8:10 am,Karjat,Mumbai Cst,FAST
+CR_0349,CR,8:11 am,Titwala,Mumbai Cst,SLOW
+CR_0350,CR,8:14 am,Asangaon,Mumbai Cst,FAST
+CR_0351,CR,8:15 am,Kalyan,Mumbai Cst,MEDIUM
+CR_0352,CR,8:24 am,Ambernath,Mumbai Cst,FAST
+CR_0353,CR,8:31 am,Badlapur,Mumbai Cst,FAST
+CR_0354,CR,8:34 am,Kasara,Mumbai Cst,FAST
+CR_0355,CR,8:37 am,Kalyan,Mumbai Cst,FAST
+CR_0356,CR,8:41 am,Ambernath,Mumbai Cst,FAST
+CR_0357,CR,8:41 am,Kalyan,Mumbai Cst,MEDIUM
+CR_0358,CR,8:46 am,Karjat,Mumbai Cst,FAST
+CR_0359,CR,8:47 am,Titwala,Mumbai Cst,SLOW
+CR_0360,CR,8:53 am,Kalyan,Mumbai Cst,MEDIUM
+CR_0361,CR,8:58 am,Ambernath,Mumbai Cst,FAST
+CR_0362,CR,9:01 am,Kalyan,Mumbai Cst,MEDIUM
+CR_0363,CR,9:08 am,Asangaon,Mumbai Cst,FAST
+CR_0364,CR,9:12 am,Badlapur,Mumbai Cst,SLOW
+CR_0365,CR,9:18 am,Karjat,Mumbai Cst,FAST
+CR_0366,CR,9:20 am,Titwala,Mumbai Cst,MEDIUM
+CR_0367,CR,9:27 am,Kalyan,Mumbai Cst,SLOW
+CR_0368,CR,9:32 am,Kasara,Mumbai Cst,MEDIUM
+CR_0369,CR,9:36 am,Kalyan,Mumbai Cst,SLOW
+CR_0370,CR,9:45 am,Kalyan,Mumbai Cst,FAST
+CR_0371,CR,9:50 am,Badlapur,Mumbai Cst,FAST
+CR_0372,CR,9:51 am,Asangaon,Mumbai Cst,SLOW
+CR_0373,CR,9:57 am,Ambernath,Mumbai Cst,FAST
+CR_0374,CR,9:59 am,Kalyan,Mumbai Cst,SLOW
+CR_0375,CR,10:01 am,Karjat,Mumbai Cst,FAST
+CR_0376,CR,10:10 am,Kalyan,Mumbai Cst,SLOW
+CR_0377,CR,10:18 am,Kalyan,Mumbai Cst,SLOW
+CR_0378,CR,10:27 am,Kalyan,Mumbai Cst,SLOW
+CR_0379,CR,10:28 am,Ambernath,Mumbai Cst,FAST
+CR_0380,CR,10:37 am,Asangaon,Mumbai Cst,SLOW
+CR_0381,CR,10:38 am,Khopoli,Mumbai Cst,FAST
+CR_0382,CR,10:47 am,Badlapur,Mumbai Cst,SLOW
+CR_0383,CR,10:59 am,Kalyan,Mumbai Cst,SLOW
+CR_0384,CR,11:00 am,Titwala,Mumbai Cst,FAST
+CR_0385,CR,11:03 am,Badlapur,Mumbai Cst,SLOW
+CR_0386,CR,11:12 am,Ambernath,Mumbai Cst,SLOW
+CR_0387,CR,11:16 am,Titwala,Mumbai Cst,SLOW
+CR_0388,CR,11:18 am,Badlapur,Mumbai Cst,SLOW
+CR_0389,CR,11:22 am,Kasara,Mumbai Cst,FAST
+CR_0390,CR,11:23 am,Kalyan,Mumbai Cst,SLOW
+CR_0391,CR,11:32 am,Titwala,Mumbai Cst,SLOW
+CR_0392,CR,11:34 am,Ambernath,Mumbai Cst,SLOW
+CR_0393,CR,11:42 am,Badlapur,Mumbai Cst,SLOW
+CR_0394,CR,11:44 am,Kalyan,Mumbai Cst,FAST
+CR_0395,CR,11:47 am,Kalyan,Mumbai Cst,SLOW
+CR_0396,CR,11:49 am,Ambernath,Mumbai Cst,FAST
+CR_0397,CR,11:52 am,Asangaon,Mumbai Cst,SLOW
+CR_0398,CR,12:01 pm,Badlapur,Mumbai Cst,SLOW
+CR_0399,CR,12:05 pm,Kalyan,Mumbai Cst,SLOW
+CR_0400,CR,12:10 pm,Karjat,Mumbai Cst,FAST
+CR_0401,CR,12:11 pm,Titwala,Mumbai Cst,SLOW
+CR_0402,CR,12:16 pm,Ambernath,Mumbai Cst,SLOW
+CR_0403,CR,12:21 pm,Badlapur,Mumbai Cst,SLOW
+CR_0404,CR,12:24 pm,Kasara,Mumbai Cst,FAST
+CR_0405,CR,12:32 pm,Ambernath,Mumbai Cst,SLOW
+CR_0406,CR,12:37 pm,Titwala,Mumbai Cst,SLOW
+CR_0407,CR,12:40 pm,Kalyan,Mumbai Cst,SLOW
+CR_0408,CR,12:44 pm,Badlapur,Mumbai Cst,SLOW
+CR_0409,CR,12:48 pm,Kalyan,Mumbai Cst,SLOW
+CR_0410,CR,12:53 pm,Karjat,Mumbai Cst,FAST
+CR_0411,CR,1:01 pm,Titwala,Mumbai Cst,SLOW
+CR_0412,CR,1:05 pm,Ambernath,Mumbai Cst,SLOW
+CR_0413,CR,1:08 pm,Kalyan,Mumbai Cst,SLOW
+CR_0414,CR,1:17 pm,Titwala,Mumbai Cst,SLOW
+CR_0415,CR,1:24 pm,Kalyan,Mumbai Cst,SLOW
+CR_0416,CR,1:34 pm,Kasara,Mumbai Cst,MEDIUM
+CR_0417,CR,1:40 pm,Titwala,Mumbai Cst,SLOW
+CR_0418,CR,1:42 pm,Badlapur,Mumbai Cst,FAST
+CR_0419,CR,1:43 pm,Kalyan,Mumbai Cst,SLOW
+CR_0420,CR,1:48 pm,Ambernath,Mumbai Cst,SLOW
+CR_0421,CR,1:52 pm,Karjat,Mumbai Cst,FAST
+CR_0422,CR,1:56 pm,Kalyan,Mumbai Cst,SLOW
+CR_0423,CR,2:04 pm,Kalyan,Mumbai Cst,SLOW
+CR_0424,CR,2:10 pm,Kalyan,Mumbai Cst,FAST
+CR_0425,CR,2:12 pm,Titwala,Mumbai Cst,SLOW
+CR_0426,CR,2:15 pm,Ambernath,Mumbai Cst,SLOW
+CR_0427,CR,2:25 pm,Kalyan,Mumbai Cst,SLOW
+CR_0428,CR,2:31 pm,Badlapur,Mumbai Cst,FAST
+CR_0429,CR,2:33 pm,Kalyan,Mumbai Cst,SLOW
+CR_0430,CR,2:37 pm,Ambernath,Mumbai Cst,SLOW
+CR_0431,CR,2:41 pm,Kalyan,Mumbai Cst,SLOW
+CR_0432,CR,2:44 pm,Kasara,Mumbai Cst,FAST
+CR_0433,CR,2:48 pm,Karjat,Mumbai Cst,FAST
+CR_0434,CR,2:55 pm,Kalyan,Mumbai Cst,SLOW
+CR_0435,CR,2:58 pm,Ambernath,Mumbai Cst,FAST
+CR_0436,CR,3:04 pm,Titwala,Mumbai Cst,SLOW
+CR_0437,CR,3:07 pm,Kalyan,Mumbai Cst,SLOW
+CR_0438,CR,3:08 pm,Khopoli,Mumbai Cst,FAST
+CR_0439,CR,3:21 pm,Titwala,Mumbai Cst,SLOW
+CR_0440,CR,3:30 pm,Kalyan,Mumbai Cst,SLOW
+CR_0441,CR,3:36 pm,Asangaon,Mumbai Cst,MEDIUM
+CR_0442,CR,3:40 pm,Kalyan,Mumbai Cst,SLOW
+CR_0443,CR,3:43 pm,Badlapur,Mumbai Cst,FAST
+CR_0444,CR,3:53 pm,Kasara,Mumbai Cst,FAST
+CR_0445,CR,3:57 pm,Titwala,Mumbai Cst,SLOW
+CR_0446,CR,3:58 pm,Ambernath,Mumbai Cst,FAST
+CR_0447,CR,4:10 pm,Karjat,Mumbai Cst,FAST
+CR_0448,CR,4:14 pm,Titwala,Mumbai Cst,MEDIUM
+CR_0449,CR,4:17 pm,Badlapur,Mumbai Cst,FAST
+CR_0450,CR,4:17 pm,Kalyan,Mumbai Cst,MEDIUM
+CR_0451,CR,4:20 pm,Asangaon,Mumbai Cst,FAST
+CR_0452,CR,4:30 pm,Kalyan,Mumbai Cst,SLOW
+CR_0453,CR,4:37 pm,Ambernath,Mumbai Cst,FAST
+CR_0454,CR,4:41 pm,Badlapur,Mumbai Cst,FAST
+CR_0455,CR,4:46 pm,Kalyan,Mumbai Cst,SLOW
+CR_0456,CR,4:49 pm,Kasara,Mumbai Cst,FAST
+CR_0457,CR,4:58 pm,Ambernath,Mumbai Cst,FAST
+CR_0458,CR,4:58 pm,Kalyan,Mumbai Cst,MEDIUM
+CR_0459,CR,5:02 pm,Karjat,Mumbai Cst,FAST
+CR_0460,CR,5:04 pm,Titwala,Mumbai Cst,MEDIUM
+CR_0461,CR,5:14 pm,Kalyan,Mumbai Cst,SLOW
+CR_0462,CR,5:19 pm,Kalyan,Mumbai Cst,MEDIUM
+CR_0463,CR,5:20 pm,Asangaon,Mumbai Cst,FAST
+CR_0464,CR,5:24 pm,Badlapur,Mumbai Cst,FAST
+CR_0465,CR,5:27 pm,Titwala,Mumbai Cst,MEDIUM
+CR_0466,CR,5:33 pm,Kalyan,Mumbai Cst,SLOW
+CR_0467,CR,5:37 pm,Kasara,Mumbai Cst,FAST
+CR_0468,CR,5:41 pm,Ambernath,Mumbai Cst,FAST
+CR_0469,CR,5:43 pm,Kalyan,Mumbai Cst,MEDIUM
+CR_0470,CR,5:45 pm,Khopoli,Mumbai Cst,FAST
+CR_0471,CR,5:48 pm,Titwala,Mumbai Cst,MEDIUM
+CR_0472,CR,5:51 pm,Badlapur,Mumbai Cst,FAST
+CR_0473,CR,5:59 pm,Kalyan,Mumbai Cst,SLOW
+CR_0474,CR,6:04 pm,Asangaon,Mumbai Cst,MEDIUM
+CR_0475,CR,6:11 pm,Karjat,Mumbai Cst,FAST
+CR_0476,CR,6:19 pm,Ambernath,Mumbai Cst,FAST
+CR_0477,CR,6:23 pm,Kalyan,Mumbai Cst,FAST
+CR_0478,CR,6:32 pm,Kalyan,Mumbai Cst,SLOW
+CR_0479,CR,6:35 pm,Badlapur,Mumbai Cst,FAST
+CR_0480,CR,6:38 pm,Titwala,Mumbai Cst,FAST
+CR_0481,CR,6:41 pm,Kalyan,Mumbai Cst,MEDIUM
+CR_0482,CR,6:45 pm,Kalyan,Mumbai Cst,SLOW
+CR_0483,CR,6:51 pm,Asangaon,Mumbai Cst,SLOW
+CR_0484,CR,7:08 pm,Kalyan,Mumbai Cst,SLOW
+CR_0485,CR,7:15 pm,Badlapur,Mumbai Cst,FAST
+CR_0486,CR,7:20 pm,Khopoli,Mumbai Cst,FAST
+CR_0487,CR,7:24 pm,Kalyan,Mumbai Cst,SLOW
+CR_0488,CR,7:26 pm,Ambernath,Mumbai Cst,FAST
+CR_0489,CR,7:30 pm,Kasara,Mumbai Cst,FAST
+CR_0490,CR,7:33 pm,Karjat,Mumbai Cst,FAST
+CR_0491,CR,7:42 pm,Kalyan,Mumbai Cst,SLOW
+CR_0492,CR,7:47 pm,Asangaon,Mumbai Cst,FAST
+CR_0493,CR,7:52 pm,Ambernath,Mumbai Cst,SLOW
+CR_0494,CR,7:56 pm,Badlapur,Mumbai Cst,SLOW
+CR_0495,CR,8:04 pm,Titwala,Mumbai Cst,SLOW
+CR_0496,CR,8:12 pm,Kalyan,Mumbai Cst,SLOW
+CR_0497,CR,8:18 pm,Asangaon,Mumbai Cst,SLOW
+CR_0498,CR,8:19 pm,Ambernath,Mumbai Cst,FAST
+CR_0499,CR,8:24 pm,Badlapur,Mumbai Cst,SLOW
+CR_0500,CR,8:34 pm,Titwala,Mumbai Cst,SLOW
+CR_0501,CR,8:37 pm,Karjat,Mumbai Cst,FAST
+CR_0502,CR,8:41 pm,Kalyan,Mumbai Cst,FAST
+CR_0503,CR,8:42 pm,Ambernath,Mumbai Cst,SLOW
+CR_0504,CR,8:51 pm,Kalyan,Mumbai Cst,SLOW
+CR_0505,CR,8:55 pm,Titwala,Mumbai Cst,SLOW
+CR_0506,CR,9:04 pm,Ambernath,Mumbai Cst,FAST
+CR_0507,CR,9:04 pm,Kalyan,Mumbai Cst,SLOW
+CR_0508,CR,9:08 pm,Badlapur,Mumbai Cst,FAST
+CR_0509,CR,9:11 pm,Asangaon,Mumbai Cst,FAST
+CR_0510,CR,9:16 pm,Titwala,Mumbai Cst,SLOW
+CR_0511,CR,9:20 pm,Badlapur,Mumbai Cst,FAST
+CR_0512,CR,9:20 pm,Kalyan,Mumbai Cst,SLOW
+CR_0513,CR,9:26 pm,Kasara,Mumbai Cst,FAST
+CR_0514,CR,9:29 pm,Ambernath,Mumbai Cst,SLOW
+CR_0515,CR,9:32 pm,Karjat,Mumbai Cst,FAST
+CR_0516,CR,9:40 pm,Titwala,Mumbai Cst,SLOW
+CR_0517,CR,9:46 pm,Ambernath,Mumbai Cst,SLOW
+CR_0518,CR,9:57 pm,Badlapur,Mumbai Cst,SLOW
+CR_0519,CR,10:06 pm,Karjat,Mumbai Cst,FAST
+CR_0520,CR,10:06 pm,Kalyan,Mumbai Cst,SLOW
+CR_0521,CR,10:14 pm,Ambernath,Mumbai Cst,SLOW
+CR_0522,CR,10:18 pm,Badlapur,Mumbai Cst,SLOW
+CR_0523,CR,10:22 pm,Titwala,Mumbai Cst,SLOW
+CR_0524,CR,10:32 pm,Kasara,Mumbai Cst,FAST
+CR_0525,CR,10:34 pm,Karjat,Mumbai Cst,SLOW
+CR_0526,CR,10:51 pm,Asangaon,Mumbai Cst,SLOW
+CR_0527,CR,10:58 pm,Karjat,Mumbai Cst,SLOW
+CR_0528,CR,11:05 pm,Kalyan,Mumbai Cst,FAST
+CR_0529,CR,11:32 pm,Khopoli,Mumbai Cst,SLOW
+CR_0530,CR,11:48 pm,Kasara,Mumbai Cst,SLOW
+CR_0531,CR,6:20 am,Mumbai CSMT,Dombivili,SLOW
+CR_0532,CR,6:36 am,Mumbai CSMT,Dombivili,SLOW
+CR_0533,CR,6:44 am,Mumbai CSMT,Thane,SLOW
+CR_0534,CR,6:48 am,Mumbai CSMT,Thane,SLOW
+CR_0535,CR,7:08 am,Mumbai CSMT,Dombivili,SLOW
+CR_0536,CR,7:12 am,Mumbai CSMT,Thane,SLOW
+CR_0537,CR,7:20 am,Mumbai CSMT,Thane,SLOW
+CR_0538,CR,7:36 am,Mumbai CSMT,Dombivili,SLOW
+CR_0539,CR,7:45 am,Mumbai CSMT,Thane,SLOW
+CR_0540,CR,7:56 am,Mumbai CSMT,Thane,SLOW
+CR_0541,CR,8:08 am,Mumbai CSMT,Thane,SLOW
+CR_0542,CR,8:12 am,Mumbai CSMT,Thane,SLOW
+CR_0543,CR,8:20 am,Mumbai CSMT,Thane,SLOW
+CR_0544,CR,8:28 am,Mumbai CSMT,Dombivili,SLOW
+CR_0545,CR,8:32 am,Mumbai CSMT,Thane,FAST
+CR_0546,CR,8:33 am,Mumbai CSMT,Thane,SLOW
+CR_0547,CR,8:47 am,Mumbai CSMT,Thane,SLOW
+CR_0548,CR,8:56 am,Mumbai CSMT,Thane,FAST
+CR_0549,CR,8:58 am,Mumbai CSMT,Thane,SLOW
+CR_0550,CR,9:03 am,Mumbai CSMT,Thane,SLOW
+CR_0551,CR,9:04 am,Mumbai CSMT,Thane,FAST
+CR_0552,CR,9:15 am,Mumbai CSMT,Dombivili,SLOW
+CR_0553,CR,9:19 am,Mumbai CSMT,Thane,SLOW
+CR_0554,CR,9:27 am,Mumbai CSMT,Thane,SLOW
+CR_0555,CR,9:35 am,Mumbai CSMT,Dombivili,SLOW
+CR_0556,CR,9:39 am,Mumbai CSMT,Thane,SLOW
+CR_0557,CR,9:47 am,Mumbai CSMT,Thane,SLOW
+CR_0558,CR,9:48 am,Mumbai CSMT,Thane,FAST
+CR_0559,CR,10:03 am,Mumbai CSMT,Thane,SLOW
+CR_0560,CR,10:14 am,Mumbai CSMT,Thane,SLOW
+CR_0561,CR,10:18 am,Mumbai CSMT,Dombivili,SLOW
+CR_0562,CR,10:22 am,Mumbai CSMT,Thane,SLOW
+CR_0563,CR,10:29 am,Mumbai CSMT,Thane,SLOW
+CR_0564,CR,10:38 am,Mumbai CSMT,Dombivili,SLOW
+CR_0565,CR,10:48 am,Mumbai CSMT,Thane,SLOW
+CR_0566,CR,10:52 am,Mumbai CSMT,Thane,SLOW
+CR_0567,CR,11:04 am,Mumbai CSMT,Thane,SLOW
+CR_0568,CR,11:16 am,Mumbai CSMT,Thane,SLOW
+CR_0569,CR,11:24 am,Mumbai CSMT,Dombivili,SLOW
+CR_0570,CR,11:28 am,Mumbai CSMT,Thane,SLOW
+CR_0571,CR,11:38 am,Mumbai CSMT,Thane,SLOW
+CR_0572,CR,11:42 am,Mumbai CSMT,Thane,SLOW
+CR_0573,CR,11:54 am,Mumbai CSMT,Thane,SLOW
+CR_0574,CR,12:23 pm,Mumbai CSMT,Thane,SLOW
+CR_0575,CR,12:39 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0576,CR,12:51 pm,Mumbai CSMT,Thane,SLOW
+CR_0577,CR,1:07 pm,Mumbai CSMT,Thane,SLOW
+CR_0578,CR,1:38 pm,Mumbai CSMT,Thane,SLOW
+CR_0579,CR,1:56 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0580,CR,2:00 pm,Mumbai CSMT,Thane,SLOW
+CR_0581,CR,2:20 pm,Mumbai CSMT,Thane,SLOW
+CR_0582,CR,2:32 pm,Mumbai CSMT,Thane,SLOW
+CR_0583,CR,3:11 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0584,CR,3:30 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0585,CR,3:38 pm,Mumbai CSMT,Thane,SLOW
+CR_0586,CR,3:48 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0587,CR,4:06 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0588,CR,4:10 pm,Mumbai CSMT,Thane,SLOW
+CR_0589,CR,4:18 pm,Mumbai CSMT,Thane,SLOW
+CR_0590,CR,4:31 pm,Mumbai CSMT,Thane,SLOW
+CR_0591,CR,4:35 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0592,CR,4:44 pm,Mumbai CSMT,Thane,SLOW
+CR_0593,CR,4:56 pm,Mumbai CSMT,Thane,SLOW
+CR_0594,CR,5:04 pm,Mumbai CSMT,Thane,SLOW
+CR_0595,CR,5:08 pm,Mumbai CSMT,Thane,SLOW
+CR_0596,CR,5:16 pm,Mumbai CSMT,Thane,SLOW
+CR_0597,CR,5:24 pm,Mumbai CSMT,Thane,SLOW
+CR_0598,CR,5:32 pm,Mumbai CSMT,Thane,SLOW
+CR_0599,CR,5:37 pm,Mumbai CSMT,Dombivili,MEDIUM
+CR_0600,CR,5:44 pm,Mumbai CSMT,Thane,SLOW
+CR_0601,CR,5:51 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0602,CR,5:58 pm,Mumbai CSMT,Thane,SLOW
+CR_0603,CR,6:04 pm,Mumbai CSMT,Thane,SLOW
+CR_0604,CR,6:10 pm,Mumbai CSMT,Thane,FAST
+CR_0605,CR,6:14 pm,Mumbai CSMT,Thane,SLOW
+CR_0606,CR,6:22 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0607,CR,6:30 pm,Mumbai CSMT,Thane,SLOW
+CR_0608,CR,6:42 pm,Mumbai CSMT,Thane,SLOW
+CR_0609,CR,6:46 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0610,CR,6:57 pm,Mumbai CSMT,Thane,SLOW
+CR_0611,CR,7:04 pm,Mumbai CSMT,Thane,FAST
+CR_0612,CR,7:05 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0613,CR,7:22 pm,Mumbai CSMT,Thane,SLOW
+CR_0614,CR,7:35 pm,Mumbai CSMT,Thane,SLOW
+CR_0615,CR,7:50 pm,Mumbai CSMT,Thane,SLOW
+CR_0616,CR,8:00 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0617,CR,8:17 pm,Mumbai CSMT,Thane,SLOW
+CR_0618,CR,8:26 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0619,CR,8:30 pm,Mumbai CSMT,Thane,FAST
+CR_0620,CR,8:37 pm,Mumbai CSMT,Thane,SLOW
+CR_0621,CR,8:49 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0622,CR,9:05 pm,Mumbai CSMT,Thane,SLOW
+CR_0623,CR,9:18 pm,Mumbai CSMT,Dombivili,SLOW
+CR_0624,CR,10:09 pm,Mumbai CSMT,Thane,SLOW
+CR_0625,CR,10:39 pm,Mumbai CSMT,Thane,SLOW
+CR_0626,CR,10:47 pm,Mumbai CSMT,Thane,SLOW
+CR_0627,CR,10:58 pm,Mumbai CSMT,Thane,SLOW
+CR_0628,CR,11:12 pm,Mumbai CSMT,Thane,SLOW
+CR_0629,CR,11:35 pm,Mumbai CSMT,Thane,SLOW
+CR_0630,CR,11:59 pm,Mumbai CSMT,Thane,SLOW
+CR_0631,CR,4:01 am,Karjat,Mumbai Cst,SLOW
+CR_0632,CR,4:05 am,Thane,Mumbai Cst,SLOW
+CR_0633,CR,4:19 am,Thane,Mumbai Cst,SLOW
+CR_0634,CR,4:29 am,Ambernath,Mumbai Cst,SLOW
+CR_0635,CR,4:39 am,Thane,Mumbai Cst,SLOW
+CR_0636,CR,4:47 am,Titwala,Mumbai Cst,SLOW
+CR_0637,CR,4:55 am,Ambernath,Mumbai Cst,SLOW
+CR_0638,CR,5:03 am,Karjat,Mumbai Cst,SLOW
+CR_0639,CR,5:08 am,Thane,Mumbai Cst,FAST
+CR_0640,CR,5:11 am,Kalyan,Mumbai Cst,SLOW
+CR_0641,CR,5:19 am,Thane,Mumbai Cst,SLOW
+CR_0642,CR,5:23 am,Titwala,Mumbai Cst,SLOW
+CR_0643,CR,5:31 am,Thane,Mumbai Cst,SLOW
+CR_0644,CR,5:35 am,Ambernath,Mumbai Cst,SLOW
+CR_0645,CR,5:42 am,Thane,Mumbai Cst,SLOW
+CR_0646,CR,5:46 am,Thane,Mumbai Cst,SLOW
+CR_0647,CR,5:51 am,Ambernath,Mumbai Cst,SLOW
+CR_0648,CR,5:55 am,Karjat,Mumbai Cst,SLOW
+CR_0649,CR,5:57 am,Karjat,Mumbai Cst,FAST
+CR_0650,CR,5:59 am,Thane,Mumbai Cst,SLOW
+CR_0651,CR,6:03 am,Kasara,Mumbai Cst,SLOW
+CR_0652,CR,6:10 am,Thane,Mumbai Cst,SLOW
+CR_0653,CR,6:15 am,Kalyan,Mumbai Cst,SLOW
+CR_0654,CR,6:18 am,Thane,Mumbai Cst,SLOW
+CR_0655,CR,6:22 am,Dombivili,Mumbai Cst,SLOW
+CR_0656,CR,6:25 am,Titwala,Mumbai Cst,SLOW
+CR_0657,CR,6:29 am,Karjat,Mumbai Cst,FAST
+CR_0658,CR,6:31 am,Badlapur,Mumbai Cst,SLOW
+CR_0659,CR,6:35 am,Kalyan,Mumbai Cst,SLOW
+CR_0660,CR,6:39 am,Asangaon,Mumbai Cst,SLOW
+CR_0661,CR,6:44 am,Kalyan,Mumbai Cst,SLOW
+CR_0662,CR,6:51 am,Thane,Mumbai Cst,SLOW
+CR_0663,CR,6:55 am,Ambernath,Mumbai Cst,SLOW
+CR_0664,CR,6:59 am,Titwala,Mumbai Cst,SLOW
+CR_0665,CR,7:03 am,Karjat,Mumbai Cst,FAST
+CR_0666,CR,7:03 am,Badlapur,Mumbai Cst,SLOW
+CR_0667,CR,7:07 am,Thane,Mumbai Cst,SLOW
+CR_0668,CR,7:15 am,Asangaon,Mumbai Cst,SLOW
+CR_0669,CR,7:19 am,Kalyan,Mumbai Cst,SLOW
+CR_0670,CR,7:23 am,Thane,Mumbai Cst,SLOW
+CR_0671,CR,7:32 am,Titwala,Mumbai Cst,SLOW
+CR_0672,CR,7:33 am,Kalyan,Mumbai Cst,FAST
+CR_0673,CR,7:36 am,Badlapur,Mumbai Cst,SLOW
+CR_0674,CR,7:37 am,Badlapur,Mumbai Cst,FAST
+CR_0675,CR,7:40 am,Kasara,Mumbai Cst,FAST
+CR_0676,CR,7:40 am,Thane,Mumbai Cst,SLOW
+CR_0677,CR,7:43 am,Karjat,Mumbai Cst,FAST
+CR_0678,CR,7:44 am,Kalyan,Mumbai Cst,SLOW
+CR_0679,CR,7:48 am,Ambernath,Mumbai Cst,FAST
+CR_0680,CR,7:48 am,Kalyan,Mumbai Cst,SLOW
+CR_0681,CR,7:52 am,Khopoli,Mumbai Cst,FAST
+CR_0682,CR,7:52 am,Dombivili,Mumbai Cst,SLOW
+CR_0683,CR,7:55 am,Thane,Mumbai Cst,SLOW
+CR_0684,CR,7:59 am,Titwala,Mumbai Cst,FAST
+CR_0685,CR,8:00 am,Thane,Mumbai Cst,SLOW
+CR_0686,CR,8:02 am,Thane,Mumbai Cst,FAST
+CR_0687,CR,8:06 am,Kalyan,Mumbai Cst,SLOW
+CR_0688,CR,8:07 am,Ambernath,Mumbai Cst,FAST
+CR_0689,CR,8:10 am,Dombivili,Mumbai Cst,SLOW
+CR_0690,CR,8:11 am,Karjat,Mumbai Cst,FAST
+CR_0691,CR,8:15 am,Kasara,Mumbai Cst,FAST
+CR_0692,CR,8:17 am,Thane,Mumbai Cst,SLOW
+CR_0693,CR,8:18 am,Kalyan,Mumbai Cst,MEDIUM
+CR_0694,CR,8:22 am,Ambernath,Mumbai Cst,FAST
+CR_0695,CR,8:22 am,Kalyan,Mumbai Cst,SLOW
+CR_0696,CR,8:24 am,Thane,Mumbai Cst,SLOW
+CR_0697,CR,8:25 am,Thane,Mumbai Cst,FAST
+CR_0698,CR,8:28 am,Karjat,Mumbai Cst,FAST
+CR_0699,CR,8:30 am,Kalyan,Mumbai Cst,SLOW
+CR_0700,CR,8:32 am,Asangaon,Mumbai Cst,FAST
+CR_0701,CR,8:34 am,Kalyan,Mumbai Cst,SLOW
+CR_0702,CR,8:37 am,Thane,Mumbai Cst,SLOW
+CR_0703,CR,8:38 am,Dombivili,Mumbai Cst,MEDIUM
+CR_0704,CR,8:42 am,Titwala,Mumbai Cst,SLOW
+CR_0705,CR,8:43 am,Ambernath,Mumbai Cst,FAST
+CR_0706,CR,8:46 am,Kalyan,Mumbai Cst,MEDIUM
+CR_0707,CR,8:49 am,Thane,Mumbai Cst,SLOW
+CR_0708,CR,8:50 am,Badlapur,Mumbai Cst,FAST
+CR_0709,CR,8:53 am,Kasara,Mumbai Cst,FAST
+CR_0710,CR,8:57 am,Kalyan,Mumbai Cst,FAST
+CR_0711,CR,9:00 am,Ambernath,Mumbai Cst,FAST
+CR_0712,CR,9:01 am,Thane,Mumbai Cst,SLOW
+CR_0713,CR,9:04 am,Karjat,Mumbai Cst,FAST
+CR_0714,CR,9:06 am,Dombivili,Mumbai Cst,SLOW
+CR_0715,CR,9:13 am,Kalyan,Mumbai Cst,MEDIUM
+CR_0716,CR,9:13 am,Thane,Mumbai Cst,SLOW
+CR_0717,CR,9:16 am,Ambernath,Mumbai Cst,FAST
+CR_0718,CR,9:17 am,Titwala,Mumbai Cst,SLOW
+CR_0719,CR,9:19 am,Thane,Mumbai Cst,FAST
+CR_0720,CR,9:20 am,Thane,Mumbai Cst,SLOW
+CR_0721,CR,9:24 am,Kalyan,Mumbai Cst,MEDIUM
+CR_0722,CR,9:28 am,Dombivili,Mumbai Cst,SLOW
+CR_0723,CR,9:29 am,Asangaon,Mumbai Cst,FAST
+CR_0724,CR,9:31 am,Thane,Mumbai Cst,SLOW
+CR_0725,CR,9:32 am,Kalyan,Mumbai Cst,MEDIUM
+CR_0726,CR,9:36 am,Karjat,Mumbai Cst,FAST
+CR_0727,CR,9:39 am,Thane,Mumbai Cst,SLOW
+CR_0728,CR,9:43 am,Badlapur,Mumbai Cst,SLOW
+CR_0729,CR,9:50 am,Thane,Mumbai Cst,SLOW
+CR_0730,CR,9:51 am,Titwala,Mumbai Cst,MEDIUM
+CR_0731,CR,9:53 am,Thane,Mumbai Cst,SLOW
+CR_0732,CR,9:54 am,Thane,Mumbai Cst,FAST
+CR_0733,CR,9:58 am,Kalyan,Mumbai Cst,SLOW
+CR_0734,CR,10:02 am,Thane,Mumbai Cst,SLOW
+CR_0735,CR,10:03 am,Kasara,Mumbai Cst,MEDIUM
+CR_0736,CR,10:07 am,Kalyan,Mumbai Cst,SLOW
+CR_0737,CR,10:10 am,Badlapur,Mumbai Cst,FAST
+CR_0738,CR,10:13 am,Kalyan,Mumbai Cst,FAST
+CR_0739,CR,10:14 am,Thane,Mumbai Cst,SLOW
+CR_0740,CR,10:17 am,Ambernath,Mumbai Cst,FAST
+CR_0741,CR,10:21 am,Karjat,Mumbai Cst,FAST
+CR_0742,CR,10:23 am,Asangaon,Mumbai Cst,SLOW
+CR_0743,CR,10:26 am,Thane,Mumbai Cst,SLOW
+CR_0744,CR,10:31 am,Kalyan,Mumbai Cst,SLOW
+CR_0745,CR,10:35 am,Thane,Mumbai Cst,SLOW
+CR_0746,CR,10:41 am,Kalyan,Mumbai Cst,SLOW
+CR_0747,CR,10:46 am,Ambernath,Mumbai Cst,FAST
+CR_0748,CR,10:49 am,Thane,Mumbai Cst,FAST
+CR_0749,CR,10:49 am,Kalyan,Mumbai Cst,SLOW
+CR_0750,CR,10:52 am,Thane,Mumbai Cst,SLOW
+CR_0751,CR,10:58 am,Kalyan,Mumbai Cst,SLOW
+CR_0752,CR,10:59 am,Khopoli,Mumbai Cst,FAST
+CR_0753,CR,11:03 am,Dombivili,Mumbai Cst,SLOW
+CR_0754,CR,11:07 am,Asangaon,Mumbai Cst,SLOW
+CR_0755,CR,11:21 am,Thane,Mumbai Cst,SLOW
+CR_0756,CR,11:22 am,Titwala,Mumbai Cst,FAST
+CR_0757,CR,11:26 am,Dombivili,Mumbai Cst,SLOW
+CR_0758,CR,11:30 am,Kalyan,Mumbai Cst,SLOW
+CR_0759,CR,11:34 am,Badlapur,Mumbai Cst,SLOW
+CR_0760,CR,11:37 am,Thane,Mumbai Cst,SLOW
+CR_0761,CR,11:41 am,Kasara,Mumbai Cst,FAST
+CR_0762,CR,11:42 am,Ambernath,Mumbai Cst,SLOW
+CR_0763,CR,11:46 am,Titwala,Mumbai Cst,SLOW
+CR_0764,CR,11:50 am,Badlapur,Mumbai Cst,SLOW
+CR_0765,CR,11:54 am,Kalyan,Mumbai Cst,SLOW
+CR_0766,CR,11:57 am,Thane,Mumbai Cst,SLOW
+CR_0767,CR,12:02 pm,Titwala,Mumbai Cst,SLOW
+CR_0768,CR,12:04 pm,Kalyan,Mumbai Cst,FAST
+CR_0769,CR,12:06 pm,Ambernath,Mumbai Cst,SLOW
+CR_0770,CR,12:07 pm,Ambernath,Mumbai Cst,FAST
+CR_0771,CR,12:10 pm,Dombivili,Mumbai Cst,SLOW
+CR_0772,CR,12:16 pm,Badlapur,Mumbai Cst,SLOW
+CR_0773,CR,12:20 pm,Kalyan,Mumbai Cst,SLOW
+CR_0774,CR,12:24 pm,Asangaon,Mumbai Cst,SLOW
+CR_0775,CR,12:28 pm,Dombivili,Mumbai Cst,SLOW
+CR_0776,CR,12:29 pm,Karjat,Mumbai Cst,FAST
+CR_0777,CR,12:33 pm,Badlapur,Mumbai Cst,SLOW
+CR_0778,CR,12:37 pm,Kalyan,Mumbai Cst,SLOW
+CR_0779,CR,12:41 pm,Titwala,Mumbai Cst,SLOW
+CR_0780,CR,12:42 pm,Kasara,Mumbai Cst,FAST
+CR_0781,CR,12:46 pm,Ambernath,Mumbai Cst,SLOW
+CR_0782,CR,12:53 pm,Badlapur,Mumbai Cst,SLOW
+CR_0783,CR,12:57 pm,Thane,Mumbai Cst,SLOW
+CR_0784,CR,1:03 pm,Ambernath,Mumbai Cst,SLOW
+CR_0785,CR,1:07 pm,Titwala,Mumbai Cst,SLOW
+CR_0786,CR,1:11 pm,Kalyan,Mumbai Cst,SLOW
+CR_0787,CR,1:12 pm,Karjat,Mumbai Cst,FAST
+CR_0788,CR,1:15 pm,Badlapur,Mumbai Cst,SLOW
+CR_0789,CR,1:19 pm,Kalyan,Mumbai Cst,SLOW
+CR_0790,CR,1:23 pm,Dombivili,Mumbai Cst,SLOW
+CR_0791,CR,1:27 pm,Thane,Mumbai Cst,SLOW
+CR_0792,CR,1:31 pm,Titwala,Mumbai Cst,SLOW
+CR_0793,CR,1:35 pm,Ambernath,Mumbai Cst,SLOW
+CR_0794,CR,1:39 pm,Kalyan,Mumbai Cst,SLOW
+CR_0795,CR,1:47 pm,Titwala,Mumbai Cst,SLOW
+CR_0796,CR,1:55 pm,Kalyan,Mumbai Cst,SLOW
+CR_0797,CR,1:59 pm,Thane,Mumbai Cst,SLOW
+CR_0798,CR,2:00 pm,Badlapur,Mumbai Cst,FAST
+CR_0799,CR,2:04 pm,Kasara,Mumbai Cst,MEDIUM
+CR_0800,CR,2:10 pm,Titwala,Mumbai Cst,SLOW
+CR_0801,CR,2:11 pm,Karjat,Mumbai Cst,FAST
+CR_0802,CR,2:14 pm,Kalyan,Mumbai Cst,SLOW
+CR_0803,CR,2:19 pm,Ambernath,Mumbai Cst,SLOW
+CR_0804,CR,2:22 pm,Thane,Mumbai Cst,SLOW
+CR_0805,CR,2:27 pm,Kalyan,Mumbai Cst,SLOW
+CR_0806,CR,2:30 pm,Kalyan,Mumbai Cst,FAST
+CR_0807,CR,2:31 pm,Dombivili,Mumbai Cst,SLOW
+CR_0808,CR,2:35 pm,Kalyan,Mumbai Cst,SLOW
+CR_0809,CR,2:43 pm,Titwala,Mumbai Cst,SLOW
+CR_0810,CR,2:47 pm,Ambernath,Mumbai Cst,SLOW
+CR_0811,CR,2:49 pm,Badlapur,Mumbai Cst,FAST
+CR_0812,CR,2:50 pm,Thane,Mumbai Cst,SLOW
+CR_0813,CR,2:57 pm,Kalyan,Mumbai Cst,SLOW
+CR_0814,CR,3:04 pm,Kasara,Mumbai Cst,FAST
+CR_0815,CR,3:04 pm,Kalyan,Mumbai Cst,SLOW
+CR_0816,CR,3:08 pm,Karjat,Mumbai Cst,FAST
+CR_0817,CR,3:08 pm,Ambernath,Mumbai Cst,SLOW
+CR_0818,CR,3:12 pm,Kalyan,Mumbai Cst,SLOW
+CR_0819,CR,3:16 pm,Thane,Mumbai Cst,SLOW
+CR_0820,CR,3:18 pm,Ambernath,Mumbai Cst,FAST
+CR_0821,CR,3:26 pm,Kalyan,Mumbai Cst,SLOW
+CR_0822,CR,3:28 pm,Khopoli,Mumbai Cst,FAST
+CR_0823,CR,3:30 pm,Thane,Mumbai Cst,SLOW
+CR_0824,CR,3:34 pm,Titwala,Mumbai Cst,SLOW
+CR_0825,CR,3:38 pm,Kalyan,Mumbai Cst,SLOW
+CR_0826,CR,3:42 pm,Thane,Mumbai Cst,SLOW
+CR_0827,CR,3:51 pm,Titwala,Mumbai Cst,SLOW
+CR_0828,CR,3:55 pm,Dombivili,Mumbai Cst,SLOW
+CR_0829,CR,4:01 pm,Kalyan,Mumbai Cst,SLOW
+CR_0830,CR,4:04 pm,Badlapur,Mumbai Cst,FAST
+CR_0831,CR,4:07 pm,Asangaon,Mumbai Cst,MEDIUM
+CR_0832,CR,4:11 pm,Kalyan,Mumbai Cst,SLOW
+CR_0833,CR,4:13 pm,Kasara,Mumbai Cst,FAST
+CR_0834,CR,4:15 pm,Thane,Mumbai Cst,SLOW
+CR_0835,CR,4:17 pm,Ambernath,Mumbai Cst,FAST
+CR_0836,CR,4:22 pm,Thane,Mumbai Cst,SLOW
+CR_0837,CR,4:27 pm,Titwala,Mumbai Cst,SLOW
+CR_0838,CR,4:28 pm,Karjat,Mumbai Cst,FAST
+CR_0839,CR,4:31 pm,Thane,Mumbai Cst,SLOW
+CR_0840,CR,4:37 pm,Badlapur,Mumbai Cst,FAST
+CR_0841,CR,4:40 pm,Thane,Mumbai Cst,SLOW
+CR_0842,CR,4:41 pm,Asangaon,Mumbai Cst,FAST
+CR_0843,CR,4:44 pm,Titwala,Mumbai Cst,MEDIUM
+CR_0844,CR,4:44 pm,Thane,Mumbai Cst,SLOW
+CR_0845,CR,4:48 pm,Kalyan,Mumbai Cst,MEDIUM
+CR_0846,CR,4:55 pm,Ambernath,Mumbai Cst,FAST
+CR_0847,CR,4:56 pm,Thane,Mumbai Cst,SLOW
+CR_0848,CR,4:59 pm,Thane,Mumbai Cst,SLOW
+CR_0849,CR,5:00 pm,Badlapur,Mumbai Cst,FAST
+CR_0850,CR,5:02 pm,Kalyan,Mumbai Cst,SLOW
+CR_0851,CR,5:06 pm,Dombivili,Mumbai Cst,SLOW
+CR_0852,CR,5:08 pm,Kasara,Mumbai Cst,FAST
+CR_0853,CR,5:10 pm,Thane,Mumbai Cst,SLOW
+CR_0854,CR,5:16 pm,Ambernath,Mumbai Cst,FAST
+CR_0855,CR,5:17 pm,Kalyan,Mumbai Cst,SLOW
+CR_0856,CR,5:20 pm,Karjat,Mumbai Cst,FAST
+CR_0857,CR,5:21 pm,Dombivili,Mumbai Cst,SLOW
+CR_0858,CR,5:28 pm,Thane,Mumbai Cst,SLOW
+CR_0859,CR,5:29 pm,Kalyan,Mumbai Cst,MEDIUM
+CR_0860,CR,5:33 pm,Titwala,Mumbai Cst,MEDIUM
+CR_0861,CR,5:37 pm,Dombivili,Mumbai Cst,SLOW
+CR_0862,CR,5:39 pm,Asangaon,Mumbai Cst,FAST
+CR_0863,CR,5:43 pm,Badlapur,Mumbai Cst,FAST
+CR_0864,CR,5:45 pm,Kalyan,Mumbai Cst,SLOW
+CR_0865,CR,5:48 pm,Thane,Mumbai Cst,SLOW
+CR_0866,CR,5:50 pm,Kalyan,Mumbai Cst,MEDIUM
+CR_0867,CR,5:55 pm,Kasara,Mumbai Cst,FAST
+CR_0868,CR,5:58 pm,Titwala,Mumbai Cst,MEDIUM
+CR_0869,CR,6:00 pm,Thane,Mumbai Cst,SLOW
+CR_0870,CR,6:01 pm,Ambernath,Mumbai Cst,FAST
+CR_0871,CR,6:04 pm,Kalyan,Mumbai Cst,SLOW
+CR_0872,CR,6:05 pm,Khopoli,Mumbai Cst,FAST
+CR_0873,CR,6:07 pm,Thane,Mumbai Cst,SLOW
+CR_0874,CR,6:10 pm,Badlapur,Mumbai Cst,FAST
+CR_0875,CR,6:14 pm,Kalyan,Mumbai Cst,MEDIUM
+CR_0876,CR,6:18 pm,Titwala,Mumbai Cst,MEDIUM
+CR_0877,CR,6:20 pm,Thane,Mumbai Cst,SLOW
+CR_0878,CR,6:24 pm,Dombivili,Mumbai Cst,SLOW
+CR_0879,CR,6:30 pm,Karjat,Mumbai Cst,FAST
+CR_0880,CR,6:30 pm,Kalyan,Mumbai Cst,SLOW
+CR_0881,CR,6:33 pm,Thane,Mumbai Cst,SLOW
+CR_0882,CR,6:34 pm,Asangaon,Mumbai Cst,MEDIUM
+CR_0883,CR,6:38 pm,Ambernath,Mumbai Cst,FAST
+CR_0884,CR,6:42 pm,Kalyan,Mumbai Cst,FAST
+CR_0885,CR,6:42 pm,Dombivili,Mumbai Cst,SLOW
+CR_0886,CR,6:48 pm,Thane,Mumbai Cst,SLOW
+CR_0887,CR,6:54 pm,Badlapur,Mumbai Cst,FAST
+CR_0888,CR,6:57 pm,Titwala,Mumbai Cst,FAST
+CR_0889,CR,6:59 pm,Thane,Mumbai Cst,SLOW
+CR_0890,CR,7:03 pm,Kalyan,Mumbai Cst,SLOW
+CR_0891,CR,7:12 pm,Kalyan,Mumbai Cst,MEDIUM
+CR_0892,CR,7:12 pm,Dombivili,Mumbai Cst,SLOW
+CR_0893,CR,7:16 pm,Kalyan,Mumbai Cst,SLOW
+CR_0894,CR,7:21 pm,Asangaon,Mumbai Cst,SLOW
+CR_0895,CR,7:29 pm,Dombivili,Mumbai Cst,SLOW
+CR_0896,CR,7:33 pm,Badlapur,Mumbai Cst,FAST
+CR_0897,CR,7:34 pm,Thane,Mumbai Cst,SLOW
+CR_0898,CR,7:38 pm,Khopoli,Mumbai Cst,FAST
+CR_0899,CR,7:39 pm,Kalyan,Mumbai Cst,SLOW
+CR_0900,CR,7:46 pm,Ambernath,Mumbai Cst,FAST
+CR_0901,CR,7:47 pm,Thane,Mumbai Cst,SLOW
+CR_0902,CR,7:49 pm,Kasara,Mumbai Cst,FAST
+CR_0903,CR,7:51 pm,Dombivili,Mumbai Cst,SLOW
+CR_0904,CR,7:52 pm,Karjat,Mumbai Cst,FAST
+CR_0905,CR,7:55 pm,Kalyan,Mumbai Cst,SLOW
+CR_0906,CR,8:01 pm,Thane,Mumbai Cst,SLOW
+CR_0907,CR,8:06 pm,Asangaon,Mumbai Cst,FAST
+CR_0908,CR,8:16 pm,Dombivili,Mumbai Cst,SLOW
+CR_0909,CR,8:24 pm,Ambernath,Mumbai Cst,SLOW
+CR_0910,CR,8:28 pm,Badlapur,Mumbai Cst,SLOW
+CR_0911,CR,8:36 pm,Titwala,Mumbai Cst,SLOW
+CR_0912,CR,8:37 pm,Ambernath,Mumbai Cst,FAST
+CR_0913,CR,8:40 pm,Dombivili,Mumbai Cst,SLOW
+CR_0914,CR,8:44 pm,Kalyan,Mumbai Cst,SLOW
+CR_0915,CR,8:48 pm,Asangaon,Mumbai Cst,SLOW
+CR_0916,CR,8:56 pm,Badlapur,Mumbai Cst,SLOW
+CR_0917,CR,8:57 pm,Karjat,Mumbai Cst,FAST
+CR_0918,CR,9:00 pm,Dombivili,Mumbai Cst,SLOW
+CR_0919,CR,9:01 pm,Kalyan,Mumbai Cst,FAST
+CR_0920,CR,9:05 pm,Titwala,Mumbai Cst,SLOW
+CR_0921,CR,9:14 pm,Ambernath,Mumbai Cst,SLOW
+CR_0922,CR,9:21 pm,Thane,Mumbai Cst,SLOW
+CR_0923,CR,9:23 pm,Ambernath,Mumbai Cst,FAST
+CR_0924,CR,9:25 pm,Kalyan,Mumbai Cst,SLOW
+CR_0925,CR,9:27 pm,Badlapur,Mumbai Cst,FAST
+CR_0926,CR,9:29 pm,Titwala,Mumbai Cst,SLOW
+CR_0927,CR,9:31 pm,Asangaon,Mumbai Cst,FAST
+CR_0928,CR,9:37 pm,Kalyan,Mumbai Cst,SLOW
+CR_0929,CR,9:41 pm,Badlapur,Mumbai Cst,FAST
+CR_0930,CR,9:46 pm,Kasara,Mumbai Cst,FAST
+CR_0931,CR,9:46 pm,Titwala,Mumbai Cst,SLOW
+CR_0932,CR,9:51 pm,Karjat,Mumbai Cst,FAST
+CR_0933,CR,9:51 pm,Kalyan,Mumbai Cst,SLOW
+CR_0934,CR,10:01 pm,Ambernath,Mumbai Cst,SLOW
+CR_0935,CR,10:10 pm,Titwala,Mumbai Cst,SLOW
+CR_0936,CR,10:18 pm,Ambernath,Mumbai Cst,SLOW
+CR_0937,CR,10:22 pm,Dombivili,Mumbai Cst,SLOW
+CR_0938,CR,10:24 pm,Karjat,Mumbai Cst,FAST
+CR_0939,CR,10:29 pm,Badlapur,Mumbai Cst,SLOW
+CR_0940,CR,10:37 pm,Kalyan,Mumbai Cst,SLOW
+CR_0941,CR,10:41 pm,Dombivili,Mumbai Cst,SLOW
+CR_0942,CR,10:45 pm,Ambernath,Mumbai Cst,SLOW
+CR_0943,CR,10:49 pm,Badlapur,Mumbai Cst,SLOW
+CR_0944,CR,10:51 pm,Kasara,Mumbai Cst,FAST
+CR_0945,CR,10:53 pm,Titwala,Mumbai Cst,SLOW
+CR_0946,CR,11:06 pm,Karjat,Mumbai Cst,SLOW
+CR_0947,CR,11:21 pm,Asangaon,Mumbai Cst,SLOW
+CR_0948,CR,11:25 pm,Kalyan,Mumbai Cst,FAST
+CR_0949,CR,11:29 pm,Karjat,Mumbai Cst,SLOW
+HR_0950,HR,4:41 am,Panvel,4:23 am,SLOW
+HR_0951,HR,4:57 am,Panvel,4:39 am,SLOW
+HR_0952,HR,5:09 am,Panvel,4:51 am,SLOW
+HR_0953,HR,5:26 am,Panvel,5:08 am,SLOW
+HR_0954,HR,5:40 am,Panvel,5:22 am,SLOW
+HR_0955,HR,5:48 am,Panvel,5:30 am,SLOW
+HR_0956,HR,6:05 am,Panvel,5:47 am,SLOW
+HR_0957,HR,6:18 am,Panvel,6:00 am,SLOW
+HR_0958,HR,6:26 am,Panvel,6:08 am,SLOW
+HR_0959,HR,6:38 am,Panvel,6:20 am,SLOW
+HR_0960,HR,6:46 am,Panvel,6:28 am,SLOW
+HR_0961,HR,7:02 am,Panvel,6:44 am,SLOW
+HR_0962,HR,7:11 am,Panvel,6:52 am,SLOW
+HR_0963,HR,7:18 am,Panvel,7:00 am,SLOW
+HR_0964,HR,7:31 am,Panvel,7:13 am,SLOW
+HR_0965,HR,7:40 am,Panvel,7:22 am,SLOW
+HR_0966,HR,7:48 am,Panvel,7:30 am,SLOW
+HR_0967,HR,8:01 am,Panvel,7:43 am,SLOW
+HR_0968,HR,8:23 am,Panvel,8:05 am,SLOW
+HR_0969,HR,8:41 am,Panvel,8:23 am,SLOW
+HR_0970,HR,9:00 am,Panvel,8:41 am,SLOW
+HR_0971,HR,9:11 am,Panvel,8:53 am,SLOW
+HR_0972,HR,9:23 am,Panvel,9:05 am,SLOW
+HR_0973,HR,9:35 am,Panvel,9:17 am,SLOW
+HR_0974,HR,9:47 am,Panvel,9:29 am,SLOW
+HR_0975,HR,10:03 am,Panvel,9:45 am,SLOW
+HR_0976,HR,10:19 am,Panvel,10:01 am,SLOW
+HR_0977,HR,10:30 am,Panvel,10:12 am,SLOW
+HR_0978,HR,10:41 am,Panvel,10:23 am,SLOW
+HR_0979,HR,10:49 am,Panvel,10:31 am,SLOW
+HR_0980,HR,10:59 am,Panvel,10:41 am,SLOW
+HR_0981,HR,11:10 am,Panvel,10:52 am,SLOW
+HR_0982,HR,11:27 am,Panvel,11:09 am,SLOW
+HR_0983,HR,11:39 am,Panvel,11:21 am,SLOW
+HR_0984,HR,11:59 am,Panvel,11:41 am,SLOW
+HR_0985,HR,12:12 pm,Panvel,11:54 am,SLOW
+HR_0986,HR,12:24 pm,Panvel,12:06 pm,SLOW
+HR_0987,HR,12:39 pm,Panvel,12:21 pm,SLOW
+HR_0988,HR,12:58 pm,Panvel,12:40 pm,SLOW
+HR_0989,HR,1:11 pm,Panvel,12:53 pm,SLOW
+HR_0990,HR,1:23 pm,Panvel,1:05 pm,SLOW
+HR_0991,HR,1:39 pm,Panvel,1:21 pm,SLOW
+HR_0992,HR,1:47 pm,Panvel,1:29 pm,SLOW
+HR_0993,HR,2:03 pm,Panvel,1:45 pm,SLOW
+HR_0994,HR,2:16 pm,Panvel,1:58 pm,SLOW
+HR_0995,HR,2:28 pm,Panvel,2:10 pm,SLOW
+HR_0996,HR,2:47 pm,Panvel,2:29 pm,SLOW
+HR_0997,HR,3:03 pm,Panvel,2:45 pm,SLOW
+HR_0998,HR,3:15 pm,Panvel,2:57 pm,SLOW
+HR_0999,HR,3:19 pm,Panvel,3:01 pm,SLOW
+HR_1000,HR,3:31 pm,Panvel,3:13 pm,SLOW
+HR_1001,HR,3:43 pm,Panvel,3:25 pm,SLOW
+HR_1002,HR,3:55 pm,Panvel,3:37 pm,SLOW
+HR_1003,HR,3:59 pm,Panvel,3:41 pm,SLOW
+HR_1004,HR,4:13 pm,Panvel,3:55 pm,SLOW
+HR_1005,HR,4:18 pm,Panvel,4:00 pm,SLOW
+HR_1006,HR,4:26 pm,Panvel,4:08 pm,SLOW
+HR_1007,HR,4:41 pm,Panvel,4:23 pm,SLOW
+HR_1008,HR,4:54 pm,Panvel,4:36 pm,SLOW
+HR_1009,HR,5:10 pm,Panvel,4:52 pm,SLOW
+HR_1010,HR,5:22 pm,Panvel,5:04 pm,SLOW
+HR_1011,HR,5:40 pm,Panvel,5:21 pm,SLOW
+HR_1012,HR,5:51 pm,Panvel,5:33 pm,SLOW
+HR_1013,HR,6:05 pm,Panvel,5:46 pm,SLOW
+HR_1014,HR,6:15 pm,Panvel,5:57 pm,SLOW
+HR_1015,HR,6:19 pm,Panvel,6:01 pm,SLOW
+HR_1016,HR,6:30 pm,Panvel,6:12 pm,SLOW
+HR_1017,HR,6:44 pm,Panvel,6:26 pm,SLOW
+HR_1018,HR,6:58 pm,Panvel,6:40 pm,SLOW
+HR_1019,HR,7:13 pm,Panvel,6:54 pm,SLOW
+HR_1020,HR,7:25 pm,Panvel,7:07 pm,SLOW
+HR_1021,HR,7:38 pm,Panvel,7:20 pm,SLOW
+HR_1022,HR,7:50 pm,Panvel,7:32 pm,SLOW
+HR_1023,HR,8:10 pm,Panvel,7:52 pm,SLOW
+HR_1024,HR,8:23 pm,Panvel,8:05 pm,SLOW
+HR_1025,HR,8:35 pm,Panvel,8:17 pm,SLOW
+HR_1026,HR,8:53 pm,Panvel,8:35 pm,SLOW
+HR_1027,HR,9:08 pm,Panvel,8:50 pm,SLOW
+HR_1028,HR,9:18 pm,Panvel,9:00 pm,SLOW
+HR_1029,HR,9:32 pm,Panvel,9:14 pm,SLOW
+HR_1030,HR,9:48 pm,Panvel,9:30 pm,SLOW
+HR_1031,HR,10:00 pm,Panvel,9:42 pm,SLOW
+HR_1032,HR,10:15 pm,Panvel,9:57 pm,SLOW
+HR_1033,HR,10:23 pm,Panvel,10:05 pm,SLOW
+HR_1034,HR,10:36 pm,Panvel,10:18 pm,SLOW
+HR_1035,HR,10:50 pm,Panvel,10:32 pm,SLOW
+HR_1036,HR,11:09 pm,Panvel,10:51 pm,SLOW
+HR_1037,HR,11:18 pm,Panvel,11:00 pm,SLOW
+HR_1038,HR,11:33 pm,Panvel,11:15 pm,SLOW
+HR_1039,HR,11:48 pm,Panvel,11:30 pm,SLOW
+HR_1040,HR,12:09 am,Panvel,11:51 pm,SLOW
+HR_1041,HR,4:21 am,Mumbai CSMT,4:00 am,SLOW
+HR_1042,HR,4:47 am,Mumbai CSMT,4:26 am,SLOW
+HR_1043,HR,5:20 am,Mumbai CSMT,4:59 am,SLOW
+HR_1044,HR,5:44 am,Mumbai CSMT,5:23 am,SLOW
+HR_1045,HR,6:00 am,Mumbai CSMT,5:39 am,SLOW
+HR_1046,HR,6:12 am,Mumbai CSMT,5:51 am,SLOW
+HR_1047,HR,6:18 am,Mumbai CSMT,5:57 am,SLOW
+HR_1048,HR,6:26 am,Mumbai CSMT,6:05 am,SLOW
+HR_1049,HR,6:44 am,Mumbai CSMT,6:23 am,SLOW
+HR_1050,HR,6:56 am,Mumbai CSMT,6:35 am,SLOW
+HR_1051,HR,7:12 am,Mumbai CSMT,6:51 am,SLOW
+HR_1052,HR,7:20 am,Mumbai CSMT,6:59 am,SLOW
+HR_1053,HR,7:29 am,Mumbai CSMT,7:08 am,SLOW
+HR_1054,HR,7:41 am,Mumbai CSMT,7:20 am,SLOW
+HR_1055,HR,7:53 am,Mumbai CSMT,7:32 am,SLOW
+HR_1056,HR,8:01 am,Mumbai CSMT,7:40 am,SLOW
+HR_1057,HR,8:09 am,Mumbai CSMT,7:48 am,SLOW
+HR_1058,HR,8:21 am,Mumbai CSMT,8:00 am,SLOW
+HR_1059,HR,8:33 am,Mumbai CSMT,8:12 am,SLOW
+HR_1060,HR,8:45 am,Mumbai CSMT,8:24 am,SLOW
+HR_1061,HR,9:01 am,Mumbai CSMT,8:40 am,SLOW
+HR_1062,HR,9:11 am,Mumbai CSMT,8:50 am,SLOW
+HR_1063,HR,9:19 am,Mumbai CSMT,8:58 am,SLOW
+HR_1064,HR,9:31 am,Mumbai CSMT,9:10 am,SLOW
+HR_1065,HR,9:41 am,Mumbai CSMT,9:20 am,SLOW
+HR_1066,HR,9:52 am,Mumbai CSMT,9:31 am,SLOW
+HR_1067,HR,10:01 am,Mumbai CSMT,9:40 am,SLOW
+HR_1068,HR,10:15 am,Mumbai CSMT,9:54 am,SLOW
+HR_1069,HR,10:29 am,Mumbai CSMT,10:08 am,SLOW
+HR_1070,HR,10:41 am,Mumbai CSMT,10:20 am,SLOW
+HR_1071,HR,10:53 am,Mumbai CSMT,10:32 am,SLOW
+HR_1072,HR,11:04 am,Mumbai CSMT,10:43 am,SLOW
+HR_1073,HR,11:08 am,Mumbai CSMT,10:47 am,SLOW
+HR_1074,HR,11:20 am,Mumbai CSMT,10:59 am,SLOW
+HR_1075,HR,11:30 am,Mumbai CSMT,11:09 am,SLOW
+HR_1076,HR,11:39 am,Mumbai CSMT,11:18 am,SLOW
+HR_1077,HR,11:53 am,Mumbai CSMT,11:32 am,SLOW
+HR_1078,HR,12:01 pm,Mumbai CSMT,11:40 am,SLOW
+HR_1079,HR,12:13 pm,Mumbai CSMT,11:52 am,SLOW
+HR_1080,HR,12:26 pm,Mumbai CSMT,12:04 pm,SLOW
+HR_1081,HR,12:31 pm,Mumbai CSMT,12:09 pm,SLOW
+HR_1082,HR,12:44 pm,Mumbai CSMT,12:23 pm,SLOW
+HR_1083,HR,12:57 pm,Mumbai CSMT,12:36 pm,SLOW
+HR_1084,HR,1:09 pm,Mumbai CSMT,12:48 pm,SLOW
+HR_1085,HR,1:21 pm,Mumbai CSMT,1:00 pm,SLOW
+HR_1086,HR,1:29 pm,Mumbai CSMT,1:08 pm,SLOW
+HR_1087,HR,1:45 pm,Mumbai CSMT,1:24 pm,SLOW
+HR_1088,HR,2:01 pm,Mumbai CSMT,1:40 pm,SLOW
+HR_1089,HR,2:13 pm,Mumbai CSMT,1:52 pm,SLOW
+HR_1090,HR,2:25 pm,Mumbai CSMT,2:04 pm,SLOW
+HR_1091,HR,2:41 pm,Mumbai CSMT,2:20 pm,SLOW
+HR_1092,HR,2:45 pm,Mumbai CSMT,2:24 pm,SLOW
+HR_1093,HR,2:53 pm,Mumbai CSMT,2:32 pm,SLOW
+HR_1094,HR,3:07 pm,Mumbai CSMT,2:46 pm,SLOW
+HR_1095,HR,3:19 pm,Mumbai CSMT,2:58 pm,SLOW
+HR_1096,HR,3:36 pm,Mumbai CSMT,3:15 pm,SLOW
+HR_1097,HR,3:48 pm,Mumbai CSMT,3:27 pm,SLOW
+HR_1098,HR,3:52 pm,Mumbai CSMT,3:31 pm,SLOW
+HR_1099,HR,4:00 pm,Mumbai CSMT,3:39 pm,SLOW
+HR_1100,HR,4:18 pm,Mumbai CSMT,3:57 pm,SLOW
+HR_1101,HR,4:35 pm,Mumbai CSMT,4:14 pm,SLOW
+HR_1102,HR,4:43 pm,Mumbai CSMT,4:22 pm,SLOW
+HR_1103,HR,4:54 pm,Mumbai CSMT,4:33 pm,SLOW
+HR_1104,HR,5:02 pm,Mumbai CSMT,4:41 pm,SLOW
+HR_1105,HR,5:16 pm,Mumbai CSMT,4:54 pm,SLOW
+HR_1106,HR,5:22 pm,Mumbai CSMT,5:01 pm,SLOW
+HR_1107,HR,5:31 pm,Mumbai CSMT,5:10 pm,SLOW
+HR_1108,HR,5:41 pm,Mumbai CSMT,5:20 pm,SLOW
+HR_1109,HR,5:50 pm,Mumbai CSMT,5:29 pm,SLOW
+HR_1110,HR,5:59 pm,Mumbai CSMT,5:38 pm,SLOW
+HR_1111,HR,6:15 pm,Mumbai CSMT,5:53 pm,SLOW
+HR_1112,HR,6:27 pm,Mumbai CSMT,6:06 pm,SLOW
+HR_1113,HR,6:44 pm,Mumbai CSMT,6:22 pm,SLOW
+HR_1114,HR,6:54 pm,Mumbai CSMT,6:31 pm,SLOW
+HR_1115,HR,7:00 pm,Mumbai CSMT,6:38 pm,SLOW
+HR_1116,HR,7:18 pm,Mumbai CSMT,6:57 pm,SLOW
+HR_1117,HR,7:26 pm,Mumbai CSMT,7:05 pm,SLOW
+HR_1118,HR,7:36 pm,Mumbai CSMT,7:15 pm,SLOW
+HR_1119,HR,7:47 pm,Mumbai CSMT,7:26 pm,SLOW
+HR_1120,HR,7:51 pm,Mumbai CSMT,7:30 pm,SLOW
+HR_1121,HR,8:00 pm,Mumbai CSMT,7:39 pm,SLOW
+HR_1122,HR,8:14 pm,Mumbai CSMT,7:53 pm,SLOW
+HR_1123,HR,8:18 pm,Mumbai CSMT,7:57 pm,SLOW
+HR_1124,HR,8:28 pm,Mumbai CSMT,8:07 pm,SLOW
+HR_1125,HR,8:41 pm,Mumbai CSMT,8:20 pm,SLOW
+HR_1126,HR,8:50 pm,Mumbai CSMT,8:28 pm,SLOW
+HR_1127,HR,9:03 pm,Mumbai CSMT,8:42 pm,SLOW
+HR_1128,HR,9:09 pm,Mumbai CSMT,8:47 pm,SLOW
+HR_1129,HR,9:18 pm,Mumbai CSMT,8:56 pm,SLOW
+HR_1130,HR,9:26 pm,Mumbai CSMT,9:04 pm,SLOW
+HR_1131,HR,9:36 pm,Mumbai CSMT,9:14 pm,SLOW
+HR_1132,HR,9:49 pm,Mumbai CSMT,9:27 pm,SLOW
+HR_1133,HR,9:59 pm,Mumbai CSMT,9:38 pm,SLOW
+HR_1134,HR,10:09 pm,Mumbai CSMT,9:48 pm,SLOW
+HR_1135,HR,10:19 pm,Mumbai CSMT,9:58 pm,SLOW
+HR_1136,HR,10:27 pm,Mumbai CSMT,10:05 pm,SLOW
+HR_1137,HR,10:36 pm,Mumbai CSMT,10:15 pm,SLOW
+HR_1138,HR,10:51 pm,Mumbai CSMT,10:30 pm,SLOW
+HR_1139,HR,11:06 pm,Mumbai CSMT,10:45 pm,SLOW
+HR_1140,HR,11:21 pm,Mumbai CSMT,11:00 pm,SLOW
+HR_1141,HR,11:44 pm,Mumbai CSMT,11:23 pm,SLOW
+HR_1142,HR,12:05 am,Mumbai CSMT,11:44 pm,SLOW
+HR_1143,HR,12:20 am,Mumbai CSMT,11:59 pm,SLOW
+HR_1144,HR,6:30 am,Belapur Cbd,6:12 am,SLOW
+HR_1145,HR,6:54 am,Belapur Cbd,6:36 am,SLOW
+HR_1146,HR,7:07 am,Belapur Cbd,6:48 am,SLOW
+HR_1147,HR,7:36 am,Vashi,7:18 am,SLOW
+HR_1148,HR,7:54 am,Vashi,7:36 am,SLOW
+HR_1149,HR,8:07 am,Belapur Cbd,7:49 am,SLOW
+HR_1150,HR,8:27 am,Belapur Cbd,8:09 am,SLOW
+HR_1151,HR,8:31 am,Vashi,8:13 am,SLOW
+HR_1152,HR,8:47 am,Belapur Cbd,8:29 am,SLOW
+HR_1153,HR,9:03 am,Belapur Cbd,8:45 am,SLOW
+HR_1154,HR,9:15 am,Belapur Cbd,8:57 am,SLOW
+HR_1155,HR,9:27 am,Vashi,9:09 am,SLOW
+HR_1156,HR,9:39 am,Vashi,9:21 am,SLOW
+HR_1157,HR,9:51 am,Vashi,9:33 am,SLOW
+HR_1158,HR,9:55 am,Belapur Cbd,9:37 am,SLOW
+HR_1159,HR,10:07 am,Vashi,9:49 am,SLOW
+HR_1160,HR,10:15 am,Belapur Cbd,9:57 am,SLOW
+HR_1161,HR,10:26 am,Vashi,10:08 am,SLOW
+HR_1162,HR,10:34 am,Vashi,10:16 am,SLOW
+HR_1163,HR,10:45 am,Belapur Cbd,10:27 am,SLOW
+HR_1164,HR,10:52 am,Vashi,10:34 am,SLOW
+HR_1165,HR,11:03 am,Vashi,10:45 am,SLOW
+HR_1166,HR,11:14 am,Vashi,10:56 am,SLOW
+HR_1167,HR,11:18 am,Belapur Cbd,11:00 am,SLOW
+HR_1168,HR,11:35 am,Belapur Cbd,11:17 am,SLOW
+HR_1169,HR,11:47 am,Belapur Cbd,11:29 am,SLOW
+HR_1170,HR,12:35 pm,Belapur Cbd,12:17 pm,SLOW
+HR_1171,HR,12:48 pm,Belapur Cbd,12:30 pm,SLOW
+HR_1172,HR,1:03 pm,Vashi,12:45 pm,SLOW
+HR_1173,HR,1:19 pm,Vashi,1:01 pm,SLOW
+HR_1174,HR,1:27 pm,Belapur Cbd,1:09 pm,SLOW
+HR_1175,HR,1:51 pm,Belapur Cbd,1:33 pm,SLOW
+HR_1176,HR,1:55 pm,Vashi,1:37 pm,SLOW
+HR_1177,HR,2:07 pm,Belapur Cbd,1:49 pm,SLOW
+HR_1178,HR,2:39 pm,Belapur Cbd,2:21 pm,SLOW
+HR_1179,HR,2:55 pm,Belapur Cbd,2:37 pm,SLOW
+HR_1180,HR,3:07 pm,Belapur Cbd,2:49 pm,SLOW
+HR_1181,HR,3:47 pm,Belapur Cbd,3:29 pm,SLOW
+HR_1182,HR,4:03 pm,Vashi,3:45 pm,SLOW
+HR_1183,HR,4:31 pm,Vashi,4:13 pm,SLOW
+HR_1184,HR,4:46 pm,Belapur Cbd,4:28 pm,SLOW
+HR_1185,HR,4:58 pm,Vashi,4:40 pm,SLOW
+HR_1186,HR,5:06 pm,Belapur Cbd,4:48 pm,SLOW
+HR_1187,HR,5:18 pm,Belapur Cbd,5:00 pm,SLOW
+HR_1188,HR,5:26 pm,Vashi,5:08 pm,SLOW
+HR_1189,HR,5:34 pm,Belapur Cbd,5:16 pm,SLOW
+HR_1190,HR,5:44 pm,Vashi,5:25 pm,SLOW
+HR_1191,HR,5:59 pm,Vashi,5:41 pm,SLOW
+HR_1192,HR,6:11 pm,Vashi,5:53 pm,SLOW
+HR_1193,HR,6:23 pm,Belapur Cbd,6:05 pm,SLOW
+HR_1194,HR,6:34 pm,Vashi,6:16 pm,SLOW
+HR_1195,HR,6:51 pm,Vashi,6:33 pm,SLOW
+HR_1196,HR,7:05 pm,Vashi,6:47 pm,SLOW
+HR_1197,HR,7:20 pm,Belapur Cbd,7:02 pm,SLOW
+HR_1198,HR,7:34 pm,Belapur Cbd,7:16 pm,SLOW
+HR_1199,HR,7:43 pm,Vashi,7:24 pm,SLOW
+HR_1200,HR,7:55 pm,Belapur Cbd,7:37 pm,SLOW
+HR_1201,HR,8:05 pm,Vashi,7:47 pm,SLOW
+HR_1202,HR,8:18 pm,Belapur Cbd,8:00 pm,SLOW
+HR_1203,HR,8:44 pm,Belapur Cbd,8:26 pm,SLOW
+HR_1204,HR,8:57 pm,Vashi,8:39 pm,SLOW
+HR_1205,HR,9:23 pm,Vashi,9:05 pm,SLOW
+HR_1206,HR,9:36 pm,Belapur Cbd,9:18 pm,SLOW
+HR_1207,HR,9:44 pm,Vashi,9:26 pm,SLOW
+HR_1208,HR,9:56 pm,Belapur Cbd,9:38 pm,SLOW
+HR_1209,HR,10:10 pm,Vashi,9:52 pm,SLOW
+HR_1210,HR,10:27 pm,Vashi,10:09 pm,SLOW
+HR_1211,HR,10:40 pm,Vashi,10:22 pm,SLOW
+HR_1212,HR,10:56 pm,Vashi,10:38 pm,SLOW
+HR_1213,HR,11:37 pm,Vashi,11:19 pm,SLOW
+HR_1214,HR,11:56 pm,Vashi,11:38 pm,SLOW
+HR_1215,HR,12:13 am,Vashi,11:55 pm,SLOW
+HR_1216,HR,4:13 am,Mumbai CSMT,4:00 am,SLOW
+HR_1217,HR,4:17 am,Mumbai CSMT,4:04 am,SLOW
+HR_1218,HR,4:29 am,Mumbai CSMT,4:16 am,SLOW
+HR_1219,HR,4:33 am,Mumbai CSMT,4:20 am,SLOW
+HR_1220,HR,4:42 am,Mumbai CSMT,4:29 am,SLOW
+HR_1221,HR,4:51 am,Mumbai CSMT,4:38 am,SLOW
+HR_1222,HR,4:57 am,Mumbai CSMT,4:44 am,SLOW
+HR_1223,HR,5:08 am,Mumbai CSMT,4:55 am,SLOW
+HR_1224,HR,5:17 am,Mumbai CSMT,5:04 am,SLOW
+HR_1225,HR,5:29 am,Mumbai CSMT,5:16 am,SLOW
+HR_1226,HR,5:33 am,Mumbai CSMT,5:20 am,SLOW
+HR_1227,HR,5:41 am,Mumbai CSMT,5:28 am,SLOW
+HR_1228,HR,5:49 am,Mumbai CSMT,5:36 am,SLOW
+HR_1229,HR,5:57 am,Mumbai CSMT,5:44 am,SLOW
+HR_1230,HR,6:01 am,Mumbai CSMT,5:48 am,SLOW
+HR_1231,HR,6:05 am,Mumbai CSMT,5:52 am,SLOW
+HR_1232,HR,6:13 am,Mumbai CSMT,6:00 am,SLOW
+HR_1233,HR,6:21 am,Mumbai CSMT,6:08 am,SLOW
+HR_1234,HR,6:25 am,Mumbai CSMT,6:12 am,SLOW
+HR_1235,HR,6:33 am,Mumbai CSMT,6:20 am,SLOW
+HR_1236,HR,6:39 am,Mumbai CSMT,6:26 am,SLOW
+HR_1237,HR,6:43 am,Mumbai CSMT,6:30 am,SLOW
+HR_1238,HR,6:47 am,Mumbai CSMT,6:34 am,SLOW
+HR_1239,HR,6:57 am,Mumbai CSMT,6:44 am,SLOW
+HR_1240,HR,7:05 am,Mumbai CSMT,6:52 am,SLOW
+HR_1241,HR,7:10 am,Mumbai CSMT,6:57 am,SLOW
+HR_1242,HR,7:18 am,Mumbai CSMT,7:05 am,SLOW
+HR_1243,HR,7:22 am,Mumbai CSMT,7:09 am,SLOW
+HR_1244,HR,7:30 am,Mumbai CSMT,7:17 am,SLOW
+HR_1245,HR,7:34 am,Mumbai CSMT,7:21 am,SLOW
+HR_1246,HR,7:41 am,Mumbai CSMT,7:28 am,SLOW
+HR_1247,HR,7:45 am,Mumbai CSMT,7:32 am,SLOW
+HR_1248,HR,7:50 am,Mumbai CSMT,7:37 am,SLOW
+HR_1249,HR,7:54 am,Mumbai CSMT,7:41 am,SLOW
+HR_1250,HR,8:02 am,Mumbai CSMT,7:49 am,SLOW
+HR_1251,HR,8:14 am,Mumbai CSMT,8:01 am,SLOW
+HR_1252,HR,8:18 am,Mumbai CSMT,8:05 am,SLOW
+HR_1253,HR,8:22 am,Mumbai CSMT,8:09 am,SLOW
+HR_1254,HR,8:26 am,Mumbai CSMT,8:13 am,SLOW
+HR_1255,HR,8:30 am,Mumbai CSMT,8:17 am,SLOW
+HR_1256,HR,8:34 am,Mumbai CSMT,8:21 am,SLOW
+HR_1257,HR,8:42 am,Mumbai CSMT,8:29 am,SLOW
+HR_1258,HR,8:50 am,Mumbai CSMT,8:36 am,SLOW
+HR_1259,HR,8:54 am,Mumbai CSMT,8:41 am,SLOW
+HR_1260,HR,9:06 am,Mumbai CSMT,8:53 am,SLOW
+HR_1261,HR,9:14 am,Mumbai CSMT,9:01 am,SLOW
+HR_1262,HR,9:22 am,Mumbai CSMT,9:09 am,SLOW
+HR_1263,HR,9:29 am,Mumbai CSMT,9:15 am,SLOW
+HR_1264,HR,9:33 am,Mumbai CSMT,9:19 am,SLOW
+HR_1265,HR,9:36 am,Mumbai CSMT,9:23 am,SLOW
+HR_1266,HR,9:40 am,Mumbai CSMT,9:27 am,SLOW
+HR_1267,HR,9:48 am,Mumbai CSMT,9:35 am,SLOW
+HR_1268,HR,9:52 am,Mumbai CSMT,9:39 am,SLOW
+HR_1269,HR,9:56 am,Mumbai CSMT,9:43 am,SLOW
+HR_1270,HR,10:02 am,Mumbai CSMT,9:49 am,SLOW
+HR_1271,HR,10:07 am,Mumbai CSMT,9:54 am,SLOW
+HR_1272,HR,10:13 am,Mumbai CSMT,10:00 am,SLOW
+HR_1273,HR,10:17 am,Mumbai CSMT,10:04 am,SLOW
+HR_1274,HR,10:22 am,Mumbai CSMT,10:09 am,SLOW
+HR_1275,HR,10:30 am,Mumbai CSMT,10:17 am,SLOW
+HR_1276,HR,10:37 am,Mumbai CSMT,10:24 am,SLOW
+HR_1277,HR,10:41 am,Mumbai CSMT,10:28 am,SLOW
+HR_1278,HR,10:50 am,Mumbai CSMT,10:37 am,SLOW
+HR_1279,HR,11:02 am,Mumbai CSMT,10:49 am,SLOW
+HR_1280,HR,11:14 am,Mumbai CSMT,11:01 am,SLOW
+HR_1281,HR,11:25 am,Mumbai CSMT,11:12 am,SLOW
+HR_1282,HR,11:29 am,Mumbai CSMT,11:16 am,SLOW
+HR_1283,HR,11:38 am,Mumbai CSMT,11:25 am,SLOW
+HR_1284,HR,11:42 am,Mumbai CSMT,11:29 am,SLOW
+HR_1285,HR,11:51 am,Mumbai CSMT,11:38 am,SLOW
+HR_1286,HR,12:00 pm,Mumbai CSMT,11:47 am,SLOW
+HR_1287,HR,12:06 pm,Mumbai CSMT,11:53 am,SLOW
+HR_1288,HR,12:14 pm,Mumbai CSMT,12:01 pm,SLOW
+HR_1289,HR,12:22 pm,Mumbai CSMT,12:09 pm,SLOW
+HR_1290,HR,12:26 pm,Mumbai CSMT,12:13 pm,SLOW
+HR_1291,HR,12:34 pm,Mumbai CSMT,12:21 pm,SLOW
+HR_1292,HR,12:42 pm,Mumbai CSMT,12:29 pm,SLOW
+HR_1293,HR,12:48 pm,Mumbai CSMT,12:35 pm,SLOW
+HR_1294,HR,12:53 pm,Mumbai CSMT,12:40 pm,SLOW
+HR_1295,HR,12:59 pm,Mumbai CSMT,12:46 pm,SLOW
+HR_1296,HR,1:05 pm,Mumbai CSMT,12:52 pm,SLOW
+HR_1297,HR,1:09 pm,Mumbai CSMT,12:56 pm,SLOW
+HR_1298,HR,1:18 pm,Mumbai CSMT,1:05 pm,SLOW
+HR_1299,HR,1:30 pm,Mumbai CSMT,1:17 pm,SLOW
+HR_1300,HR,1:42 pm,Mumbai CSMT,1:29 pm,SLOW
+HR_1301,HR,1:50 pm,Mumbai CSMT,1:37 pm,SLOW
+HR_1302,HR,1:58 pm,Mumbai CSMT,1:45 pm,SLOW
+HR_1303,HR,2:06 pm,Mumbai CSMT,1:53 pm,SLOW
+HR_1304,HR,2:10 pm,Mumbai CSMT,1:57 pm,SLOW
+HR_1305,HR,2:18 pm,Mumbai CSMT,2:05 pm,SLOW
+HR_1306,HR,2:22 pm,Mumbai CSMT,2:09 pm,SLOW
+HR_1307,HR,2:34 pm,Mumbai CSMT,2:21 pm,SLOW
+HR_1308,HR,2:46 pm,Mumbai CSMT,2:33 pm,SLOW
+HR_1309,HR,2:50 pm,Mumbai CSMT,2:37 pm,SLOW
+HR_1310,HR,2:54 pm,Mumbai CSMT,2:41 pm,SLOW
+HR_1311,HR,3:02 pm,Mumbai CSMT,2:49 pm,SLOW
+HR_1312,HR,3:06 pm,Mumbai CSMT,2:53 pm,SLOW
+HR_1313,HR,3:14 pm,Mumbai CSMT,3:01 pm,SLOW
+HR_1314,HR,3:18 pm,Mumbai CSMT,3:05 pm,SLOW
+HR_1315,HR,3:28 pm,Mumbai CSMT,3:15 pm,SLOW
+HR_1316,HR,3:33 pm,Mumbai CSMT,3:20 pm,SLOW
+HR_1317,HR,3:42 pm,Mumbai CSMT,3:29 pm,SLOW
+HR_1318,HR,3:48 pm,Mumbai CSMT,3:35 pm,SLOW
+HR_1319,HR,3:57 pm,Mumbai CSMT,3:44 pm,SLOW
+HR_1320,HR,4:01 pm,Mumbai CSMT,3:48 pm,SLOW
+HR_1321,HR,4:09 pm,Mumbai CSMT,3:56 pm,SLOW
+HR_1322,HR,4:13 pm,Mumbai CSMT,4:00 pm,SLOW
+HR_1323,HR,4:17 pm,Mumbai CSMT,4:04 pm,SLOW
+HR_1324,HR,4:21 pm,Mumbai CSMT,4:08 pm,SLOW
+HR_1325,HR,4:29 pm,Mumbai CSMT,4:16 pm,SLOW
+HR_1326,HR,4:36 pm,Mumbai CSMT,4:23 pm,SLOW
+HR_1327,HR,4:40 pm,Mumbai CSMT,4:27 pm,SLOW
+HR_1328,HR,4:45 pm,Mumbai CSMT,4:32 pm,SLOW
+HR_1329,HR,4:52 pm,Mumbai CSMT,4:39 pm,SLOW
+HR_1330,HR,4:56 pm,Mumbai CSMT,4:43 pm,SLOW
+HR_1331,HR,5:00 pm,Mumbai CSMT,4:47 pm,SLOW
+HR_1332,HR,5:04 pm,Mumbai CSMT,4:51 pm,SLOW
+HR_1333,HR,5:12 pm,Mumbai CSMT,4:59 pm,SLOW
+HR_1334,HR,5:16 pm,Mumbai CSMT,5:03 pm,SLOW
+HR_1335,HR,5:21 pm,Mumbai CSMT,5:08 pm,SLOW
+HR_1336,HR,5:25 pm,Mumbai CSMT,5:12 pm,SLOW
+HR_1337,HR,5:33 pm,Mumbai CSMT,5:20 pm,SLOW
+HR_1338,HR,5:37 pm,Mumbai CSMT,5:24 pm,SLOW
+HR_1339,HR,5:43 pm,Mumbai CSMT,5:30 pm,SLOW
+HR_1340,HR,5:48 pm,Mumbai CSMT,5:35 pm,SLOW
+HR_1341,HR,5:52 pm,Mumbai CSMT,5:39 pm,SLOW
+HR_1342,HR,6:02 pm,Mumbai CSMT,5:49 pm,SLOW
+HR_1343,HR,6:07 pm,Mumbai CSMT,5:54 pm,SLOW
+HR_1344,HR,6:11 pm,Mumbai CSMT,5:58 pm,SLOW
+HR_1345,HR,6:15 pm,Mumbai CSMT,6:02 pm,SLOW
+HR_1346,HR,6:21 pm,Mumbai CSMT,6:08 pm,SLOW
+HR_1347,HR,6:28 pm,Mumbai CSMT,6:15 pm,SLOW
+HR_1348,HR,6:36 pm,Mumbai CSMT,6:23 pm,SLOW
+HR_1349,HR,6:40 pm,Mumbai CSMT,6:26 pm,SLOW
+HR_1350,HR,6:44 pm,Mumbai CSMT,6:31 pm,SLOW
+HR_1351,HR,6:48 pm,Mumbai CSMT,6:35 pm,SLOW
+HR_1352,HR,6:57 pm,Mumbai CSMT,6:44 pm,SLOW
+HR_1353,HR,7:07 pm,Mumbai CSMT,6:53 pm,SLOW
+HR_1354,HR,7:11 pm,Mumbai CSMT,6:57 pm,SLOW
+HR_1355,HR,7:15 pm,Mumbai CSMT,7:02 pm,SLOW
+HR_1356,HR,7:21 pm,Mumbai CSMT,7:08 pm,SLOW
+HR_1357,HR,7:25 pm,Mumbai CSMT,7:12 pm,SLOW
+HR_1358,HR,7:39 pm,Mumbai CSMT,7:26 pm,SLOW
+HR_1359,HR,7:43 pm,Mumbai CSMT,7:30 pm,SLOW
+HR_1360,HR,7:47 pm,Mumbai CSMT,7:34 pm,SLOW
+HR_1361,HR,7:57 pm,Mumbai CSMT,7:44 pm,SLOW
+HR_1362,HR,8:08 pm,Mumbai CSMT,7:55 pm,SLOW
+HR_1363,HR,8:12 pm,Mumbai CSMT,7:59 pm,SLOW
+HR_1364,HR,8:21 pm,Mumbai CSMT,8:08 pm,SLOW
+HR_1365,HR,8:25 pm,Mumbai CSMT,8:12 pm,SLOW
+HR_1366,HR,8:35 pm,Mumbai CSMT,8:22 pm,SLOW
+HR_1367,HR,8:39 pm,Mumbai CSMT,8:26 pm,SLOW
+HR_1368,HR,8:45 pm,Mumbai CSMT,8:32 pm,SLOW
+HR_1369,HR,8:49 pm,Mumbai CSMT,8:36 pm,SLOW
+HR_1370,HR,8:58 pm,Mumbai CSMT,8:45 pm,SLOW
+HR_1371,HR,9:02 pm,Mumbai CSMT,8:49 pm,SLOW
+HR_1372,HR,9:11 pm,Mumbai CSMT,8:58 pm,SLOW
+HR_1373,HR,9:16 pm,Mumbai CSMT,9:03 pm,SLOW
+HR_1374,HR,9:25 pm,Mumbai CSMT,9:12 pm,SLOW
+HR_1375,HR,9:30 pm,Mumbai CSMT,9:17 pm,SLOW
+HR_1376,HR,9:39 pm,Mumbai CSMT,9:26 pm,SLOW
+HR_1377,HR,9:43 pm,Mumbai CSMT,9:30 pm,SLOW
+HR_1378,HR,9:47 pm,Mumbai CSMT,9:34 pm,SLOW
+HR_1379,HR,9:57 pm,Mumbai CSMT,9:44 pm,SLOW
+HR_1380,HR,10:10 pm,Mumbai CSMT,9:57 pm,SLOW
+HR_1381,HR,10:20 pm,Mumbai CSMT,10:07 pm,SLOW
+HR_1382,HR,10:30 pm,Mumbai CSMT,10:17 pm,SLOW
+HR_1383,HR,10:40 pm,Mumbai CSMT,10:27 pm,SLOW
+HR_1384,HR,10:48 pm,Mumbai CSMT,10:35 pm,SLOW
+HR_1385,HR,10:57 pm,Mumbai CSMT,10:44 pm,SLOW
+HR_1386,HR,11:12 pm,Mumbai CSMT,10:59 pm,SLOW
+HR_1387,HR,11:28 pm,Mumbai CSMT,11:15 pm,SLOW
+HR_1388,HR,11:42 pm,Mumbai CSMT,11:29 pm,SLOW
+HR_1389,HR,12:06 am,Mumbai CSMT,11:53 pm,SLOW

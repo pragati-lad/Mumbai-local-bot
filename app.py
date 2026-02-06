@@ -17,8 +17,8 @@ SUGGESTIONS = {
         "Thane to CSMT",
         "Dadar to Kalyan",
         "Kurla to Panvel",
-        "AC local kab hai?",
-        "Pass ka rate kya hai?",
+        "AC trains available?",
+        "Monthly pass price",
         "Student concession",
         "Luggage rules",
     ],
@@ -27,8 +27,8 @@ SUGGESTIONS = {
         "Borivali to Churchgate",
         "Dadar to Andheri",
         "Churchgate to Borivali",
-        "AC local Western line",
-        "Andheri kaisa hai?",
+        "AC on Western line",
+        "Reviews for Andheri",
     ],
     "central": [
         "CSMT to Kalyan",
@@ -36,7 +36,7 @@ SUGGESTIONS = {
         "Ghatkopar to CSMT",
         "Kurla to Thane",
         "Dadar to Dombivli",
-        "Thane station reviews",
+        "Reviews for Thane",
     ],
     "harbour": [
         "CSMT to Panvel",
@@ -44,7 +44,7 @@ SUGGESTIONS = {
         "Kurla to Vashi",
         "Panvel to Kurla",
         "Belapur to CSMT",
-        "Vashi station kaisa hai?",
+        "Reviews for Vashi",
     ],
     "ac": [
         "AC trains Western line",
@@ -52,10 +52,10 @@ SUGGESTIONS = {
         "AC from Churchgate",
         "AC from Virar",
         "AC local info",
-        "AC ka ticket kitna?",
+        "AC ticket price",
     ],
     "info": [
-        "Monthly pass rate",
+        "Monthly pass price",
         "Student concession",
         "Senior citizen discount",
         "Luggage rules",
@@ -222,7 +222,7 @@ main_col, review_col = st.columns([2, 1])
 # ==================================================
 with main_col:
     st.markdown('<h1 class="main-title">🚃 Mumbai Local Guru</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="subtitle">Aye local pakadna hai? Chal bata kahan jaana hai! 🔥</p>', unsafe_allow_html=True)
+    st.markdown('<p class="subtitle">Your ultimate guide to surviving Mumbai locals! 🔥</p>', unsafe_allow_html=True)
     st.caption("7,500+ trains | Western • Central • Harbour | AC & Non-AC")
 
     # ---------------- Session State ----------------
@@ -238,14 +238,14 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "Kya re! 👋 Main hoon tera **Mumbai Local Guru**!\n\n"
-                    "Mere paas **7,500+ trains** ka data hai bhai - Western, Central, Harbour sab!\n\n"
-                    "Bol na kya chahiye:\n"
-                    "• 🚆 **Train time**: *\"Andheri to Churchgate\"*\n"
-                    "• ❄️ **AC Local**: *\"AC trains Western line\"*\n"
-                    "• ⭐ **Reviews**: *\"Dadar station kaisa hai?\"*\n"
-                    "• 💰 **Info**: *\"Pass ka rate kya hai?\"*\n\n"
-                    "Jaldi bol, train nikal jayegi! 😎"
+                    "Hey! 👋 I'm your **Mumbai Local Guru**!\n\n"
+                    "Got **7,500+ trains** data - Western, Central, Harbour - everything!\n\n"
+                    "Ask me about:\n"
+                    "• 🚆 **Train times**: *\"Andheri to Churchgate\"*\n"
+                    "• ❄️ **AC Locals**: *\"AC trains on Western line\"*\n"
+                    "• ⭐ **Station reviews**: *\"Reviews for Dadar\"*\n"
+                    "• 💰 **Info**: *\"Monthly pass price\"*\n\n"
+                    "Let's go! 😎"
                 )
             }
         )
@@ -256,10 +256,10 @@ with main_col:
             st.markdown(msg["content"])
 
     # -------- Chat Input --------
-    user_input = st.chat_input("Bol bhai, kahan jaana hai? 🚃")
+    user_input = st.chat_input("Where do you wanna go? 🚃")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="fun-header">💡 Try kar ye bhi...</p>', unsafe_allow_html=True)
+    st.markdown('<p class="fun-header">💡 Quick picks for you...</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -280,12 +280,12 @@ with main_col:
                 if station.lower() in user_input.lower():
                     review_summary = get_review_summary(station)
                     if review_summary:
-                        response = f"📍 **{station} Station ka scene**\n" + review_summary
+                        response = f"📍 **{station} Station - The Tea** ☕\n" + review_summary
                     else:
-                        response = f"Abhi tak {station} ka koi review nahi hai bhai. Tu daal pehle! 👉"
+                        response = f"No gossip about {station} yet! Be the first to spill the tea! 👉"
                     break
             else:
-                response = "Konsa station bhai? Aise bol: *\"Andheri station kaisa hai?\"*"
+                response = "Which station? Try: *\"Reviews for Andheri\"*"
         else:
             response = chatbot_response(user_input)
 
@@ -311,43 +311,43 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="fun-header">✍️ Apna Experience Bata!</p>', unsafe_allow_html=True)
+    st.markdown('<p class="fun-header">☕ Spill the Tea!</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
         review_category = st.selectbox(
-            "Kiske baare mein?",
+            "What's this about?",
             ["Station", "Route", "AC Train", "General"]
         )
 
         if review_category == "Station":
-            review_subject = st.selectbox("Station chun", STATIONS)
+            review_subject = st.selectbox("Pick a station", STATIONS)
         elif review_category == "Route":
             col1, col2 = st.columns(2)
             with col1:
-                from_station = st.selectbox("Kahan se?", STATIONS, key="from")
+                from_station = st.selectbox("From", STATIONS, key="from")
             with col2:
-                to_station = st.selectbox("Kahan tak?", STATIONS, key="to")
+                to_station = st.selectbox("To", STATIONS, key="to")
             review_subject = f"{from_station} to {to_station}"
         elif review_category == "AC Train":
             review_subject = st.selectbox(
-                "Konsi line?",
+                "Which line?",
                 ["AC Western Line", "AC Central Line", "AC Harbour Line"]
             )
         else:
-            review_subject = st.text_input("Topic likh", placeholder="e.g., Peak hour madness")
+            review_subject = st.text_input("Topic", placeholder="e.g., Peak hour chaos")
 
-        review_rating = st.slider("Kitne stars dega?", 1, 5, 4, format="%d ⭐")
+        review_rating = st.slider("Your rating", 1, 5, 4, format="%d ⭐")
 
         review_comment = st.text_area(
-            "Tera review",
-            placeholder="Bata na... bheed, safai, timing, sab likh!",
+            "Your experience",
+            placeholder="Tell us about the crowd, cleanliness, timing...",
             max_chars=500
         )
 
-        review_name = st.text_input("Tera naam (optional)", placeholder="Anonymous bhi chalega")
+        review_name = st.text_input("Name (optional)", placeholder="Stay anonymous if you want")
 
-        submitted = st.form_submit_button("Submit Kar! 🚀", use_container_width=True)
+        submitted = st.form_submit_button("Drop It! 🚀", use_container_width=True)
 
         if submitted and review_comment:
             add_user_review(
@@ -357,46 +357,45 @@ with review_col:
                 comment=review_comment,
                 username=review_name if review_name else "Anonymous"
             )
-            st.success("Sahi hai bhai! Review add ho gaya! 🎉")
+            st.success("Thanks for the tea! Review added! 🎉")
             st.rerun()
 
-    # Recent Reviews
+    # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="fun-header">🔥 Fresh Reviews</p>', unsafe_allow_html=True)
+    st.markdown('<p class="fun-header">🔥 Fresh Gossip</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
     scraped_reviews = get_scraped_reviews()
 
-    if user_reviews or scraped_reviews:
-        all_reviews = user_reviews + scraped_reviews
-        sorted_reviews = sorted(all_reviews, key=lambda x: x.get('timestamp', ''), reverse=True)[:5]
+    if user_reviews:
+        sorted_reviews = sorted(user_reviews, key=lambda x: x.get('timestamp', ''), reverse=True)[:5]
 
         for review in sorted_reviews:
             stars = "⭐" * review.get("rating", 0)
-            source = review.get('source', 'user')
-            source_tag = f" [{source.split('/')[0]}]" if source != 'user' else ""
             st.markdown(f"""
             <div class="review-card">
                 <b>{review.get('subject', 'Unknown')}</b> {stars}<br>
                 <small>{review.get('comment', '')[:150]}</small><br>
-                <small style="color: #888;">— {review.get('username', 'Anonymous')}{source_tag}</small>
+                <small style="color: #888;">— {review.get('username', 'Anonymous')}</small>
             </div>
             """, unsafe_allow_html=True)
     else:
-        st.info("Koi review nahi abhi. Tu pehla ban!")
+        st.info("No gossip yet! Be the first to spill! ☕")
 
     # Stats
     st.markdown("---")
-    st.markdown('<p class="fun-header">📊 Stats Dekh</p>', unsafe_allow_html=True)
+    st.markdown('<p class="fun-header">📊 The Numbers</p>', unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     with col1:
         st.metric("User Reviews", len(user_reviews))
     with col2:
-        st.metric("Social Media", len(scraped_reviews))
+        st.metric("Scraped Data", len(scraped_reviews))
+
+    st.caption(f"💡 Ask about any station to see {len(scraped_reviews)} scraped reviews!")
 
     # Connection status
     connection = check_sheets_connection()
     if connection['connected']:
-        st.caption("☁️ Google Sheets se sync hai")
+        st.caption("☁️ Synced to Google Sheets")
     else:
         st.caption("💾 Local storage mode")

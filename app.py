@@ -221,9 +221,9 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">🚃 Mumbai Local Guru</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="subtitle">Your ultimate guide to surviving Mumbai locals! 🔥</p>', unsafe_allow_html=True)
-    st.caption("7,500+ trains | Western • Central • Harbour | AC & Non-AC")
+    st.markdown('<h1 class="main-title">⚡ Mumbai Local Guru</h1>', unsafe_allow_html=True)
+    st.markdown('<p class="subtitle">Your ultimate guide to surviving Mumbai locals! ✨</p>', unsafe_allow_html=True)
+    st.caption("7,500+ trains ◆ Western • Central • Harbour ◆ AC & Non-AC")
 
     # ---------------- Session State ----------------
     if "messages" not in st.session_state:
@@ -238,14 +238,14 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "Hey! 👋 I'm your **Mumbai Local Guru**!\n\n"
-                    "Got **7,500+ trains** data - Western, Central, Harbour - everything!\n\n"
+                    "Hey! ✦ I'm your **Mumbai Local Guru**!\n\n"
+                    "Got **7,500+ trains** data — Western, Central, Harbour — everything!\n\n"
                     "Ask me about:\n"
-                    "• 🚆 **Train times**: *\"Andheri to Churchgate\"*\n"
-                    "• ❄️ **AC Locals**: *\"AC trains on Western line\"*\n"
-                    "• ⭐ **Station reviews**: *\"Reviews for Dadar\"*\n"
-                    "• 💰 **Info**: *\"Monthly pass price\"*\n\n"
-                    "Let's go! 😎"
+                    "› **Train times**: *\"Andheri to Churchgate\"*\n"
+                    "› **AC Locals**: *\"AC trains on Western line\"*\n"
+                    "› **Station gossip**: *\"Reviews for Dadar\"*\n"
+                    "› **Info**: *\"Monthly pass price\"*\n\n"
+                    "Let's roll! ⚡"
                 )
             }
         )
@@ -256,10 +256,10 @@ with main_col:
             st.markdown(msg["content"])
 
     # -------- Chat Input --------
-    user_input = st.chat_input("Where do you wanna go? 🚃")
+    user_input = st.chat_input("Where do you wanna go? ↗")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="fun-header">💡 Quick picks for you...</p>', unsafe_allow_html=True)
+    st.markdown('<p class="fun-header">◈ Quick picks for you...</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -280,9 +280,9 @@ with main_col:
                 if station.lower() in user_input.lower():
                     review_summary = get_review_summary(station)
                     if review_summary:
-                        response = f"📍 **{station} Station - The Tea** ☕\n" + review_summary
+                        response = f"◉ **{station} Station — The Tea**\n" + review_summary
                     else:
-                        response = f"No gossip about {station} yet! Be the first to spill the tea! 👉"
+                        response = f"No gossip about {station} yet! Be the first to spill! →"
                     break
             else:
                 response = "Which station? Try: *\"Reviews for Andheri\"*"
@@ -311,7 +311,7 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="fun-header">☕ Spill the Tea!</p>', unsafe_allow_html=True)
+    st.markdown('<p class="fun-header">✦ Spill the Tea!</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
@@ -347,7 +347,7 @@ with review_col:
 
         review_name = st.text_input("Name (optional)", placeholder="Stay anonymous if you want")
 
-        submitted = st.form_submit_button("Drop It! 🚀", use_container_width=True)
+        submitted = st.form_submit_button("Drop It! ↗", use_container_width=True)
 
         if submitted and review_comment:
             add_user_review(
@@ -357,12 +357,12 @@ with review_col:
                 comment=review_comment,
                 username=review_name if review_name else "Anonymous"
             )
-            st.success("Thanks for the tea! Review added! 🎉")
+            st.success("✓ Thanks for the tea! Review added!")
             st.rerun()
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="fun-header">🔥 Fresh Gossip</p>', unsafe_allow_html=True)
+    st.markdown('<p class="fun-header">◈ Fresh Gossip</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
     scraped_reviews = get_scraped_reviews()
@@ -371,31 +371,38 @@ with review_col:
         sorted_reviews = sorted(user_reviews, key=lambda x: x.get('timestamp', ''), reverse=True)[:5]
 
         for review in sorted_reviews:
-            stars = "⭐" * review.get("rating", 0)
+            stars = "★" * review.get("rating", 0) + "☆" * (5 - review.get("rating", 0))
             st.markdown(f"""
             <div class="review-card">
-                <b>{review.get('subject', 'Unknown')}</b> {stars}<br>
+                <b>{review.get('subject', 'Unknown')}</b> <span style="color: #feca57;">{stars}</span><br>
                 <small>{review.get('comment', '')[:150]}</small><br>
                 <small style="color: #888;">— {review.get('username', 'Anonymous')}</small>
             </div>
             """, unsafe_allow_html=True)
     else:
-        st.info("No gossip yet! Be the first to spill! ☕")
+        st.markdown("""
+        <div class="review-card" style="text-align: center;">
+            <small>No user reviews yet!</small><br>
+            <small style="color: #667eea;">↑ Be the first to drop one ↑</small>
+        </div>
+        """, unsafe_allow_html=True)
 
-    # Stats
+    # Stats with clear explanation
     st.markdown("---")
-    st.markdown('<p class="fun-header">📊 The Numbers</p>', unsafe_allow_html=True)
+    st.markdown('<p class="fun-header">◈ Data Sources</p>', unsafe_allow_html=True)
+
     col1, col2 = st.columns(2)
     with col1:
-        st.metric("User Reviews", len(user_reviews))
+        st.metric("From Users", len(user_reviews), help="Reviews submitted by app users")
     with col2:
-        st.metric("Scraped Data", len(scraped_reviews))
+        st.metric("From Web", len(scraped_reviews), help="Scraped from Reddit, Play Store, News")
 
-    st.caption(f"💡 Ask about any station to see {len(scraped_reviews)} scraped reviews!")
+    st.caption(f"◇ {len(scraped_reviews)} reviews scraped from Reddit, Play Store & News")
+    st.caption("◇ Ask *'Reviews for Andheri'* to see them!")
 
     # Connection status
     connection = check_sheets_connection()
     if connection['connected']:
-        st.caption("☁️ Synced to Google Sheets")
+        st.caption("⟳ Synced to Google Sheets")
     else:
-        st.caption("💾 Local storage mode")
+        st.caption("◈ Local storage mode")

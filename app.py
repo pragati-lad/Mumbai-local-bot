@@ -38,13 +38,14 @@ if "messages" not in st.session_state:
 
 if "suggestions" not in st.session_state:
     st.session_state.suggestions = [
-        "Dadar to Churchgate",
-        "Sion to Grant Road",
-        "Western line timetable",
-        "Monthly pass price",
-        "Student concession documents",
-        "Luggage rules in local trains",
+        "Andheri to Churchgate",
+        "Thane to CSMT",
+        "Dadar to Kalyan",
+        "Kurla to Panvel",
         "AC trains on Western line",
+        "Monthly pass price",
+        "Student concession",
+        "Luggage rules",
     ]
 
 # ---------------- Initial Bot Message ----------------
@@ -53,8 +54,12 @@ if len(st.session_state.messages) == 0:
         {
             "role": "assistant",
             "content": (
-                "Hello 👋 I’m the **Mumbai Local Train Assistant**.\n\n"
-                "Ask me about routes, passes, concessions, luggage rules or timetables."
+                "Hello 👋 I'm the **Mumbai Local Train Assistant**.\n\n"
+                "I have **7,500+ real train schedules** across Western, Central & Harbour lines.\n\n"
+                "Try asking:\n"
+                "• **Train times**: \"Andheri to Churchgate\"\n"
+                "• **AC locals**: \"AC trains on Western line\"\n"
+                "• **Info**: \"Monthly pass price\" or \"Luggage rules\""
             )
         }
     )

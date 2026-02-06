@@ -113,178 +113,153 @@ st.markdown(
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
-        .stApp {
-            background-color: #f8f6f1;
+        /* FORCE notebook background */
+        .stApp, [data-testid="stAppViewContainer"], .main, .block-container {
+            background-color: #f5f3eb !important;
             background-image:
-                linear-gradient(#e8e6e1 1px, transparent 1px),
-                linear-gradient(90deg, #e8e6e1 1px, transparent 1px),
-                linear-gradient(90deg, #c94c4c 2px, transparent 2px);
-            background-size: 18px 18px, 18px 18px, 100% 100%;
-            background-position: 0 0, 0 0, 60px 0;
-            font-family: 'Patrick Hand', cursive;
+                linear-gradient(#ddd 1px, transparent 1px),
+                linear-gradient(90deg, #ddd 1px, transparent 1px) !important;
+            background-size: 20px 20px !important;
+        }
+
+        /* Red margin line */
+        [data-testid="stAppViewContainer"]::before {
+            content: "";
+            position: fixed;
+            left: 80px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e74c3c;
+            z-index: 1000;
+        }
+
+        * {
+            font-family: 'Patrick Hand', cursive !important;
         }
 
         .main-title {
-            font-family: 'Patrick Hand', cursive;
-            color: #2d2d2d;
-            font-size: 2.6rem;
-            font-weight: 400;
+            color: #2d2d2d !important;
+            font-size: 2.6rem !important;
+            font-weight: 400 !important;
             text-align: center;
             margin-bottom: 5px;
         }
 
         .subtitle {
-            font-family: 'Patrick Hand', cursive;
-            color: #555;
+            color: #555 !important;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.2rem !important;
             margin-bottom: 1rem;
         }
 
         .line-badge {
             display: inline-block;
             padding: 3px 10px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             margin: 0 3px;
-            font-family: 'Patrick Hand', cursive;
             border: 2px solid #2d2d2d;
-            border-radius: 3px;
+            border-radius: 0;
             background: transparent;
-            color: #2d2d2d;
+            color: #2d2d2d !important;
         }
 
+        /* Buttons - sketchy style */
         .stButton > button {
             background: transparent !important;
             border: 2px solid #2d2d2d !important;
             color: #2d2d2d !important;
-            border-radius: 5px;
+            border-radius: 0 !important;
             padding: 0.4rem 1rem;
-            font-size: 0.9rem;
-            font-family: 'Patrick Hand', cursive !important;
-            transition: all 0.2s ease;
+            font-size: 1rem !important;
         }
 
         .stButton > button:hover {
             background: #2d2d2d !important;
-            color: #f8f6f1 !important;
+            color: #f5f3eb !important;
         }
 
+        /* Review cards */
         .review-card {
-            background: #fff;
+            background: #fff !important;
             padding: 12px 14px;
             margin: 8px 0;
             border: 2px solid #2d2d2d;
-            border-radius: 3px;
         }
 
         .review-card b {
-            color: #2d2d2d;
-            font-family: 'Patrick Hand', cursive;
+            color: #2d2d2d !important;
             font-size: 1.1rem;
         }
 
         .review-card small {
-            color: #666;
+            color: #666 !important;
         }
 
         .section-header {
-            font-family: 'Patrick Hand', cursive;
-            color: #2d2d2d;
-            font-size: 1.3rem;
+            color: #2d2d2d !important;
+            font-size: 1.3rem !important;
             margin-bottom: 0.5rem;
             border-bottom: 2px solid #2d2d2d;
             padding-bottom: 4px;
             display: inline-block;
         }
 
-        /* Chat styling */
-        .stChatMessage {
+        /* Chat messages */
+        .stChatMessage, [data-testid="stChatMessage"] {
             background: #fff !important;
             border: 2px solid #2d2d2d !important;
-            border-radius: 3px !important;
+            border-radius: 0 !important;
         }
 
-        div[data-testid="stMarkdownContainer"] p {
-            color: #2d2d2d !important;
-            font-family: 'Patrick Hand', cursive !important;
-        }
-
-        div[data-testid="stMarkdownContainer"] {
+        /* All text dark */
+        p, span, label, div, h1, h2, h3 {
             color: #2d2d2d !important;
         }
 
-        .stChatInput > div {
+        /* Input fields */
+        .stChatInput > div, .stChatInput textarea, [data-testid="stChatInput"] > div {
             background: #fff !important;
             border: 2px solid #2d2d2d !important;
-            border-radius: 5px !important;
+            border-radius: 0 !important;
         }
 
-        .stChatInput input {
-            color: #2d2d2d !important;
-            font-family: 'Patrick Hand', cursive !important;
-            font-size: 1rem !important;
-        }
-
-        .stChatInput input::placeholder {
-            color: #888 !important;
-        }
-
-        .stTextInput > div > div > input {
+        input, textarea, select {
             background: #fff !important;
             border: 2px solid #2d2d2d !important;
-            border-radius: 3px !important;
             color: #2d2d2d !important;
-            font-family: 'Patrick Hand', cursive !important;
+            border-radius: 0 !important;
         }
 
-        .stSelectbox > div > div {
-            background: #fff !important;
-            border-radius: 3px !important;
-            color: #2d2d2d !important;
-            border: 2px solid #2d2d2d !important;
-        }
-
-        .stSelectbox label, .stTextInput label, .stTextArea label, .stSlider label {
-            color: #2d2d2d !important;
-            font-family: 'Patrick Hand', cursive !important;
-            font-size: 1.1rem !important;
-        }
-
+        .stTextInput > div > div > input,
+        .stSelectbox > div > div,
         .stTextArea textarea {
             background: #fff !important;
             border: 2px solid #2d2d2d !important;
-            border-radius: 3px !important;
+            border-radius: 0 !important;
             color: #2d2d2d !important;
-            font-family: 'Patrick Hand', cursive !important;
         }
 
-        p, span, label, div {
-            color: #2d2d2d;
+        /* Labels */
+        .stSelectbox label, .stTextInput label, .stTextArea label, .stSlider label {
+            color: #2d2d2d !important;
+            font-size: 1.1rem !important;
         }
 
-        .stCaption, .stCaption p {
-            color: #666 !important;
-            font-family: 'Patrick Hand', cursive !important;
-        }
-
+        /* Stars */
         .stars {
-            color: #2d2d2d;
-            font-size: 0.9rem;
+            color: #2d2d2d !important;
         }
 
+        /* Dividers */
         hr {
-            border: none;
-            border-top: 2px solid #2d2d2d;
-            margin: 15px 0;
+            border: none !important;
+            border-top: 2px solid #2d2d2d !important;
         }
 
-        .stForm {
-            background: transparent;
-        }
-
-        /* Slider */
-        .stSlider > div > div > div {
-            background: #2d2d2d !important;
+        /* Hide streamlit branding */
+        #MainMenu, footer {
+            visibility: hidden;
         }
     </style>
     """,

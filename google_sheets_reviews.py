@@ -33,6 +33,9 @@ _sheet_cache = {}
 _last_fetch = {}
 CACHE_DURATION = 60  # seconds
 
+# Scraped reviews file
+SCRAPED_REVIEWS_FILE = os.path.join(os.path.dirname(__file__), "scraped_reviews.json")
+
 
 def get_credentials():
     """Get Google credentials from Streamlit secrets or local file."""
@@ -196,13 +199,18 @@ def get_all_reviews_from_sheets():
 
 
 def get_reviews_for_subject(subject):
-    """Get reviews for a specific station/route."""
-    all_reviews = get_all_reviews_from_sheets()
+    """Get reviews for a specific station/route from all sources."""
+    # Get both user and scraped reviews
+    all_reviews = get_all_reviews_combined()
     subject_lower = subject.lower()
 
     matching = []
     for review in all_reviews:
+        # Check subject field
         if subject_lower in review.get('subject', '').lower():
+            matching.append(review)
+        # Also check comment content for scraped reviews
+        elif subject_lower in review.get('comment', '').lower():
             matching.append(review)
 
     return matching
@@ -230,24 +238,61 @@ def get_review_summary_sheets(subject):
 
     avg_rating = get_average_rating_sheets(subject)
 
+    # Count sources
+    user_reviews = [r for r in reviews if r.get('source') == 'user']
+    scraped_reviews = [r for r in reviews if r.get('source') != 'user']
+
     summary = f"\n\n📊 **Reviews for {subject}**\n"
 
     if avg_rating:
         stars = "⭐" * round(avg_rating)
-        summary += f"Average Rating: {stars} ({avg_rating:.1f}/5)\n\n"
+        summary += f"Average Rating: {stars} ({avg_rating:.1f}/5)\n"
+        summary += f"_{len(user_reviews)} user reviews, {len(scraped_reviews)} from social media_\n\n"
 
-    # Show latest 3 reviews
-    latest = sorted(reviews, key=lambda x: x.get('timestamp', ''), reverse=True)[:3]
+    # Show latest 3 reviews, prioritizing user reviews
+    sorted_reviews = sorted(reviews, key=lambda x: (
+        0 if x.get('source') == 'user' else 1,  # User reviews first
+        x.get('timestamp', '')  # Then by time
+    ), reverse=True)[:3]
 
-    for r in latest:
+    for r in sorted_reviews:
         rating_str = f"{'⭐' * r['rating']}" if r.get('rating') else ""
         comment = r.get('comment', 'No comment')[:100]
-        summary += f"• {rating_str} _{comment}_\n"
+        source_tag = ""
+        if r.get('source') and r.get('source') != 'user':
+            source_tag = f" [{r.get('source', '').split('/')[0]}]"
+        summary += f"• {rating_str} _{comment}_{source_tag}\n"
 
     if len(reviews) > 3:
         summary += f"\n_...and {len(reviews) - 3} more reviews_"
 
     return summary
+
+
+# ==================================================
+# SCRAPED REVIEWS LOADER
+# ==================================================
+
+def get_scraped_reviews():
+    """Load scraped reviews from JSON file."""
+    if os.path.exists(SCRAPED_REVIEWS_FILE):
+        try:
+            with open(SCRAPED_REVIEWS_FILE, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                return data.get('reviews', [])
+        except Exception as e:
+            print(f"Error loading scraped reviews: {e}")
+    return []
+
+
+def get_all_reviews_combined():
+    """Get all reviews from Google Sheets + scraped data."""
+    user_reviews = get_all_reviews_from_sheets()
+    scraped_reviews = get_scraped_reviews()
+
+    # Combine both sources
+    all_reviews = user_reviews + scraped_reviews
+    return all_reviews
 
 
 # ==================================================

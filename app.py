@@ -5,6 +5,8 @@ from google_sheets_reviews import (
     get_reviews_for_subject as get_reviews_for,
     get_review_summary_sheets as get_review_summary,
     get_all_reviews_from_sheets,
+    get_all_reviews_combined,
+    get_scraped_reviews,
     check_sheets_connection
 )
 
@@ -289,17 +291,24 @@ with review_col:
     st.markdown("---")
     st.markdown("### 📝 Recent Reviews")
 
-    reviews_list = get_all_reviews_from_sheets()
+    # Get user reviews for display
+    user_reviews = get_all_reviews_from_sheets()
+    scraped_reviews = get_scraped_reviews()
 
-    if reviews_list:
-        # Show latest 5 reviews
-        for review in reversed(reviews_list[-5:]):
+    if user_reviews or scraped_reviews:
+        # Show latest 5 user reviews first, then scraped
+        all_reviews = user_reviews + scraped_reviews
+        sorted_reviews = sorted(all_reviews, key=lambda x: x.get('timestamp', ''), reverse=True)[:5]
+
+        for review in sorted_reviews:
             stars = "⭐" * review.get("rating", 0)
+            source = review.get('source', 'user')
+            source_tag = f" [{source.split('/')[0]}]" if source != 'user' else ""
             st.markdown(f"""
             <div class="review-card">
                 <b>{review.get('subject', 'Unknown')}</b> {stars}<br>
                 <small>{review.get('comment', '')[:150]}</small><br>
-                <small style="color: gray;">— {review.get('username', 'Anonymous')}</small>
+                <small style="color: gray;">— {review.get('username', 'Anonymous')}{source_tag}</small>
             </div>
             """, unsafe_allow_html=True)
     else:
@@ -308,8 +317,11 @@ with review_col:
     # Stats
     st.markdown("---")
     st.markdown("### 📊 Stats")
-    total_reviews = len(reviews_list)
-    st.metric("Total Reviews", total_reviews)
+    col1, col2 = st.columns(2)
+    with col1:
+        st.metric("User Reviews", len(user_reviews))
+    with col2:
+        st.metric("Scraped", len(scraped_reviews))
 
     # Connection status
     connection = check_sheets_connection()

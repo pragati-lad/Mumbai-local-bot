@@ -107,217 +107,158 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS - Vintage Indian Matchbox Theme ----------------
+# ---------------- CSS - Clean Mumbai Theme ----------------
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Work+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
 
-        /* Cream paper background */
-        .stApp, [data-testid="stAppViewContainer"] {
-            background: #f4efe4 !important;
-        }
-
-        .main, .block-container {
-            background: transparent !important;
+        /* Clean white background */
+        .stApp, [data-testid="stAppViewContainer"], .main, .block-container {
+            background: #fafafa !important;
         }
 
         * {
-            font-family: 'Work Sans', sans-serif !important;
+            font-family: 'DM Sans', sans-serif !important;
         }
 
         .main-title {
-            font-family: 'Abril Fatface', serif !important;
-            color: #c41e3a !important;
-            font-size: 2.8rem !important;
-            font-weight: 400 !important;
+            color: #1a1a1a !important;
+            font-size: 1.75rem !important;
+            font-weight: 700 !important;
             text-align: center;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            margin-bottom: 8px;
         }
 
         .subtitle {
-            color: #5a4a3a !important;
+            color: #666 !important;
             text-align: center;
-            font-size: 0.95rem !important;
-            margin-bottom: 1rem;
-            font-weight: 500;
+            font-size: 0.9rem !important;
+            margin-bottom: 1.5rem;
         }
 
-        /* Train line badges - matchbox style */
         .line-badge {
             display: inline-block;
-            padding: 5px 12px;
-            font-size: 0.8rem;
-            margin: 0 4px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid;
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            margin: 0 3px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #fff !important;
         }
-        .western {
-            background: #1a4b8c !important;
-            color: #f4efe4 !important;
-            border-color: #0f2d54 !important;
-        }
-        .central {
-            background: #c41e3a !important;
-            color: #f4efe4 !important;
-            border-color: #8b1528 !important;
-        }
-        .harbour {
-            background: #2d5a27 !important;
-            color: #f4efe4 !important;
-            border-color: #1a3517 !important;
-        }
+        .western { background: #3b82f6 !important; }
+        .central { background: #ef4444 !important; }
+        .harbour { background: #22c55e !important; }
 
-        /* Buttons - vintage matchbox style */
+        /* Clean buttons */
         .stButton > button {
-            background: #d4a017 !important;
-            border: 2px solid #8b6914 !important;
-            color: #1a1a1a !important;
-            border-radius: 0 !important;
-            padding: 0.5rem 1.2rem;
+            background: #fff !important;
+            border: 1px solid #e5e5e5 !important;
+            color: #333 !important;
+            border-radius: 8px !important;
+            padding: 0.5rem 1rem;
             font-size: 0.85rem !important;
-            font-weight: 700 !important;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.2s ease;
+            font-weight: 500 !important;
+            transition: all 0.15s ease;
         }
 
         .stButton > button:hover {
-            background: #c41e3a !important;
-            border-color: #8b1528 !important;
-            color: #f4efe4 !important;
+            background: #f5f5f5 !important;
+            border-color: #ccc !important;
         }
 
-        /* Cards - vintage label style */
+        /* Cards */
         .review-card {
-            background: #fff9e6 !important;
-            padding: 14px 16px;
-            margin: 10px 0;
-            border: 3px solid #c41e3a;
-            box-shadow: 4px 4px 0px #5a4a3a;
+            background: #fff !important;
+            padding: 12px 14px;
+            margin: 8px 0;
+            border: 1px solid #eee;
+            border-radius: 8px;
         }
 
         .review-card b {
-            color: #c41e3a !important;
-            font-size: 1rem;
-            font-weight: 700;
+            color: #1a1a1a !important;
+            font-weight: 600;
         }
 
         .review-card small {
-            color: #5a4a3a !important;
+            color: #666 !important;
         }
 
         .section-header {
-            font-family: 'Abril Fatface', serif !important;
-            color: #c41e3a !important;
-            font-size: 1.3rem !important;
-            font-weight: 400;
-            margin-bottom: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 3px solid #d4a017;
-            padding-bottom: 5px;
-            display: inline-block;
+            color: #1a1a1a !important;
+            font-size: 0.95rem !important;
+            font-weight: 600;
+            margin-bottom: 12px;
         }
 
         /* Chat messages */
         .stChatMessage, [data-testid="stChatMessage"] {
-            background: #fff9e6 !important;
-            border: 2px solid #5a4a3a !important;
-            border-radius: 0 !important;
+            background: #fff !important;
+            border: 1px solid #eee !important;
+            border-radius: 12px !important;
         }
 
-        /* Text colors */
-        p, span, div {
-            color: #3a3a3a !important;
-        }
-
-        label {
-            color: #5a4a3a !important;
-            font-size: 0.9rem !important;
-            font-weight: 600 !important;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        /* Text */
+        p, span, div, label {
+            color: #333 !important;
         }
 
         strong, b {
-            color: #c41e3a !important;
+            color: #1a1a1a !important;
         }
 
-        /* Input fields */
+        /* Inputs */
         .stChatInput > div, [data-testid="stChatInput"] > div {
-            background: #fff9e6 !important;
-            border: 2px solid #5a4a3a !important;
-            border-radius: 0 !important;
-        }
-
-        .stChatInput input, .stChatInput textarea {
-            color: #3a3a3a !important;
+            background: #fff !important;
+            border: 1px solid #e5e5e5 !important;
+            border-radius: 12px !important;
         }
 
         input, textarea, select {
-            background: #fff9e6 !important;
-            border: 2px solid #5a4a3a !important;
-            color: #3a3a3a !important;
-            border-radius: 0 !important;
-        }
-
-        input::placeholder, textarea::placeholder {
-            color: #8a7a6a !important;
+            background: #fff !important;
+            border: 1px solid #e5e5e5 !important;
+            color: #333 !important;
+            border-radius: 8px !important;
         }
 
         .stTextInput > div > div > input,
         .stSelectbox > div > div,
         .stTextArea textarea {
-            background: #fff9e6 !important;
-            border: 2px solid #5a4a3a !important;
-            border-radius: 0 !important;
-            color: #3a3a3a !important;
+            background: #fff !important;
+            border: 1px solid #e5e5e5 !important;
+            border-radius: 8px !important;
+            color: #333 !important;
         }
 
-        /* Stars - golden yellow */
-        .stars {
-            color: #d4a017 !important;
+        input::placeholder, textarea::placeholder {
+            color: #999 !important;
         }
 
-        /* Dividers */
+        label {
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
+            color: #555 !important;
+        }
+
+        .stars { color: #f59e0b !important; }
+
         hr {
             border: none !important;
-            border-top: 3px solid #c41e3a !important;
+            border-top: 1px solid #eee !important;
             margin: 1rem 0 !important;
         }
 
-        /* Slider */
         .stSlider > div > div > div {
-            background: #c41e3a !important;
+            background: #3b82f6 !important;
         }
 
-        /* Form */
-        .stForm {
-            background: transparent !important;
-        }
-
-        /* Caption */
         .stCaption, .stCaption p {
-            color: #8a7a6a !important;
+            color: #999 !important;
             font-size: 0.8rem !important;
         }
 
-        /* Success message */
-        .stSuccess {
-            background: #2d5a27 !important;
-            color: #f4efe4 !important;
-            border-radius: 0 !important;
-        }
-
-        /* Hide streamlit branding */
-        #MainMenu, footer, header {
-            visibility: hidden;
-        }
+        #MainMenu, footer, header { visibility: hidden; }
     </style>
     """,
     unsafe_allow_html=True
@@ -330,12 +271,12 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">Mumbai Local</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">🚃 Mumbai Local</h1>', unsafe_allow_html=True)
     st.markdown('''<p class="subtitle">
         <span class="line-badge western">Western</span>
         <span class="line-badge central">Central</span>
         <span class="line-badge harbour">Harbour</span>
-        <br><span style="font-size: 0.85rem;">7,500+ Real Train Schedules</span>
+        &nbsp;·&nbsp; 7,500+ trains
     </p>''', unsafe_allow_html=True)
 
     # ---------------- Session State ----------------
@@ -351,9 +292,8 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "Welcome to Mumbai Local! 🚃\n\n"
-                    "I can help you with train timings, routes & more.\n\n"
-                    "**Try asking:**\n"
+                    "Hi! I can help you with Mumbai local trains.\n\n"
+                    "**Try:**\n"
                     "• Andheri to Churchgate\n"
                     "• AC trains on Western line\n"
                     "• Reviews for Dadar\n"

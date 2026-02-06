@@ -24,15 +24,20 @@ def scrape_western_railway():
 
     all_trains = []
 
-    # Scrape non-AC trains from mumbailifeline.com
-    routes = [
-        ("CHURCHGATE", "VIRAR", "DOWN"),
-        ("VIRAR", "CHURCHGATE", "UP"),
-        ("CHURCHGATE", "BORIVALI", "DOWN"),
-        ("BORIVALI", "CHURCHGATE", "UP"),
-    ]
+    # Key stations for mid-route queries
+    # Include terminal + major interchange stations
+    key_stations = ["CHURCHGATE", "DADAR", "BANDRA", "ANDHERI", "BORIVALI", "VIRAR"]
 
-    for src, dst, direction in routes:
+    # Generate route combinations (both directions)
+    routes = []
+    for i, src in enumerate(key_stations):
+        for dst in key_stations:
+            if src != dst:
+                routes.append((src, dst))
+
+    print(f"[Western Railway] Scraping {len(routes)} route combinations...")
+
+    for src, dst in routes:
         url = f"https://www.mumbailifeline.com/timetable.php?sel_route=western&sfrom={src}&sto={dst}&time1=04:00+AM&time2=11:59+PM&Submit=Submit"
 
         try:
@@ -144,19 +149,21 @@ def scrape_central_railway():
     """Scrape Central Railway trains from mumbailifeline.com"""
     print("\n[Central Railway] Scraping from mumbailifeline.com...")
 
-    routes = [
-        # (from, to, direction)
-        ("Mumbai_CST", "Kalyan", "DOWN"),
-        ("Kalyan", "Mumbai_CST", "UP"),
-        ("Mumbai_CST", "Thane", "DOWN"),
-        ("Thane", "Mumbai_CST", "UP"),
-        ("Mumbai_CST", "Kasara", "DOWN"),
-        ("Mumbai_CST", "Karjat", "DOWN"),
-    ]
+    # Key stations for Central Line (proper case for mumbailifeline)
+    key_stations = ["Mumbai_CST", "Dadar", "Kurla", "Ghatkopar", "Thane", "Dombivli", "Kalyan"]
+
+    # Generate route combinations
+    routes = []
+    for src in key_stations:
+        for dst in key_stations:
+            if src != dst:
+                routes.append((src, dst))
 
     all_trains = []
 
-    for src, dst, direction in routes:
+    print(f"[Central Railway] Scraping {len(routes)} route combinations...")
+
+    for src, dst in routes:
         url = f"https://www.mumbailifeline.com/timetable.php?sel_route=central&sfrom={src}&sto={dst}&time1=04:00+AM&time2=11:59+PM&Submit=Submit"
 
         try:
@@ -232,16 +239,21 @@ def scrape_harbour_line():
     """Scrape Harbour Line trains from mumbailifeline.com"""
     print("\n[Harbour Line] Scraping from mumbailifeline.com...")
 
-    routes = [
-        ("Mumbai_CST", "Panvel", "DOWN"),
-        ("Panvel", "Mumbai_CST", "UP"),
-        ("Mumbai_CST", "Vashi", "DOWN"),
-        ("Vashi", "Mumbai_CST", "UP"),
-    ]
+    # Key stations for Harbour Line (proper case for mumbailifeline)
+    key_stations = ["Mumbai_CST", "Kurla", "Vashi", "Belapur", "Panvel"]
+
+    # Generate route combinations
+    routes = []
+    for src in key_stations:
+        for dst in key_stations:
+            if src != dst:
+                routes.append((src, dst))
 
     all_trains = []
 
-    for src, dst, direction in routes:
+    print(f"[Harbour Line] Scraping {len(routes)} route combinations...")
+
+    for src, dst in routes:
         url = f"https://www.mumbailifeline.com/timetable.php?sel_route=harbour&sfrom={src}&sto={dst}&time1=04:00+AM&time2=11:59+PM&Submit=Submit"
 
         try:

@@ -5,8 +5,6 @@ from google_sheets_reviews import (
     get_reviews_for_subject as get_reviews_for,
     get_review_summary_sheets as get_review_summary,
     get_all_reviews_from_sheets,
-    get_all_reviews_combined,
-    get_scraped_reviews,
     check_sheets_connection
 )
 
@@ -365,7 +363,6 @@ with review_col:
     st.markdown('<p class="fun-header">◈ Fresh Gossip</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
-    scraped_reviews = get_scraped_reviews()
 
     if user_reviews:
         sorted_reviews = sorted(user_reviews, key=lambda x: x.get('timestamp', ''), reverse=True)[:5]
@@ -387,22 +384,10 @@ with review_col:
         </div>
         """, unsafe_allow_html=True)
 
-    # Stats with clear explanation
-    st.markdown("---")
-    st.markdown('<p class="fun-header">◈ Data Sources</p>', unsafe_allow_html=True)
-
-    col1, col2 = st.columns(2)
-    with col1:
-        st.metric("From Users", len(user_reviews), help="Reviews submitted by app users")
-    with col2:
-        st.metric("From Web", len(scraped_reviews), help="Scraped from Reddit, Play Store, News")
-
-    st.caption(f"◇ {len(scraped_reviews)} reviews scraped from Reddit, Play Store & News")
-    st.caption("◇ Ask *'Reviews for Andheri'* to see them!")
-
     # Connection status
+    st.markdown("---")
     connection = check_sheets_connection()
     if connection['connected']:
-        st.caption("⟳ Synced to Google Sheets")
+        st.caption("⟳ Synced to cloud")
     else:
-        st.caption("◈ Local storage mode")
+        st.caption("◈ Local mode")

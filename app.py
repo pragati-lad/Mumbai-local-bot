@@ -306,20 +306,21 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "Hey! Welcome to Mumbai Local\n\n"
+                    "Welcome to Mumbai Local!\n\n"
                     "I can help you with train timings, routes & more.\n\n"
                     "**Try asking:**\n"
-                    "- Andheri to Churchgate\n"
-                    "- AC trains on Western line\n"
-                    "- Reviews for Dadar\n"
-                    "- Monthly pass price"
+                    "• Andheri to Churchgate\n"
+                    "• AC trains on Western line\n"
+                    "• Reviews for Dadar\n"
+                    "• Monthly pass price"
                 )
             }
         )
 
     # -------- Chat History --------
     for msg in st.session_state.messages:
-        with st.chat_message(msg["role"]):
+        avatar = "🚃" if msg["role"] == "assistant" else "👤"
+        with st.chat_message(msg["role"], avatar=avatar):
             st.markdown(msg["content"])
 
     # -------- Chat Input --------
@@ -338,7 +339,7 @@ with main_col:
             {"role": "user", "content": user_input}
         )
 
-        with st.chat_message("user"):
+        with st.chat_message("user", avatar="👤"):
             st.markdown(user_input)
 
         # Check if asking for reviews
@@ -363,7 +364,7 @@ with main_col:
                         response += review_summary
                     break
 
-        with st.chat_message("assistant"):
+        with st.chat_message("assistant", avatar="🚃"):
             st.markdown(response)
 
         st.session_state.messages.append(

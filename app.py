@@ -102,111 +102,132 @@ def get_related_suggestions(query):
 
 # ---------------- Page Config ----------------
 st.set_page_config(
-    page_title="Mumbai Local Guru",
-    page_icon="🚃",
+    page_title="Mumbai Local",
+    page_icon="🚊",
     layout="wide"
 )
 
-# ---------------- CSS - Mumbai Style ----------------
+# ---------------- CSS - Mumbai Local Train Theme ----------------
+# Colors inspired by: Blue (AC coaches), Yellow (first class stripe), Maroon (first class)
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
         .stApp {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(180deg, #0a0a0f 0%, #111827 100%);
         }
 
         .main-title {
-            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.5rem;
+            color: #ffffff;
+            font-size: 2.2rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .title-accent {
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            color: #a0a0a0;
+            color: #6b7280;
             text-align: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
             margin-bottom: 1.5rem;
         }
 
+        .line-indicator {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin: 0 2px;
+        }
+        .western { background: #3b82f6; color: white; }
+        .central { background: #ef4444; color: white; }
+        .harbour { background: #22c55e; color: white; }
+
         .stButton > button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-            border: none !important;
-            color: white !important;
-            border-radius: 25px;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.85rem;
+            background: #1f2937 !important;
+            border: 1px solid #374151 !important;
+            color: #e5e7eb !important;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.2s ease;
         }
 
         .stButton > button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            background: #374151 !important;
+            border-color: #4b5563 !important;
         }
 
         .review-card {
-            background: linear-gradient(135deg, #2d2d44 0%, #1a1a2e 100%);
-            padding: 15px;
-            border-radius: 15px;
-            margin: 10px 0;
-            border-left: 4px solid #667eea;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background: #1f2937;
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin: 8px 0;
+            border-left: 3px solid #3b82f6;
         }
 
         .review-card b {
-            color: #feca57;
+            color: #f9fafb;
+            font-weight: 600;
         }
 
         .review-card small {
-            color: #b0b0b0;
+            color: #9ca3af;
         }
 
-        .stat-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .fun-header {
-            color: #48dbfb;
-            font-size: 1.3rem;
+        .section-header {
+            color: #e5e7eb;
+            font-size: 1rem;
             font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
         /* Chat styling */
         .stChatMessage {
-            background: rgba(255,255,255,0.05) !important;
-            border-radius: 15px !important;
+            background: #1f2937 !important;
+            border-radius: 12px !important;
         }
 
         div[data-testid="stMarkdownContainer"] p {
-            color: #e0e0e0;
+            color: #e5e7eb;
         }
 
         .stTextInput > div > div > input {
-            background: rgba(255,255,255,0.1) !important;
-            border: 1px solid rgba(255,255,255,0.2) !important;
-            border-radius: 25px !important;
+            background: #1f2937 !important;
+            border: 1px solid #374151 !important;
+            border-radius: 10px !important;
             color: white !important;
         }
 
         .stSelectbox > div > div {
-            background: rgba(255,255,255,0.1) !important;
-            border-radius: 10px !important;
+            background: #1f2937 !important;
+            border-radius: 8px !important;
         }
 
-        .stSlider > div > div {
-            background: linear-gradient(90deg, #667eea, #764ba2) !important;
+        .stTextArea textarea {
+            background: #1f2937 !important;
+            border: 1px solid #374151 !important;
+            color: white !important;
         }
+
+        .stars {
+            color: #fbbf24;
+        }
+
+        /* Train line colors for visual hints */
+        .wr-hint { color: #3b82f6; }
+        .cr-hint { color: #ef4444; }
+        .hr-hint { color: #22c55e; }
     </style>
     """,
     unsafe_allow_html=True
@@ -219,9 +240,13 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">⚡ Mumbai Local Guru</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="subtitle">Your ultimate guide to surviving Mumbai locals! ✨</p>', unsafe_allow_html=True)
-    st.caption("7,500+ trains ◆ Western • Central • Harbour ◆ AC & Non-AC")
+    st.markdown('<h1 class="main-title">Mumbai <span class="title-accent">Local</span></h1>', unsafe_allow_html=True)
+    st.markdown('''<p class="subtitle">
+        <span class="line-indicator western">Western</span>
+        <span class="line-indicator central">Central</span>
+        <span class="line-indicator harbour">Harbour</span>
+        · 7,500+ trains
+    </p>''', unsafe_allow_html=True)
 
     # ---------------- Session State ----------------
     if "messages" not in st.session_state:
@@ -236,14 +261,12 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "Hey! ✦ I'm your **Mumbai Local Guru**!\n\n"
-                    "Got **7,500+ trains** data — Western, Central, Harbour — everything!\n\n"
-                    "Ask me about:\n"
-                    "› **Train times**: *\"Andheri to Churchgate\"*\n"
-                    "› **AC Locals**: *\"AC trains on Western line\"*\n"
-                    "› **Station gossip**: *\"Reviews for Dadar\"*\n"
-                    "› **Info**: *\"Monthly pass price\"*\n\n"
-                    "Let's roll! ⚡"
+                    "**Welcome!** I can help you with Mumbai local trains.\n\n"
+                    "Try asking:\n"
+                    "→ *Andheri to Churchgate*\n"
+                    "→ *AC trains on Western line*\n"
+                    "→ *Reviews for Dadar*\n"
+                    "→ *Monthly pass price*"
                 )
             }
         )
@@ -254,10 +277,10 @@ with main_col:
             st.markdown(msg["content"])
 
     # -------- Chat Input --------
-    user_input = st.chat_input("Where do you wanna go? ↗")
+    user_input = st.chat_input("Search trains, stations, routes...")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="fun-header">◈ Quick picks for you...</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Quick search</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -278,12 +301,12 @@ with main_col:
                 if station.lower() in user_input.lower():
                     review_summary = get_review_summary(station)
                     if review_summary:
-                        response = f"◉ **{station} Station — The Tea**\n" + review_summary
+                        response = f"**{station} Station**\n" + review_summary
                     else:
-                        response = f"No gossip about {station} yet! Be the first to spill! →"
+                        response = f"No reviews for {station} yet. Be the first to add one!"
                     break
             else:
-                response = "Which station? Try: *\"Reviews for Andheri\"*"
+                response = "Which station? Try: *Reviews for Andheri*"
         else:
             response = chatbot_response(user_input)
 
@@ -309,17 +332,17 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="fun-header">✦ Spill the Tea!</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Add Review</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
         review_category = st.selectbox(
-            "What's this about?",
+            "Category",
             ["Station", "Route", "AC Train", "General"]
         )
 
         if review_category == "Station":
-            review_subject = st.selectbox("Pick a station", STATIONS)
+            review_subject = st.selectbox("Station", STATIONS)
         elif review_category == "Route":
             col1, col2 = st.columns(2)
             with col1:
@@ -329,23 +352,23 @@ with review_col:
             review_subject = f"{from_station} to {to_station}"
         elif review_category == "AC Train":
             review_subject = st.selectbox(
-                "Which line?",
+                "Line",
                 ["AC Western Line", "AC Central Line", "AC Harbour Line"]
             )
         else:
-            review_subject = st.text_input("Topic", placeholder="e.g., Peak hour chaos")
+            review_subject = st.text_input("Topic", placeholder="e.g., Peak hour experience")
 
-        review_rating = st.slider("Your rating", 1, 5, 4, format="%d ⭐")
+        review_rating = st.slider("Rating", 1, 5, 4)
 
         review_comment = st.text_area(
-            "Your experience",
-            placeholder="Tell us about the crowd, cleanliness, timing...",
+            "Your review",
+            placeholder="Share your experience...",
             max_chars=500
         )
 
-        review_name = st.text_input("Name (optional)", placeholder="Stay anonymous if you want")
+        review_name = st.text_input("Name", placeholder="Anonymous")
 
-        submitted = st.form_submit_button("Drop It! ↗", use_container_width=True)
+        submitted = st.form_submit_button("Submit", use_container_width=True)
 
         if submitted and review_comment:
             add_user_review(
@@ -355,12 +378,12 @@ with review_col:
                 comment=review_comment,
                 username=review_name if review_name else "Anonymous"
             )
-            st.success("✓ Thanks for the tea! Review added!")
+            st.success("Review added!")
             st.rerun()
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="fun-header">◈ Fresh Gossip</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Recent Reviews</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
 
@@ -371,23 +394,18 @@ with review_col:
             stars = "★" * review.get("rating", 0) + "☆" * (5 - review.get("rating", 0))
             st.markdown(f"""
             <div class="review-card">
-                <b>{review.get('subject', 'Unknown')}</b> <span style="color: #feca57;">{stars}</span><br>
+                <b>{review.get('subject', 'Unknown')}</b> <span class="stars">{stars}</span><br>
                 <small>{review.get('comment', '')[:150]}</small><br>
-                <small style="color: #888;">— {review.get('username', 'Anonymous')}</small>
+                <small>— {review.get('username', 'Anonymous')}</small>
             </div>
             """, unsafe_allow_html=True)
     else:
-        st.markdown("""
-        <div class="review-card" style="text-align: center;">
-            <small>No user reviews yet!</small><br>
-            <small style="color: #667eea;">↑ Be the first to drop one ↑</small>
-        </div>
-        """, unsafe_allow_html=True)
+        st.caption("No reviews yet. Be the first!")
 
     # Connection status
     st.markdown("---")
     connection = check_sheets_connection()
     if connection['connected']:
-        st.caption("⟳ Synced to cloud")
+        st.caption("☁ Cloud synced")
     else:
-        st.caption("◈ Local mode")
+        st.caption("◇ Local mode")

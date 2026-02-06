@@ -107,127 +107,160 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS - Mumbai Local Train Theme ----------------
-# Colors inspired by: Blue (AC coaches), Yellow (first class stripe), Maroon (first class)
+# ---------------- CSS - Bubbly Mumbai Theme ----------------
+# Warm faded tones: sunset orange, sea blue, cream, soft corals
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
 
         .stApp {
-            background: linear-gradient(180deg, #0a0a0f 0%, #111827 100%);
+            background: linear-gradient(135deg,
+                #fff5eb 0%,
+                #ffecd2 25%,
+                #fcb69f 50%,
+                #ffecd2 75%,
+                #d4f1f9 100%);
+            background-attachment: fixed;
+            font-family: 'Nunito', sans-serif;
         }
 
         .main-title {
-            color: #ffffff;
-            font-size: 2.2rem;
+            color: #2d3436;
+            font-size: 2.4rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 0;
-            letter-spacing: -0.5px;
+            margin-bottom: 5px;
         }
 
         .title-accent {
-            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+            background: linear-gradient(90deg, #e17055, #fdcb6e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            color: #6b7280;
+            color: #636e72;
             text-align: center;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
         }
 
-        .line-indicator {
+        .line-badge {
             display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin: 0 2px;
+            margin: 0 3px;
         }
-        .western { background: #3b82f6; color: white; }
-        .central { background: #ef4444; color: white; }
-        .harbour { background: #22c55e; color: white; }
+        .western { background: rgba(116, 185, 255, 0.3); color: #0984e3; }
+        .central { background: rgba(255, 118, 117, 0.3); color: #d63031; }
+        .harbour { background: rgba(85, 239, 196, 0.3); color: #00b894; }
 
         .stButton > button {
-            background: #1f2937 !important;
-            border: 1px solid #374151 !important;
-            color: #e5e7eb !important;
-            border-radius: 8px;
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
+            background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%) !important;
+            border: none !important;
+            color: white !important;
+            border-radius: 25px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(253, 121, 168, 0.3);
         }
 
         .stButton > button:hover {
-            background: #374151 !important;
-            border-color: #4b5563 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(253, 121, 168, 0.4);
         }
 
         .review-card {
-            background: #1f2937;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
             padding: 14px 16px;
-            border-radius: 10px;
-            margin: 8px 0;
-            border-left: 3px solid #3b82f6;
+            border-radius: 16px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
         .review-card b {
-            color: #f9fafb;
-            font-weight: 600;
+            color: #2d3436;
+            font-weight: 700;
         }
 
         .review-card small {
-            color: #9ca3af;
+            color: #636e72;
         }
 
         .section-header {
-            color: #e5e7eb;
-            font-size: 1rem;
-            font-weight: 600;
+            color: #2d3436;
+            font-size: 1.1rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
         /* Chat styling */
         .stChatMessage {
-            background: #1f2937 !important;
-            border-radius: 12px !important;
+            background: rgba(255, 255, 255, 0.6) !important;
+            backdrop-filter: blur(10px) !important;
+            border-radius: 16px !important;
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
         }
 
         div[data-testid="stMarkdownContainer"] p {
-            color: #e5e7eb;
+            color: #2d3436;
+        }
+
+        .stChatInput > div {
+            background: rgba(255, 255, 255, 0.8) !important;
+            border-radius: 25px !important;
+            border: 1px solid rgba(0,0,0,0.1) !important;
         }
 
         .stTextInput > div > div > input {
-            background: #1f2937 !important;
-            border: 1px solid #374151 !important;
-            border-radius: 10px !important;
-            color: white !important;
+            background: rgba(255, 255, 255, 0.8) !important;
+            border: 1px solid rgba(0,0,0,0.1) !important;
+            border-radius: 12px !important;
+            color: #2d3436 !important;
         }
 
         .stSelectbox > div > div {
-            background: #1f2937 !important;
-            border-radius: 8px !important;
+            background: rgba(255, 255, 255, 0.8) !important;
+            border-radius: 12px !important;
         }
 
         .stTextArea textarea {
-            background: #1f2937 !important;
-            border: 1px solid #374151 !important;
-            color: white !important;
+            background: rgba(255, 255, 255, 0.8) !important;
+            border: 1px solid rgba(0,0,0,0.1) !important;
+            border-radius: 12px !important;
+            color: #2d3436 !important;
+        }
+
+        .stSlider > div > div > div {
+            background: linear-gradient(90deg, #fd79a8, #fdcb6e) !important;
         }
 
         .stars {
-            color: #fbbf24;
+            color: #fdcb6e;
         }
 
-        /* Train line colors for visual hints */
-        .wr-hint { color: #3b82f6; }
-        .cr-hint { color: #ef4444; }
-        .hr-hint { color: #22c55e; }
+        /* Glass card effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Form styling */
+        .stForm {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 10px;
+        }
     </style>
     """,
     unsafe_allow_html=True
@@ -240,12 +273,12 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">Mumbai <span class="title-accent">Local</span></h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">Mumbai <span class="title-accent">Local</span> 🚊</h1>', unsafe_allow_html=True)
     st.markdown('''<p class="subtitle">
-        <span class="line-indicator western">Western</span>
-        <span class="line-indicator central">Central</span>
-        <span class="line-indicator harbour">Harbour</span>
-        · 7,500+ trains
+        <span class="line-badge western">Western</span>
+        <span class="line-badge central">Central</span>
+        <span class="line-badge harbour">Harbour</span>
+        <br>7,500+ real train schedules
     </p>''', unsafe_allow_html=True)
 
     # ---------------- Session State ----------------
@@ -261,12 +294,13 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "**Welcome!** I can help you with Mumbai local trains.\n\n"
-                    "Try asking:\n"
-                    "→ *Andheri to Churchgate*\n"
-                    "→ *AC trains on Western line*\n"
-                    "→ *Reviews for Dadar*\n"
-                    "→ *Monthly pass price*"
+                    "Hey there! 👋 Welcome to Mumbai Local!\n\n"
+                    "I can help you with train timings, routes & more.\n\n"
+                    "**Try asking:**\n"
+                    "• Andheri to Churchgate\n"
+                    "• AC trains on Western line\n"
+                    "• Reviews for Dadar station\n"
+                    "• Monthly pass price"
                 )
             }
         )
@@ -277,10 +311,10 @@ with main_col:
             st.markdown(msg["content"])
 
     # -------- Chat Input --------
-    user_input = st.chat_input("Search trains, stations, routes...")
+    user_input = st.chat_input("Where are you headed? 🚃")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="section-header">Quick search</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">✨ Popular searches</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -301,9 +335,9 @@ with main_col:
                 if station.lower() in user_input.lower():
                     review_summary = get_review_summary(station)
                     if review_summary:
-                        response = f"**{station} Station**\n" + review_summary
+                        response = f"📍 **{station} Station**\n" + review_summary
                     else:
-                        response = f"No reviews for {station} yet. Be the first to add one!"
+                        response = f"No reviews for {station} yet! Be the first to share your experience 💬"
                     break
             else:
                 response = "Which station? Try: *Reviews for Andheri*"
@@ -332,7 +366,7 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="section-header">Add Review</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">💬 Share your experience</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
@@ -368,7 +402,7 @@ with review_col:
 
         review_name = st.text_input("Name", placeholder="Anonymous")
 
-        submitted = st.form_submit_button("Submit", use_container_width=True)
+        submitted = st.form_submit_button("Submit ✨", use_container_width=True)
 
         if submitted and review_comment:
             add_user_review(
@@ -378,12 +412,12 @@ with review_col:
                 comment=review_comment,
                 username=review_name if review_name else "Anonymous"
             )
-            st.success("Review added!")
+            st.success("Thanks for sharing! 🎉")
             st.rerun()
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="section-header">Recent Reviews</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">🔥 Recent reviews</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
 
@@ -400,12 +434,17 @@ with review_col:
             </div>
             """, unsafe_allow_html=True)
     else:
-        st.caption("No reviews yet. Be the first!")
+        st.markdown("""
+        <div class="review-card" style="text-align: center; color: #636e72;">
+            No reviews yet!<br>
+            <small>Be the first to share ☝️</small>
+        </div>
+        """, unsafe_allow_html=True)
 
     # Connection status
     st.markdown("---")
     connection = check_sheets_connection()
     if connection['connected']:
-        st.caption("☁ Cloud synced")
+        st.caption("☁️ Synced to cloud")
     else:
-        st.caption("◇ Local mode")
+        st.caption("💾 Local mode")

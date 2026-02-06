@@ -107,31 +107,37 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS - Clean Mumbai Theme ----------------
+# ---------------- CSS - Cool Dark Theme ----------------
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-        /* Clean white background */
-        .stApp, [data-testid="stAppViewContainer"], .main, .block-container {
-            background: #fafafa !important;
+        /* Dark gradient background */
+        .stApp, [data-testid="stAppViewContainer"] {
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #0f0f1a 100%) !important;
+        }
+
+        .main, .block-container {
+            background: transparent !important;
         }
 
         * {
-            font-family: 'DM Sans', sans-serif !important;
+            font-family: 'Space Grotesk', sans-serif !important;
         }
 
         .main-title {
-            color: #1a1a1a !important;
-            font-size: 1.75rem !important;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.2rem !important;
             font-weight: 700 !important;
             text-align: center;
             margin-bottom: 8px;
         }
 
         .subtitle {
-            color: #666 !important;
+            color: #888 !important;
             text-align: center;
             font-size: 0.9rem !important;
             margin-bottom: 1.5rem;
@@ -139,122 +145,130 @@ st.markdown(
 
         .line-badge {
             display: inline-block;
-            padding: 4px 10px;
-            font-size: 0.7rem;
-            margin: 0 3px;
-            border-radius: 4px;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            margin: 0 4px;
+            border-radius: 20px;
             font-weight: 600;
             color: #fff !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .western { background: #3b82f6 !important; }
-        .central { background: #ef4444 !important; }
-        .harbour { background: #22c55e !important; }
+        .western { background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important; }
+        .central { background: linear-gradient(135deg, #ef4444, #b91c1c) !important; }
+        .harbour { background: linear-gradient(135deg, #22c55e, #15803d) !important; }
 
-        /* Clean buttons */
+        /* Gradient buttons */
         .stButton > button {
-            background: #fff !important;
-            border: 1px solid #e5e5e5 !important;
-            color: #333 !important;
-            border-radius: 8px !important;
-            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #1a1a2e, #2d2d44) !important;
+            border: 1px solid #3d3d5c !important;
+            color: #e0e0e0 !important;
+            border-radius: 10px !important;
+            padding: 0.5rem 1.1rem;
             font-size: 0.85rem !important;
             font-weight: 500 !important;
-            transition: all 0.15s ease;
+            transition: all 0.2s ease;
         }
 
         .stButton > button:hover {
-            background: #f5f5f5 !important;
-            border-color: #ccc !important;
+            background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+            border-color: #7c3aed !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
         }
 
-        /* Cards */
+        /* Glass cards */
         .review-card {
-            background: #fff !important;
-            padding: 12px 14px;
-            margin: 8px 0;
-            border: 1px solid #eee;
-            border-radius: 8px;
+            background: rgba(255,255,255,0.03) !important;
+            backdrop-filter: blur(10px);
+            padding: 14px 16px;
+            margin: 10px 0;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
         }
 
         .review-card b {
-            color: #1a1a1a !important;
+            color: #f0f0f0 !important;
             font-weight: 600;
         }
 
         .review-card small {
-            color: #666 !important;
+            color: #888 !important;
         }
 
         .section-header {
-            color: #1a1a1a !important;
-            font-size: 0.95rem !important;
+            color: #00d4ff !important;
+            font-size: 1rem !important;
             font-weight: 600;
             margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         /* Chat messages */
         .stChatMessage, [data-testid="stChatMessage"] {
-            background: #fff !important;
-            border: 1px solid #eee !important;
-            border-radius: 12px !important;
+            background: rgba(255,255,255,0.03) !important;
+            border: 1px solid rgba(255,255,255,0.08) !important;
+            border-radius: 14px !important;
         }
 
         /* Text */
-        p, span, div, label {
-            color: #333 !important;
+        p, span, div {
+            color: #d0d0d0 !important;
+        }
+
+        label {
+            color: #888 !important;
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
         }
 
         strong, b {
-            color: #1a1a1a !important;
+            color: #f0f0f0 !important;
         }
 
         /* Inputs */
         .stChatInput > div, [data-testid="stChatInput"] > div {
-            background: #fff !important;
-            border: 1px solid #e5e5e5 !important;
-            border-radius: 12px !important;
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            border-radius: 14px !important;
         }
 
         input, textarea, select {
-            background: #fff !important;
-            border: 1px solid #e5e5e5 !important;
-            color: #333 !important;
-            border-radius: 8px !important;
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            color: #e0e0e0 !important;
+            border-radius: 10px !important;
         }
 
         .stTextInput > div > div > input,
         .stSelectbox > div > div,
         .stTextArea textarea {
-            background: #fff !important;
-            border: 1px solid #e5e5e5 !important;
-            border-radius: 8px !important;
-            color: #333 !important;
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            border-radius: 10px !important;
+            color: #e0e0e0 !important;
         }
 
         input::placeholder, textarea::placeholder {
-            color: #999 !important;
+            color: #666 !important;
         }
 
-        label {
-            font-size: 0.85rem !important;
-            font-weight: 500 !important;
-            color: #555 !important;
-        }
-
-        .stars { color: #f59e0b !important; }
+        .stars { color: #fbbf24 !important; }
 
         hr {
             border: none !important;
-            border-top: 1px solid #eee !important;
+            border-top: 1px solid rgba(255,255,255,0.08) !important;
             margin: 1rem 0 !important;
         }
 
         .stSlider > div > div > div {
-            background: #3b82f6 !important;
+            background: linear-gradient(90deg, #7c3aed, #00d4ff) !important;
         }
 
         .stCaption, .stCaption p {
-            color: #999 !important;
+            color: #666 !important;
             font-size: 0.8rem !important;
         }
 
@@ -271,12 +285,12 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">🚃 Mumbai Local</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">◈ Mumbai Local</h1>', unsafe_allow_html=True)
     st.markdown('''<p class="subtitle">
-        <span class="line-badge western">Western</span>
-        <span class="line-badge central">Central</span>
-        <span class="line-badge harbour">Harbour</span>
-        &nbsp;·&nbsp; 7,500+ trains
+        <span class="line-badge western">⟡ Western</span>
+        <span class="line-badge central">⟡ Central</span>
+        <span class="line-badge harbour">⟡ Harbour</span>
+        <br>✧ 7,500+ real train schedules
     </p>''', unsafe_allow_html=True)
 
     # ---------------- Session State ----------------
@@ -292,12 +306,13 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "Hi! I can help you with Mumbai local trains.\n\n"
-                    "**Try:**\n"
-                    "• Andheri to Churchgate\n"
-                    "• AC trains on Western line\n"
-                    "• Reviews for Dadar\n"
-                    "• Monthly pass price"
+                    "Hey! ✦ Welcome to Mumbai Local\n\n"
+                    "I can help you with train timings, routes & more.\n\n"
+                    "**Try asking:**\n"
+                    "↳ Andheri to Churchgate\n"
+                    "↳ AC trains on Western line\n"
+                    "↳ Reviews for Dadar\n"
+                    "↳ Monthly pass price"
                 )
             }
         )
@@ -308,10 +323,10 @@ with main_col:
             st.markdown(msg["content"])
 
     # -------- Chat Input --------
-    user_input = st.chat_input("Search trains, routes...")
+    user_input = st.chat_input("⌕ Search trains, routes...")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="section-header">Quick Search</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">◈ Quick Search</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -332,9 +347,9 @@ with main_col:
                 if station.lower() in user_input.lower():
                     review_summary = get_review_summary(station)
                     if review_summary:
-                        response = f"**{station} Station**\n" + review_summary
+                        response = f"◈ **{station} Station**\n" + review_summary
                     else:
-                        response = f"No reviews for {station} yet. Be the first to write one!"
+                        response = f"✧ No reviews for {station} yet. Be the first!"
                     break
             else:
                 response = "Which station? Try: *Reviews for Andheri*"
@@ -363,7 +378,7 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="section-header">Write a Review</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">✦ Write a Review</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
@@ -414,7 +429,7 @@ with review_col:
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="section-header">Recent Reviews</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">◇ Recent Reviews</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
 

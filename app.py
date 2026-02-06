@@ -285,12 +285,12 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">◈ Mumbai Local</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">Mumbai Local</h1>', unsafe_allow_html=True)
     st.markdown('''<p class="subtitle">
-        <span class="line-badge western">⟡ Western</span>
-        <span class="line-badge central">⟡ Central</span>
-        <span class="line-badge harbour">⟡ Harbour</span>
-        <br>✧ 7,500+ real train schedules
+        <span class="line-badge western">Western</span>
+        <span class="line-badge central">Central</span>
+        <span class="line-badge harbour">Harbour</span>
+        <br>7,500+ real train schedules
     </p>''', unsafe_allow_html=True)
 
     # ---------------- Session State ----------------
@@ -306,13 +306,13 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "Hey! ✦ Welcome to Mumbai Local\n\n"
+                    "Hey! Welcome to Mumbai Local\n\n"
                     "I can help you with train timings, routes & more.\n\n"
                     "**Try asking:**\n"
-                    "↳ Andheri to Churchgate\n"
-                    "↳ AC trains on Western line\n"
-                    "↳ Reviews for Dadar\n"
-                    "↳ Monthly pass price"
+                    "- Andheri to Churchgate\n"
+                    "- AC trains on Western line\n"
+                    "- Reviews for Dadar\n"
+                    "- Monthly pass price"
                 )
             }
         )
@@ -323,10 +323,10 @@ with main_col:
             st.markdown(msg["content"])
 
     # -------- Chat Input --------
-    user_input = st.chat_input("⌕ Search trains, routes...")
+    user_input = st.chat_input("Search trains, routes...")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="section-header">◈ Quick Search</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Quick Search</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -347,9 +347,9 @@ with main_col:
                 if station.lower() in user_input.lower():
                     review_summary = get_review_summary(station)
                     if review_summary:
-                        response = f"◈ **{station} Station**\n" + review_summary
+                        response = f"**{station} Station**\n" + review_summary
                     else:
-                        response = f"✧ No reviews for {station} yet. Be the first!"
+                        response = f"No reviews for {station} yet. Be the first!"
                     break
             else:
                 response = "Which station? Try: *Reviews for Andheri*"
@@ -378,7 +378,7 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="section-header">✦ Write a Review</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Write a Review</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
@@ -429,7 +429,7 @@ with review_col:
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="section-header">◇ Recent Reviews</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Recent Reviews</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
 

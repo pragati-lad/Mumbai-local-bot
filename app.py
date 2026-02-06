@@ -107,15 +107,15 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS - Modern Mumbai Theme ----------------
+# ---------------- CSS - Vintage Indian Matchbox Theme ----------------
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Work+Sans:wght@400;500;600;700&display=swap');
 
-        /* Monsoon sky gradient - subtle Mumbai evening */
+        /* Cream paper background */
         .stApp, [data-testid="stAppViewContainer"] {
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%) !important;
+            background: #f4efe4 !important;
         }
 
         .main, .block-container {
@@ -123,160 +123,177 @@ st.markdown(
         }
 
         * {
-            font-family: 'Inter', sans-serif !important;
+            font-family: 'Work Sans', sans-serif !important;
         }
 
         .main-title {
-            color: #ffffff !important;
-            font-size: 2rem !important;
-            font-weight: 700 !important;
+            font-family: 'Abril Fatface', serif !important;
+            color: #c41e3a !important;
+            font-size: 2.8rem !important;
+            font-weight: 400 !important;
             text-align: center;
             margin-bottom: 5px;
-        }
-
-        .title-highlight {
-            color: #4fc3f7 !important;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .subtitle {
-            color: #94a3b8 !important;
+            color: #5a4a3a !important;
             text-align: center;
-            font-size: 0.9rem !important;
+            font-size: 0.95rem !important;
             margin-bottom: 1rem;
-            font-weight: 400;
+            font-weight: 500;
         }
 
-        /* Train line colors - authentic Mumbai local */
+        /* Train line badges - matchbox style */
         .line-badge {
             display: inline-block;
-            padding: 4px 10px;
-            font-size: 0.75rem;
-            margin: 0 3px;
-            border-radius: 4px;
-            font-weight: 600;
-            color: #fff !important;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            margin: 0 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid;
         }
-        .western { background: #2563eb !important; }
-        .central { background: #dc2626 !important; }
-        .harbour { background: #16a34a !important; }
+        .western {
+            background: #1a4b8c !important;
+            color: #f4efe4 !important;
+            border-color: #0f2d54 !important;
+        }
+        .central {
+            background: #c41e3a !important;
+            color: #f4efe4 !important;
+            border-color: #8b1528 !important;
+        }
+        .harbour {
+            background: #2d5a27 !important;
+            color: #f4efe4 !important;
+            border-color: #1a3517 !important;
+        }
 
-        /* Buttons - clean modern */
+        /* Buttons - vintage matchbox style */
         .stButton > button {
-            background: rgba(255,255,255,0.1) !important;
-            border: 1px solid rgba(255,255,255,0.2) !important;
-            color: #e2e8f0 !important;
-            border-radius: 8px !important;
-            padding: 0.5rem 1rem;
+            background: #d4a017 !important;
+            border: 2px solid #8b6914 !important;
+            color: #1a1a1a !important;
+            border-radius: 0 !important;
+            padding: 0.5rem 1.2rem;
             font-size: 0.85rem !important;
-            font-weight: 500 !important;
+            font-weight: 700 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: all 0.2s ease;
         }
 
         .stButton > button:hover {
-            background: rgba(79, 195, 247, 0.2) !important;
-            border-color: #4fc3f7 !important;
+            background: #c41e3a !important;
+            border-color: #8b1528 !important;
+            color: #f4efe4 !important;
         }
 
-        /* Cards - glass effect */
+        /* Cards - vintage label style */
         .review-card {
-            background: rgba(255,255,255,0.05) !important;
-            backdrop-filter: blur(10px);
+            background: #fff9e6 !important;
             padding: 14px 16px;
             margin: 10px 0;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
+            border: 3px solid #c41e3a;
+            box-shadow: 4px 4px 0px #5a4a3a;
         }
 
         .review-card b {
-            color: #f1f5f9 !important;
-            font-size: 0.95rem;
-            font-weight: 600;
+            color: #c41e3a !important;
+            font-size: 1rem;
+            font-weight: 700;
         }
 
         .review-card small {
-            color: #94a3b8 !important;
+            color: #5a4a3a !important;
         }
 
         .section-header {
-            color: #4fc3f7 !important;
-            font-size: 1rem !important;
-            font-weight: 600;
+            font-family: 'Abril Fatface', serif !important;
+            color: #c41e3a !important;
+            font-size: 1.3rem !important;
+            font-weight: 400;
             margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid #d4a017;
+            padding-bottom: 5px;
+            display: inline-block;
         }
 
         /* Chat messages */
         .stChatMessage, [data-testid="stChatMessage"] {
-            background: rgba(255,255,255,0.05) !important;
-            border-radius: 10px !important;
-            border: 1px solid rgba(255,255,255,0.1) !important;
+            background: #fff9e6 !important;
+            border: 2px solid #5a4a3a !important;
+            border-radius: 0 !important;
         }
 
         /* Text colors */
         p, span, div {
-            color: #e2e8f0 !important;
+            color: #3a3a3a !important;
         }
 
         label {
-            color: #94a3b8 !important;
-            font-size: 0.85rem !important;
-            font-weight: 500 !important;
+            color: #5a4a3a !important;
+            font-size: 0.9rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         strong, b {
-            color: #f1f5f9 !important;
+            color: #c41e3a !important;
         }
 
         /* Input fields */
         .stChatInput > div, [data-testid="stChatInput"] > div {
-            background: rgba(255,255,255,0.05) !important;
-            border: 1px solid rgba(255,255,255,0.15) !important;
-            border-radius: 10px !important;
+            background: #fff9e6 !important;
+            border: 2px solid #5a4a3a !important;
+            border-radius: 0 !important;
         }
 
         .stChatInput input, .stChatInput textarea {
-            color: #e2e8f0 !important;
+            color: #3a3a3a !important;
         }
 
         input, textarea, select {
-            background: rgba(255,255,255,0.05) !important;
-            border: 1px solid rgba(255,255,255,0.15) !important;
-            color: #e2e8f0 !important;
-            border-radius: 8px !important;
+            background: #fff9e6 !important;
+            border: 2px solid #5a4a3a !important;
+            color: #3a3a3a !important;
+            border-radius: 0 !important;
         }
 
         input::placeholder, textarea::placeholder {
-            color: #64748b !important;
+            color: #8a7a6a !important;
         }
 
         .stTextInput > div > div > input,
         .stSelectbox > div > div,
         .stTextArea textarea {
-            background: rgba(255,255,255,0.05) !important;
-            border: 1px solid rgba(255,255,255,0.15) !important;
-            border-radius: 8px !important;
-            color: #e2e8f0 !important;
+            background: #fff9e6 !important;
+            border: 2px solid #5a4a3a !important;
+            border-radius: 0 !important;
+            color: #3a3a3a !important;
         }
 
-        /* Stars */
+        /* Stars - golden yellow */
         .stars {
-            color: #fbbf24 !important;
+            color: #d4a017 !important;
         }
 
         /* Dividers */
         hr {
             border: none !important;
-            border-top: 1px solid rgba(255,255,255,0.1) !important;
+            border-top: 3px solid #c41e3a !important;
             margin: 1rem 0 !important;
         }
 
         /* Slider */
         .stSlider > div > div > div {
-            background: #4fc3f7 !important;
-        }
-
-        /* Selectbox dropdown */
-        [data-baseweb="select"] {
-            background: rgba(255,255,255,0.05) !important;
+            background: #c41e3a !important;
         }
 
         /* Form */
@@ -286,14 +303,15 @@ st.markdown(
 
         /* Caption */
         .stCaption, .stCaption p {
-            color: #64748b !important;
+            color: #8a7a6a !important;
             font-size: 0.8rem !important;
         }
 
         /* Success message */
         .stSuccess {
-            background: rgba(22, 163, 74, 0.2) !important;
-            color: #4ade80 !important;
+            background: #2d5a27 !important;
+            color: #f4efe4 !important;
+            border-radius: 0 !important;
         }
 
         /* Hide streamlit branding */
@@ -312,12 +330,12 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">Mumbai <span class="title-highlight">Local</span></h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">Mumbai Local</h1>', unsafe_allow_html=True)
     st.markdown('''<p class="subtitle">
         <span class="line-badge western">Western</span>
         <span class="line-badge central">Central</span>
         <span class="line-badge harbour">Harbour</span>
-        &nbsp;·&nbsp; 7,500+ trains
+        <br><span style="font-size: 0.85rem;">7,500+ Real Train Schedules</span>
     </p>''', unsafe_allow_html=True)
 
     # ---------------- Session State ----------------

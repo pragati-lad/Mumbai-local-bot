@@ -107,87 +107,84 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS - Bubbly Mumbai Theme ----------------
-# Warm faded tones: sunset orange, sea blue, cream, soft corals
+# ---------------- CSS - Notebook Doodle Theme ----------------
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Nunito:wght@400;600;700&display=swap');
 
         .stApp {
-            background: linear-gradient(135deg,
-                #fff5eb 0%,
-                #ffecd2 25%,
-                #fcb69f 50%,
-                #ffecd2 75%,
-                #d4f1f9 100%);
-            background-attachment: fixed;
+            background-color: #f5f5f0;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
             font-family: 'Nunito', sans-serif;
         }
 
         .main-title {
+            font-family: 'Patrick Hand', cursive;
             color: #2d3436;
-            font-size: 2.4rem;
-            font-weight: 700;
+            font-size: 2.8rem;
+            font-weight: 400;
             text-align: center;
             margin-bottom: 5px;
-        }
-
-        .title-accent {
-            background: linear-gradient(90deg, #e17055, #fdcb6e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
         }
 
         .subtitle {
+            font-family: 'Patrick Hand', cursive;
             color: #636e72;
             text-align: center;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             margin-bottom: 1rem;
         }
 
         .line-badge {
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+            padding: 4px 14px;
+            border-radius: 4px;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin: 0 3px;
+            margin: 0 4px;
+            border: 2px solid;
+            font-family: 'Patrick Hand', cursive;
         }
-        .western { background: rgba(116, 185, 255, 0.3); color: #0984e3; }
-        .central { background: rgba(255, 118, 117, 0.3); color: #d63031; }
-        .harbour { background: rgba(85, 239, 196, 0.3); color: #00b894; }
+        .western { border-color: #0984e3; color: #0984e3; background: transparent; }
+        .central { border-color: #d63031; color: #d63031; background: transparent; }
+        .harbour { border-color: #00b894; color: #00b894; background: transparent; }
 
         .stButton > button {
-            background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%) !important;
-            border: none !important;
-            color: white !important;
-            border-radius: 25px;
+            background: #2d3436 !important;
+            border: 2px solid #2d3436 !important;
+            color: #f5f5f0 !important;
+            border-radius: 8px;
             padding: 0.5rem 1.2rem;
             font-size: 0.85rem;
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(253, 121, 168, 0.3);
+            font-family: 'Patrick Hand', cursive;
+            transition: all 0.2s ease;
         }
 
         .stButton > button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(253, 121, 168, 0.4);
+            background: transparent !important;
+            color: #2d3436 !important;
         }
 
         .review-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
+            background: #fff;
             padding: 14px 16px;
-            border-radius: 16px;
+            border-radius: 4px;
             margin: 10px 0;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 2px solid #2d3436;
+            box-shadow: 4px 4px 0px #2d3436;
         }
 
         .review-card b {
             color: #2d3436;
             font-weight: 700;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.1rem;
         }
 
         .review-card small {
@@ -195,18 +192,21 @@ st.markdown(
         }
 
         .section-header {
+            font-family: 'Patrick Hand', cursive;
             color: #2d3436;
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 400;
             margin-bottom: 0.5rem;
+            border-bottom: 2px dashed #2d3436;
+            padding-bottom: 5px;
         }
 
         /* Chat styling */
         .stChatMessage {
-            background: rgba(255, 255, 255, 0.6) !important;
-            backdrop-filter: blur(10px) !important;
-            border-radius: 16px !important;
-            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+            background: #fff !important;
+            border-radius: 4px !important;
+            border: 2px solid #2d3436 !important;
+            box-shadow: 3px 3px 0px #2d3436 !important;
         }
 
         div[data-testid="stMarkdownContainer"] p {
@@ -218,70 +218,72 @@ st.markdown(
         }
 
         .stChatInput > div {
-            background: rgba(255, 255, 255, 0.9) !important;
-            border-radius: 25px !important;
-            border: 1px solid rgba(0,0,0,0.15) !important;
+            background: #fff !important;
+            border-radius: 8px !important;
+            border: 2px solid #2d3436 !important;
         }
 
         .stChatInput input {
             color: #2d3436 !important;
+            font-family: 'Patrick Hand', cursive !important;
         }
 
         .stTextInput > div > div > input {
-            background: rgba(255, 255, 255, 0.9) !important;
-            border: 1px solid rgba(0,0,0,0.15) !important;
-            border-radius: 12px !important;
+            background: #fff !important;
+            border: 2px solid #2d3436 !important;
+            border-radius: 4px !important;
             color: #2d3436 !important;
         }
 
         .stSelectbox > div > div {
-            background: rgba(255, 255, 255, 0.9) !important;
-            border-radius: 12px !important;
+            background: #fff !important;
+            border-radius: 4px !important;
             color: #2d3436 !important;
+            border: 2px solid #2d3436 !important;
         }
 
         .stSelectbox label, .stTextInput label, .stTextArea label, .stSlider label {
             color: #2d3436 !important;
+            font-family: 'Patrick Hand', cursive !important;
+            font-size: 1.1rem !important;
         }
 
         .stTextArea textarea {
-            background: rgba(255, 255, 255, 0.9) !important;
-            border: 1px solid rgba(0,0,0,0.15) !important;
-            border-radius: 12px !important;
+            background: #fff !important;
+            border: 2px solid #2d3436 !important;
+            border-radius: 4px !important;
             color: #2d3436 !important;
         }
 
-        /* All text elements */
         p, span, label, div {
             color: #2d3436;
         }
 
         .stCaption, .stCaption p {
             color: #636e72 !important;
-        }
-
-        .stSlider > div > div > div {
-            background: linear-gradient(90deg, #fd79a8, #fdcb6e) !important;
+            font-family: 'Patrick Hand', cursive !important;
         }
 
         .stars {
             color: #fdcb6e;
         }
 
-        /* Glass card effect */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+        /* Doodle accents */
+        hr {
+            border: none;
+            border-top: 2px dashed #2d3436;
         }
 
-        /* Form styling */
         .stForm {
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 20px;
+            background: rgba(255,255,255,0.5);
+            border: 2px solid #2d3436;
+            border-radius: 8px;
             padding: 10px;
+        }
+
+        /* Fun icons style */
+        .doodle-icon {
+            font-size: 1.5rem;
         }
     </style>
     """,
@@ -295,12 +297,12 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">Mumbai <span class="title-accent">Local</span> 🚊</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">✎ Mumbai Local</h1>', unsafe_allow_html=True)
     st.markdown('''<p class="subtitle">
         <span class="line-badge western">Western</span>
         <span class="line-badge central">Central</span>
         <span class="line-badge harbour">Harbour</span>
-        <br>7,500+ real train schedules
+        &nbsp;•&nbsp; 7,500+ trains
     </p>''', unsafe_allow_html=True)
 
     # ---------------- Session State ----------------
@@ -316,13 +318,13 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "Hey there! 👋 Welcome to Mumbai Local!\n\n"
+                    "Hey! ✏️ Welcome to Mumbai Local!\n\n"
                     "I can help you with train timings, routes & more.\n\n"
                     "**Try asking:**\n"
-                    "• Andheri to Churchgate\n"
-                    "• AC trains on Western line\n"
-                    "• Reviews for Dadar station\n"
-                    "• Monthly pass price"
+                    "→ Andheri to Churchgate\n"
+                    "→ AC trains on Western line\n"
+                    "→ Reviews for Dadar station\n"
+                    "→ Monthly pass price"
                 )
             }
         )
@@ -333,10 +335,10 @@ with main_col:
             st.markdown(msg["content"])
 
     # -------- Chat Input --------
-    user_input = st.chat_input("Where are you headed? 🚃")
+    user_input = st.chat_input("Where to? ✎")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="section-header">✨ Popular searches</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">☞ Popular searches</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -357,9 +359,9 @@ with main_col:
                 if station.lower() in user_input.lower():
                     review_summary = get_review_summary(station)
                     if review_summary:
-                        response = f"📍 **{station} Station**\n" + review_summary
+                        response = f"✎ **{station} Station**\n" + review_summary
                     else:
-                        response = f"No reviews for {station} yet! Be the first to share your experience 💬"
+                        response = f"No reviews for {station} yet! Be the first to write one →"
                     break
             else:
                 response = "Which station? Try: *Reviews for Andheri*"
@@ -388,7 +390,7 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="section-header">💬 Share your experience</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">✎ Write a review</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
@@ -424,7 +426,7 @@ with review_col:
 
         review_name = st.text_input("Name", placeholder="Anonymous")
 
-        submitted = st.form_submit_button("Submit ✨", use_container_width=True)
+        submitted = st.form_submit_button("Submit →", use_container_width=True)
 
         if submitted and review_comment:
             add_user_review(
@@ -434,12 +436,12 @@ with review_col:
                 comment=review_comment,
                 username=review_name if review_name else "Anonymous"
             )
-            st.success("Thanks for sharing! 🎉")
+            st.success("✓ Review added!")
             st.rerun()
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="section-header">🔥 Recent reviews</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">✐ Recent reviews</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
 
@@ -457,9 +459,9 @@ with review_col:
             """, unsafe_allow_html=True)
     else:
         st.markdown("""
-        <div class="review-card" style="text-align: center; color: #636e72;">
+        <div class="review-card" style="text-align: center;">
             No reviews yet!<br>
-            <small>Be the first to share ☝️</small>
+            <small style="color: #636e72;">↑ Be the first to write one</small>
         </div>
         """, unsafe_allow_html=True)
 
@@ -467,6 +469,6 @@ with review_col:
     st.markdown("---")
     connection = check_sheets_connection()
     if connection['connected']:
-        st.caption("☁️ Synced to cloud")
+        st.caption("⟳ synced")
     else:
-        st.caption("💾 Local mode")
+        st.caption("◇ local")

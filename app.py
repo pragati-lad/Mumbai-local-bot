@@ -210,32 +210,54 @@ st.markdown(
         }
 
         div[data-testid="stMarkdownContainer"] p {
-            color: #2d3436;
+            color: #2d3436 !important;
+        }
+
+        div[data-testid="stMarkdownContainer"] {
+            color: #2d3436 !important;
         }
 
         .stChatInput > div {
-            background: rgba(255, 255, 255, 0.8) !important;
+            background: rgba(255, 255, 255, 0.9) !important;
             border-radius: 25px !important;
-            border: 1px solid rgba(0,0,0,0.1) !important;
+            border: 1px solid rgba(0,0,0,0.15) !important;
+        }
+
+        .stChatInput input {
+            color: #2d3436 !important;
         }
 
         .stTextInput > div > div > input {
-            background: rgba(255, 255, 255, 0.8) !important;
-            border: 1px solid rgba(0,0,0,0.1) !important;
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 1px solid rgba(0,0,0,0.15) !important;
             border-radius: 12px !important;
             color: #2d3436 !important;
         }
 
         .stSelectbox > div > div {
-            background: rgba(255, 255, 255, 0.8) !important;
+            background: rgba(255, 255, 255, 0.9) !important;
             border-radius: 12px !important;
+            color: #2d3436 !important;
+        }
+
+        .stSelectbox label, .stTextInput label, .stTextArea label, .stSlider label {
+            color: #2d3436 !important;
         }
 
         .stTextArea textarea {
-            background: rgba(255, 255, 255, 0.8) !important;
-            border: 1px solid rgba(0,0,0,0.1) !important;
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 1px solid rgba(0,0,0,0.15) !important;
             border-radius: 12px !important;
             color: #2d3436 !important;
+        }
+
+        /* All text elements */
+        p, span, label, div {
+            color: #2d3436;
+        }
+
+        .stCaption, .stCaption p {
+            color: #636e72 !important;
         }
 
         .stSlider > div > div > div {

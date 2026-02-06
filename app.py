@@ -1,5 +1,9 @@
 import streamlit as st
 from train_chatbot_enhanced import chatbot_response
+from reviews import (
+    add_user_review, get_reviews_for, get_review_summary,
+    load_user_reviews, load_scraped_reviews
+)
 
 # ---------------- Dynamic Suggestions ----------------
 SUGGESTIONS = {
@@ -19,7 +23,7 @@ SUGGESTIONS = {
         "Dadar to Andheri",
         "Churchgate to Borivali",
         "AC trains on Western line",
-        "Virar to Bandra",
+        "Reviews for Andheri Station",
     ],
     "central": [
         "CSMT to Kalyan",
@@ -27,7 +31,7 @@ SUGGESTIONS = {
         "Ghatkopar to CSMT",
         "Kurla to Thane",
         "Dadar to Dombivli",
-        "Kalyan to CSMT",
+        "Reviews for Thane Station",
     ],
     "harbour": [
         "CSMT to Panvel",
@@ -35,7 +39,7 @@ SUGGESTIONS = {
         "Kurla to Vashi",
         "Panvel to Kurla",
         "Belapur to CSMT",
-        "CSMT to Vashi",
+        "Reviews for Vashi Station",
     ],
     "ac": [
         "AC trains on Western line",
@@ -55,6 +59,14 @@ SUGGESTIONS = {
     ],
 }
 
+# Station list for reviews
+STATIONS = [
+    "Churchgate", "Dadar", "Bandra", "Andheri", "Borivali", "Virar",
+    "CSMT", "Thane", "Kalyan", "Kurla", "Ghatkopar", "Dombivli",
+    "Panvel", "Vashi", "Belapur"
+]
+
+
 def get_related_suggestions(query):
     """Get suggestions related to the user's query."""
     q = query.lower()
@@ -70,7 +82,6 @@ def get_related_suggestions(query):
     # Check for Western line stations
     western_stations = ["churchgate", "bandra", "andheri", "borivali", "virar", "dadar", "malad", "goregaon"]
     if any(station in q for station in western_stations):
-        # Check if it's not also a Central/Harbour query
         central_stations = ["csmt", "cst", "thane", "kalyan", "ghatkopar", "dombivli"]
         harbour_stations = ["panvel", "vashi", "belapur"]
         if not any(s in q for s in central_stations + harbour_stations):
@@ -90,11 +101,12 @@ def get_related_suggestions(query):
 
     return SUGGESTIONS["default"]
 
+
 # ---------------- Page Config ----------------
 st.set_page_config(
     page_title="Mumbai Local Train Assistant",
     page_icon="🚆",
-    layout="centered"
+    layout="wide"
 )
 
 # ---------------- CSS ----------------
@@ -112,81 +124,195 @@ st.markdown(
         .stButton > button:hover {
             background-color: #1f2937 !important;
         }
+        .review-card {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 5px 0;
+        }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# ---------------- Header ----------------
-st.title("Mumbai Local Train Assistant")
-st.caption("Timetables, routes, passes & railway rules")
+# ---------------- Layout: Main + Sidebar ----------------
+main_col, review_col = st.columns([2, 1])
 
-# ---------------- Session State ----------------
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+# ==================================================
+# MAIN COLUMN - CHATBOT
+# ==================================================
+with main_col:
+    st.title("🚆 Mumbai Local Train Assistant")
+    st.caption("7,500+ real train schedules • Reviews • Routes • Info")
 
-if "suggestions" not in st.session_state:
-    st.session_state.suggestions = SUGGESTIONS["default"]
+    # ---------------- Session State ----------------
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
 
-# ---------------- Initial Bot Message ----------------
-if len(st.session_state.messages) == 0:
-    st.session_state.messages.append(
-        {
-            "role": "assistant",
-            "content": (
-                "Hello 👋 I'm the **Mumbai Local Train Assistant**.\n\n"
-                "I have **7,500+ real train schedules** across Western, Central & Harbour lines.\n\n"
-                "Try asking:\n"
-                "• **Train times**: \"Andheri to Churchgate\"\n"
-                "• **AC locals**: \"AC trains on Western line\"\n"
-                "• **Info**: \"Monthly pass price\" or \"Luggage rules\""
+    if "suggestions" not in st.session_state:
+        st.session_state.suggestions = SUGGESTIONS["default"]
+
+    # ---------------- Initial Bot Message ----------------
+    if len(st.session_state.messages) == 0:
+        st.session_state.messages.append(
+            {
+                "role": "assistant",
+                "content": (
+                    "Hello 👋 I'm the **Mumbai Local Train Assistant**.\n\n"
+                    "I have **7,500+ real train schedules** across Western, Central & Harbour lines.\n\n"
+                    "Try asking:\n"
+                    "• **Train times**: \"Andheri to Churchgate\"\n"
+                    "• **AC locals**: \"AC trains on Western line\"\n"
+                    "• **Reviews**: \"Reviews for Dadar Station\"\n"
+                    "• **Info**: \"Monthly pass price\""
+                )
+            }
+        )
+
+    # -------- Chat History --------
+    for msg in st.session_state.messages:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
+
+    # -------- Chat Input --------
+    user_input = st.chat_input("Ask about trains, stations, or reviews...")
+
+    # -------- Suggested Queries --------
+    st.markdown("### 💡 Suggested queries")
+    cols = st.columns(4)
+    for i, s in enumerate(st.session_state.suggestions[:8]):
+        if cols[i % 4].button(s, key=f"sugg_{i}"):
+            user_input = s
+
+    # -------- Handle Input --------
+    if user_input:
+        st.session_state.messages.append(
+            {"role": "user", "content": user_input}
+        )
+
+        with st.chat_message("user"):
+            st.markdown(user_input)
+
+        # Check if asking for reviews
+        if "review" in user_input.lower():
+            # Extract station/route from query
+            for station in STATIONS:
+                if station.lower() in user_input.lower():
+                    review_summary = get_review_summary(station)
+                    if review_summary:
+                        response = f"📍 **{station} Station**\n" + review_summary
+                    else:
+                        response = f"No reviews yet for {station}. Be the first to add one! 👉"
+                    break
+            else:
+                response = "Which station would you like reviews for? Try: \"Reviews for Andheri Station\""
+        else:
+            # Regular chatbot response
+            response = chatbot_response(user_input)
+
+            # Add review summary if query mentions a station
+            for station in STATIONS:
+                if station.lower() in user_input.lower():
+                    review_summary = get_review_summary(station)
+                    if review_summary:
+                        response += review_summary
+                    break
+
+        with st.chat_message("assistant"):
+            st.markdown(response)
+
+        st.session_state.messages.append(
+            {"role": "assistant", "content": response}
+        )
+
+        st.session_state.suggestions = get_related_suggestions(user_input)
+        st.rerun()
+
+
+# ==================================================
+# REVIEW COLUMN - SUBMIT & VIEW REVIEWS
+# ==================================================
+with review_col:
+    st.markdown("### ✍️ Share Your Experience")
+
+    # Review Form
+    with st.form("review_form"):
+        review_category = st.selectbox(
+            "Category",
+            ["Station", "Route", "AC Train", "General"]
+        )
+
+        if review_category == "Station":
+            review_subject = st.selectbox("Station", STATIONS)
+        elif review_category == "Route":
+            col1, col2 = st.columns(2)
+            with col1:
+                from_station = st.selectbox("From", STATIONS, key="from")
+            with col2:
+                to_station = st.selectbox("To", STATIONS, key="to")
+            review_subject = f"{from_station} to {to_station}"
+        elif review_category == "AC Train":
+            review_subject = st.selectbox(
+                "Line",
+                ["AC Western Line", "AC Central Line", "AC Harbour Line"]
             )
-        }
-    )
+        else:
+            review_subject = st.text_input("Topic", placeholder="e.g., Peak hour experience")
 
-# ==================================================
-# ✅ 1. CHAT HISTORY (TOP)
-# ==================================================
-for msg in st.session_state.messages:
-    with st.chat_message(msg["role"]):
-        st.markdown(msg["content"])
+        review_rating = st.slider("Rating", 1, 5, 4, format="%d ⭐")
 
-# ==================================================
-# ✅ 2. CHAT INPUT (MIDDLE)
-# ==================================================
-user_input = st.chat_input("Ask about Mumbai local trains...")
+        review_comment = st.text_area(
+            "Your Review",
+            placeholder="Share your experience... (crowd, cleanliness, timing, etc.)",
+            max_chars=500
+        )
 
-# ==================================================
-# ✅ 3. SUGGESTED QUERIES (BELOW INPUT)
-# ==================================================
-st.markdown("### Suggested queries")
-cols = st.columns(2)
-for i, s in enumerate(st.session_state.suggestions):
-    if cols[i % 2].button(s, key=f"sugg_{i}"):
-        user_input = s
+        review_name = st.text_input("Name (optional)", placeholder="Anonymous")
 
-# ==================================================
-# HANDLE INPUT
-# ==================================================
-if user_input:
-    # User message
-    st.session_state.messages.append(
-        {"role": "user", "content": user_input}
-    )
+        submitted = st.form_submit_button("Submit Review", use_container_width=True)
 
-    with st.chat_message("user"):
-        st.markdown(user_input)
+        if submitted and review_comment:
+            add_user_review(
+                category=review_category.lower(),
+                subject=review_subject,
+                rating=review_rating,
+                comment=review_comment,
+                username=review_name if review_name else "Anonymous"
+            )
+            st.success("✅ Thank you for your review!")
+            st.rerun()
 
-    # Assistant response
-    response = chatbot_response(user_input)
+    # Recent Reviews
+    st.markdown("---")
+    st.markdown("### 📝 Recent Reviews")
 
-    with st.chat_message("assistant"):
-        st.markdown(response)
+    user_reviews = load_user_reviews()
+    reviews_list = user_reviews.get("reviews", [])
 
-    st.session_state.messages.append(
-        {"role": "assistant", "content": response}
-    )
+    if reviews_list:
+        # Show latest 5 reviews
+        for review in reversed(reviews_list[-5:]):
+            stars = "⭐" * review.get("rating", 0)
+            st.markdown(f"""
+            <div class="review-card">
+                <b>{review.get('subject', 'Unknown')}</b> {stars}<br>
+                <small>{review.get('comment', '')[:150]}</small><br>
+                <small style="color: gray;">— {review.get('username', 'Anonymous')}</small>
+            </div>
+            """, unsafe_allow_html=True)
+    else:
+        st.info("No reviews yet. Be the first to share your experience!")
 
-    # Update suggestions based on user query
-    st.session_state.suggestions = get_related_suggestions(user_input)
-    st.rerun()
+    # Stats
+    st.markdown("---")
+    st.markdown("### 📊 Stats")
+    total_reviews = len(reviews_list)
+    st.metric("Total Reviews", total_reviews)
+
+    # Scraped data info
+    scraped = load_scraped_reviews()
+    twitter_count = len(scraped.get("twitter", []))
+    news_count = len(scraped.get("news", []))
+
+    if twitter_count or news_count:
+        st.caption(f"📱 {twitter_count} tweets • 📰 {news_count} news items")

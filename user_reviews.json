@@ -1,0 +1,54 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "category": "station",
+      "subject": "Andheri Station",
+      "rating": 4,
+      "comment": "Good connectivity, but very crowded during peak hours. New foot overbridge helps.",
+      "username": "Commuter123",
+      "timestamp": "2025-01-15T09:30:00",
+      "source": "user"
+    },
+    {
+      "id": 2,
+      "category": "station",
+      "subject": "Dadar Station",
+      "rating": 3,
+      "comment": "Major junction, always busy. Interchange between Western and Central is convenient.",
+      "username": "DailyTraveler",
+      "timestamp": "2025-01-20T18:45:00",
+      "source": "user"
+    },
+    {
+      "id": 3,
+      "category": "station",
+      "subject": "CSMT",
+      "rating": 5,
+      "comment": "Beautiful heritage station! Clean and well-maintained. UNESCO World Heritage Site.",
+      "username": "Tourist",
+      "timestamp": "2025-01-25T11:00:00",
+      "source": "user"
+    },
+    {
+      "id": 4,
+      "category": "route",
+      "subject": "Thane to CSMT",
+      "rating": 4,
+      "comment": "Fast trains are quick, about 35-40 mins. Avoid 8-10 AM if possible.",
+      "username": "ThaneResident",
+      "timestamp": "2025-02-01T08:15:00",
+      "source": "user"
+    },
+    {
+      "id": 5,
+      "category": "ac train",
+      "subject": "AC Western Line",
+      "rating": 5,
+      "comment": "AC locals are a blessing in summer! Worth the extra fare. Very comfortable.",
+      "username": "ACFan",
+      "timestamp": "2025-02-05T14:30:00",
+      "source": "user"
+    }
+  ]
+}

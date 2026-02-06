@@ -111,179 +111,180 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Nunito:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
         .stApp {
-            background-color: #f5f5f0;
+            background-color: #f8f6f1;
             background-image:
-                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
-            font-family: 'Nunito', sans-serif;
+                linear-gradient(#e8e6e1 1px, transparent 1px),
+                linear-gradient(90deg, #e8e6e1 1px, transparent 1px),
+                linear-gradient(90deg, #c94c4c 2px, transparent 2px);
+            background-size: 18px 18px, 18px 18px, 100% 100%;
+            background-position: 0 0, 0 0, 60px 0;
+            font-family: 'Patrick Hand', cursive;
         }
 
         .main-title {
             font-family: 'Patrick Hand', cursive;
-            color: #2d3436;
-            font-size: 2.8rem;
+            color: #2d2d2d;
+            font-size: 2.6rem;
             font-weight: 400;
             text-align: center;
             margin-bottom: 5px;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
         }
 
         .subtitle {
             font-family: 'Patrick Hand', cursive;
-            color: #636e72;
+            color: #555;
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 1rem;
         }
 
         .line-badge {
             display: inline-block;
-            padding: 4px 14px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin: 0 4px;
-            border: 2px solid;
+            padding: 3px 10px;
+            font-size: 0.85rem;
+            margin: 0 3px;
             font-family: 'Patrick Hand', cursive;
+            border: 2px solid #2d2d2d;
+            border-radius: 3px;
+            background: transparent;
+            color: #2d2d2d;
         }
-        .western { border-color: #0984e3; color: #0984e3; background: transparent; }
-        .central { border-color: #d63031; color: #d63031; background: transparent; }
-        .harbour { border-color: #00b894; color: #00b894; background: transparent; }
 
         .stButton > button {
-            background: #2d3436 !important;
-            border: 2px solid #2d3436 !important;
-            color: #f5f5f0 !important;
-            border-radius: 8px;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            font-family: 'Patrick Hand', cursive;
+            background: transparent !important;
+            border: 2px solid #2d2d2d !important;
+            color: #2d2d2d !important;
+            border-radius: 5px;
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+            font-family: 'Patrick Hand', cursive !important;
             transition: all 0.2s ease;
         }
 
         .stButton > button:hover {
-            background: transparent !important;
-            color: #2d3436 !important;
+            background: #2d2d2d !important;
+            color: #f8f6f1 !important;
         }
 
         .review-card {
             background: #fff;
-            padding: 14px 16px;
-            border-radius: 4px;
-            margin: 10px 0;
-            border: 2px solid #2d3436;
-            box-shadow: 4px 4px 0px #2d3436;
+            padding: 12px 14px;
+            margin: 8px 0;
+            border: 2px solid #2d2d2d;
+            border-radius: 3px;
         }
 
         .review-card b {
-            color: #2d3436;
-            font-weight: 700;
+            color: #2d2d2d;
             font-family: 'Patrick Hand', cursive;
             font-size: 1.1rem;
         }
 
         .review-card small {
-            color: #636e72;
+            color: #666;
         }
 
         .section-header {
             font-family: 'Patrick Hand', cursive;
-            color: #2d3436;
-            font-size: 1.4rem;
-            font-weight: 400;
+            color: #2d2d2d;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            border-bottom: 2px dashed #2d3436;
-            padding-bottom: 5px;
+            border-bottom: 2px solid #2d2d2d;
+            padding-bottom: 4px;
+            display: inline-block;
         }
 
         /* Chat styling */
         .stChatMessage {
             background: #fff !important;
-            border-radius: 4px !important;
-            border: 2px solid #2d3436 !important;
-            box-shadow: 3px 3px 0px #2d3436 !important;
+            border: 2px solid #2d2d2d !important;
+            border-radius: 3px !important;
         }
 
         div[data-testid="stMarkdownContainer"] p {
-            color: #2d3436 !important;
+            color: #2d2d2d !important;
+            font-family: 'Patrick Hand', cursive !important;
         }
 
         div[data-testid="stMarkdownContainer"] {
-            color: #2d3436 !important;
+            color: #2d2d2d !important;
         }
 
         .stChatInput > div {
             background: #fff !important;
-            border-radius: 8px !important;
-            border: 2px solid #2d3436 !important;
+            border: 2px solid #2d2d2d !important;
+            border-radius: 5px !important;
         }
 
         .stChatInput input {
-            color: #2d3436 !important;
+            color: #2d2d2d !important;
             font-family: 'Patrick Hand', cursive !important;
+            font-size: 1rem !important;
+        }
+
+        .stChatInput input::placeholder {
+            color: #888 !important;
         }
 
         .stTextInput > div > div > input {
             background: #fff !important;
-            border: 2px solid #2d3436 !important;
-            border-radius: 4px !important;
-            color: #2d3436 !important;
+            border: 2px solid #2d2d2d !important;
+            border-radius: 3px !important;
+            color: #2d2d2d !important;
+            font-family: 'Patrick Hand', cursive !important;
         }
 
         .stSelectbox > div > div {
             background: #fff !important;
-            border-radius: 4px !important;
-            color: #2d3436 !important;
-            border: 2px solid #2d3436 !important;
+            border-radius: 3px !important;
+            color: #2d2d2d !important;
+            border: 2px solid #2d2d2d !important;
         }
 
         .stSelectbox label, .stTextInput label, .stTextArea label, .stSlider label {
-            color: #2d3436 !important;
+            color: #2d2d2d !important;
             font-family: 'Patrick Hand', cursive !important;
             font-size: 1.1rem !important;
         }
 
         .stTextArea textarea {
             background: #fff !important;
-            border: 2px solid #2d3436 !important;
-            border-radius: 4px !important;
-            color: #2d3436 !important;
+            border: 2px solid #2d2d2d !important;
+            border-radius: 3px !important;
+            color: #2d2d2d !important;
+            font-family: 'Patrick Hand', cursive !important;
         }
 
         p, span, label, div {
-            color: #2d3436;
+            color: #2d2d2d;
         }
 
         .stCaption, .stCaption p {
-            color: #636e72 !important;
+            color: #666 !important;
             font-family: 'Patrick Hand', cursive !important;
         }
 
         .stars {
-            color: #fdcb6e;
+            color: #2d2d2d;
+            font-size: 0.9rem;
         }
 
-        /* Doodle accents */
         hr {
             border: none;
-            border-top: 2px dashed #2d3436;
+            border-top: 2px solid #2d2d2d;
+            margin: 15px 0;
         }
 
         .stForm {
-            background: rgba(255,255,255,0.5);
-            border: 2px solid #2d3436;
-            border-radius: 8px;
-            padding: 10px;
+            background: transparent;
         }
 
-        /* Fun icons style */
-        .doodle-icon {
-            font-size: 1.5rem;
+        /* Slider */
+        .stSlider > div > div > div {
+            background: #2d2d2d !important;
         }
     </style>
     """,
@@ -297,11 +298,11 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">✎ Mumbai Local</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">Mumbai Local ⚡</h1>', unsafe_allow_html=True)
     st.markdown('''<p class="subtitle">
-        <span class="line-badge western">Western</span>
-        <span class="line-badge central">Central</span>
-        <span class="line-badge harbour">Harbour</span>
+        <span class="line-badge">Western</span>
+        <span class="line-badge">Central</span>
+        <span class="line-badge">Harbour</span>
         &nbsp;•&nbsp; 7,500+ trains
     </p>''', unsafe_allow_html=True)
 
@@ -318,13 +319,13 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "Hey! ✏️ Welcome to Mumbai Local!\n\n"
-                    "I can help you with train timings, routes & more.\n\n"
-                    "**Try asking:**\n"
-                    "→ Andheri to Churchgate\n"
-                    "→ AC trains on Western line\n"
-                    "→ Reviews for Dadar station\n"
-                    "→ Monthly pass price"
+                    "hey! welcome to mumbai local\n\n"
+                    "i can help you with train timings, routes & more\n\n"
+                    "**try asking:**\n"
+                    "• andheri to churchgate\n"
+                    "• ac trains on western line\n"
+                    "• reviews for dadar\n"
+                    "• monthly pass price"
                 )
             }
         )
@@ -335,10 +336,10 @@ with main_col:
             st.markdown(msg["content"])
 
     # -------- Chat Input --------
-    user_input = st.chat_input("Where to? ✎")
+    user_input = st.chat_input("search trains, routes...")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="section-header">☞ Popular searches</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">try these →</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -359,12 +360,12 @@ with main_col:
                 if station.lower() in user_input.lower():
                     review_summary = get_review_summary(station)
                     if review_summary:
-                        response = f"✎ **{station} Station**\n" + review_summary
+                        response = f"**{station} station**\n" + review_summary
                     else:
-                        response = f"No reviews for {station} yet! Be the first to write one →"
+                        response = f"no reviews for {station} yet! be the first to write one"
                     break
             else:
-                response = "Which station? Try: *Reviews for Andheri*"
+                response = "which station? try: *reviews for andheri*"
         else:
             response = chatbot_response(user_input)
 
@@ -390,7 +391,7 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="section-header">✎ Write a review</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">write a review</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
@@ -441,7 +442,7 @@ with review_col:
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="section-header">✐ Recent reviews</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">recent reviews</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
 

@@ -107,173 +107,197 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS - Vintage Mumbai Theme ----------------
+# ---------------- CSS - Modern Mumbai Theme ----------------
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-        /* Kraft paper background */
-        .stApp, [data-testid="stAppViewContainer"], .main, .block-container {
-            background: #b8a088 !important;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E") !important;
-            background-blend-mode: multiply !important;
+        /* Monsoon sky gradient - subtle Mumbai evening */
+        .stApp, [data-testid="stAppViewContainer"] {
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%) !important;
+        }
+
+        .main, .block-container {
+            background: transparent !important;
         }
 
         * {
-            font-family: 'Poppins', sans-serif !important;
+            font-family: 'Inter', sans-serif !important;
         }
 
         .main-title {
-            font-family: 'Bebas Neue', sans-serif !important;
-            color: #8B0000 !important;
-            font-size: 3.5rem !important;
-            font-weight: 400 !important;
+            color: #ffffff !important;
+            font-size: 2rem !important;
+            font-weight: 700 !important;
             text-align: center;
-            margin-bottom: 0;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 5px;
+        }
+
+        .title-highlight {
+            color: #4fc3f7 !important;
         }
 
         .subtitle {
-            color: #3d3d3d !important;
+            color: #94a3b8 !important;
             text-align: center;
-            font-size: 1rem !important;
+            font-size: 0.9rem !important;
             margin-bottom: 1rem;
-            font-weight: 500;
+            font-weight: 400;
         }
 
+        /* Train line colors - authentic Mumbai local */
         .line-badge {
             display: inline-block;
-            padding: 4px 12px;
-            font-size: 0.8rem;
-            margin: 0 4px;
-            border-radius: 3px;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            margin: 0 3px;
+            border-radius: 4px;
             font-weight: 600;
             color: #fff !important;
         }
-        .western { background: #1a5276 !important; }
-        .central { background: #8B0000 !important; }
-        .harbour { background: #196f3d !important; }
+        .western { background: #2563eb !important; }
+        .central { background: #dc2626 !important; }
+        .harbour { background: #16a34a !important; }
 
-        /* Buttons - Mumbai taxi yellow */
+        /* Buttons - clean modern */
         .stButton > button {
-            background: #d4a017 !important;
-            border: none !important;
-            color: #1a1a1a !important;
-            border-radius: 5px !important;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.9rem !important;
-            font-weight: 600 !important;
+            background: rgba(255,255,255,0.1) !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            color: #e2e8f0 !important;
+            border-radius: 8px !important;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
             transition: all 0.2s ease;
         }
 
         .stButton > button:hover {
-            background: #8B0000 !important;
-            color: #fff !important;
+            background: rgba(79, 195, 247, 0.2) !important;
+            border-color: #4fc3f7 !important;
         }
 
-        /* Review cards - like old paper */
+        /* Cards - glass effect */
         .review-card {
-            background: #f5e6d3 !important;
+            background: rgba(255,255,255,0.05) !important;
+            backdrop-filter: blur(10px);
             padding: 14px 16px;
             margin: 10px 0;
-            border-left: 4px solid #8B0000;
-            border-radius: 0 5px 5px 0;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
         }
 
         .review-card b {
-            color: #2d2d2d !important;
-            font-size: 1rem;
+            color: #f1f5f9 !important;
+            font-size: 0.95rem;
             font-weight: 600;
         }
 
         .review-card small {
-            color: #555 !important;
+            color: #94a3b8 !important;
         }
 
         .section-header {
-            color: #8B0000 !important;
-            font-family: 'Bebas Neue', sans-serif !important;
-            font-size: 1.5rem !important;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            border-bottom: 3px solid #8B0000;
-            padding-bottom: 5px;
-            display: inline-block;
+            color: #4fc3f7 !important;
+            font-size: 1rem !important;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
         }
 
         /* Chat messages */
         .stChatMessage, [data-testid="stChatMessage"] {
-            background: #f5e6d3 !important;
-            border-radius: 8px !important;
-            border: none !important;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.1) !important;
+            background: rgba(255,255,255,0.05) !important;
+            border-radius: 10px !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
         }
 
-        /* All text */
-        p, span, label, div {
-            color: #2d2d2d !important;
+        /* Text colors */
+        p, span, div {
+            color: #e2e8f0 !important;
         }
 
-        h1, h2, h3 {
-            color: #8B0000 !important;
+        label {
+            color: #94a3b8 !important;
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
+        }
+
+        strong, b {
+            color: #f1f5f9 !important;
         }
 
         /* Input fields */
-        .stChatInput > div, .stChatInput textarea, [data-testid="stChatInput"] > div {
-            background: #f5e6d3 !important;
-            border: 2px solid #8B0000 !important;
-            border-radius: 8px !important;
+        .stChatInput > div, [data-testid="stChatInput"] > div {
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.15) !important;
+            border-radius: 10px !important;
+        }
+
+        .stChatInput input, .stChatInput textarea {
+            color: #e2e8f0 !important;
         }
 
         input, textarea, select {
-            background: #f5e6d3 !important;
-            border: 1px solid #a08060 !important;
-            color: #2d2d2d !important;
-            border-radius: 5px !important;
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.15) !important;
+            color: #e2e8f0 !important;
+            border-radius: 8px !important;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #64748b !important;
         }
 
         .stTextInput > div > div > input,
         .stSelectbox > div > div,
         .stTextArea textarea {
-            background: #f5e6d3 !important;
-            border: 1px solid #a08060 !important;
-            border-radius: 5px !important;
-            color: #2d2d2d !important;
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.15) !important;
+            border-radius: 8px !important;
+            color: #e2e8f0 !important;
         }
 
-        /* Labels */
-        .stSelectbox label, .stTextInput label, .stTextArea label, .stSlider label {
-            color: #3d3d3d !important;
-            font-size: 0.95rem !important;
-            font-weight: 500 !important;
-        }
-
-        /* Stars - yellow like auto */
+        /* Stars */
         .stars {
-            color: #d4a017 !important;
+            color: #fbbf24 !important;
         }
 
         /* Dividers */
         hr {
             border: none !important;
-            border-top: 2px solid #8B0000 !important;
+            border-top: 1px solid rgba(255,255,255,0.1) !important;
+            margin: 1rem 0 !important;
         }
 
         /* Slider */
         .stSlider > div > div > div {
-            background: #8B0000 !important;
+            background: #4fc3f7 !important;
+        }
+
+        /* Selectbox dropdown */
+        [data-baseweb="select"] {
+            background: rgba(255,255,255,0.05) !important;
+        }
+
+        /* Form */
+        .stForm {
+            background: transparent !important;
         }
 
         /* Caption */
-        .stCaption p {
-            color: #666 !important;
+        .stCaption, .stCaption p {
+            color: #64748b !important;
+            font-size: 0.8rem !important;
+        }
+
+        /* Success message */
+        .stSuccess {
+            background: rgba(22, 163, 74, 0.2) !important;
+            color: #4ade80 !important;
         }
 
         /* Hide streamlit branding */
-        #MainMenu, footer {
+        #MainMenu, footer, header {
             visibility: hidden;
         }
     </style>
@@ -288,12 +312,12 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">MUMBAI LOCAL</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">Mumbai <span class="title-highlight">Local</span></h1>', unsafe_allow_html=True)
     st.markdown('''<p class="subtitle">
         <span class="line-badge western">Western</span>
         <span class="line-badge central">Central</span>
         <span class="line-badge harbour">Harbour</span>
-        &nbsp;•&nbsp; 7,500+ trains
+        &nbsp;·&nbsp; 7,500+ trains
     </p>''', unsafe_allow_html=True)
 
     # ---------------- Session State ----------------
@@ -329,7 +353,7 @@ with main_col:
     user_input = st.chat_input("Search trains, routes...")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="section-header">QUICK SEARCH</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Quick Search</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -381,7 +405,7 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="section-header">WRITE A REVIEW</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Write a Review</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
@@ -432,7 +456,7 @@ with review_col:
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="section-header">RECENT REVIEWS</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Recent Reviews</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
 

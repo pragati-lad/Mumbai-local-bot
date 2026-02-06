@@ -3,6 +3,65 @@
 # ==================================================
 
 from difflib import get_close_matches
+import pandas as pd
+from datetime import datetime
+import os
+
+# ---------------- AC TRAIN DATA ----------------
+
+AC_TRAIN_FILE = os.path.join(os.path.dirname(__file__), "mumbai_ac_trains.csv")
+
+def load_ac_trains():
+    """Load AC train schedule from CSV."""
+    try:
+        return pd.read_csv(AC_TRAIN_FILE)
+    except FileNotFoundError:
+        return None
+
+def get_ac_trains_by_line(line_code):
+    """Get AC trains for a specific line (WR, CR, HR)."""
+    df = load_ac_trains()
+    if df is None:
+        return None
+    return df[df['line'] == line_code]
+
+def get_next_ac_trains(source=None, dest=None, line=None, limit=5):
+    """Get upcoming AC trains based on filters."""
+    df = load_ac_trains()
+    if df is None:
+        return None
+
+    # Get current time
+    now = datetime.now()
+    current_time_str = now.strftime("%I:%M %p")
+
+    # Filter by criteria
+    if line:
+        df = df[df['line'] == line]
+    if source:
+        df = df[df['source'].str.lower() == source.lower()]
+    if dest:
+        df = df[df['dest'].str.lower() == dest.lower()]
+
+    # Try to filter trains after current time
+    def parse_time(t):
+        try:
+            return datetime.strptime(t, "%I:%M %p").time()
+        except:
+            return None
+
+    df = df.copy()
+    df['parsed_time'] = df['time'].apply(parse_time)
+    current_time = now.time()
+
+    # Get trains after current time
+    upcoming = df[df['parsed_time'] >= current_time].head(limit)
+
+    if len(upcoming) == 0:
+        # If no trains left today, show first trains
+        upcoming = df.head(limit)
+
+    return upcoming.drop(columns=['parsed_time'], errors='ignore')
 
 # ---------------- STATION DATA ----------------
 
@@ -116,6 +175,95 @@ def find_interchange(src_line, dst_line):
         return "Kurla"
     return None
 
+# ---------------- AC TRAIN HANDLER ----------------
+
+def handle_ac_query(q, original_query):
+    """Handle AC train related queries."""
+
+    # Detect line from query
+    line = None
+    if "western" in q or "wr" in q:
+        line = "WR"
+        line_name = "Western Line"
+    elif "central" in q or "cr" in q:
+        line = "CR"
+        line_name = "Central Line"
+    elif "harbour" in q or "harbor" in q or "hr" in q:
+        line = "HR"
+        line_name = "Harbour Line"
+
+    # Extract stations from query
+    stations = extract_stations(original_query)
+    source = stations[0] if len(stations) >= 1 else None
+    dest = stations[1] if len(stations) >= 2 else None
+
+    # Get AC trains based on filters
+    if line and not source:
+        # Query for specific line
+        trains = get_next_ac_trains(line=line, limit=6)
+        if trains is None or len(trains) == 0:
+            return f"❌ No AC train data available for {line_name}."
+
+        result = f"🚆 **AC Trains on {line_name}**\n\n"
+        result += "| Time | From | To | Type |\n|------|------|-----|------|\n"
+        for _, row in trains.iterrows():
+            result += f"| {row['time']} | {row['source']} | {row['dest']} | {row['type']} |\n"
+        result += f"\n_Showing next {len(trains)} AC trains_"
+        return result
+
+    elif source:
+        # Query for specific source/destination
+        trains = get_next_ac_trains(source=source, dest=dest, limit=6)
+        if trains is None or len(trains) == 0:
+            # Try with fuzzy matching
+            fuzzy_src = fuzzy_station(source) if source else None
+            if fuzzy_src:
+                trains = get_next_ac_trains(source=fuzzy_src, dest=dest, limit=6)
+
+        if trains is None or len(trains) == 0:
+            return f"❌ No AC trains found from **{source}**" + (f" to **{dest}**" if dest else "") + ".\n\nAC trains run on limited routes. Try: Churchgate, CSMT, Thane, Borivali, Panvel"
+
+        dest_text = f" to **{dest}**" if dest else ""
+        result = f"🚆 **AC Trains from {source}**{dest_text}\n\n"
+        result += "| Time | To | Line | Type |\n|------|-----|------|------|\n"
+        for _, row in trains.iterrows():
+            result += f"| {row['time']} | {row['dest']} | {row['line']} | {row['type']} |\n"
+        result += f"\n_Showing next {len(trains)} AC trains_"
+        return result
+
+    else:
+        # General AC train info
+        df = load_ac_trains()
+        if df is None:
+            return "❌ AC train schedule not available."
+
+        wr_count = len(df[df['line'] == 'WR'])
+        cr_count = len(df[df['line'] == 'CR'])
+        hr_count = len(df[df['line'] == 'HR'])
+
+        return f"""
+🚆 **AC Local Trains – Mumbai Suburban**
+
+AC locals run on all three lines:
+
+| Line | Trains/Day | Frequency |
+|------|------------|-----------|
+| Western (WR) | {wr_count} | Every 35-60 mins |
+| Central (CR) | {cr_count} | Every 50-90 mins |
+| Harbour (HR) | {hr_count} | Every 90-180 mins |
+
+💡 **Tips:**
+• AC trains have higher frequency during peak hours
+• First class AC fare is approximately ₹60-105
+• AC coaches are marked with blue stripe
+
+Try asking:
+• "AC trains on Western line"
+• "AC train from Churchgate"
+• "Next AC train from CSMT to Thane"
+"""
+
+
 # ---------------- CHATBOT RESPONSE ----------------
 
 def chatbot_response(query: str):
@@ -134,6 +282,10 @@ def chatbot_response(query: str):
 
     if "monthly" in q or "quarterly" in q or "pass" in q:
         return MONTHLY_PASS
+
+    # ---- AC TRAIN LOGIC ----
+    if "ac" in q or "air" in q or "conditioned" in q:
+        return handle_ac_query(q, query)
 
     # ---- ROUTE LOGIC ----
     stations = extract_stations(query)

@@ -1,8 +1,11 @@
 import streamlit as st
 from train_chatbot_enhanced import chatbot_response
-from reviews import (
-    add_user_review, get_reviews_for, get_review_summary,
-    load_user_reviews, load_scraped_reviews
+from google_sheets_reviews import (
+    add_review_to_sheets as add_user_review,
+    get_reviews_for_subject as get_reviews_for,
+    get_review_summary_sheets as get_review_summary,
+    get_all_reviews_from_sheets,
+    check_sheets_connection
 )
 
 # ---------------- Dynamic Suggestions ----------------
@@ -286,8 +289,7 @@ with review_col:
     st.markdown("---")
     st.markdown("### 📝 Recent Reviews")
 
-    user_reviews = load_user_reviews()
-    reviews_list = user_reviews.get("reviews", [])
+    reviews_list = get_all_reviews_from_sheets()
 
     if reviews_list:
         # Show latest 5 reviews
@@ -309,10 +311,9 @@ with review_col:
     total_reviews = len(reviews_list)
     st.metric("Total Reviews", total_reviews)
 
-    # Scraped data info
-    scraped = load_scraped_reviews()
-    twitter_count = len(scraped.get("twitter", []))
-    news_count = len(scraped.get("news", []))
-
-    if twitter_count or news_count:
-        st.caption(f"📱 {twitter_count} tweets • 📰 {news_count} news items")
+    # Connection status
+    connection = check_sheets_connection()
+    if connection['connected']:
+        st.caption("☁️ Synced to Google Sheets")
+    else:
+        st.caption("💾 Local storage (reviews may reset)")

@@ -3,3 +3,5 @@ python-dateutil
 pandas
 beautifulsoup4
 requests
+gspread
+google-auth

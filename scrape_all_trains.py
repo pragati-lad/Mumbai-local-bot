@@ -19,10 +19,74 @@ HEADERS = {
 
 
 def scrape_western_railway():
-    """Scrape Western Railway trains from go4mumbai.com"""
-    print("\n[Western Railway] Scraping from go4mumbai.com...")
+    """Scrape Western Railway trains from mumbailifeline.com and go4mumbai.com"""
+    print("\n[Western Railway] Scraping from mumbailifeline.com...")
 
-    # AC trains page
+    all_trains = []
+
+    # Scrape non-AC trains from mumbailifeline.com
+    routes = [
+        ("CHURCHGATE", "VIRAR", "DOWN"),
+        ("VIRAR", "CHURCHGATE", "UP"),
+        ("CHURCHGATE", "BORIVALI", "DOWN"),
+        ("BORIVALI", "CHURCHGATE", "UP"),
+    ]
+
+    for src, dst, direction in routes:
+        url = f"https://www.mumbailifeline.com/timetable.php?sel_route=western&sfrom={src}&sto={dst}&time1=04:00+AM&time2=11:59+PM&Submit=Submit"
+
+        try:
+            response = requests.get(url, headers=HEADERS, timeout=30)
+            soup = BeautifulSoup(response.text, 'html.parser')
+
+            tables = soup.find_all('table')
+
+            for table in tables:
+                rows = table.find_all('tr')
+                if len(rows) < 10:
+                    continue
+
+                header = rows[0].find_all(['td', 'th'])
+                header_text = [h.get_text(strip=True).lower() for h in header]
+
+                if 'train' not in ' '.join(header_text) and 'speed' not in ' '.join(header_text):
+                    continue
+
+                for row in rows[1:]:
+                    cols = row.find_all('td')
+                    if len(cols) < 6:
+                        continue
+
+                    train_no = cols[0].get_text(strip=True)
+                    speed = cols[1].get_text(strip=True).upper()
+                    origin = cols[3].get_text(strip=True)
+                    dest_station = cols[4].get_text(strip=True)
+                    time_str = cols[5].get_text(strip=True)
+
+                    if 'train' in train_no.lower() or not time_str:
+                        continue
+
+                    is_ac = 'AC' in train_no.upper()
+                    train_type = f"AC {speed}" if is_ac else speed
+
+                    time_str = time_str.replace('\n', '').strip()
+
+                    all_trains.append({
+                        'line': 'WR',
+                        'time': time_str,
+                        'source': origin.title(),
+                        'dest': dest_station.title(),
+                        'type': train_type,
+                        'is_ac': is_ac
+                    })
+
+            time.sleep(0.5)
+
+        except Exception as e:
+            print(f"[Western Railway] Error scraping {src} to {dst}: {e}")
+
+    # Also scrape AC trains from go4mumbai.com
+    print("[Western Railway] Adding AC trains from go4mumbai.com...")
     ac_url = "https://go4mumbai.com/ac-trains.php"
 
     try:
@@ -30,10 +94,8 @@ def scrape_western_railway():
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        trains = []
         tables = soup.find_all('table')
 
-        # Table 4 = UP direction, Table 5 = DOWN direction
         for table_idx in [4, 5]:
             if table_idx >= len(tables):
                 continue
@@ -45,7 +107,6 @@ def scrape_western_railway():
                 cols = row.find_all('td')
                 col_texts = [c.get_text(strip=True) for c in cols]
 
-                # Each train has 6 fields: Name, Speed, Cars, Source, Dest, Time
                 for i in range(0, len(col_texts) - 5, 6):
                     name = col_texts[i]
                     speed = col_texts[i + 1].upper()
@@ -53,34 +114,30 @@ def scrape_western_railway():
                     dest = col_texts[i + 4]
                     time_str = col_texts[i + 5]
 
-                    # Determine if AC or non-AC
-                    is_ac = "AC" in name.upper()
-                    train_type = f"AC {speed}" if is_ac else speed
-
-                    trains.append({
-                        'line': 'WR',
-                        'time': time_str,
-                        'source': source,
-                        'dest': dest,
-                        'type': train_type,
-                        'is_ac': is_ac
-                    })
-
-        # Remove duplicates
-        seen = set()
-        unique_trains = []
-        for t in trains:
-            key = (t['time'], t['source'], t['dest'], t['type'])
-            if key not in seen:
-                seen.add(key)
-                unique_trains.append(t)
-
-        print(f"[Western Railway] Found {len(unique_trains)} trains")
-        return unique_trains
+                    if "AC" in name.upper():
+                        all_trains.append({
+                            'line': 'WR',
+                            'time': time_str,
+                            'source': source,
+                            'dest': dest,
+                            'type': f"AC {speed}",
+                            'is_ac': True
+                        })
 
     except Exception as e:
-        print(f"[Western Railway] Error: {e}")
-        return []
+        print(f"[Western Railway] Error scraping AC trains: {e}")
+
+    # Remove duplicates
+    seen = set()
+    unique_trains = []
+    for t in all_trains:
+        key = (t['time'], t['source'], t['dest'])
+        if key not in seen:
+            seen.add(key)
+            unique_trains.append(t)
+
+    print(f"[Western Railway] Found {len(unique_trains)} trains total")
+    return unique_trains
 
 
 def scrape_central_railway():

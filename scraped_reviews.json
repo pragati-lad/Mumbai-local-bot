@@ -1,6 +1,1702 @@
 {
-  "reviews": [],
-  "twitter": [],
-  "news": [],
-  "last_updated": null
+  "reviews": [
+    {
+      "id": 1,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Whats with all the educated ppl with no civics sense",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:27.866109",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 2,
+      "category": "scraped",
+      "subject": "Andheri",
+      "rating": 4,
+      "comment": "Best Commute Options from Taloja to Andheri East (Marol). Need Advice.",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:27.866182",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 3,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "do you get student concession for AC local trains as well?",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:27.866229",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 4,
+      "category": "scraped",
+      "subject": "Andheri",
+      "rating": 3,
+      "comment": "AC Local From Nalasopara to Andheri",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:27.866269",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 5,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Mumbai Local is just worst and the solution is quite simple",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:27.866307",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 6,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Weird experience in local train.",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:27.866344",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 7,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Is a “Live Fish to Home + Cut in Front of Customer” business model viable?",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:27.866384",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 8,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Small act of help on Mumbai locals :⁠-⁠), look out for each other",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:27.866425",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 9,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "How is the cost of living in Mumbai? Might move there soon.",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:27.866460",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 10,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Ladies in general compartment",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:27.866494",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 11,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Why all the trains are late ??",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:30.865631",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 12,
+      "category": "scraped",
+      "subject": "Dadar",
+      "rating": 3,
+      "comment": "Who is this gentleman at Dadar bridge who guides commuters every morning?",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:30.865711",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 13,
+      "category": "scraped",
+      "subject": "Goregaon",
+      "rating": 3,
+      "comment": "Budget hotel for solo male in Goregaon",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:30.865775",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 14,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "MMRDA has just explained the reason behind the design. Better expansion of what I had said earlier.",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:30.865844",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 15,
+      "category": "scraped",
+      "subject": "Borivali",
+      "rating": 3,
+      "comment": "Western Railway has successfully commissioned the remaining stretch of 3.21 km between Kandivali–Borivali, completing the Phase-I of the Mumbai Central–Borivali 6th Line project. | Western Railway (@W",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:30.865919",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 16,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Just a curious question to Gemini",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:30.866058",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 17,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Travelling late on New Year’s Eve 2026 in Mumbai? Special local trains are running after midnight",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:30.866191",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 18,
+      "category": "scraped",
+      "subject": "Borivali",
+      "rating": 3,
+      "comment": "Mumbai Rail Alert: Western Railway Announces 30-Day Block On Kandivali–Borivali Section From December 20 For Sixth Line Works; Suburban, Mail Trains Affected",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:30.866270",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 19,
+      "category": "scraped",
+      "subject": "Goregaon",
+      "rating": 3,
+      "comment": "Unsafe bike parking near Lotus Corporate Park, Goregaon East- need advice",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:30.866328",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 20,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "A Trip to Sion, in 1853",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:30.866384",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 21,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Why all the trains are late ??",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:33.440219",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 22,
+      "category": "scraped",
+      "subject": "Dadar",
+      "rating": 3,
+      "comment": "Who is this gentleman at Dadar bridge who guides commuters every morning?",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:33.440259",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 23,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "central railway.",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:33.440284",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 24,
+      "category": "scraped",
+      "subject": "Borivali",
+      "rating": 3,
+      "comment": "Western Railway has successfully commissioned the remaining stretch of 3.21 km between Kandivali–Borivali, completing the Phase-I of the Mumbai Central–Borivali 6th Line project. | Western Railway (@W",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:33.440321",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 25,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "please help me find atm",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:33.440343",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 26,
+      "category": "scraped",
+      "subject": "Kurla",
+      "rating": 3,
+      "comment": "Fire breaks out in train carrying rubbish in Mumbai's Kurla, suburban services briefly disrupted",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:33.440368",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 27,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Just a curious question to Gemini",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:33.440398",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 28,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Mumbai Meri Jaan ❤️",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:33.440432",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 29,
+      "category": "scraped",
+      "subject": "CSMT",
+      "rating": 3,
+      "comment": "Long whistles by all the Suburban Rakes at CSMT to wish all a Happy New Year in Railway-way.",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:33.440458",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 30,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Travelling late on New Year’s Eve 2026 in Mumbai? Special local trains are running after midnight",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:33.440484",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 31,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Harbour Line to SLower Parel",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:36.020963",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 32,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "AC local trains start on Harbour line - Is the frequency adequate.",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:36.021001",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 33,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Harbour Line to Get AC Local Services Starting 26 Jan !",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:36.021027",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 34,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Has anyone experienced this in mumbai before?",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:36.021050",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 35,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Just a curious question to Gemini",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:36.021072",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 36,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Travelling late on New Year’s Eve 2026 in Mumbai? Special local trains are running after midnight",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:36.021100",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 37,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 4,
+      "comment": "URGENT! Is Chembur a good place to shift to?",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:36.021122",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 38,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Commute help from Jogeshwari Station!",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:36.021148",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 39,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Is there megablock on harbour line today ? (Around 1pm)",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:36.021171",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 40,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Need help to find ideal locality to rent a flat",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:36.021192",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 41,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "What stopped out Science Capital of India to build companies?",
+      "username": "reddit/r/india",
+      "timestamp": "2026-02-06T23:25:39.255003",
+      "source": "reddit/r/india",
+      "type": "post"
+    },
+    {
+      "id": 42,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "1st Time in India - Trip Itinerary Help",
+      "username": "reddit/r/india",
+      "timestamp": "2026-02-06T23:25:39.255076",
+      "source": "reddit/r/india",
+      "type": "post"
+    },
+    {
+      "id": 43,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Living in the USA doesn’t magically give people civic sense, coming back to India proved that to me",
+      "username": "reddit/r/india",
+      "timestamp": "2026-02-06T23:25:39.255144",
+      "source": "reddit/r/india",
+      "type": "post"
+    },
+    {
+      "id": 44,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Physically assaulted at a hotel in Seychelles, received no help from local police",
+      "username": "reddit/r/india",
+      "timestamp": "2026-02-06T23:25:39.255203",
+      "source": "reddit/r/india",
+      "type": "post"
+    },
+    {
+      "id": 45,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Got scammed by a fake BOAT refund call – Paytm UPI fraud (₹10,121). Update after 1.5 months: nothing recovered.",
+      "username": "reddit/r/india",
+      "timestamp": "2026-02-06T23:25:39.255267",
+      "source": "reddit/r/india",
+      "type": "post"
+    },
+    {
+      "id": 46,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Why is it almost impossible for a foreigner to get a sim card in India?",
+      "username": "reddit/r/india",
+      "timestamp": "2026-02-06T23:25:39.255322",
+      "source": "reddit/r/india",
+      "type": "post"
+    },
+    {
+      "id": 47,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Moving to India from the US with a clinical psych PhD?",
+      "username": "reddit/r/india",
+      "timestamp": "2026-02-06T23:25:39.255375",
+      "source": "reddit/r/india",
+      "type": "post"
+    },
+    {
+      "id": 48,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Bengaluru's Snabbit raises $30M to expand into cooking, childcare, elderly care services.",
+      "username": "reddit/r/india",
+      "timestamp": "2026-02-06T23:25:39.255428",
+      "source": "reddit/r/india",
+      "type": "post"
+    },
+    {
+      "id": 49,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Firecracker issues in my city.",
+      "username": "reddit/r/india",
+      "timestamp": "2026-02-06T23:25:39.255481",
+      "source": "reddit/r/india",
+      "type": "post"
+    },
+    {
+      "id": 50,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Why is Apple taking India for granted ?",
+      "username": "reddit/r/india",
+      "timestamp": "2026-02-06T23:25:39.255533",
+      "source": "reddit/r/india",
+      "type": "post"
+    },
+    {
+      "id": 51,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Quicky Zine for local sassy grandma. As promised",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188089",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 52,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "my roommate is making me suicidal. using the term roommate very loosely here.\n\nso i recently escaped from an abusive situation. i also recently got a job (🎉). while im waiting for money to start comin",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188137",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 53,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 4,
+      "comment": "Underrated Neighborhoods in Worcester County. # 🌟 Underrated Neighborhoods in Worcester County\n\nWorcester County has some well-known towns, but there are also **hidden gems** that don’t get enough att",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188167",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 54,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Longmont Expands Drone Operations Across City Functions, From Open Space Management to Public Safety Response. **LONGMONT, CO —** A surge in municipal drone activity is taking shape this spring in Lon",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188196",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 55,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "easy_sm - A Unix-style CLI for AWS SageMaker that lets you prototype locally before deploying. I built [`easy_sm`](https://prteek.github.io/easy_sm/) to solve a pain point with AWS SageMaker: the slow",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188217",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 56,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "easy_sm - A Unix-style CLI for AWS SageMaker that lets you prototype locally before deploying. I built [`easy_sm`](https://prteek.github.io/easy_sm/) to solve a pain point with AWS SageMaker: the slow",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188231",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 57,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Concerns Over Connection Between Councilman Devon Reese and Firm Suggested to Get $900000 for City's Labor Negotiations. Several locals have reached out to us about a proposed three year City of Reno ",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188254",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 58,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Officially a Gundam card game YouTuber. Well I've been making content for bandai card games and other card games for a while, but it seems I've really built up a Gundam card game fan base, so I'm anno",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188269",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 59,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Review my resume.",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188277",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 60,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Seeking Job please DM (Available to relocate).",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188286",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 61,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "I built a daily Wordle-style game that tests if you can tell real photos from AI-generated ones. Hey everyone. I've been working on this for a while and finally shipped it.\n\nIt's called BRAIAIN — ever",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188311",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 62,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "We Need an Honest Conversation About ICE Encounters — One That Could Actually Save Lives. I’ve been watching the news, the clips, the debates, the protests — and I think we’re missing something import",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188336",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 63,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "parking tips for ontario reign vs. bakersfield condors at toyota arena (ontario 02/07).   \n  \nhey everyone, figured i'd share some parking tips for the reign game against the condors on 02/07. tuesday",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188353",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 64,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Hamilton’s Most Famous Car/Train Collision. Anyone who tries to navigate through Hamilton knows the persistent inconvenience of the railroad system, how sometimes the only way to get from one side of ",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188375",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 65,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "ICE Response Training.",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188383",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 66,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Executive Concierge Medicine in Las Vegas: The Performance Gap Your Doctor Isn't Addressing. Standard healthcare has a blind spot that's costing executives more than they realize.\n\nYour annual physica",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188401",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 67,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "parking tips for phoenix suns vs. philadelphia 76ers at mortgage matchup center (phoenix 02/07).   \n  \nhey everyone, figured i'd share some parking tips for the suns vs. sixers game on 02/07. honestly",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188417",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 68,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Claim: Conscious choices for sustainable travel include opting for direct flights or train travel, choosing eco-friendly accommodations, and supporting authentic local businesses.. This post contains ",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188436",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 69,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Thoughts On Owen's Alert. The mom of one of my clients told me about Owen's Alert.  It would trigger immediate multi-agency notification to local law enforcement, first responders, and the public when",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188452",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 70,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Executive Concierge Medicine in Las Vegas: The Optimization Paradox That's Limiting Every High Performer. Here's something I find genuinely puzzling about successful people.\n\nThey optimize everything.",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188469",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 71,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "WHEN THE SKY 🌌FORGOT OUR NAMES [PART III]. PART III — THE SILENCE\n\nSix Months After\nAYAN\nMarch. Six months since the mountain.\nI still didn't know why I'd gone there. Tried to piece it together. Found",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188492",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 72,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "parking tips for justin bieber night: presented by stan society (18+) at irving plaza powered by verizon 5g (new york, ny 02/07).   \n  \nhey beliebers, figured i'd share some parking tips for the justi",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188509",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 73,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Reality being unlocal… this has been proven experimentally hasn’t it? Back in 2022. The discovery won a Nobel prize. But look… that has astounding implications. Non-duality, something professed as the",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188542",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 74,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Exploring the Baltics - A pleasant surprise. I didn’t plan this trip to Lithuania and Latvia — I just **found a cheap flight from Bergen to Vilnius on WizzAir** and couldn’t say no. I had *zero expect",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188564",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 75,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "WHEN THE 🌌SKY FORGOT OUR NAMES [PARTY 3]. PART III — THE SILENCE\n\nSix Months After\nAYAN\nMarch. Six months since the mountain.\nI still didn't know why I'd gone there. Tried to piece it together. Found ",
+      "username": "reddit/r/mumbai",
+      "timestamp": "2026-02-06T23:25:42.188583",
+      "source": "reddit/r/mumbai",
+      "type": "post"
+    },
+    {
+      "id": 76,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 4,
+      "comment": "GamesAppsBooksKidsnone",
+      "username": "play_store",
+      "timestamp": "2026-02-06T23:26:24.259815",
+      "source": "play_store",
+      "type": "app_review"
+    },
+    {
+      "id": 77,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 4,
+      "comment": "GamesAppsBooksKidsnone",
+      "username": "play_store",
+      "timestamp": "2026-02-06T23:26:24.259918",
+      "source": "play_store",
+      "type": "app_review"
+    },
+    {
+      "id": 78,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 4,
+      "comment": "GamesAppsBooksKidsnone",
+      "username": "play_store",
+      "timestamp": "2026-02-06T23:26:24.259988",
+      "source": "play_store",
+      "type": "app_review"
+    },
+    {
+      "id": 79,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 4,
+      "comment": "GamesAppsBooksKidsnone",
+      "username": "play_store",
+      "timestamp": "2026-02-06T23:26:24.260053",
+      "source": "play_store",
+      "type": "app_review"
+    },
+    {
+      "id": 80,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Railways to stop 88 Mumbai local trains for three months: Routes, reason and impact",
+      "username": "Google News",
+      "timestamp": "2026-02-06T23:27:26.649361",
+      "source": "Google News",
+      "type": "news"
+    },
+    {
+      "id": 81,
+      "category": "scraped",
+      "subject": "CSMT",
+      "rating": 3,
+      "comment": "Mumbai’s Goregaon-CSMT Local Train Services To Be Stopped For 3 Months, Lakhs Of Commuters To Be Hit",
+      "username": "Google News",
+      "timestamp": "2026-02-06T23:27:26.649399",
+      "source": "Google News",
+      "type": "news"
+    },
+    {
+      "id": 82,
+      "category": "scraped",
+      "subject": "CSMT",
+      "rating": 3,
+      "comment": "Mumbai Local Train Update: Western Railway to Impose 3-Month Block Between Goregaon–CSMT; Check Details",
+      "username": "Google News",
+      "timestamp": "2026-02-06T23:27:26.649417",
+      "source": "Google News",
+      "type": "news"
+    },
+    {
+      "id": 83,
+      "category": "scraped",
+      "subject": "CSMT",
+      "rating": 3,
+      "comment": "Attention Mumbaikars! Goregaon To CSMT Local Trains To Be Suspended For 3 Months",
+      "username": "Google News",
+      "timestamp": "2026-02-06T23:27:26.649430",
+      "source": "Google News",
+      "type": "news"
+    },
+    {
+      "id": 84,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Mumbai Local Train Update: What Does The Peak-Hour Express Train Ban Mean For Daily Commuters",
+      "username": "Google News",
+      "timestamp": "2026-02-06T23:27:26.649442",
+      "source": "Google News",
+      "type": "news"
+    },
+    {
+      "id": 85,
+      "category": "scraped",
+      "subject": "Goregaon",
+      "rating": 3,
+      "comment": "Western Railway to operate 5-hr jumbo block between Santacruz and Goregaon on Sunday, check details here",
+      "username": "Google News",
+      "timestamp": "2026-02-06T23:27:26.649454",
+      "source": "Google News",
+      "type": "news"
+    },
+    {
+      "id": 86,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Man makes obscene gestures at woman on Mumbai local train; FIR registered",
+      "username": "Google News",
+      "timestamp": "2026-02-06T23:27:26.649464",
+      "source": "Google News",
+      "type": "news"
+    },
+    {
+      "id": 87,
+      "category": "scraped",
+      "subject": "Bandra",
+      "rating": 3,
+      "comment": "Mumbai Local Train Update: Harbour Line Services Between Goregaon And Bandra To Be Suspended For 3 Months",
+      "username": "Google News",
+      "timestamp": "2026-02-06T23:27:26.649476",
+      "source": "Google News",
+      "type": "news"
+    },
+    {
+      "id": 88,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "FIR registered against speech-and-hearing-impaired man for sexually harassing woman in Mumbai local train",
+      "username": "Google News",
+      "timestamp": "2026-02-06T23:27:26.649487",
+      "source": "Google News",
+      "type": "news"
+    },
+    {
+      "id": 89,
+      "category": "scraped",
+      "subject": "Mumbai Local",
+      "rating": 3,
+      "comment": "Western Railway collects over Rs 172 crore fine in 10 months during ticket-checking drives",
+      "username": "Google News",
+      "timestamp": "2026-02-06T23:27:26.649505",
+      "source": "Google News",
+      "type": "news"
+    }
+  ],
+  "raw_data": {
+    "reddit": [
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Whats with all the educated ppl with no civics sense",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:27.866109",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qxiqbm/whats_with_all_the_educated_ppl_with_no_civics/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Best Commute Options from Taloja to Andheri East (Marol). Need Advice.",
+        "rating": 4,
+        "timestamp": "2026-02-06T23:25:27.866182",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qx98px/best_commute_options_from_taloja_to_andheri_east/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "do you get student concession for AC local trains as well?",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:27.866229",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qwdefc/do_you_get_student_concession_for_ac_local_trains/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "AC Local From Nalasopara to Andheri",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:27.866269",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qwb6pe/ac_local_from_nalasopara_to_andheri/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Mumbai Local is just worst and the solution is quite simple",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:27.866307",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qvotnm/mumbai_local_is_just_worst_and_the_solution_is/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Weird experience in local train.",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:27.866344",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qvmyj2/weird_experience_in_local_train/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Is a “Live Fish to Home + Cut in Front of Customer” business model viable?",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:27.866384",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qvmtot/is_a_live_fish_to_home_cut_in_front_of_customer/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Small act of help on Mumbai locals :⁠-⁠), look out for each other",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:27.866425",
+        "url": "https://old.reddit.com/r/mumbai/comments/1quyj9r/small_act_of_help_on_mumbai_locals_look_out_for/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "How is the cost of living in Mumbai? Might move there soon.",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:27.866460",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qulufg/how_is_the_cost_of_living_in_mumbai_might_move/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Ladies in general compartment",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:27.866494",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qucwcm/ladies_in_general_compartment/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Why all the trains are late ??",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:30.865631",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qvr0dw/why_all_the_trains_are_late/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Who is this gentleman at Dadar bridge who guides commuters every morning?",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:30.865711",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qvh4ph/who_is_this_gentleman_at_dadar_bridge_who_guides/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Budget hotel for solo male in Goregaon",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:30.865775",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qoybt7/budget_hotel_for_solo_male_in_goregaon/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "MMRDA has just explained the reason behind the design. Better expansion of what I had said earlier.",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:30.865844",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qouhxv/mmrda_has_just_explained_the_reason_behind_the/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Western Railway has successfully commissioned the remaining stretch of 3.21 km between Kandivali–Borivali, completing the Phase-I of the Mumbai Central–Borivali 6th Line project. | Western Railway (@WesternRly) on X",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:30.865919",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qi6g4m/western_railway_has_successfully_commissioned_the/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Just a curious question to Gemini",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:30.866058",
+        "url": "https://old.reddit.com/r/mumbai/comments/1q5a4wd/just_a_curious_question_to_gemini/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Travelling late on New Year’s Eve 2026 in Mumbai? Special local trains are running after midnight",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:30.866191",
+        "url": "https://old.reddit.com/r/mumbai/comments/1pyefr5/travelling_late_on_new_years_eve_2026_in_mumbai/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Mumbai Rail Alert: Western Railway Announces 30-Day Block On Kandivali–Borivali Section From December 20 For Sixth Line Works; Suburban, Mail Trains Affected",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:30.866270",
+        "url": "https://old.reddit.com/r/mumbai/comments/1ps460s/mumbai_rail_alert_western_railway_announces_30day/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Unsafe bike parking near Lotus Corporate Park, Goregaon East- need advice",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:30.866328",
+        "url": "https://old.reddit.com/r/mumbai/comments/1pnycdu/unsafe_bike_parking_near_lotus_corporate_park/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "A Trip to Sion, in 1853",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:30.866384",
+        "url": "https://old.reddit.com/r/mumbai/comments/1p9r45j/a_trip_to_sion_in_1853/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Why all the trains are late ??",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:33.440219",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qvr0dw/why_all_the_trains_are_late/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Who is this gentleman at Dadar bridge who guides commuters every morning?",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:33.440259",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qvh4ph/who_is_this_gentleman_at_dadar_bridge_who_guides/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "central railway.",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:33.440284",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qjha3l/central_railway/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Western Railway has successfully commissioned the remaining stretch of 3.21 km between Kandivali–Borivali, completing the Phase-I of the Mumbai Central–Borivali 6th Line project. | Western Railway (@WesternRly) on X",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:33.440321",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qi6g4m/western_railway_has_successfully_commissioned_the/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "please help me find atm",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:33.440343",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qcgvwx/please_help_me_find_atm/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Fire breaks out in train carrying rubbish in Mumbai's Kurla, suburban services briefly disrupted",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:33.440368",
+        "url": "https://old.reddit.com/r/mumbai/comments/1q7i0lt/fire_breaks_out_in_train_carrying_rubbish_in/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Just a curious question to Gemini",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:33.440398",
+        "url": "https://old.reddit.com/r/mumbai/comments/1q5a4wd/just_a_curious_question_to_gemini/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Mumbai Meri Jaan ❤️",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:33.440432",
+        "url": "https://old.reddit.com/r/mumbai/comments/1q23r4o/mumbai_meri_jaan/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Long whistles by all the Suburban Rakes at CSMT to wish all a Happy New Year in Railway-way.",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:33.440458",
+        "url": "https://old.reddit.com/r/mumbai/comments/1q0zp70/long_whistles_by_all_the_suburban_rakes_at_csmt/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Travelling late on New Year’s Eve 2026 in Mumbai? Special local trains are running after midnight",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:33.440484",
+        "url": "https://old.reddit.com/r/mumbai/comments/1pyefr5/travelling_late_on_new_years_eve_2026_in_mumbai/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Harbour Line to SLower Parel",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:36.020963",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qpjz8q/harbour_line_to_slower_parel/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "AC local trains start on Harbour line - Is the frequency adequate.",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:36.021001",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qmcuxk/ac_local_trains_start_on_harbour_line_is_the/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Harbour Line to Get AC Local Services Starting 26 Jan !",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:36.021027",
+        "url": "https://old.reddit.com/r/mumbai/comments/1qbo6l8/harbour_line_to_get_ac_local_services_starting_26/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Has anyone experienced this in mumbai before?",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:36.021050",
+        "url": "https://old.reddit.com/r/mumbai/comments/1q774p6/has_anyone_experienced_this_in_mumbai_before/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Just a curious question to Gemini",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:36.021072",
+        "url": "https://old.reddit.com/r/mumbai/comments/1q5a4wd/just_a_curious_question_to_gemini/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Travelling late on New Year’s Eve 2026 in Mumbai? Special local trains are running after midnight",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:36.021100",
+        "url": "https://old.reddit.com/r/mumbai/comments/1pyefr5/travelling_late_on_new_years_eve_2026_in_mumbai/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "URGENT! Is Chembur a good place to shift to?",
+        "rating": 4,
+        "timestamp": "2026-02-06T23:25:36.021122",
+        "url": "https://old.reddit.com/r/mumbai/comments/1pfhor4/urgent_is_chembur_a_good_place_to_shift_to/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Commute help from Jogeshwari Station!",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:36.021148",
+        "url": "https://old.reddit.com/r/mumbai/comments/1pf0xxr/commute_help_from_jogeshwari_station/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Is there megablock on harbour line today ? (Around 1pm)",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:36.021171",
+        "url": "https://old.reddit.com/r/mumbai/comments/1pac2rq/is_there_megablock_on_harbour_line_today_around/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Need help to find ideal locality to rent a flat",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:36.021192",
+        "url": "https://old.reddit.com/r/mumbai/comments/1ozdgym/need_help_to_find_ideal_locality_to_rent_a_flat/"
+      },
+      {
+        "source": "reddit/r/india",
+        "type": "post",
+        "content": "What stopped out Science Capital of India to build companies?",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:39.255003",
+        "url": "https://old.reddit.com/r/india/comments/1qu1dxd/what_stopped_out_science_capital_of_india_to/"
+      },
+      {
+        "source": "reddit/r/india",
+        "type": "post",
+        "content": "1st Time in India - Trip Itinerary Help",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:39.255076",
+        "url": "https://old.reddit.com/r/india/comments/1qsnxsr/1st_time_in_india_trip_itinerary_help/"
+      },
+      {
+        "source": "reddit/r/india",
+        "type": "post",
+        "content": "Living in the USA doesn’t magically give people civic sense, coming back to India proved that to me",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:39.255144",
+        "url": "https://old.reddit.com/r/india/comments/1q2rvmq/living_in_the_usa_doesnt_magically_give_people/"
+      },
+      {
+        "source": "reddit/r/india",
+        "type": "post",
+        "content": "Physically assaulted at a hotel in Seychelles, received no help from local police",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:39.255203",
+        "url": "https://old.reddit.com/r/india/comments/1puk8vf/physically_assaulted_at_a_hotel_in_seychelles/"
+      },
+      {
+        "source": "reddit/r/india",
+        "type": "post",
+        "content": "Got scammed by a fake BOAT refund call – Paytm UPI fraud (₹10,121). Update after 1.5 months: nothing recovered.",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:39.255267",
+        "url": "https://old.reddit.com/r/india/comments/1pstmab/got_scammed_by_a_fake_boat_refund_call_paytm_upi/"
+      },
+      {
+        "source": "reddit/r/india",
+        "type": "post",
+        "content": "Why is it almost impossible for a foreigner to get a sim card in India?",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:39.255322",
+        "url": "https://old.reddit.com/r/india/comments/1osc9rq/why_is_it_almost_impossible_for_a_foreigner_to/"
+      },
+      {
+        "source": "reddit/r/india",
+        "type": "post",
+        "content": "Moving to India from the US with a clinical psych PhD?",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:39.255375",
+        "url": "https://old.reddit.com/r/india/comments/1omq51m/moving_to_india_from_the_us_with_a_clinical_psych/"
+      },
+      {
+        "source": "reddit/r/india",
+        "type": "post",
+        "content": "Bengaluru's Snabbit raises $30M to expand into cooking, childcare, elderly care services.",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:39.255428",
+        "url": "https://old.reddit.com/r/india/comments/1ojuk9o/bengalurus_snabbit_raises_30m_to_expand_into/"
+      },
+      {
+        "source": "reddit/r/india",
+        "type": "post",
+        "content": "Firecracker issues in my city.",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:39.255481",
+        "url": "https://old.reddit.com/r/india/comments/1ocn64z/firecracker_issues_in_my_city/"
+      },
+      {
+        "source": "reddit/r/india",
+        "type": "post",
+        "content": "Why is Apple taking India for granted ?",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:39.255533",
+        "url": "https://old.reddit.com/r/india/comments/1oc1ag9/why_is_apple_taking_india_for_granted/"
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Quicky Zine for local sassy grandma. As promised",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188089",
+        "upvotes": 4
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "my roommate is making me suicidal. using the term roommate very loosely here.\n\nso i recently escaped from an abusive situation. i also recently got a job (🎉). while im waiting for money to start coming in, my gfs 77 year old grandma is",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188137",
+        "upvotes": 2
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Underrated Neighborhoods in Worcester County. # 🌟 Underrated Neighborhoods in Worcester County\n\nWorcester County has some well-known towns, but there are also **hidden gems** that don’t get enough attention. These neighborhoods often have great s",
+        "rating": 4,
+        "timestamp": "2026-02-06T23:25:42.188167",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Longmont Expands Drone Operations Across City Functions, From Open Space Management to Public Safety Response. **LONGMONT, CO —** A surge in municipal drone activity is taking shape this spring in Longmont, with the city conducting multi-month training flights at Rogers Grove Open Space while simultaneously sc",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188196",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "easy_sm - A Unix-style CLI for AWS SageMaker that lets you prototype locally before deploying. I built [`easy_sm`](https://prteek.github.io/easy_sm/) to solve a pain point with AWS SageMaker: the slow feedback loop between local development and cloud deployment.\n\n**What it does:**\n\nTrain, proce",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188217",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "easy_sm - A Unix-style CLI for AWS SageMaker that lets you prototype locally before deploying. I built [`easy_sm`](https://prteek.github.io/easy_sm/) to solve a pain point with AWS SageMaker: the slow feedback loop between local development and cloud deployment.\n\n**What it does:**\n\nTrain, proce",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188231",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Concerns Over Connection Between Councilman Devon Reese and Firm Suggested to Get $900000 for City's Labor Negotiations. Several locals have reached out to us about a proposed three year City of Reno contract of up to $900,000 with the Simons Hall Johnston law firm to negotiate labor agreements with concerns on connecti",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188254",
+        "upvotes": 2
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Officially a Gundam card game YouTuber. Well I've been making content for bandai card games and other card games for a while, but it seems I've really built up a Gundam card game fan base, so I'm announcing today, I'm officially a Gundam ca",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188269",
+        "upvotes": 0
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Review my resume.",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188277",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Seeking Job please DM (Available to relocate).",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188286",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "I built a daily Wordle-style game that tests if you can tell real photos from AI-generated ones. Hey everyone. I've been working on this for a while and finally shipped it.\n\nIt's called BRAIAIN — every day you get 10 images and have to decide if each one is a real photograph or AI-generated. Same",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188311",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "We Need an Honest Conversation About ICE Encounters — One That Could Actually Save Lives. I’ve been watching the news, the clips, the debates, the protests — and I think we’re missing something important in all of it. Something that could actually keep people alive regardless of where you",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188336",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "parking tips for ontario reign vs. bakersfield condors at toyota arena (ontario 02/07).   \n  \nhey everyone, figured i'd share some parking tips for the reign game against the condors on 02/07. tuesday night games are usually a bit easier than weekends but you still get that 1-10/1-15 eve",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188353",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Hamilton’s Most Famous Car/Train Collision. Anyone who tries to navigate through Hamilton knows the persistent inconvenience of the railroad system, how sometimes the only way to get from one side of the town to the other is to funnel through t",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188375",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "ICE Response Training.",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188383",
+        "upvotes": 15
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Executive Concierge Medicine in Las Vegas: The Performance Gap Your Doctor Isn't Addressing. Standard healthcare has a blind spot that's costing executives more than they realize.\n\nYour annual physical checks whether you're sick enough to treat. It doesn't evaluate whether your biology suppor",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188401",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "parking tips for phoenix suns vs. philadelphia 76ers at mortgage matchup center (phoenix 02/07).   \n  \nhey everyone, figured i'd share some parking tips for the suns vs. sixers game on 02/07. honestly, parking downtown on a game night, especially a saturday, can be a total headache and the exit t",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188417",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Claim: Conscious choices for sustainable travel include opting for direct flights or train travel, choosing eco-friendly accommodations, and supporting authentic local businesses.. This post contains content not supported on old Reddit. [Click here to view the full post](https://sh.reddit.com/r/findfallacies/comments/1qxn6lt)",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188436",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Thoughts On Owen's Alert. The mom of one of my clients told me about Owen's Alert.  It would trigger immediate multi-agency notification to local law enforcement, first responders, and the public when a qualifying child goes m",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188452",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Executive Concierge Medicine in Las Vegas: The Optimization Paradox That's Limiting Every High Performer. Here's something I find genuinely puzzling about successful people.\n\nThey optimize everything. Technology stacks. Team structures. Investment portfolios. Operational processes. They'll spend weeks fin",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188469",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "WHEN THE SKY 🌌FORGOT OUR NAMES [PART III]. PART III — THE SILENCE\n\nSix Months After\nAYAN\nMarch. Six months since the mountain.\nI still didn't know why I'd gone there. Tried to piece it together. Found the train ticket stub. October 23rd. Found",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188492",
+        "upvotes": 3
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "parking tips for justin bieber night: presented by stan society (18+) at irving plaza powered by verizon 5g (new york, ny 02/07).   \n  \nhey beliebers, figured i'd share some parking tips for the justin bieber night on 02/07 because driving in the union square-east village area is honestly a nightmare, and irving plaza has no ded",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188509",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Reality being unlocal… this has been proven experimentally hasn’t it? Back in 2022. The discovery won a Nobel prize. But look… that has astounding implications. Non-duality, something professed as the true reality for thousands of years by the wise ones…. The invisible, undivisible and undifferentiated awareness. There is actual strong evidence in quantum physics. Why is this not a bigger deal?\n\nHoley Quantum Mind:\n\nYes, Harmonic Creator—you are correc",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188542",
+        "upvotes": 1
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "Exploring the Baltics - A pleasant surprise. I didn’t plan this trip to Lithuania and Latvia — I just **found a cheap flight from Bergen to Vilnius on WizzAir** and couldn’t say no. I had *zero expectations* walking off that plane… but man, I wa",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188564",
+        "upvotes": 45
+      },
+      {
+        "source": "reddit/r/mumbai",
+        "type": "post",
+        "content": "WHEN THE 🌌SKY FORGOT OUR NAMES [PARTY 3]. PART III — THE SILENCE\n\nSix Months After\nAYAN\nMarch. Six months since the mountain.\nI still didn't know why I'd gone there. Tried to piece it together. Found the train ticket stub. October 23rd. Found",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:25:42.188583",
+        "upvotes": 2
+      }
+    ],
+    "twitter": [],
+    "play_store": [
+      {
+        "source": "play_store",
+        "type": "app_review",
+        "app": "m-indicator",
+        "content": "GamesAppsBooksKidsnone",
+        "rating": 4,
+        "timestamp": "2026-02-06T23:26:24.259815"
+      },
+      {
+        "source": "play_store",
+        "type": "app_review",
+        "app": "m-indicator",
+        "content": "GamesAppsBooksKidsnone",
+        "rating": 4,
+        "timestamp": "2026-02-06T23:26:24.259918"
+      },
+      {
+        "source": "play_store",
+        "type": "app_review",
+        "app": "m-indicator",
+        "content": "GamesAppsBooksKidsnone",
+        "rating": 4,
+        "timestamp": "2026-02-06T23:26:24.259988"
+      },
+      {
+        "source": "play_store",
+        "type": "app_review",
+        "app": "m-indicator",
+        "content": "GamesAppsBooksKidsnone",
+        "rating": 4,
+        "timestamp": "2026-02-06T23:26:24.260053"
+      }
+    ],
+    "news": [
+      {
+        "source": "Google News",
+        "type": "news",
+        "content": "Railways to stop 88 Mumbai local trains for three months: Routes, reason and impact",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:27:26.649361"
+      },
+      {
+        "source": "Google News",
+        "type": "news",
+        "content": "Mumbai’s Goregaon-CSMT Local Train Services To Be Stopped For 3 Months, Lakhs Of Commuters To Be Hit",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:27:26.649399"
+      },
+      {
+        "source": "Google News",
+        "type": "news",
+        "content": "Mumbai Local Train Update: Western Railway to Impose 3-Month Block Between Goregaon–CSMT; Check Details",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:27:26.649417"
+      },
+      {
+        "source": "Google News",
+        "type": "news",
+        "content": "Attention Mumbaikars! Goregaon To CSMT Local Trains To Be Suspended For 3 Months",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:27:26.649430"
+      },
+      {
+        "source": "Google News",
+        "type": "news",
+        "content": "Mumbai Local Train Update: What Does The Peak-Hour Express Train Ban Mean For Daily Commuters",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:27:26.649442"
+      },
+      {
+        "source": "Google News",
+        "type": "news",
+        "content": "Western Railway to operate 5-hr jumbo block between Santacruz and Goregaon on Sunday, check details here",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:27:26.649454"
+      },
+      {
+        "source": "Google News",
+        "type": "news",
+        "content": "Man makes obscene gestures at woman on Mumbai local train; FIR registered",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:27:26.649464"
+      },
+      {
+        "source": "Google News",
+        "type": "news",
+        "content": "Mumbai Local Train Update: Harbour Line Services Between Goregaon And Bandra To Be Suspended For 3 Months",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:27:26.649476"
+      },
+      {
+        "source": "Google News",
+        "type": "news",
+        "content": "FIR registered against speech-and-hearing-impaired man for sexually harassing woman in Mumbai local train",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:27:26.649487"
+      },
+      {
+        "source": "Google News",
+        "type": "news",
+        "content": "Western Railway collects over Rs 172 crore fine in 10 months during ticket-checking drives",
+        "rating": 3,
+        "timestamp": "2026-02-06T23:27:26.649505"
+      }
+    ]
+  },
+  "last_updated": "2026-02-06T23:27:27.522110",
+  "stats": {
+    "total": 89,
+    "reddit": 75,
+    "twitter": 0,
+    "play_store": 4,
+    "news": 10
+  }
 }

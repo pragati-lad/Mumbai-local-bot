@@ -6,6 +6,7 @@ from difflib import get_close_matches
 import pandas as pd
 from datetime import datetime
 import os
+import re
 
 # Import first/last mile bus connections
 try:
@@ -58,11 +59,62 @@ def parse_time(t):
         return None
 
 
-def get_trains(source=None, dest=None, line=None, ac_only=False, limit=8):
-    """Get trains based on filters."""
+def extract_time_from_query(query):
+    """Extract time from user query like 'at 1 pm', 'around 3:30', 'after 5pm'."""
+    q = query.lower()
+
+    # Patterns to match time in query
+    patterns = [
+        # "at 1 pm", "at 1:30 pm", "at 1pm"
+        r'(?:at|around|after|by)\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)',
+        # "1 pm", "1:30 pm" (standalone)
+        r'(\d{1,2})(?::(\d{2}))?\s*(am|pm)',
+        # "13:00", "14:30" (24-hour format)
+        r'(\d{1,2}):(\d{2})(?!\s*(?:am|pm))',
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, q)
+        if match:
+            groups = match.groups()
+
+            if len(groups) == 3:  # 12-hour format with am/pm
+                hour = int(groups[0])
+                minute = int(groups[1]) if groups[1] else 0
+                period = groups[2]
+
+                if period == 'pm' and hour != 12:
+                    hour += 12
+                elif period == 'am' and hour == 12:
+                    hour = 0
+
+                try:
+                    return datetime.strptime(f"{hour}:{minute}", "%H:%M").time()
+                except:
+                    pass
+
+            elif len(groups) == 2:  # 24-hour format
+                hour = int(groups[0])
+                minute = int(groups[1])
+                if 0 <= hour <= 23 and 0 <= minute <= 59:
+                    try:
+                        return datetime.strptime(f"{hour}:{minute}", "%H:%M").time()
+                    except:
+                        pass
+
+    return None
+
+
+def get_trains(source=None, dest=None, line=None, ac_only=False, limit=8, after_time=None, show_all=False):
+    """Get trains based on filters.
+
+    Args:
+        after_time: Show trains after this specific time (datetime.time object)
+        show_all: If True, show all trains regardless of time
+    """
     df = load_trains(ac_only=ac_only)
     if df is None or len(df) == 0:
-        return None
+        return None, False
 
     # Filter by criteria
     if line:
@@ -84,21 +136,32 @@ def get_trains(source=None, dest=None, line=None, ac_only=False, limit=8):
             df = df[df['dest'].str.lower().str.contains('csmt|cst|mumbai c', regex=True, na=False)]
 
     if len(df) == 0:
-        return None
+        return None, False
 
     # Sort by time
     df = df.copy()
     df['parsed_time'] = df['time'].apply(parse_time)
 
-    # Get current time and filter upcoming trains
-    now = datetime.now().time()
-    upcoming = df[df['parsed_time'] >= now]
+    total_trains = len(df)
+    has_more = False
 
-    if len(upcoming) == 0:
-        # If no trains left today, show first trains of the day
+    if show_all:
+        # Show all trains sorted by time
         upcoming = df.sort_values('parsed_time')
+    else:
+        # Filter by time
+        filter_time = after_time if after_time else datetime.now().time()
+        upcoming = df[df['parsed_time'] >= filter_time]
 
-    return upcoming.drop(columns=['parsed_time'], errors='ignore').head(limit)
+        if len(upcoming) == 0:
+            # If no trains left, show first trains of the day
+            upcoming = df.sort_values('parsed_time')
+        else:
+            upcoming = upcoming.sort_values('parsed_time')
+            has_more = total_trains > len(upcoming)
+
+    result = upcoming.drop(columns=['parsed_time'], errors='ignore').head(limit)
+    return result, has_more, total_trains
 
 
 # ---------------- STATION DATA ----------------
@@ -271,11 +334,11 @@ def handle_ac_query(q, original_query):
 
     # Get AC trains based on filters
     if line and not source:
-        trains = get_trains(line=line, ac_only=True, limit=8)
+        trains, has_more, total = get_trains(line=line, ac_only=True, limit=8)
         if trains is None or len(trains) == 0:
-            return f"❌ No AC train data available for {line_name}."
+            return f"No AC train data available for {line_name}."
 
-        result = f"🚆 **AC Trains on {line_name}**\n\n"
+        result = f"**AC Trains on {line_name}**\n\n"
         result += "| Time | From | To | Type |\n|------|------|-----|------|\n"
         for _, row in trains.iterrows():
             result += f"| {row['time']} | {row['source']} | {row['dest']} | {row['type']} |\n"
@@ -283,13 +346,13 @@ def handle_ac_query(q, original_query):
         return result
 
     elif source:
-        trains = get_trains(source=source, dest=dest, ac_only=True, limit=8)
+        trains, has_more, total = get_trains(source=source, dest=dest, ac_only=True, limit=8)
 
         if trains is None or len(trains) == 0:
-            return f"❌ No AC trains found from **{source}**" + (f" to **{dest}**" if dest else "") + ".\n\nAC trains run on limited routes. Try: Churchgate, Virar, Borivali, Bhayandar"
+            return f"No AC trains found from **{source}**" + (f" to **{dest}**" if dest else "") + ".\n\nAC trains run on limited routes. Try: Churchgate, Virar, Borivali, Bhayandar"
 
         dest_text = f" to **{dest}**" if dest else ""
-        result = f"🚆 **AC Trains from {source}**{dest_text}\n\n"
+        result = f"**AC Trains from {source}**{dest_text}\n\n"
         result += "| Time | To | Type |\n|------|-----|------|\n"
         for _, row in trains.iterrows():
             result += f"| {row['time']} | {row['dest']} | {row['type']} |\n"
@@ -331,22 +394,27 @@ Try asking:
 
 # ---------------- TRAIN TIMETABLE HANDLER ----------------
 
-def handle_train_query(src, dst, line_code):
+def handle_train_query(src, dst, line_code, after_time=None):
     """Handle train timetable queries."""
 
     # Try to find trains
-    trains = get_trains(source=src, dest=dst, limit=10)
+    trains, has_more, total = get_trains(source=src, dest=dst, limit=10, after_time=after_time)
 
     if trains is None or len(trains) == 0:
         # Try reverse direction or broader search
-        trains = get_trains(source=src, limit=10)
+        trains, has_more, total = get_trains(source=src, limit=10, after_time=after_time)
 
     if trains is not None and len(trains) > 0:
-        result = f"🚆 **Trains from {src} to {dst}**\n\n"
+        time_note = ""
+        if after_time:
+            time_note = f" (after {after_time.strftime('%I:%M %p')})"
+        result = f"**Trains from {src} to {dst}**{time_note}\n\n"
         result += "| Time | Destination | Type |\n|------|-------------|------|\n"
         for _, row in trains.iterrows():
             result += f"| {row['time']} | {row['dest']} | {row['type']} |\n"
-        result += f"\n_Showing {len(trains)} upcoming trains_"
+        result += f"\n_Showing {len(trains)} of {total} trains_"
+        if has_more:
+            result += f"\n_Say \"all trains {src} to {dst}\" for full schedule_"
         return result
 
     return None
@@ -473,21 +541,30 @@ def chatbot_response(query: str):
     # ---- ROUTE / TRAIN LOGIC ----
     stations = extract_stations(query)
 
+    # Extract time from query if specified
+    query_time = extract_time_from_query(query)
+    show_all = "all train" in q or "full schedule" in q or "all schedule" in q
+
     if len(stations) < 2:
         # Check if asking about trains from a single station
         if len(stations) == 1:
-            trains = get_trains(source=stations[0], limit=8)
+            trains, has_more, total = get_trains(source=stations[0], limit=8, after_time=query_time, show_all=show_all)
             if trains is not None and len(trains) > 0:
-                result = f"🚆 **Trains from {stations[0]}**\n\n"
+                time_note = ""
+                if query_time:
+                    time_note = f" (after {query_time.strftime('%I:%M %p')})"
+                result = f"**Trains from {stations[0]}**{time_note}\n\n"
                 result += "| Time | Destination | Type |\n|------|-------------|------|\n"
                 for _, row in trains.iterrows():
                     result += f"| {row['time']} | {row['dest']} | {row['type']} |\n"
-                result += f"\n_Showing {len(trains)} upcoming trains_"
+                result += f"\n_Showing {len(trains)} of {total} trains_"
+                if has_more and not show_all:
+                    result += f"\n_Say \"all trains from {stations[0]}\" for full schedule_"
                 return result
 
         return (
-            "❌ I couldn't identify the stations.\n\n"
-            "Try:\n• Dadar to Churchgate\n• Trains from CSMT\n• AC trains on Western line\n• Student concession"
+            "I couldn't identify the stations.\n\n"
+            "Try:\n- Dadar to Churchgate\n- Trains from CSMT\n- AC trains on Western line\n- Student concession"
         )
 
     src, dst = stations[0], stations[1]
@@ -499,7 +576,7 @@ def chatbot_response(query: str):
     dst_line, dst_code = determine_line(dst)
 
     # Try to get actual train timings
-    train_result = handle_train_query(src, dst, src_code)
+    train_result = handle_train_query(src, dst, src_code, after_time=query_time)
 
     if train_result:
         return train_result

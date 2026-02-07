@@ -7,6 +7,13 @@ import pandas as pd
 from datetime import datetime
 import os
 
+# Import first/last mile bus connections
+try:
+    from bus_connections import check_needs_bus_connection, format_bus_response, get_combined_route, FIRST_LAST_MILE
+    BUS_CONNECTIONS_AVAILABLE = True
+except ImportError:
+    BUS_CONNECTIONS_AVAILABLE = False
+
 # ---------------- TRAIN DATA FILES ----------------
 
 BASE_DIR = os.path.dirname(__file__)
@@ -336,6 +343,70 @@ def handle_train_query(src, dst, line_code):
     return None
 
 
+# ---------------- BUS + TRAIN COMBINED ROUTE ----------------
+
+def handle_bus_train_route(query, from_area, to_area):
+    """Handle queries that need bus + train combinations."""
+    q_lower = query.lower()
+
+    response = ""
+    start_station = None
+    end_station = None
+    step_num = 1
+
+    # Extract regular stations from query
+    stations = extract_stations(query)
+
+    # First mile (from area to train station)
+    if from_area:
+        conn = from_area["nearest_stations"][0]
+        start_station = conn["station"]
+        response += f"**Step {step_num}: Bus from {from_area['area_name']}**\n"
+        response += f"Take Bus **{' or '.join(conn['buses'])}** to **{conn['station']}** Station\n"
+        response += f"Time: {conn['travel_time']}\n"
+        if conn.get("notes"):
+            response += f"_{conn['notes']}_\n"
+        response += "\n"
+        step_num += 1
+    elif stations:
+        # Source is a regular station
+        start_station = stations[0]
+
+    # Determine end station
+    if to_area:
+        conn = to_area["nearest_stations"][0]
+        end_station = conn["station"]
+    elif len(stations) >= 2:
+        end_station = stations[1]
+    elif len(stations) == 1 and from_area:
+        end_station = stations[0]
+
+    # Get train route
+    if start_station and end_station and start_station != end_station:
+        src_line, _ = determine_line(start_station)
+        dst_line, _ = determine_line(end_station)
+        interchange = find_interchange(src_line, dst_line)
+
+        response += f"**Step {step_num}: Train**\n"
+        if interchange and interchange != end_station and interchange != start_station:
+            response += f"**{start_station}** -> **{interchange}** (change) -> **{end_station}**\n"
+        else:
+            response += f"**{start_station}** -> **{end_station}** ({src_line})\n"
+        response += "\n"
+        step_num += 1
+
+    # Last mile (from train station to destination area)
+    if to_area:
+        conn = to_area["nearest_stations"][0]
+        response += f"**Step {step_num}: Bus to {to_area['area_name']}**\n"
+        response += f"From **{conn['station']}** take Bus **{' or '.join(conn['buses'])}**\n"
+        response += f"Time: {conn['travel_time']}\n"
+        if conn.get("notes"):
+            response += f"_{conn['notes']}_\n"
+
+    return response
+
+
 # ---------------- CHATBOT RESPONSE ----------------
 
 def chatbot_response(query: str):
@@ -354,6 +425,28 @@ def chatbot_response(query: str):
 
     if "monthly" in q or "quarterly" in q or "pass" in q:
         return MONTHLY_PASS
+
+    # ---- BUS + TRAIN COMBINED ROUTE ----
+    if BUS_CONNECTIONS_AVAILABLE:
+        # Split query by "to" to identify source and destination
+        from_area = None
+        to_area = None
+
+        if " to " in q:
+            parts = q.split(" to ", 1)
+            from_part = parts[0].strip()
+            to_part = parts[1].strip()
+
+            _, _, from_area = check_needs_bus_connection(from_part)
+            _, _, to_area = check_needs_bus_connection(to_part)
+        else:
+            # Check entire query
+            _, _, from_area = check_needs_bus_connection(q)
+
+        if from_area or to_area:
+            result = "**Combined Bus + Train Route**\n\n"
+            result += handle_bus_train_route(query, from_area, to_area)
+            return result
 
     # ---- AC TRAIN LOGIC ----
     if "ac" in q or "air condition" in q:

@@ -406,7 +406,13 @@ with review_col:
         else:
             review_subject = st.text_input("Topic", placeholder="e.g., Peak hour experience")
 
-        review_rating = st.slider("Rating", 1, 5, 4)
+        review_rating = st.radio(
+            "Rating",
+            options=[1, 2, 3, 4, 5],
+            format_func=lambda x: "★" * x + "☆" * (5 - x),
+            horizontal=True,
+            index=3
+        )
 
         review_comment = st.text_area(
             "Your review",

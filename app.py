@@ -366,13 +366,6 @@ with main_col:
         else:
             response = chatbot_response(user_input)
 
-            for station in STATIONS:
-                if station.lower() in user_input.lower():
-                    review_summary = get_review_summary(station)
-                    if review_summary:
-                        response += review_summary
-                    break
-
         with st.chat_message("assistant", avatar="🚃"):
             st.markdown(response)
 

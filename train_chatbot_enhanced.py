@@ -4,9 +4,16 @@
 
 from difflib import get_close_matches
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 import os
 import re
+
+# IST timezone (UTC+5:30)
+IST = timezone(timedelta(hours=5, minutes=30))
+
+def get_ist_time():
+    """Get current time in IST."""
+    return datetime.now(IST).time()
 
 # Import first/last mile bus connections
 try:
@@ -169,8 +176,8 @@ def get_trains(source=None, dest=None, line=None, ac_only=False, limit=8, after_
         # Show all trains sorted by time
         upcoming = df.sort_values('parsed_time')
     else:
-        # Filter by time
-        filter_time = after_time if after_time else datetime.now().time()
+        # Filter by time (use IST for Mumbai trains)
+        filter_time = after_time if after_time else get_ist_time()
         upcoming = df[df['parsed_time'] >= filter_time]
 
         if len(upcoming) == 0:

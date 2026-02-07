@@ -154,9 +154,9 @@ st.markdown(
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        .western { background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important; }
-        .central { background: linear-gradient(135deg, #ef4444, #b91c1c) !important; }
-        .harbour { background: linear-gradient(135deg, #22c55e, #15803d) !important; }
+        .western { background: linear-gradient(135deg, #f97316, #ea580c) !important; }
+        .central { background: linear-gradient(135deg, #ec4899, #db2777) !important; }
+        .harbour { background: linear-gradient(135deg, #06b6d4, #0891b2) !important; }
 
         /* Gradient buttons */
         .stButton > button {
@@ -380,7 +380,7 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="section-header">Drop a Review</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Spill the Tea</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
@@ -410,7 +410,7 @@ with review_col:
 
         review_comment = st.text_area(
             "Your review",
-            placeholder="Share your experience...",
+            placeholder="Go ahead and gossip...",
             max_chars=500
         )
 
@@ -431,7 +431,7 @@ with review_col:
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="section-header">What People Say</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Spilled Tea</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
 

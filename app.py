@@ -384,6 +384,10 @@ with main_col:
 with review_col:
     st.markdown('<p class="section-header">Spill the Tea</p>', unsafe_allow_html=True)
 
+    # Rating slider OUTSIDE form for live star updates
+    review_rating = st.slider("Rate it", 1, 5, 4, key="star_rating")
+    st.markdown(f'<p style="text-align:center; font-size:1.8rem; color:#f59e0b; margin-top:-15px; margin-bottom:10px;">{"★" * review_rating}{"☆" * (5 - review_rating)}</p>', unsafe_allow_html=True)
+
     # Review Form
     with st.form("review_form"):
         review_category = st.selectbox(
@@ -407,9 +411,6 @@ with review_col:
             )
         else:
             review_subject = st.text_input("Topic", placeholder="e.g., Peak hour experience")
-
-        review_rating = st.slider("Rating", 1, 5, 4, label_visibility="collapsed")
-        st.markdown(f'<p style="text-align:center; font-size:1.5rem; color:#fbbf24; margin-top:-10px;">{"★" * review_rating}{"☆" * (5 - review_rating)}</p>', unsafe_allow_html=True)
 
         review_comment = st.text_area(
             "Your review",

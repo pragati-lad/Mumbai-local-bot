@@ -285,12 +285,12 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">Mumbai Local</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">Apna Mumbai Local</h1>', unsafe_allow_html=True)
     st.markdown('''<p class="subtitle">
         <span class="line-badge western">Western</span>
         <span class="line-badge central">Central</span>
         <span class="line-badge harbour">Harbour</span>
-        <br>7,500+ real train schedules
+        <br>Your pocket train guide - 7,500+ trains
     </p>''', unsafe_allow_html=True)
 
     # ---------------- Session State ----------------
@@ -306,13 +306,14 @@ with main_col:
             {
                 "role": "assistant",
                 "content": (
-                    "Welcome to Mumbai Local!\n\n"
-                    "I can help you with train timings, routes & more.\n\n"
-                    "**Try asking:**\n"
-                    "• Andheri to Churchgate\n"
-                    "• AC trains on Western line\n"
-                    "• Reviews for Dadar\n"
-                    "• Monthly pass price"
+                    "Hey! Welcome to Apna Mumbai Local!\n\n"
+                    "Need train timings? Platform info? I got you covered!\n\n"
+                    "**Ask me stuff like:**\n"
+                    "- Andheri to Churchgate\n"
+                    "- Dadar to Thane at 5 pm\n"
+                    "- Platform info Dadar\n"
+                    "- Powai to BKC (bus+train)\n"
+                    "- Fare Andheri to Borivali"
                 )
             }
         )
@@ -324,10 +325,10 @@ with main_col:
             st.markdown(msg["content"])
 
     # -------- Chat Input --------
-    user_input = st.chat_input("Search trains, routes...")
+    user_input = st.chat_input("Where to? Try: Dadar to Thane...")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="section-header">Quick Search</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Try These</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -379,7 +380,7 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="section-header">Write a Review</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Drop a Review</p>', unsafe_allow_html=True)
 
     # Review Form
     with st.form("review_form"):
@@ -415,7 +416,7 @@ with review_col:
 
         review_name = st.text_input("Name", placeholder="Anonymous")
 
-        submitted = st.form_submit_button("Submit →", use_container_width=True)
+        submitted = st.form_submit_button("Post It!", use_container_width=True)
 
         if submitted and review_comment:
             add_user_review(
@@ -430,7 +431,7 @@ with review_col:
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
-    st.markdown('<p class="section-header">Recent Reviews</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">What People Say</p>', unsafe_allow_html=True)
 
     user_reviews = get_all_reviews_from_sheets()
 
@@ -450,7 +451,7 @@ with review_col:
         st.markdown("""
         <div class="review-card" style="text-align: center;">
             No reviews yet!<br>
-            <small style="color: #636e72;">↑ Be the first to write one</small>
+            <small style="color: #636e72;">Be the first to drop one</small>
         </div>
         """, unsafe_allow_html=True)
 

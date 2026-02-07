@@ -14,6 +14,13 @@ try:
 except ImportError:
     BUS_CONNECTIONS_AVAILABLE = False
 
+# Import fare calculator
+try:
+    from fare_calculator import calculate_fare, format_fare_response
+    FARE_CALCULATOR_AVAILABLE = True
+except ImportError:
+    FARE_CALCULATOR_AVAILABLE = False
+
 # ---------------- TRAIN DATA FILES ----------------
 
 BASE_DIR = os.path.dirname(__file__)
@@ -201,7 +208,9 @@ def extract_stations(query):
     # Words to ignore (not station names)
     ignore_words = {'train', 'trains', 'from', 'to', 'the', 'a', 'an', 'on', 'at',
                     'line', 'local', 'fast', 'slow', 'ac', 'next', 'show', 'get',
-                    'western', 'central', 'harbour', 'harbor', 'railway'}
+                    'western', 'central', 'harbour', 'harbor', 'railway',
+                    'fare', 'price', 'cost', 'ticket', 'kitna', 'rate', 'charge',
+                    'how', 'much', 'what', 'is', 'for', 'between'}
 
     found = []
     words = query.replace(',', ' ').replace(' to ', ' ').split()
@@ -425,6 +434,15 @@ def chatbot_response(query: str):
 
     if "monthly" in q or "quarterly" in q or "pass" in q:
         return MONTHLY_PASS
+
+    # ---- FARE CALCULATOR ----
+    fare_keywords = ["fare", "price", "cost", "ticket", "kitna", "rate", "charge"]
+    if FARE_CALCULATOR_AVAILABLE and any(kw in q for kw in fare_keywords):
+        stations = extract_stations(query)
+        if len(stations) >= 2:
+            fare_data = calculate_fare(stations[0], stations[1])
+            if fare_data:
+                return format_fare_response(fare_data)
 
     # ---- BUS + TRAIN COMBINED ROUTE ----
     if BUS_CONNECTIONS_AVAILABLE:

@@ -82,10 +82,10 @@ def extract_time_from_query(query):
 
     # Patterns to match time in query
     patterns = [
-        # "at 1 pm", "at 1:30 pm", "at 1pm"
-        r'(?:at|around|after|by)\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)',
-        # "1 pm", "1:30 pm" (standalone)
-        r'(\d{1,2})(?::(\d{2}))?\s*(am|pm)',
+        # "at 1 pm", "at 1:30 pm", "at 1pm", "at 5 p"
+        r'(?:at|around|after|by)\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm|a|p)\b',
+        # "1 pm", "1:30 pm", "5p", "5 p" (standalone)
+        r'(\d{1,2})(?::(\d{2}))?\s*(am|pm|a|p)\b',
         # "13:00", "14:30" (24-hour format)
         r'(\d{1,2}):(\d{2})(?!\s*(?:am|pm))',
     ]
@@ -100,10 +100,13 @@ def extract_time_from_query(query):
                 minute = int(groups[1]) if groups[1] else 0
                 period = groups[2]
 
-                if period == 'pm' and hour != 12:
-                    hour += 12
-                elif period == 'am' and hour == 12:
-                    hour = 0
+                # Handle shorthand "a" for "am" and "p" for "pm"
+                if period in ['p', 'pm']:
+                    if hour != 12:
+                        hour += 12
+                elif period in ['a', 'am']:
+                    if hour == 12:
+                        hour = 0
 
                 try:
                     return datetime.strptime(f"{hour}:{minute}", "%H:%M").time()
@@ -411,15 +414,15 @@ Try asking:
 
 # ---------------- TRAIN TIMETABLE HANDLER ----------------
 
-def handle_train_query(src, dst, line_code, after_time=None):
+def handle_train_query(src, dst, line_code, after_time=None, show_all=False):
     """Handle train timetable queries."""
 
     # Try to find trains
-    trains, has_more, total = get_trains(source=src, dest=dst, limit=10, after_time=after_time)
+    trains, has_more, total = get_trains(source=src, dest=dst, limit=10, after_time=after_time, show_all=show_all)
 
     if trains is None or len(trains) == 0:
         # Try reverse direction or broader search
-        trains, has_more, total = get_trains(source=src, limit=10, after_time=after_time)
+        trains, has_more, total = get_trains(source=src, limit=10, after_time=after_time, show_all=show_all)
 
     if trains is not None and len(trains) > 0:
         time_note = ""
@@ -616,7 +619,7 @@ def chatbot_response(query: str):
     dst_line, dst_code = determine_line(dst)
 
     # Try to get actual train timings
-    train_result = handle_train_query(src, dst, src_code, after_time=query_time)
+    train_result = handle_train_query(src, dst, src_code, after_time=query_time, show_all=show_all)
 
     if train_result:
         return train_result

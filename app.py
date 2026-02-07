@@ -113,9 +113,9 @@ st.markdown(
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-        /* Light summer gradient background */
+        /* Vibrant summer gradient background */
         .stApp, [data-testid="stAppViewContainer"] {
-            background: linear-gradient(135deg, #fef9c3 0%, #fed7aa 30%, #fce7f3 70%, #e0f2fe 100%) !important;
+            background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 25%, #fbcfe8 50%, #e0f2fe 75%, #ddd6fe 100%) !important;
         }
 
         .main, .block-container {
@@ -158,35 +158,35 @@ st.markdown(
         .central { background: linear-gradient(135deg, #ec4899, #f472b6) !important; }
         .harbour { background: linear-gradient(135deg, #06b6d4, #22d3ee) !important; }
 
-        /* Soft buttons */
+        /* Glossy buttons */
         .stButton > button {
-            background: linear-gradient(135deg, #ffffff, #fef3c7) !important;
-            border: 1px solid #fcd34d !important;
+            background: linear-gradient(180deg, #ffffff 0%, #fef3c7 50%, #fde68a 100%) !important;
+            border: 1px solid #fbbf24 !important;
             color: #92400e !important;
             border-radius: 12px !important;
             padding: 0.5rem 1.1rem;
             font-size: 0.85rem !important;
-            font-weight: 500 !important;
+            font-weight: 600 !important;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.2);
+            box-shadow: 0 3px 10px rgba(251, 191, 36, 0.25), inset 0 1px 0 rgba(255,255,255,0.5);
         }
 
         .stButton > button:hover {
-            background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+            background: linear-gradient(180deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%) !important;
             border-color: #f59e0b !important;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(255,255,255,0.6);
         }
 
-        /* Soft glass cards */
+        /* Glossy glass cards */
         .review-card {
-            background: rgba(255,255,255,0.7) !important;
+            background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%) !important;
             backdrop-filter: blur(10px);
             padding: 14px 16px;
             margin: 10px 0;
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
         }
 
         .review-card b {
@@ -208,11 +208,12 @@ st.markdown(
             gap: 8px;
         }
 
-        /* Chat messages */
+        /* Glossy chat messages */
         .stChatMessage, [data-testid="stChatMessage"] {
-            background: rgba(255,255,255,0.6) !important;
-            border: 1px solid rgba(251, 191, 36, 0.2) !important;
-            border-radius: 14px !important;
+            background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 100%) !important;
+            border: 1px solid rgba(251, 191, 36, 0.25) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9);
         }
 
         /* Text */
@@ -230,16 +231,17 @@ st.markdown(
             color: #1c1917 !important;
         }
 
-        /* Inputs */
+        /* Glossy Inputs */
         .stChatInput > div, [data-testid="stChatInput"] > div {
-            background: rgba(255,255,255,0.8) !important;
-            border: 1px solid rgba(251, 191, 36, 0.3) !important;
-            border-radius: 14px !important;
+            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%) !important;
+            border: 1px solid rgba(251, 191, 36, 0.35) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,1);
         }
 
         input, textarea, select {
-            background: rgba(255,255,255,0.9) !important;
-            border: 1px solid rgba(251, 191, 36, 0.3) !important;
+            background: linear-gradient(180deg, #ffffff 0%, #fffbeb 100%) !important;
+            border: 1px solid rgba(251, 191, 36, 0.35) !important;
             color: #1c1917 !important;
             border-radius: 10px !important;
         }
@@ -247,10 +249,11 @@ st.markdown(
         .stTextInput > div > div > input,
         .stSelectbox > div > div,
         .stTextArea textarea {
-            background: rgba(255,255,255,0.9) !important;
-            border: 1px solid rgba(251, 191, 36, 0.3) !important;
+            background: linear-gradient(180deg, #ffffff 0%, #fffbeb 100%) !important;
+            border: 1px solid rgba(251, 191, 36, 0.35) !important;
             border-radius: 10px !important;
             color: #1c1917 !important;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
         }
 
         input::placeholder, textarea::placeholder {

@@ -134,7 +134,7 @@ def get_trains(source=None, dest=None, line=None, ac_only=False, limit=8, after_
     """
     df = load_trains(ac_only=ac_only)
     if df is None or len(df) == 0:
-        return None, False
+        return None, False, 0
 
     # Filter by criteria
     if line:
@@ -156,7 +156,7 @@ def get_trains(source=None, dest=None, line=None, ac_only=False, limit=8, after_
             df = df[df['dest'].str.lower().str.contains('csmt|cst|mumbai c', regex=True, na=False)]
 
     if len(df) == 0:
-        return None, False
+        return None, False, 0
 
     # Sort by time
     df = df.copy()

@@ -107,15 +107,15 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS - Cool Dark Theme ----------------
+# ---------------- CSS - Light Summer Theme ----------------
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-        /* Dark gradient background */
+        /* Light summer gradient background */
         .stApp, [data-testid="stAppViewContainer"] {
-            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #0f0f1a 100%) !important;
+            background: linear-gradient(135deg, #fef9c3 0%, #fed7aa 30%, #fce7f3 70%, #e0f2fe 100%) !important;
         }
 
         .main, .block-container {
@@ -123,11 +123,11 @@ st.markdown(
         }
 
         * {
-            font-family: 'Space Grotesk', sans-serif !important;
+            font-family: 'Poppins', sans-serif !important;
         }
 
         .main-title {
-            background: linear-gradient(135deg, #00d4ff, #7c3aed, #f472b6);
+            background: linear-gradient(135deg, #f97316, #ec4899, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-size: 2.2rem !important;
@@ -137,7 +137,7 @@ st.markdown(
         }
 
         .subtitle {
-            color: #888 !important;
+            color: #78716c !important;
             text-align: center;
             font-size: 0.9rem !important;
             margin-bottom: 1.5rem;
@@ -154,50 +154,52 @@ st.markdown(
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        .western { background: linear-gradient(135deg, #f97316, #ea580c) !important; }
-        .central { background: linear-gradient(135deg, #ec4899, #db2777) !important; }
-        .harbour { background: linear-gradient(135deg, #06b6d4, #0891b2) !important; }
+        .western { background: linear-gradient(135deg, #f97316, #fb923c) !important; }
+        .central { background: linear-gradient(135deg, #ec4899, #f472b6) !important; }
+        .harbour { background: linear-gradient(135deg, #06b6d4, #22d3ee) !important; }
 
-        /* Gradient buttons */
+        /* Soft buttons */
         .stButton > button {
-            background: linear-gradient(135deg, #1a1a2e, #2d2d44) !important;
-            border: 1px solid #3d3d5c !important;
-            color: #e0e0e0 !important;
-            border-radius: 10px !important;
+            background: linear-gradient(135deg, #ffffff, #fef3c7) !important;
+            border: 1px solid #fcd34d !important;
+            color: #92400e !important;
+            border-radius: 12px !important;
             padding: 0.5rem 1.1rem;
             font-size: 0.85rem !important;
             font-weight: 500 !important;
             transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.2);
         }
 
         .stButton > button:hover {
-            background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
-            border-color: #7c3aed !important;
+            background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+            border-color: #f59e0b !important;
             transform: translateY(-1px);
-            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
         }
 
-        /* Glass cards */
+        /* Soft glass cards */
         .review-card {
-            background: rgba(255,255,255,0.03) !important;
+            background: rgba(255,255,255,0.7) !important;
             backdrop-filter: blur(10px);
             padding: 14px 16px;
             margin: 10px 0;
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid rgba(251, 191, 36, 0.2);
             border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .review-card b {
-            color: #f0f0f0 !important;
+            color: #1c1917 !important;
             font-weight: 600;
         }
 
         .review-card small {
-            color: #888 !important;
+            color: #78716c !important;
         }
 
         .section-header {
-            color: #00d4ff !important;
+            color: #ea580c !important;
             font-size: 1rem !important;
             font-weight: 600;
             margin-bottom: 12px;
@@ -208,67 +210,67 @@ st.markdown(
 
         /* Chat messages */
         .stChatMessage, [data-testid="stChatMessage"] {
-            background: rgba(255,255,255,0.03) !important;
-            border: 1px solid rgba(255,255,255,0.08) !important;
+            background: rgba(255,255,255,0.6) !important;
+            border: 1px solid rgba(251, 191, 36, 0.2) !important;
             border-radius: 14px !important;
         }
 
         /* Text */
         p, span, div {
-            color: #d0d0d0 !important;
+            color: #44403c !important;
         }
 
         label {
-            color: #888 !important;
+            color: #78716c !important;
             font-size: 0.85rem !important;
             font-weight: 500 !important;
         }
 
         strong, b {
-            color: #f0f0f0 !important;
+            color: #1c1917 !important;
         }
 
         /* Inputs */
         .stChatInput > div, [data-testid="stChatInput"] > div {
-            background: rgba(255,255,255,0.05) !important;
-            border: 1px solid rgba(255,255,255,0.1) !important;
+            background: rgba(255,255,255,0.8) !important;
+            border: 1px solid rgba(251, 191, 36, 0.3) !important;
             border-radius: 14px !important;
         }
 
         input, textarea, select {
-            background: rgba(255,255,255,0.05) !important;
-            border: 1px solid rgba(255,255,255,0.1) !important;
-            color: #e0e0e0 !important;
+            background: rgba(255,255,255,0.9) !important;
+            border: 1px solid rgba(251, 191, 36, 0.3) !important;
+            color: #1c1917 !important;
             border-radius: 10px !important;
         }
 
         .stTextInput > div > div > input,
         .stSelectbox > div > div,
         .stTextArea textarea {
-            background: rgba(255,255,255,0.05) !important;
-            border: 1px solid rgba(255,255,255,0.1) !important;
+            background: rgba(255,255,255,0.9) !important;
+            border: 1px solid rgba(251, 191, 36, 0.3) !important;
             border-radius: 10px !important;
-            color: #e0e0e0 !important;
+            color: #1c1917 !important;
         }
 
         input::placeholder, textarea::placeholder {
-            color: #666 !important;
+            color: #a8a29e !important;
         }
 
-        .stars { color: #fbbf24 !important; }
+        .stars { color: #f59e0b !important; }
 
         hr {
             border: none !important;
-            border-top: 1px solid rgba(255,255,255,0.08) !important;
+            border-top: 1px solid rgba(251, 191, 36, 0.2) !important;
             margin: 1rem 0 !important;
         }
 
         .stSlider > div > div > div {
-            background: linear-gradient(90deg, #7c3aed, #00d4ff) !important;
+            background: linear-gradient(90deg, #f97316, #ec4899) !important;
         }
 
         .stCaption, .stCaption p {
-            color: #666 !important;
+            color: #a8a29e !important;
             font-size: 0.8rem !important;
         }
 

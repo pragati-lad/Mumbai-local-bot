@@ -277,6 +277,110 @@ FIRST_LAST_MILE = {
             }
         ],
         "keywords": ["vashi", "belapur", "cbd belapur", "inorbit vashi", "raghuleela"]
+    },
+
+    # ==================== BANDRA WEST ====================
+    "bandra_west": {
+        "area_name": "Bandra West (Linking Road/Hill Road)",
+        "nearest_stations": [
+            {
+                "station": "Bandra",
+                "line": "Western/Harbour",
+                "buses": ["210", "211", "215"],
+                "travel_time": "10-15 min",
+                "notes": "Walk to Linking Road from station west"
+            }
+        ],
+        "keywords": ["linking road", "hill road", "bandra west", "pali hill", "bandstand", "carter road"]
+    },
+
+    # ==================== CHEMBUR ====================
+    "chembur": {
+        "area_name": "Chembur",
+        "nearest_stations": [
+            {
+                "station": "Chembur",
+                "line": "Harbour",
+                "buses": ["354", "356", "371"],
+                "travel_time": "5-10 min",
+                "notes": "Chembur station on Harbour line"
+            },
+            {
+                "station": "Kurla",
+                "line": "Central/Harbour",
+                "buses": ["362", "364"],
+                "travel_time": "15-20 min",
+                "notes": "For Central line connections"
+            }
+        ],
+        "keywords": ["chembur", "rcd", "diamond garden", "chembur east"]
+    },
+
+    # ==================== VERSOVA ====================
+    "versova": {
+        "area_name": "Versova",
+        "nearest_stations": [
+            {
+                "station": "Andheri",
+                "line": "Western",
+                "buses": ["203", "231", "234"],
+                "travel_time": "20-25 min",
+                "notes": "Or take Metro from Versova to Andheri"
+            },
+            {
+                "station": "Versova (Metro)",
+                "line": "Metro Line 1",
+                "buses": [],
+                "travel_time": "Direct Metro",
+                "notes": "Metro to Andheri (Western) or Ghatkopar (Central)"
+            }
+        ],
+        "keywords": ["versova", "versova beach", "yari road", "seven bungalows", "4 bungalows"]
+    },
+
+    # ==================== MULUND WEST ====================
+    "mulund_west": {
+        "area_name": "Mulund West",
+        "nearest_stations": [
+            {
+                "station": "Mulund",
+                "line": "Central",
+                "buses": ["460", "466"],
+                "travel_time": "10-15 min",
+                "notes": "Cross FOB to West side"
+            }
+        ],
+        "keywords": ["mulund west", "johnson", "r city mall", "nirmal lifestyle"]
+    },
+
+    # ==================== SANTACRUZ EAST ====================
+    "santacruz_east": {
+        "area_name": "Santacruz East (Kalina)",
+        "nearest_stations": [
+            {
+                "station": "Santacruz",
+                "line": "Western",
+                "buses": ["318", "321", "324"],
+                "travel_time": "10-15 min",
+                "notes": "Kalina is east of Santacruz station"
+            }
+        ],
+        "keywords": ["kalina", "santacruz east", "cst road", "vidyanagari", "mumbai university"]
+    },
+
+    # ==================== LOWER PAREL / WORLI ====================
+    "lower_parel": {
+        "area_name": "Lower Parel (Phoenix/High Street)",
+        "nearest_stations": [
+            {
+                "station": "Lower Parel",
+                "line": "Western",
+                "buses": ["83", "84", "85"],
+                "travel_time": "5-10 min",
+                "notes": "Phoenix Mall is 5 min walk from station"
+            }
+        ],
+        "keywords": ["phoenix", "high street", "kamala mills", "palladium", "one indiabulls"]
     }
 }
 

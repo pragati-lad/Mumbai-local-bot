@@ -22,6 +22,23 @@ try:
 except ImportError:
     FARE_CALCULATOR_AVAILABLE = False
 
+# Import station info (platforms, peak hours, metro)
+try:
+    from station_info import (
+        format_platform_response, get_peak_hour_info, get_metro_info,
+        get_platform_info, CROWDED_STATIONS
+    )
+    STATION_INFO_AVAILABLE = True
+except ImportError:
+    STATION_INFO_AVAILABLE = False
+
+# Import language support
+try:
+    from language_support import detect_language, normalize_query
+    LANGUAGE_SUPPORT_AVAILABLE = True
+except ImportError:
+    LANGUAGE_SUPPORT_AVAILABLE = False
+
 # ---------------- TRAIN DATA FILES ----------------
 
 BASE_DIR = os.path.dirname(__file__)
@@ -488,6 +505,12 @@ def handle_bus_train_route(query, from_area, to_area):
 
 def chatbot_response(query: str):
 
+    # Normalize Hindi/Marathi queries to English
+    if LANGUAGE_SUPPORT_AVAILABLE:
+        lang = detect_language(query)
+        if lang in ["hindi", "marathi"]:
+            query = normalize_query(query)
+
     q = normalize(query)
 
     # ---- INFO INTENTS FIRST ----
@@ -502,6 +525,23 @@ def chatbot_response(query: str):
 
     if "monthly" in q or "quarterly" in q or "pass" in q:
         return MONTHLY_PASS
+
+    # ---- PLATFORM INFO ----
+    if STATION_INFO_AVAILABLE and ("platform" in q or "which platform" in q):
+        stations = extract_stations(query)
+        if stations:
+            platform_info = format_platform_response(stations[0])
+            if platform_info:
+                return platform_info
+        return "Which station? Try: *Platform info Dadar*"
+
+    # ---- PEAK HOURS ----
+    if STATION_INFO_AVAILABLE and ("peak" in q or "rush" in q or "crowd" in q or "busy" in q):
+        return get_peak_hour_info()
+
+    # ---- METRO INFO ----
+    if STATION_INFO_AVAILABLE and ("metro" in q or "line 1" in q or "versova" in q and "ghatkopar" in q):
+        return get_metro_info()
 
     # ---- FARE CALCULATOR ----
     fare_keywords = ["fare", "price", "cost", "ticket", "kitna", "rate", "charge"]

@@ -107,15 +107,15 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS - Light Summer Theme ----------------
+# ---------------- CSS - Aesthetic Summer Theme ----------------
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 
-        /* Vibrant summer gradient background */
+        /* Soft aesthetic gradient */
         .stApp, [data-testid="stAppViewContainer"] {
-            background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 25%, #fbcfe8 50%, #e0f2fe 75%, #ddd6fe 100%) !important;
+            background: linear-gradient(160deg, #fdf4ff 0%, #fce7f3 20%, #fff1f2 40%, #fef3c7 60%, #ecfeff 80%, #f0fdf4 100%) !important;
         }
 
         .main, .block-container {
@@ -123,157 +123,160 @@ st.markdown(
         }
 
         * {
-            font-family: 'Poppins', sans-serif !important;
+            font-family: 'Quicksand', sans-serif !important;
         }
 
         .main-title {
-            background: linear-gradient(135deg, #f97316, #ec4899, #8b5cf6);
+            background: linear-gradient(135deg, #f472b6, #c084fc, #60a5fa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 2.2rem !important;
+            font-size: 2.4rem !important;
             font-weight: 700 !important;
             text-align: center;
             margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
-            color: #78716c !important;
+            color: #9ca3af !important;
             text-align: center;
             font-size: 0.9rem !important;
             margin-bottom: 1.5rem;
+            letter-spacing: 0.3px;
         }
 
         .line-badge {
             display: inline-block;
-            padding: 5px 12px;
-            font-size: 0.75rem;
+            padding: 6px 14px;
+            font-size: 0.7rem;
             margin: 0 4px;
-            border-radius: 20px;
+            border-radius: 25px;
             font-weight: 600;
             color: #fff !important;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        .western { background: linear-gradient(135deg, #f97316, #fb923c) !important; }
-        .central { background: linear-gradient(135deg, #ec4899, #f472b6) !important; }
-        .harbour { background: linear-gradient(135deg, #06b6d4, #22d3ee) !important; }
+        .western { background: linear-gradient(135deg, #fb923c, #fdba74) !important; }
+        .central { background: linear-gradient(135deg, #f472b6, #f9a8d4) !important; }
+        .harbour { background: linear-gradient(135deg, #38bdf8, #7dd3fc) !important; }
 
-        /* Glossy buttons */
+        /* Soft aesthetic buttons */
         .stButton > button {
-            background: linear-gradient(180deg, #ffffff 0%, #fef3c7 50%, #fde68a 100%) !important;
-            border: 1px solid #fbbf24 !important;
-            color: #92400e !important;
-            border-radius: 12px !important;
-            padding: 0.5rem 1.1rem;
+            background: linear-gradient(145deg, #ffffff, #fef7ff) !important;
+            border: 1.5px solid #f9a8d4 !important;
+            color: #be185d !important;
+            border-radius: 14px !important;
+            padding: 0.5rem 1.2rem;
             font-size: 0.85rem !important;
             font-weight: 600 !important;
-            transition: all 0.2s ease;
-            box-shadow: 0 3px 10px rgba(251, 191, 36, 0.25), inset 0 1px 0 rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(244, 114, 182, 0.15);
         }
 
         .stButton > button:hover {
-            background: linear-gradient(180deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%) !important;
-            border-color: #f59e0b !important;
+            background: linear-gradient(145deg, #fdf4ff, #fce7f3) !important;
+            border-color: #f472b6 !important;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(255,255,255,0.6);
+            box-shadow: 0 6px 20px rgba(244, 114, 182, 0.25);
         }
 
-        /* Glossy glass cards */
+        /* Frosted glass cards */
         .review-card {
-            background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%) !important;
-            backdrop-filter: blur(10px);
-            padding: 14px 16px;
-            margin: 10px 0;
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            border-radius: 14px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.75) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 16px 18px;
+            margin: 12px 0;
+            border: 1px solid rgba(244, 114, 182, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
         }
 
         .review-card b {
-            color: #1c1917 !important;
+            color: #374151 !important;
             font-weight: 600;
         }
 
         .review-card small {
-            color: #78716c !important;
+            color: #9ca3af !important;
         }
 
         .section-header {
-            color: #ea580c !important;
-            font-size: 1rem !important;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: #db2777 !important;
+            font-size: 1.05rem !important;
+            font-weight: 700;
+            margin-bottom: 14px;
+            letter-spacing: 0.2px;
         }
 
-        /* Glossy chat messages */
+        /* Aesthetic chat bubbles */
         .stChatMessage, [data-testid="stChatMessage"] {
-            background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 100%) !important;
-            border: 1px solid rgba(251, 191, 36, 0.25) !important;
-            border-radius: 16px !important;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.7) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(244, 114, 182, 0.15) !important;
+            border-radius: 18px !important;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
         }
 
         /* Text */
         p, span, div {
-            color: #44403c !important;
+            color: #4b5563 !important;
         }
 
         label {
-            color: #78716c !important;
+            color: #9ca3af !important;
             font-size: 0.85rem !important;
-            font-weight: 500 !important;
+            font-weight: 600 !important;
         }
 
         strong, b {
-            color: #1c1917 !important;
+            color: #374151 !important;
         }
 
-        /* Glossy Inputs */
+        /* Aesthetic Inputs */
         .stChatInput > div, [data-testid="stChatInput"] > div {
-            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%) !important;
-            border: 1px solid rgba(251, 191, 36, 0.35) !important;
-            border-radius: 16px !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,1);
+            background: rgba(255,255,255,0.85) !important;
+            border: 1.5px solid rgba(244, 114, 182, 0.25) !important;
+            border-radius: 18px !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
         input, textarea, select {
-            background: linear-gradient(180deg, #ffffff 0%, #fffbeb 100%) !important;
-            border: 1px solid rgba(251, 191, 36, 0.35) !important;
-            color: #1c1917 !important;
-            border-radius: 10px !important;
+            background: rgba(255,255,255,0.95) !important;
+            border: 1.5px solid rgba(244, 114, 182, 0.2) !important;
+            color: #374151 !important;
+            border-radius: 12px !important;
         }
 
         .stTextInput > div > div > input,
         .stSelectbox > div > div,
         .stTextArea textarea {
-            background: linear-gradient(180deg, #ffffff 0%, #fffbeb 100%) !important;
-            border: 1px solid rgba(251, 191, 36, 0.35) !important;
-            border-radius: 10px !important;
-            color: #1c1917 !important;
-            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+            background: rgba(255,255,255,0.95) !important;
+            border: 1.5px solid rgba(244, 114, 182, 0.2) !important;
+            border-radius: 12px !important;
+            color: #374151 !important;
         }
 
         input::placeholder, textarea::placeholder {
-            color: #a8a29e !important;
+            color: #d1d5db !important;
         }
 
-        .stars { color: #f59e0b !important; }
+        .stars { color: #f472b6 !important; }
 
         hr {
             border: none !important;
-            border-top: 1px solid rgba(251, 191, 36, 0.2) !important;
-            margin: 1rem 0 !important;
+            border-top: 1px solid rgba(244, 114, 182, 0.15) !important;
+            margin: 1.2rem 0 !important;
         }
 
         .stSlider > div > div > div {
-            background: linear-gradient(90deg, #f97316, #ec4899) !important;
+            background: linear-gradient(90deg, #f472b6, #c084fc, #60a5fa) !important;
         }
 
         .stCaption, .stCaption p {
-            color: #a8a29e !important;
+            color: #d1d5db !important;
             font-size: 0.8rem !important;
         }
 
@@ -385,7 +388,7 @@ with main_col:
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
 # ==================================================
 with review_col:
-    st.markdown('<p class="section-header">Spill the Tea</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Spill the Tea!</p>', unsafe_allow_html=True)
 
     # Rating slider OUTSIDE form for live star updates
     review_rating = st.slider("Rate it", 1, 5, 4, key="star_rating")

@@ -280,7 +280,8 @@ st.markdown(
             font-size: 0.8rem !important;
         }
 
-        #MainMenu, footer, header { visibility: hidden; }
+        #MainMenu, footer, header { visibility: hidden; height: 0; }
+        .block-container { padding-top: 0 !important; }
     </style>
     """,
     unsafe_allow_html=True

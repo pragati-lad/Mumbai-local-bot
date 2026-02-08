@@ -123,9 +123,10 @@ st.markdown(
             background:
                 linear-gradient(160deg, rgba(15,23,42,0.88) 0%, rgba(30,58,82,0.85) 50%, rgba(15,23,42,0.88) 100%),
                 url('data:image/jpeg;base64,{_bg_b64}') !important;
-            background-size: 150% !important;
+            background-size: 60% !important;
             background-position: center !important;
             background-attachment: fixed !important;
+            background-repeat: repeat !important;
         }}
 
         .main, .block-container {{

@@ -311,7 +311,7 @@ main_col, review_col = st.columns([2, 1])
 # MAIN COLUMN - CHATBOT
 # ==================================================
 with main_col:
-    st.markdown('<h1 class="main-title">Apna Mumbai Local</h1>', unsafe_allow_html=True)
+    st.markdown('<div class="main-title">Apna Mumbai Local</div>', unsafe_allow_html=True)
     st.markdown('''<p class="subtitle">
         <span class="line-badge western">Western</span>
         <span class="line-badge central">Central</span>

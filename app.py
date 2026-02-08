@@ -161,24 +161,27 @@ st.markdown(
         .central { background: linear-gradient(135deg, #f472b6, #f9a8d4) !important; }
         .harbour { background: linear-gradient(135deg, #38bdf8, #7dd3fc) !important; }
 
-        /* Soft aesthetic buttons */
+        /* Pill/chip suggestion tags */
         .stButton > button {
-            background: linear-gradient(145deg, #ffffff, #fef7ff) !important;
-            border: 1.5px solid #f9a8d4 !important;
+            background: rgba(255,255,255,0.7) !important;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(244, 114, 182, 0.25) !important;
             color: #be185d !important;
-            border-radius: 14px !important;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.85rem !important;
+            border-radius: 50px !important;
+            padding: 0.35rem 1rem !important;
+            font-size: 0.78rem !important;
             font-weight: 600 !important;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(244, 114, 182, 0.15);
+            box-shadow: 0 2px 8px rgba(244, 114, 182, 0.1);
+            white-space: nowrap;
         }
 
         .stButton > button:hover {
-            background: linear-gradient(145deg, #fdf4ff, #fce7f3) !important;
+            background: linear-gradient(135deg, #fce7f3, #fdf4ff) !important;
             border-color: #f472b6 !important;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(244, 114, 182, 0.25);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(244, 114, 182, 0.2);
         }
 
         /* Frosted glass cards */
@@ -331,7 +334,7 @@ with main_col:
     user_input = st.chat_input("Where to? Try: Dadar to Thane...")
 
     # -------- Suggested Queries --------
-    st.markdown('<p class="section-header">Try These</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color:#d1d5db !important; font-size:0.75rem !important; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:6px;">Try These</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):

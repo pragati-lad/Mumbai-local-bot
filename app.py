@@ -107,15 +107,20 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS - Aesthetic Summer Theme ----------------
+# ---------------- CSS - Glassmorphism Mumbai Theme ----------------
 st.markdown(
     """
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-        /* Soft aesthetic gradient */
+        /* Mumbai skyline background with overlay */
         .stApp, [data-testid="stAppViewContainer"] {
-            background: linear-gradient(160deg, #fdf4ff 0%, #fce7f3 20%, #fff1f2 40%, #fef3c7 60%, #ecfeff 80%, #f0fdf4 100%) !important;
+            background:
+                linear-gradient(160deg, rgba(15,23,42,0.88) 0%, rgba(30,58,82,0.85) 50%, rgba(15,23,42,0.9) 100%),
+                url('https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=1920&q=80') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-attachment: fixed !important;
         }
 
         .main, .block-container {
@@ -123,11 +128,11 @@ st.markdown(
         }
 
         * {
-            font-family: 'Quicksand', sans-serif !important;
+            font-family: 'Poppins', sans-serif !important;
         }
 
         .main-title {
-            background: linear-gradient(135deg, #f472b6, #c084fc, #60a5fa);
+            background: linear-gradient(135deg, #67e8f9, #22d3ee, #06b6d4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-size: 2.4rem !important;
@@ -138,7 +143,7 @@ st.markdown(
         }
 
         .subtitle {
-            color: #9ca3af !important;
+            color: rgba(148,163,184,0.9) !important;
             text-align: center;
             font-size: 0.9rem !important;
             margin-bottom: 1.5rem;
@@ -155,131 +160,131 @@ st.markdown(
             color: #fff !important;
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        .western { background: linear-gradient(135deg, #fb923c, #fdba74) !important; }
-        .central { background: linear-gradient(135deg, #f472b6, #f9a8d4) !important; }
-        .harbour { background: linear-gradient(135deg, #38bdf8, #7dd3fc) !important; }
+        .western { background: linear-gradient(135deg, #f59e0b, #fbbf24) !important; }
+        .central { background: linear-gradient(135deg, #ef4444, #f87171) !important; }
+        .harbour { background: linear-gradient(135deg, #06b6d4, #22d3ee) !important; }
 
         /* Pill/chip suggestion tags */
         .stButton > button {
-            background: rgba(255,255,255,0.7) !important;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(244, 114, 182, 0.25) !important;
-            color: #be185d !important;
+            background: rgba(255,255,255,0.08) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(103,232,249,0.2) !important;
+            color: #67e8f9 !important;
             border-radius: 50px !important;
             padding: 0.35rem 1rem !important;
             font-size: 0.78rem !important;
             font-weight: 600 !important;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(244, 114, 182, 0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             white-space: nowrap;
         }
 
         .stButton > button:hover {
-            background: linear-gradient(135deg, #fce7f3, #fdf4ff) !important;
-            border-color: #f472b6 !important;
+            background: rgba(103,232,249,0.15) !important;
+            border-color: #22d3ee !important;
             transform: translateY(-1px);
-            box-shadow: 0 4px 14px rgba(244, 114, 182, 0.2);
+            box-shadow: 0 4px 18px rgba(34,211,238,0.2);
         }
 
         /* Frosted glass cards */
         .review-card {
-            background: rgba(255,255,255,0.75) !important;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.07) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             padding: 16px 18px;
             margin: 12px 0;
-            border: 1px solid rgba(244, 114, 182, 0.2);
+            border: 1px solid rgba(103,232,249,0.15);
             border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         }
 
         .review-card b {
-            color: #374151 !important;
+            color: #e2e8f0 !important;
             font-weight: 600;
         }
 
         .review-card small {
-            color: #9ca3af !important;
+            color: #94a3b8 !important;
         }
 
         .section-header {
-            color: #db2777 !important;
+            color: #22d3ee !important;
             font-size: 1.05rem !important;
             font-weight: 700;
             margin-bottom: 14px;
             letter-spacing: 0.2px;
         }
 
-        /* Aesthetic chat bubbles */
+        /* Glass chat bubbles */
         .stChatMessage, [data-testid="stChatMessage"] {
-            background: rgba(255,255,255,0.7) !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(244, 114, 182, 0.15) !important;
+            background: rgba(255,255,255,0.06) !important;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(103,232,249,0.12) !important;
             border-radius: 18px !important;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
         }
 
         /* Text */
         p, span, div {
-            color: #4b5563 !important;
+            color: #cbd5e1 !important;
         }
 
         label {
-            color: #9ca3af !important;
+            color: #94a3b8 !important;
             font-size: 0.85rem !important;
             font-weight: 600 !important;
         }
 
         strong, b {
-            color: #374151 !important;
+            color: #e2e8f0 !important;
         }
 
-        /* Aesthetic Inputs */
+        /* Glass Inputs */
         .stChatInput > div, [data-testid="stChatInput"] > div {
-            background: rgba(255,255,255,0.85) !important;
-            border: 1.5px solid rgba(244, 114, 182, 0.25) !important;
+            background: rgba(255,255,255,0.08) !important;
+            border: 1.5px solid rgba(103,232,249,0.2) !important;
             border-radius: 18px !important;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
         }
 
         input, textarea, select {
-            background: rgba(255,255,255,0.95) !important;
-            border: 1.5px solid rgba(244, 114, 182, 0.2) !important;
-            color: #374151 !important;
+            background: rgba(255,255,255,0.06) !important;
+            border: 1.5px solid rgba(103,232,249,0.15) !important;
+            color: #e2e8f0 !important;
             border-radius: 12px !important;
         }
 
         .stTextInput > div > div > input,
         .stSelectbox > div > div,
         .stTextArea textarea {
-            background: rgba(255,255,255,0.95) !important;
-            border: 1.5px solid rgba(244, 114, 182, 0.2) !important;
+            background: rgba(255,255,255,0.06) !important;
+            border: 1.5px solid rgba(103,232,249,0.15) !important;
             border-radius: 12px !important;
-            color: #374151 !important;
+            color: #e2e8f0 !important;
         }
 
         input::placeholder, textarea::placeholder {
-            color: #d1d5db !important;
+            color: #64748b !important;
         }
 
-        .stars { color: #f472b6 !important; }
+        .stars { color: #fbbf24 !important; }
 
         hr {
             border: none !important;
-            border-top: 1px solid rgba(244, 114, 182, 0.15) !important;
+            border-top: 1px solid rgba(103,232,249,0.1) !important;
             margin: 1.2rem 0 !important;
         }
 
         .stSlider > div > div > div {
-            background: linear-gradient(90deg, #f472b6, #c084fc, #60a5fa) !important;
+            background: linear-gradient(90deg, #06b6d4, #22d3ee, #67e8f9) !important;
         }
 
         .stCaption, .stCaption p {
-            color: #d1d5db !important;
+            color: #64748b !important;
             font-size: 0.8rem !important;
         }
 
@@ -334,7 +339,7 @@ with main_col:
     user_input = st.chat_input("Where to? Try: Dadar to Thane...")
 
     # -------- Suggested Queries --------
-    st.markdown('<p style="color:#d1d5db !important; font-size:0.75rem !important; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:6px;">Try These</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color:#64748b !important; font-size:0.75rem !important; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:6px;">Try These</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):

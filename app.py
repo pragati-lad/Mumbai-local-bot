@@ -387,27 +387,8 @@ with review_col:
 
     # Review Form
     with st.form("review_form"):
-        review_category = st.selectbox(
-            "Category",
-            ["Station", "Route", "AC Train", "General"]
-        )
-
-        if review_category == "Station":
-            review_subject = st.selectbox("Station", STATIONS)
-        elif review_category == "Route":
-            col1, col2 = st.columns(2)
-            with col1:
-                from_station = st.selectbox("From", STATIONS, key="from")
-            with col2:
-                to_station = st.selectbox("To", STATIONS, key="to")
-            review_subject = f"{from_station} to {to_station}"
-        elif review_category == "AC Train":
-            review_subject = st.selectbox(
-                "Line",
-                ["AC Western Line", "AC Central Line", "AC Harbour Line"]
-            )
-        else:
-            review_subject = st.text_input("Topic", placeholder="e.g., Peak hour experience")
+        review_stations = st.multiselect("Station(s)", STATIONS)
+        review_subject = ", ".join(review_stations) if review_stations else "General"
 
         review_comment = st.text_area(
             "Your review",
@@ -421,7 +402,7 @@ with review_col:
 
         if submitted and review_comment:
             add_user_review(
-                category=review_category.lower(),
+                category="station",
                 subject=review_subject,
                 rating=review_rating,
                 comment=review_comment,

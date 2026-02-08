@@ -121,7 +121,7 @@ st.markdown(
         /* Mumbai doodle background with overlay */
         .stApp, [data-testid="stAppViewContainer"] {{
             background:
-                linear-gradient(160deg, rgba(15,23,42,0.85) 0%, rgba(30,58,82,0.82) 50%, rgba(15,23,42,0.87) 100%),
+                linear-gradient(160deg, rgba(15,23,42,0.72) 0%, rgba(30,58,82,0.68) 50%, rgba(15,23,42,0.75) 100%),
                 url('data:image/jpeg;base64,{_bg_b64}') !important;
             background-size: cover !important;
             background-position: center !important;

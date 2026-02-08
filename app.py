@@ -387,9 +387,6 @@ with review_col:
 
     # Review Form
     with st.form("review_form"):
-        review_stations = st.multiselect("Station(s)", STATIONS)
-        review_subject = ", ".join(review_stations) if review_stations else "General"
-
         review_comment = st.text_area(
             "Your review",
             placeholder="Go ahead and gossip...",
@@ -402,8 +399,8 @@ with review_col:
 
         if submitted and review_comment:
             add_user_review(
-                category="station",
-                subject=review_subject,
+                category="general",
+                subject="General",
                 rating=review_rating,
                 comment=review_comment,
                 username=review_name if review_name else "Anonymous"
@@ -433,7 +430,7 @@ with review_col:
         st.markdown("""
         <div class="review-card" style="text-align: center;">
             No reviews yet!<br>
-            <small style="color: #636e72;">Be the first to drop one</small>
+            <small style="color: #636e72;">common bro drop a comment!</small>
         </div>
         """, unsafe_allow_html=True)
 

@@ -121,7 +121,7 @@ st.markdown(
         /* Mumbai doodle background with overlay */
         .stApp, [data-testid="stAppViewContainer"] {{
             background:
-                linear-gradient(160deg, rgba(15,23,42,0.82) 0%, rgba(30,58,82,0.78) 50%, rgba(15,23,42,0.82) 100%),
+                linear-gradient(160deg, rgba(15,23,42,0.88) 0%, rgba(30,58,82,0.85) 50%, rgba(15,23,42,0.88) 100%),
                 url('data:image/jpeg;base64,{_bg_b64}') !important;
             background-size: cover !important;
             background-position: center !important;
@@ -284,8 +284,12 @@ st.markdown(
             margin: 1.2rem 0 !important;
         }}
 
-        .stSlider > div > div > div {{
-            background: linear-gradient(90deg, #06b6d4, #22d3ee, #67e8f9) !important;
+        /* Star rating buttons */
+        [data-testid="stHorizontalBlock"] button[kind="secondary"][data-testid="stBaseButton-secondary"] {{
+            font-size: 1.6rem !important;
+        }}
+        button[key^="star_"] {{
+            font-size: 1.6rem !important;
         }}
 
         .stCaption, .stCaption p {{
@@ -391,9 +395,17 @@ with main_col:
 with review_col:
     st.markdown('<p class="section-header">Spill the Tea!</p>', unsafe_allow_html=True)
 
-    # Rating slider OUTSIDE form for live star updates
-    review_rating = st.slider("Rate it", 1, 5, 4, key="star_rating")
-    st.markdown(f'<p style="text-align:center; font-size:1.8rem; color:#f59e0b; margin-top:-15px; margin-bottom:10px;">{"★" * review_rating}{"☆" * (5 - review_rating)}</p>', unsafe_allow_html=True)
+    # Clickable star rating
+    if "star_rating" not in st.session_state:
+        st.session_state.star_rating = 4
+
+    star_cols = st.columns(5)
+    for i in range(5):
+        with star_cols[i]:
+            if st.button("★" if i < st.session_state.star_rating else "☆", key=f"star_{i}"):
+                st.session_state.star_rating = i + 1
+                st.rerun()
+    review_rating = st.session_state.star_rating
 
     # Review Form
     with st.form("review_form"):

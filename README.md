@@ -1,117 +1,80 @@
-# 🚂 Mumbai Train Timetable Chatbot - Enhanced Version
+# Apna Mumbai Local
 
-A comprehensive chatbot for Mumbai local trains with **3 major features**:
-1. Western Railway timetables (Virar ↔ Churchgate)
-2. Harbour Line timetables (Panvel ↔ CSMT)
-3. Railway rules (Concessions, Refunds, Luggage)
+Your pocket guide to Mumbai's local train network — 7,500+ trains across Western, Central & Harbour lines.
 
-## 🌐 Live App
-https://mumbai-local-bot-fmuyvapp7ycc285wbtappcn8.streamlit.app/
+## Live App
 
+https://apnalocal.streamlit.app
 
-## 🚀 Quick Start
+## Features
 
-### Step 1: Install Dependencies
+- **Train Search** — Find trains between any two stations with time-based filtering
+- **7,500+ Trains** — Western, Central & Harbour line coverage including AC trains
+- **Mid-Route Support** — Search between any intermediate stations, not just endpoints
+- **Fare Calculator** — Get ticket prices for any route
+- **Platform Info** — Platform numbers, peak hours & metro connectivity
+- **Bus Connectivity** — First/last mile BEST bus routes
+- **User Reviews** — Submit and read station reviews (synced via Google Sheets)
+- **Smart Suggestions** — Dynamic query suggestions based on your searches
+- **Language Support** — Hindi & Marathi understanding
+
+## Quick Start
 
 ```bash
 pip install -r requirements.txt
-```
-
-### Step 2: Run the Enhanced Chatbot
-
-```bash
 streamlit run app.py
-
 ```
 
-The chatbot will start and show you a URL like:
-```
-Running on local URL:  http://127.0.0.1:7860
-```
+## What Can You Ask?
 
-Open this URL in your web browser!
+**Train Timings**
+- "Andheri to Churchgate"
+- "Dadar to Thane at 5 pm"
+- "AC trains from Virar"
 
-## 💬 What Can You Ask?
+**Station Info**
+- "Platform info Dadar"
+- "Reviews for Andheri"
 
-### 🚆 Train Timings
-
-**Western Railway:**
-- "Train from Virar to Churchgate"
-- "Next train from Borivali to Dadar after 6 PM"
-- "Show AC trains from Andheri to Bandra"
-
-**Harbour Line:**
-- "Train from Panvel to CSMT"
-- "Harbour line from Vashi to Kurla"
-- "Train from Belapur to Mumbai"
-
-### 📋 Railway Rules
-
-**Concessions:**
-- "What are student concessions?"
-- "Senior citizen discount"
-- "Disabled person concession"
-
-**Refunds:**
-- "How to get ticket refund?"
-- "Can I cancel my season ticket?"
-- "Online ticket cancellation"
-
-**Luggage:**
+**Fares & Rules**
+- "Fare Andheri to Borivali"
+- "Monthly pass price"
+- "Student concession"
 - "Luggage rules"
-- "How much baggage can I carry?"
-- "Excess luggage charges"
 
-## 📍 Stations Covered
+**Connectivity**
+- "Powai to BKC" (bus + train combo)
 
-### Western Railway (29 stations)
-Churchgate, Marine Lines, Charni Road, Grant Road, Mumbai Central, Dadar, Bandra, Andheri, Borivali, Virar, and more...
+## Tech Stack
 
-### Harbour Line (28 stations)
-Mumbai CSMT, Dadar, Kurla, Mankhurd, Vashi, Belapur CBD, Panvel, and more...
+- **Python 3.8+**
+- **Streamlit** — Web interface
+- **Google Sheets API** — Review storage
+- **Pandas** — Train data processing
 
-## ✨ Features
+## Project Structure
 
-✅ **Two Railway Lines** - Western & Harbour
-✅ **Smart Query Understanding** - Natural language processing
-✅ **Time-Based Filtering** - "after 6 PM" queries
-✅ **Railway Rules Database** - Concessions, Refunds, Luggage
-✅ **Beautiful Web Interface** - Easy to use
-✅ **Works Offline** - No internet needed after setup
+```
+app.py                    — Main Streamlit app & UI
+train_chatbot_enhanced.py — Chatbot logic & train search
+fare_calculator.py        — Fare calculation
+bus_connections.py        — BEST bus connectivity
+station_info.py           — Platform & station details
+language_support.py       — Hindi/Marathi support
+google_sheets_reviews.py  — Google Sheets review sync
+reviews.py                — Review utilities
+mumbai_local_trains.csv   — Train schedule data
+mumbai_ac_trains.csv      — AC train schedule data
+```
 
-## 🔧 Technical Details
+## Stations Covered
 
-- **Python 3.8+** required
-- **Gradio** for web interface
-- Sample timetable data included
-- Easy to extend with more data
+**Western Line** — Churchgate, Marine Lines, Dadar, Bandra, Andheri, Borivali, Virar & more
 
-## 📝 Adding More Data
+**Central Line** — CSMT, Dadar, Kurla, Ghatkopar, Thane, Kalyan, Dombivli & more
 
-To add more trains, edit the `train_chatbot_enhanced.py` file:
-- Add to `WR_AC_TRAINS` for Western Railway
-- Add to `HARBOUR_TRAINS` for Harbour Line
-- Add to `RAILWAY_RULES` for new rules
-
-## 🆕 What's New in Enhanced Version?
-
-✨ **Harbour Line Support** - Complete Panvel to CSMT route
-✨ **Railway Rules** - Concessions, Refunds, Luggage info
-✨ **Dual Line Detection** - Automatically detects Western or Harbour
-✨ **Enhanced Examples** - More query types supported
-
-## 🐛 Troubleshooting
-
-**Problem**: `ModuleNotFoundError: No module named 'gradio'`  
-**Solution**: Run `pip install gradio`
-
-**Problem**: Can't find trains  
-**Solution**: Make sure you mention two station names clearly
-
-## 📞 Need Help?
-
-The chatbot will guide you if you just type "hello" or press submit with an empty query!
+**Harbour Line** — CSMT, Kurla, Vashi, Belapur, Panvel & more
 
 ---
 
-**Made with ❤️ for Mumbai Local Train Travelers**
+**Made with love for Mumbai's local train travelers**

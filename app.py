@@ -316,13 +316,7 @@ with main_col:
                 "role": "assistant",
                 "content": (
                     "Hey! Welcome to Apna Mumbai Local!\n\n"
-                    "Need train timings? Platform info? I got you covered!\n\n"
-                    "**Ask me stuff like:**\n"
-                    "- Andheri to Churchgate\n"
-                    "- Dadar to Thane at 5 pm\n"
-                    "- Platform info Dadar\n"
-                    "- Powai to BKC (bus+train)\n"
-                    "- Fare Andheri to Borivali"
+                    "Need train timings? Platform info? I got you covered!"
                 )
             }
         )

@@ -46,6 +46,19 @@ try:
 except ImportError:
     LANGUAGE_SUPPORT_AVAILABLE = False
 
+# Import NLP modules
+try:
+    from nlp_intent import classify_intent
+    NLP_INTENT_AVAILABLE = True
+except ImportError:
+    NLP_INTENT_AVAILABLE = False
+
+try:
+    from nlp_ner import extract_stations_nlp, extract_time_nlp
+    NLP_NER_AVAILABLE = True
+except ImportError:
+    NLP_NER_AVAILABLE = False
+
 # ---------------- TRAIN DATA FILES ----------------
 
 BASE_DIR = os.path.dirname(__file__)
@@ -523,80 +536,78 @@ def chatbot_response(query: str):
 
     q = normalize(query)
 
-    # ---- INFO INTENTS FIRST ----
-    if "student" in q:
+    # ---- NLP INTENT CLASSIFICATION ----
+    intent, confidence = ("unknown", 0.0)
+    if NLP_INTENT_AVAILABLE:
+        intent, confidence = classify_intent(query)
+
+    # ---- NLP NER: Extract stations and time once ----
+    if NLP_NER_AVAILABLE:
+        stations = extract_stations_nlp(query)
+        query_time = extract_time_nlp(query)
+    else:
+        stations = extract_stations(query)
+        query_time = extract_time_from_query(query)
+
+    # ---- DISPATCH BY INTENT (with keyword fallback) ----
+
+    if intent == "student_concession" or (intent == "unknown" and "student" in q):
         return STUDENT_CONCESSION
 
-    if "senior" in q:
+    if intent == "senior_concession" or (intent == "unknown" and "senior" in q):
         return SENIOR_CONCESSION
 
-    if "luggage" in q:
+    if intent == "luggage" or (intent == "unknown" and "luggage" in q):
         return LUGGAGE_RULES
 
-    if "monthly" in q or "quarterly" in q or "pass" in q:
+    if intent == "pass_info" or (intent == "unknown" and ("monthly" in q or "quarterly" in q or "pass" in q)):
         return MONTHLY_PASS
 
-    # ---- PLATFORM INFO ----
-    if STATION_INFO_AVAILABLE and ("platform" in q or "which platform" in q):
-        stations = extract_stations(query)
-        if stations:
-            platform_info = format_platform_response(stations[0])
-            if platform_info:
-                return platform_info
-        return "Which station? Try: *Platform info Dadar*"
+    if intent == "platform_info" or (intent == "unknown" and ("platform" in q or "which platform" in q)):
+        if STATION_INFO_AVAILABLE:
+            if stations:
+                platform_info = format_platform_response(stations[0])
+                if platform_info:
+                    return platform_info
+            return "Which station? Try: *Platform info Dadar*"
 
-    # ---- PEAK HOURS ----
-    if STATION_INFO_AVAILABLE and ("peak" in q or "rush" in q or "crowd" in q or "busy" in q):
-        return get_peak_hour_info()
+    if intent == "peak_hours" or (intent == "unknown" and any(w in q for w in ["peak", "rush", "crowd", "busy"])):
+        if STATION_INFO_AVAILABLE:
+            return get_peak_hour_info()
 
-    # ---- METRO INFO ----
-    if STATION_INFO_AVAILABLE and ("metro" in q or "line 1" in q or "versova" in q and "ghatkopar" in q):
-        return get_metro_info()
+    if intent == "metro_info" or (intent == "unknown" and ("metro" in q or "line 1" in q)):
+        if STATION_INFO_AVAILABLE:
+            return get_metro_info()
 
-    # ---- FARE CALCULATOR ----
     fare_keywords = ["fare", "price", "cost", "ticket", "kitna", "rate", "charge"]
-    if FARE_CALCULATOR_AVAILABLE and any(kw in q for kw in fare_keywords):
-        stations = extract_stations(query)
-        if len(stations) >= 2:
+    if intent == "fare_query" or (intent == "unknown" and any(kw in q for kw in fare_keywords)):
+        if FARE_CALCULATOR_AVAILABLE and len(stations) >= 2:
             fare_data = calculate_fare(stations[0], stations[1])
             if fare_data:
                 return format_fare_response(fare_data)
 
-    # ---- BUS + TRAIN COMBINED ROUTE ----
-    if BUS_CONNECTIONS_AVAILABLE:
-        # Split query by "to" to identify source and destination
-        from_area = None
-        to_area = None
+    if intent == "bus_connection" or intent == "unknown":
+        if BUS_CONNECTIONS_AVAILABLE:
+            from_area = None
+            to_area = None
+            if " to " in q:
+                parts = q.split(" to ", 1)
+                _, _, from_area = check_needs_bus_connection(parts[0].strip())
+                _, _, to_area = check_needs_bus_connection(parts[1].strip())
+            else:
+                _, _, from_area = check_needs_bus_connection(q)
+            if from_area or to_area:
+                result = "**Combined Bus + Train Route**\n\n"
+                result += handle_bus_train_route(query, from_area, to_area)
+                return result
 
-        if " to " in q:
-            parts = q.split(" to ", 1)
-            from_part = parts[0].strip()
-            to_part = parts[1].strip()
-
-            _, _, from_area = check_needs_bus_connection(from_part)
-            _, _, to_area = check_needs_bus_connection(to_part)
-        else:
-            # Check entire query
-            _, _, from_area = check_needs_bus_connection(q)
-
-        if from_area or to_area:
-            result = "**Combined Bus + Train Route**\n\n"
-            result += handle_bus_train_route(query, from_area, to_area)
-            return result
-
-    # ---- AC TRAIN LOGIC ----
-    if "ac" in q or "air condition" in q:
+    if intent == "ac_train" or (intent == "unknown" and ("ac" in q or "air condition" in q)):
         return handle_ac_query(q, query)
 
-    # ---- ROUTE / TRAIN LOGIC ----
-    stations = extract_stations(query)
-
-    # Extract time from query if specified
-    query_time = extract_time_from_query(query)
+    # ---- TRAIN SEARCH (default) ----
     show_all = "all train" in q or "full schedule" in q or "all schedule" in q
 
     if len(stations) < 2:
-        # Check if asking about trains from a single station
         if len(stations) == 1:
             trains, has_more, total = get_trains(source=stations[0], limit=8, after_time=query_time, show_all=show_all)
             if trains is not None and len(trains) > 0:

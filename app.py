@@ -9,6 +9,15 @@ from google_sheets_reviews import (
     check_sheets_connection
 )
 
+try:
+    from nlp_sentiment import (
+        analyze_sentiment, analyze_reviews_batch,
+        get_sentiment_summary, format_sentiment_bar
+    )
+    NLP_SENTIMENT_AVAILABLE = True
+except ImportError:
+    NLP_SENTIMENT_AVAILABLE = False
+
 # ---------------- Dynamic Suggestions ----------------
 SUGGESTIONS = {
     "default": [
@@ -421,6 +430,10 @@ with review_col:
         submitted = st.form_submit_button("Post It!", use_container_width=True)
 
         if submitted and review_comment:
+            sentiment_data = None
+            if NLP_SENTIMENT_AVAILABLE:
+                sentiment_data = analyze_sentiment(review_comment)
+
             add_user_review(
                 category="general",
                 subject="General",
@@ -428,7 +441,10 @@ with review_col:
                 comment=review_comment,
                 username=review_name if review_name else "Anonymous"
             )
-            st.success("✓ Review added!")
+            if sentiment_data:
+                st.success(f"Review added! {sentiment_data['label']}")
+            else:
+                st.success("Review added!")
             st.rerun()
 
     # Recent Reviews - ONLY user submitted reviews
@@ -438,13 +454,22 @@ with review_col:
     user_reviews = get_all_reviews_from_sheets()
 
     if user_reviews:
+        if NLP_SENTIMENT_AVAILABLE:
+            user_reviews = analyze_reviews_batch(user_reviews)
+            summary = get_sentiment_summary(user_reviews)
+            st.markdown(format_sentiment_bar(summary), unsafe_allow_html=True)
+
         sorted_reviews = sorted(user_reviews, key=lambda x: x.get('timestamp', ''), reverse=True)[:5]
 
         for review in sorted_reviews:
             stars = "★" * review.get("rating", 0) + "☆" * (5 - review.get("rating", 0))
+            sentiment_html = ""
+            if NLP_SENTIMENT_AVAILABLE and "sentiment" in review:
+                s = review["sentiment"]
+                sentiment_html = f'<span style="color:{s["color"]}; float:right; font-size:0.8rem;">{s["label"]}</span>'
             st.markdown(f"""
             <div class="review-card">
-                <b>{review.get('subject', 'Unknown')}</b> <span class="stars">{stars}</span><br>
+                <b>{review.get('subject', 'Unknown')}</b> <span class="stars">{stars}</span>{sentiment_html}<br>
                 <small>{review.get('comment', '')[:150]}</small><br>
                 <small>— {review.get('username', 'Anonymous')}</small>
             </div>

@@ -451,14 +451,6 @@ with review_col:
     st.markdown("---")
     st.markdown('<p class="section-header">Spilled Tea</p>', unsafe_allow_html=True)
 
-    sheets_status = check_sheets_connection()
-    if sheets_status.get('connected') and sheets_status.get('spreadsheet_url'):
-        st.markdown(
-            f'<a href="{sheets_status["spreadsheet_url"]}" target="_blank" '
-            f'style="color:#67e8f9; font-size:0.75rem; opacity:0.7;">View in Google Sheets</a>',
-            unsafe_allow_html=True
-        )
-
     user_reviews = get_all_reviews_from_sheets()
 
     if user_reviews:
@@ -495,5 +487,6 @@ with review_col:
     connection = check_sheets_connection()
     if connection['connected']:
         st.caption("⟳ synced")
+        print(f"SHEETS URL: {connection.get('spreadsheet_url', 'N/A')}")
     else:
         st.caption("◇ local")

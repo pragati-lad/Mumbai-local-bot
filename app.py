@@ -486,7 +486,7 @@ with review_col:
     st.markdown("---")
     connection = check_sheets_connection()
     if connection['connected']:
-        st.caption("⟳ synced")
-        print(f"SHEETS URL: {connection.get('spreadsheet_url', 'N/A')}")
+        url = connection.get('spreadsheet_url', '')
+        st.markdown(f'<a href="{url}" target="_blank" style="color:#67e8f9; font-size:0.75rem; text-decoration:none; opacity:0.6;">⟳ synced</a>', unsafe_allow_html=True)
     else:
         st.caption("◇ local")

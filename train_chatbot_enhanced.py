@@ -62,7 +62,7 @@ except ImportError:
 try:
     from chat_memory import resolve_query, update_context
     CHAT_MEMORY_AVAILABLE = True
-except ImportError:
+except Exception:
     CHAT_MEMORY_AVAILABLE = False
 
 # ---------------- TRAIN DATA FILES ----------------

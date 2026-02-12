@@ -45,6 +45,9 @@ def get_credentials():
         import streamlit as st
         if hasattr(st, 'secrets') and 'gcp_service_account' in st.secrets:
             creds_dict = dict(st.secrets['gcp_service_account'])
+            # Fix private key newlines (TOML stores \n as literal text)
+            if 'private_key' in creds_dict:
+                creds_dict['private_key'] = creds_dict['private_key'].replace('\\n', '\n')
             return Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
     except Exception as e:
         print(f"Sheets credentials error: {e}")

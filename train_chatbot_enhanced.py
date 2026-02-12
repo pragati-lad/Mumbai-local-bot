@@ -151,11 +151,12 @@ def extract_time_from_query(query):
     return None
 
 
-def get_trains(source=None, dest=None, line=None, ac_only=False, limit=8, after_time=None, show_all=False):
+def get_trains(source=None, dest=None, line=None, ac_only=False, limit=8, after_time=None, before_time=None, show_all=False):
     """Get trains based on filters.
 
     Args:
         after_time: Show trains after this specific time (datetime.time object)
+        before_time: Show trains before this specific time (datetime.time object)
         show_all: If True, show all trains regardless of time
     """
     df = load_trains(ac_only=ac_only)
@@ -194,6 +195,14 @@ def get_trains(source=None, dest=None, line=None, ac_only=False, limit=8, after_
     if show_all:
         # Show all trains sorted by time
         upcoming = df.sort_values('parsed_time')
+    elif before_time:
+        # Show trains before a specific time
+        upcoming = df[df['parsed_time'] <= before_time]
+        if len(upcoming) == 0:
+            upcoming = df.sort_values('parsed_time')
+        else:
+            upcoming = upcoming.sort_values('parsed_time')
+            has_more = total_trains > len(upcoming)
     else:
         # Filter by time (use IST for Mumbai trains)
         filter_time = after_time if after_time else get_ist_time()
@@ -440,19 +449,21 @@ Try asking:
 
 # ---------------- TRAIN TIMETABLE HANDLER ----------------
 
-def handle_train_query(src, dst, line_code, after_time=None, show_all=False):
+def handle_train_query(src, dst, line_code, after_time=None, before_time=None, show_all=False):
     """Handle train timetable queries."""
 
     # Try to find trains
-    trains, has_more, total = get_trains(source=src, dest=dst, limit=10, after_time=after_time, show_all=show_all)
+    trains, has_more, total = get_trains(source=src, dest=dst, limit=10, after_time=after_time, before_time=before_time, show_all=show_all)
 
     if trains is None or len(trains) == 0:
         # Try reverse direction or broader search
-        trains, has_more, total = get_trains(source=src, limit=10, after_time=after_time, show_all=show_all)
+        trains, has_more, total = get_trains(source=src, limit=10, after_time=after_time, before_time=before_time, show_all=show_all)
 
     if trains is not None and len(trains) > 0:
         time_note = ""
-        if after_time:
+        if before_time:
+            time_note = f" (before {before_time.strftime('%I:%M %p')})"
+        elif after_time:
             time_note = f" (after {after_time.strftime('%I:%M %p')})"
         result = f"**Trains from {src} to {dst}**{time_note}\n\n"
         result += "| Time | Destination | Type |\n|------|-------------|------|\n"
@@ -617,14 +628,19 @@ def chatbot_response(query: str, context=None):
 
     # ---- TRAIN SEARCH (default) ----
     show_all = "all train" in q or "full schedule" in q or "all schedule" in q
+    is_before = "before" in q
 
     if len(stations) < 2:
         if len(stations) == 1:
-            trains, has_more, total = get_trains(source=stations[0], limit=8, after_time=query_time, show_all=show_all)
+            if is_before and query_time:
+                trains, has_more, total = get_trains(source=stations[0], limit=8, before_time=query_time, show_all=show_all)
+            else:
+                trains, has_more, total = get_trains(source=stations[0], limit=8, after_time=query_time, show_all=show_all)
             if trains is not None and len(trains) > 0:
                 time_note = ""
                 if query_time:
-                    time_note = f" (after {query_time.strftime('%I:%M %p')})"
+                    time_label = "before" if is_before else "after"
+                    time_note = f" ({time_label} {query_time.strftime('%I:%M %p')})"
                 result = f"**Trains from {stations[0]}**{time_note}\n\n"
                 result += "| Time | Destination | Type |\n|------|-------------|------|\n"
                 for _, row in trains.iterrows():
@@ -648,7 +664,10 @@ def chatbot_response(query: str, context=None):
     dst_line, dst_code = determine_line(dst)
 
     # Try to get actual train timings
-    train_result = handle_train_query(src, dst, src_code, after_time=query_time, show_all=show_all)
+    if is_before and query_time:
+        train_result = handle_train_query(src, dst, src_code, before_time=query_time, show_all=show_all)
+    else:
+        train_result = handle_train_query(src, dst, src_code, after_time=query_time, show_all=show_all)
 
     if train_result:
         return train_result

@@ -472,7 +472,7 @@ with review_col:
                 sentiment_html = f'<span style="color:{s["color"]}; float:right; font-size:0.8rem;">{s["label"]}</span>'
             st.markdown(f"""
             <div class="review-card">
-                <b>{review.get('subject', 'Unknown')}</b> <span class="stars">{stars}</span>{sentiment_html}<br>
+                <span class="stars">{stars}</span>{sentiment_html}<br>
                 <small>{review.get('comment', '')[:150]}</small><br>
                 <small>— {review.get('username', 'Anonymous')}</small>
             </div>

@@ -574,13 +574,18 @@ def chatbot_response(query: str, context=None):
     if intent == "pass_info" or (intent == "unknown" and ("monthly" in q or "quarterly" in q or "pass" in q)):
         return MONTHLY_PASS
 
-    if intent == "platform_info" or (intent == "unknown" and ("platform" in q or "which platform" in q)):
+    is_platform_query = intent == "platform_info" or "platform" in q or "which platform" in q
+    if is_platform_query:
         if STATION_INFO_AVAILABLE:
-            if stations:
+            if len(stations) >= 2:
+                platform_info = format_platform_response(stations[0], destination=stations[1])
+                if platform_info:
+                    return platform_info
+            if len(stations) >= 1:
                 platform_info = format_platform_response(stations[0])
                 if platform_info:
                     return platform_info
-            return "Which station? Try: *Platform info Dadar*"
+            return "Which station? Try: *Platform info Dadar* or *Dadar to Sion which platform*"
 
     if intent == "peak_hours" or (intent == "unknown" and any(w in q for w in ["peak", "rush", "crowd", "busy"])):
         if STATION_INFO_AVAILABLE:

@@ -171,6 +171,7 @@ def get_platform_info(station):
     # Handle aliases
     aliases = {
         "Cst": "CSMT",
+        "Csmt": "CSMT",
         "Victoria Terminus": "CSMT",
         "Vt": "CSMT"
     }
@@ -180,13 +181,94 @@ def get_platform_info(station):
     return PLATFORM_INFO.get(station_title)
 
 
-def format_platform_response(station):
-    """Format platform info for chatbot."""
+# Station order per line (terminus → outward)
+_WESTERN_ORDER = [
+    "churchgate", "marine lines", "charni road", "grant road",
+    "mumbai central", "mahalakshmi", "lower parel", "prabhadevi",
+    "dadar", "mahim junction", "bandra", "khar road",
+    "santacruz", "vile parle", "andheri", "jogeshwari",
+    "goregaon", "malad", "kandivali", "borivali",
+    "dahisar", "mira road", "bhayandar", "vasai road", "nalla sopara", "virar"
+]
+_CENTRAL_ORDER = [
+    "csmt", "masjid", "byculla", "chinchpokli", "currey road",
+    "parel", "dadar", "matunga", "sion", "kurla",
+    "vidyavihar", "ghatkopar", "vikhroli", "kanjurmarg",
+    "bhandup", "nahur", "mulund", "thane", "kalyan",
+    "dombivli", "ambernath", "badlapur", "titwala", "kasara", "karjat"
+]
+_HARBOUR_ORDER = [
+    "csmt", "masjid", "sandhurst road", "dockyard road",
+    "sewri", "vadala road", "kurla", "chembur",
+    "govandi", "mankhurd", "vashi", "sanpada",
+    "belapur cbd", "belapur", "nerul", "panvel"
+]
+
+
+def _find_direction(station, destination):
+    """Determine which direction to go from station to destination.
+    Returns list of keywords to match against direction keys."""
+    src = station.lower()
+    dst = destination.lower()
+
+    for line_name, line_order, terminus_dir, outward_dir in [
+        ("western", _WESTERN_ORDER, "churchgate", "virar"),
+        ("central", _CENTRAL_ORDER, "csmt", "kalyan"),
+        ("harbour", _HARBOUR_ORDER, "csmt", "panvel"),
+    ]:
+        src_idx = next((i for i, s in enumerate(line_order) if s == src), None)
+        dst_idx = next((i for i, s in enumerate(line_order) if s == dst), None)
+
+        if src_idx is not None and dst_idx is not None:
+            direction = terminus_dir if dst_idx < src_idx else outward_dir
+            return [direction, line_name]
+
+    return []
+
+
+def format_platform_response(station, destination=None):
+    """Format platform info for chatbot. If destination given, highlight specific platform."""
     info = get_platform_info(station)
 
     if not info:
         return None
 
+    # If destination provided, find the specific platform
+    if destination:
+        dest_lower = destination.lower()
+        best_match = None
+
+        # Step 1: Direct match in direction keys
+        for direction, platforms in info['directions'].items():
+            dir_lower = direction.lower()
+            if dest_lower in dir_lower:
+                best_match = (direction, platforms)
+                break
+            dir_words = [w.strip().lower() for w in dir_lower.replace('/', ' ').replace('(', ' ').replace(')', ' ').split()]
+            if any(dest_lower in w or w in dest_lower for w in dir_words if len(w) > 2):
+                best_match = (direction, platforms)
+                break
+
+        # Step 2: Use station order to find direction
+        if not best_match:
+            dir_keywords = _find_direction(station, destination)
+            for keyword in dir_keywords:
+                for direction, platforms in info['directions'].items():
+                    if keyword in direction.lower():
+                        best_match = (direction, platforms)
+                        break
+                if best_match:
+                    break
+
+        if best_match:
+            response = f"**{station.title()} to {destination.title()}**\n\n"
+            response += f"Go to **{best_match[1]}**\n"
+            response += f"Direction: {best_match[0]}\n"
+            if info.get('notes'):
+                response += f"\n_{info['notes']}_"
+            return response
+
+    # No destination or no match — show all platforms
     response = f"**{station.title()} Station - Platforms**\n\n"
     response += f"Total Platforms: {info['total_platforms']}\n\n"
 

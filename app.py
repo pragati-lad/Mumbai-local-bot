@@ -336,6 +336,9 @@ with main_col:
     if "suggestions" not in st.session_state:
         st.session_state.suggestions = SUGGESTIONS["default"]
 
+    if "chat_context" not in st.session_state:
+        st.session_state.chat_context = {}
+
     # ---------------- Initial Bot Message ----------------
     if len(st.session_state.messages) == 0:
         st.session_state.messages.append(
@@ -386,7 +389,7 @@ with main_col:
             else:
                 response = "Which station? Try: *Reviews for Andheri*"
         else:
-            response = chatbot_response(user_input)
+            response = chatbot_response(user_input, context=st.session_state.chat_context)
 
         with st.chat_message("assistant", avatar="🚃"):
             st.markdown(response)

@@ -59,6 +59,12 @@ try:
 except ImportError:
     NLP_NER_AVAILABLE = False
 
+try:
+    from chat_memory import resolve_query, update_context
+    CHAT_MEMORY_AVAILABLE = True
+except ImportError:
+    CHAT_MEMORY_AVAILABLE = False
+
 # ---------------- TRAIN DATA FILES ----------------
 
 BASE_DIR = os.path.dirname(__file__)
@@ -526,7 +532,7 @@ def handle_bus_train_route(query, from_area, to_area):
 
 # ---------------- CHATBOT RESPONSE ----------------
 
-def chatbot_response(query: str):
+def chatbot_response(query: str, context=None):
 
     # Normalize Hindi/Marathi queries to English
     if LANGUAGE_SUPPORT_AVAILABLE:
@@ -548,6 +554,11 @@ def chatbot_response(query: str):
     else:
         stations = extract_stations(query)
         query_time = extract_time_from_query(query)
+
+    # ---- MEMORY: Fill missing info from conversation context ----
+    if CHAT_MEMORY_AVAILABLE and context is not None:
+        stations, query_time = resolve_query(query, stations, query_time, context)
+        update_context(context, stations, query_time, intent)
 
     # ---- DISPATCH BY INTENT (with keyword fallback) ----
 

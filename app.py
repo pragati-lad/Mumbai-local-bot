@@ -294,12 +294,18 @@ st.markdown(
             margin: 1.2rem 0 !important;
         }}
 
-        /* Star rating buttons */
-        [data-testid="stHorizontalBlock"] button[kind="secondary"][data-testid="stBaseButton-secondary"] {{
-            font-size: 1.6rem !important;
+        /* Star slider track */
+        [data-testid="stSlider"] {{
+            padding-top: 0 !important;
         }}
-        button[key^="star_"] {{
-            font-size: 1.6rem !important;
+        [data-testid="stSlider"] [data-testid="stThumbValue"] {{
+            color: #fbbf24 !important;
+        }}
+
+        /* Photo grid */
+        .photo-grid img {{
+            border-radius: 12px !important;
+            border: 1px solid rgba(103,232,249,0.2) !important;
         }}
 
         .stCaption, .stCaption p {{
@@ -408,19 +414,18 @@ with main_col:
 with review_col:
     st.markdown('<p class="section-header">Spill the Tea!</p>', unsafe_allow_html=True)
 
-    # Clickable star rating
+    # Star rating — HTML display + slider (stays horizontal on mobile)
     if "star_rating" not in st.session_state:
         st.session_state.star_rating = 4
     if "form_key" not in st.session_state:
         st.session_state.form_key = 0
 
-    star_cols = st.columns(5)
-    for i in range(5):
-        with star_cols[i]:
-            if st.button("★" if i < st.session_state.star_rating else "☆", key=f"star_{i}"):
-                st.session_state.star_rating = i + 1
-                st.rerun()
-    review_rating = st.session_state.star_rating
+    stars_html = "★" * st.session_state.star_rating + "☆" * (5 - st.session_state.star_rating)
+    st.markdown(
+        f'<div style="font-size: 1.5rem; color: #fbbf24; letter-spacing: 4px;">{stars_html}</div>',
+        unsafe_allow_html=True
+    )
+    review_rating = st.slider("Rating", 1, 5, key="star_rating", label_visibility="collapsed")
 
     # Review Form — form_key changes after submit to clear fields
     with st.form(f"review_form_{st.session_state.form_key}"):
@@ -456,6 +461,25 @@ with review_col:
             else:
                 st.warning("Could not save review. Try again.")
             st.rerun()
+
+    # Station Photos
+    st.markdown("---")
+    st.markdown('<p class="section-header">Station Snaps</p>', unsafe_allow_html=True)
+
+    photos = st.file_uploader(
+        "Upload station photos",
+        type=["jpg", "jpeg", "png"],
+        accept_multiple_files=True,
+        label_visibility="collapsed"
+    )
+
+    if photos:
+        show_photos = photos[:4]
+        photo_cols = st.columns(2)
+        for i, photo in enumerate(show_photos):
+            photo_cols[i % 2].image(photo, use_container_width=True)
+        if len(photos) > 4:
+            st.caption("Max 4 photos shown")
 
     # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")

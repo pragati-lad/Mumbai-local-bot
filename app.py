@@ -411,6 +411,8 @@ with review_col:
     # Clickable star rating
     if "star_rating" not in st.session_state:
         st.session_state.star_rating = 4
+    if "form_key" not in st.session_state:
+        st.session_state.form_key = 0
 
     star_cols = st.columns(5)
     for i in range(5):
@@ -420,8 +422,8 @@ with review_col:
                 st.rerun()
     review_rating = st.session_state.star_rating
 
-    # Review Form
-    with st.form("review_form"):
+    # Review Form — form_key changes after submit to clear fields
+    with st.form(f"review_form_{st.session_state.form_key}"):
         review_comment = st.text_area(
             "Your review",
             placeholder="Go ahead and gossip...",
@@ -445,6 +447,7 @@ with review_col:
                 username=review_name if review_name else "Anonymous"
             )
             st.session_state.star_rating = 4
+            st.session_state.form_key += 1
             if result and isinstance(result, dict) and result.get('id') is not None:
                 if sentiment_data:
                     st.toast(f"Review added! {sentiment_data['label']}")

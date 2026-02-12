@@ -437,17 +437,21 @@ with review_col:
             if NLP_SENTIMENT_AVAILABLE:
                 sentiment_data = analyze_sentiment(review_comment)
 
-            add_user_review(
+            result = add_user_review(
                 category="general",
                 subject="General",
                 rating=review_rating,
                 comment=review_comment,
                 username=review_name if review_name else "Anonymous"
             )
-            if sentiment_data:
-                st.success(f"Review added! {sentiment_data['label']}")
+            st.session_state.star_rating = 4
+            if result and isinstance(result, dict) and result.get('id') is not None:
+                if sentiment_data:
+                    st.toast(f"Review added! {sentiment_data['label']}")
+                else:
+                    st.toast("Review added!")
             else:
-                st.success("Review added!")
+                st.warning("Could not save review. Try again.")
             st.rerun()
 
     # Recent Reviews - ONLY user submitted reviews

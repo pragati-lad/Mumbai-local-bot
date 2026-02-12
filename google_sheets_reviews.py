@@ -46,8 +46,8 @@ def get_credentials():
         if hasattr(st, 'secrets') and 'gcp_service_account' in st.secrets:
             creds_dict = dict(st.secrets['gcp_service_account'])
             return Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
-    except:
-        pass
+    except Exception as e:
+        print(f"Sheets credentials error: {e}")
 
     # Try environment variable
     creds_json = os.environ.get('GOOGLE_CREDENTIALS')

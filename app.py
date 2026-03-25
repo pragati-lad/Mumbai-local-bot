@@ -459,10 +459,17 @@ with review_col:
             st.session_state.star_rating = 4
             st.session_state.form_key += 1
             if result and isinstance(result, dict) and result.get('id') is not None:
-                if sentiment_data:
-                    st.toast(f"Review added! {sentiment_data['label']}")
+                storage = result.get('storage', 'local')
+                if storage == 'google_sheets':
+                    toast_msg = "✅ Review saved to Google Sheets!"
+                    if sentiment_data:
+                        toast_msg = f"✅ Review saved to Google Sheets! {sentiment_data['label']}"
+                    st.toast(toast_msg)
                 else:
-                    st.toast("Review added!")
+                    sheets_error = result.get('sheets_error', 'Unknown error')
+                    st.warning(f"⚠️ Google Sheets unavailable — review saved locally only.\n\n**Error:** {sheets_error}")
+                    if sentiment_data:
+                        st.toast(sentiment_data['label'])
             else:
                 st.warning("Could not save review. Try again.")
             st.rerun()
@@ -526,6 +533,7 @@ with review_col:
     connection = check_sheets_connection()
     if connection['connected']:
         print(f"SHEETS_URL: {connection.get('spreadsheet_url', '')}")
-        st.caption("⟳ synced")
+        st.caption("⟳ synced to Google Sheets")
     else:
-        st.caption("◇ local")
+        error = connection.get('error', 'Unknown error')
+        st.caption(f"⚠️ Not synced to Google Sheets: {error}")

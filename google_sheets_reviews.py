@@ -49,27 +49,35 @@ def get_credentials():
             if 'private_key' in creds_dict:
                 pk = creds_dict['private_key']
                 # Replace all forms of escaped newlines with actual newlines
-                pk = pk.replace('\\\\n', '\n')
-                pk = pk.replace('\\n', '\n')
+                pk = pk.replace('\\\\n', '\n').replace('\\n', '\n')
                 # Remove any extra whitespace around the key
                 pk = pk.strip()
+                # Ensure the key ends with a newline as required by the PEM format
+                if not pk.endswith('\n'):
+                    pk = pk + '\n'
                 creds_dict['private_key'] = pk
                 print(f"PEM key starts with: {pk[:30]}...")
                 print(f"PEM key ends with: ...{pk[-30:]}")
             return Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
     except Exception as e:
-        print(f"Sheets credentials error: {e}")
+        print(f"Sheets credentials error (Streamlit secrets): {e}")
 
     # Try environment variable
     creds_json = os.environ.get('GOOGLE_CREDENTIALS')
     if creds_json:
-        creds_dict = json.loads(creds_json)
-        return Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
+        try:
+            creds_dict = json.loads(creds_json)
+            return Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
+        except Exception as e:
+            print(f"Sheets credentials error (GOOGLE_CREDENTIALS env var): {e}")
 
     # Try local file
     creds_file = os.path.join(os.path.dirname(__file__), 'credentials.json')
     if os.path.exists(creds_file):
-        return Credentials.from_service_account_file(creds_file, scopes=SCOPES)
+        try:
+            return Credentials.from_service_account_file(creds_file, scopes=SCOPES)
+        except Exception as e:
+            print(f"Sheets credentials error (credentials.json): {e}")
 
     return None
 
@@ -121,8 +129,15 @@ def add_review_to_sheets(category, subject, rating, comment, username="Anonymous
     """Add a review to Google Sheets."""
     client = get_client()
     if not client:
-        print("Google Sheets not configured, using local storage")
-        return _add_review_local(category, subject, rating, comment, username)
+        no_creds_msg = (
+            "Google Sheets credentials not configured or gspread not installed. "
+            "Add [gcp_service_account] to Streamlit secrets."
+        )
+        print(f"Google Sheets not configured, using local storage: {no_creds_msg}")
+        review = _add_review_local(category, subject, rating, comment, username)
+        review['storage'] = 'local'
+        review['sheets_error'] = no_creds_msg
+        return review
 
     try:
         spreadsheet = get_or_create_spreadsheet(client)
@@ -156,12 +171,16 @@ def add_review_to_sheets(category, subject, rating, comment, username="Anonymous
             'comment': comment,
             'username': username,
             'timestamp': row[1],
-            'source': 'user'
+            'source': 'user',
+            'storage': 'google_sheets'
         }
 
     except Exception as e:
         print(f"Error adding to Google Sheets: {e}")
-        return _add_review_local(category, subject, rating, comment, username)
+        review = _add_review_local(category, subject, rating, comment, username)
+        review['storage'] = 'local'
+        review['sheets_error'] = str(e)
+        return review
 
 
 def get_all_reviews_from_sheets():

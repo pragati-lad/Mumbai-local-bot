@@ -428,7 +428,7 @@ with review_col:
         review_name = st.text_input("Name", placeholder="Anonymous")
 
         photos = st.file_uploader(
-            "Attach station photos snaps  (optional)",
+            "Attach station  snaps (optional)",
             type=["jpg", "jpeg", "png"],
             accept_multiple_files=True,
             label_visibility="visible"

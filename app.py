@@ -417,6 +417,7 @@ with review_col:
                 st.rerun()
     review_rating = st.session_state.star_rating
 
+    # Review Form — now includes photos uploader inside form
     with st.form(f"review_form_{st.session_state.form_key}"):
         review_comment = st.text_area(
             "Your review",
@@ -426,6 +427,13 @@ with review_col:
 
         review_name = st.text_input("Name", placeholder="Anonymous")
 
+        photos = st.file_uploader(
+            "Attach station photos (optional)",
+            type=["jpg", "jpeg", "png"],
+            accept_multiple_files=True,
+            label_visibility="visible"
+        )
+
         submitted = st.form_submit_button("Post It!", use_container_width=True)
 
         if submitted and review_comment:
@@ -433,13 +441,31 @@ with review_col:
             if NLP_SENTIMENT_AVAILABLE:
                 sentiment_data = analyze_sentiment(review_comment)
 
-            result = add_user_review(
-                category="general",
-                subject="General",
-                rating=review_rating,
-                comment=review_comment,
-                username=review_name if review_name else "Anonymous"
-            )
+            # prepare photo tuples (filename, bytes)
+            photo_tuples = []
+            if photos:
+                for p in photos:
+                    try:
+                        data = p.getvalue()
+                    except Exception:
+                        p.seek(0)
+                        data = p.read()
+                    photo_tuples.append((p.name, data))
+
+            try:
+                result = add_user_review(
+                    category="general",
+                    subject="General",
+                    rating=review_rating,
+                    comment=review_comment,
+                    username=review_name if review_name else "Anonymous",
+                    photos=photo_tuples  # new optional param supported
+                )
+            except Exception as e:
+                # If add failed, warn and continue
+                st.warning(f"Could not save review: {e}")
+                result = None
+
             st.session_state.star_rating = 4
             st.session_state.form_key += 1
             if result and isinstance(result, dict) and result.get('id') is not None:
@@ -453,21 +479,6 @@ with review_col:
 
     st.markdown("---")
     st.markdown('<p class="section-header">Station Snaps</p>', unsafe_allow_html=True)
-
-    photos = st.file_uploader(
-        "Upload station photos",
-        type=["jpg", "jpeg", "png"],
-        accept_multiple_files=True,
-        label_visibility="collapsed"
-    )
-
-    if photos:
-        show_photos = photos[:4]
-        photo_cols = st.columns(2)
-        for i, photo in enumerate(show_photos):
-            photo_cols[i % 2].image(photo, use_container_width=True)
-        if len(photos) > 4:
-            st.caption("Max 4 photos shown")
 
     st.markdown("---")
     st.markdown('<p class="section-header">Spilled Tea</p>', unsafe_allow_html=True)
@@ -528,6 +539,7 @@ with review_col:
             comment = review.get('comment') or ''
             username = review.get('username') or 'Anonymous'
 
+            # Render review card
             st.markdown(f"""
             <div class="review-card">
                 <span class="stars">{stars}</span>{sentiment_html}<br>
@@ -535,6 +547,21 @@ with review_col:
                 <small>— {username}</small>
             </div>
             """, unsafe_allow_html=True)
+
+            # Render photos if present
+            photos = review.get('photos') or []
+            if isinstance(photos, str) and photos:
+                photos = [p.strip() for p in photos.split(',') if p.strip()]
+
+            if photos:
+                # show up to 4 thumbnails in a row
+                cols = st.columns(min(4, len(photos)))
+                for i, p_url in enumerate(photos[:4]):
+                    try:
+                        cols[i].image(p_url, use_column_width=True)
+                    except Exception:
+                        # if it's a local path or image not directly displayable, show link
+                        cols[i].markdown(f"[view image]({p_url})")
     else:
         st.markdown("""
         <div class="review-card" style="text-align: center;">

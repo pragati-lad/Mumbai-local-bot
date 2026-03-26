@@ -481,7 +481,11 @@ with review_col:
             summary = get_sentiment_summary(user_reviews)
             st.markdown(format_sentiment_bar(summary), unsafe_allow_html=True)
 
-        sorted_reviews = sorted(user_reviews, key=lambda x: x.get('timestamp', ''), reverse=True)[:5]
+        sorted_reviews = sorted(
+            [r for r in user_reviews if isinstance(r, dict)],
+            key=lambda x: x.get('timestamp', ''),
+            reverse=True
+        )[:5]
 
         for review in sorted_reviews:
             stars = "★" * review.get("rating", 0) + "☆" * (5 - review.get("rating", 0))

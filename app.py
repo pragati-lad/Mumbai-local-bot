@@ -251,7 +251,7 @@ st.markdown(
         label {{
             color: #94a3b8 !important;
             font-size: 0.85rem !important;
-            font-weight: 600 !important;
+            font-weight: 600;
         }}
 
         strong, b {{
@@ -473,26 +473,53 @@ with review_col:
     st.markdown("---")
     st.markdown('<p class="section-header">Spilled Tea</p>', unsafe_allow_html=True)
 
+    # Get reviews and coerce/validate to a list of dicts
     user_reviews = get_all_reviews_from_sheets()
+
+    # Normalize user_reviews to a list so sorting and iteration are safe
+    if not user_reviews:
+        user_reviews = []
+    elif isinstance(user_reviews, dict):
+        user_reviews = [user_reviews]
+    elif not isinstance(user_reviews, list):
+        try:
+            user_reviews = list(user_reviews)
+        except Exception:
+            user_reviews = []
 
     if user_reviews:
         if NLP_SENTIMENT_AVAILABLE:
-            user_reviews = analyze_reviews_batch(user_reviews)
-            summary = get_sentiment_summary(user_reviews)
-            st.markdown(format_sentiment_bar(summary), unsafe_allow_html=True)
+            try:
+                user_reviews = analyze_reviews_batch(user_reviews)
+            except Exception:
+                # If sentiment analysis fails, continue with original reviews
+                pass
+            try:
+                summary = get_sentiment_summary(user_reviews)
+                st.markdown(format_sentiment_bar(summary), unsafe_allow_html=True)
+            except Exception:
+                pass
 
+        # Keep only dict entries and sort safely by timestamp
+        valid_reviews = [r for r in user_reviews if isinstance(r, dict)]
         sorted_reviews = sorted(
-            [r for r in user_reviews if isinstance(r, dict)],
+            valid_reviews,
             key=lambda x: x.get('timestamp', ''),
             reverse=True
         )[:5]
 
         for review in sorted_reviews:
-            stars = "★" * review.get("rating", 0) + "☆" * (5 - review.get("rating", 0))
+            # Ensure rating is numeric-friendly
+            try:
+                rating_val = int(review.get("rating", 0)) if review.get("rating") is not None else 0
+            except Exception:
+                rating_val = 0
+            stars = "★" * max(0, min(5, rating_val)) + "☆" * (5 - max(0, min(5, rating_val)))
+
             sentiment_html = ""
-            if NLP_SENTIMENT_AVAILABLE and "sentiment" in review:
+            if NLP_SENTIMENT_AVAILABLE and isinstance(review.get("sentiment", None), dict):
                 s = review["sentiment"]
-                sentiment_html = f'<span style="color:{s["color"]}; float:right; font-size:0.8rem;">{s["label"]}</span>'
+                sentiment_html = f'<span style="color:{s.get("color","")}; float:right; font-size:0.8rem;">{s.get("label","")}</span>'
 
             comment = review.get('comment') or ''
             username = review.get('username') or 'Anonymous'

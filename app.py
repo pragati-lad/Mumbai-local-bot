@@ -500,17 +500,21 @@ with review_col:
 
         sorted_reviews = sorted(user_reviews, key=lambda x: x.get('timestamp', ''), reverse=True)[:5]
 
-        for review in sorted_reviews:
+                for review in sorted_reviews:
             stars = "★" * review.get("rating", 0) + "☆" * (5 - review.get("rating", 0))
             sentiment_html = ""
             if NLP_SENTIMENT_AVAILABLE and "sentiment" in review:
                 s = review["sentiment"]
                 sentiment_html = f'<span style="color:{s["color"]}; float:right; font-size:0.8rem;">{s["label"]}</span>'
+
+            comment = review.get('comment') or ''
+            username = review.get('username') or 'Anonymous'
+
             st.markdown(f"""
             <div class="review-card">
                 <span class="stars">{stars}</span>{sentiment_html}<br>
-                <small>{review.get('comment', '')[:150]}</small><br>
-                <small>— {review.get('username', 'Anonymous')}</small>
+                <small>{comment[:150]}</small><br>
+                <small>— {username}</small>
             </div>
             """, unsafe_allow_html=True)
     else:

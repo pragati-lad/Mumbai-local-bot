@@ -339,7 +339,6 @@ with main_col:
         <br>Your pocket train guide - 7,500+ trains
     </p>''', unsafe_allow_html=True)
 
-    # ---------------- Session State ----------------
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
@@ -349,7 +348,6 @@ with main_col:
     if "chat_context" not in st.session_state:
         st.session_state.chat_context = {}
 
-    # ---------------- Initial Bot Message ----------------
     if len(st.session_state.messages) == 0:
         st.session_state.messages.append(
             {
@@ -361,32 +359,25 @@ with main_col:
             }
         )
 
-    # -------- Chat History --------
     for msg in st.session_state.messages:
         avatar = "🚃" if msg["role"] == "assistant" else "👤"
         with st.chat_message(msg["role"], avatar=avatar):
             st.markdown(msg["content"])
 
-    # -------- Chat Input --------
     user_input = st.chat_input("Where to? Try: Dadar to Thane...")
 
-    # -------- Suggested Queries --------
     st.markdown('<p style="color:#64748b !important; font-size:0.75rem !important; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:6px;">Try These</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
             user_input = s
 
-    # -------- Handle Input --------
     if user_input:
-        st.session_state.messages.append(
-            {"role": "user", "content": user_input}
-        )
+        st.session_state.messages.append({"role": "user", "content": user_input})
 
         with st.chat_message("user", avatar="👤"):
             st.markdown(user_input)
 
-        # Check if asking for reviews
         if "review" in user_input.lower() or "kaisa" in user_input.lower():
             for station in STATIONS:
                 if station.lower() in user_input.lower():
@@ -404,13 +395,9 @@ with main_col:
         with st.chat_message("assistant", avatar="🚃"):
             st.markdown(response)
 
-        st.session_state.messages.append(
-            {"role": "assistant", "content": response}
-        )
-
+        st.session_state.messages.append({"role": "assistant", "content": response})
         st.session_state.suggestions = get_related_suggestions(user_input)
         st.rerun()
-
 
 # ==================================================
 # REVIEW COLUMN - SUBMIT & VIEW REVIEWS
@@ -418,7 +405,6 @@ with main_col:
 with review_col:
     st.markdown('<p class="section-header">Spill the Tea!</p>', unsafe_allow_html=True)
 
-    # Clickable star rating
     if "star_rating" not in st.session_state:
         st.session_state.star_rating = 4
     if "form_key" not in st.session_state:
@@ -432,7 +418,6 @@ with review_col:
                 st.rerun()
     review_rating = st.session_state.star_rating
 
-    # Review Form — form_key changes after submit to clear fields
     with st.form(f"review_form_{st.session_state.form_key}"):
         review_comment = st.text_area(
             "Your review",
@@ -467,7 +452,6 @@ with review_col:
                 st.warning("Could not save review. Try again.")
             st.rerun()
 
-    # Station Photos
     st.markdown("---")
     st.markdown('<p class="section-header">Station Snaps</p>', unsafe_allow_html=True)
 
@@ -486,7 +470,6 @@ with review_col:
         if len(photos) > 4:
             st.caption("Max 4 photos shown")
 
-    # Recent Reviews - ONLY user submitted reviews
     st.markdown("---")
     st.markdown('<p class="section-header">Spilled Tea</p>', unsafe_allow_html=True)
 
@@ -500,7 +483,7 @@ with review_col:
 
         sorted_reviews = sorted(user_reviews, key=lambda x: x.get('timestamp', ''), reverse=True)[:5]
 
-                for review in sorted_reviews:
+        for review in sorted_reviews:
             stars = "★" * review.get("rating", 0) + "☆" * (5 - review.get("rating", 0))
             sentiment_html = ""
             if NLP_SENTIMENT_AVAILABLE and "sentiment" in review:
@@ -525,7 +508,6 @@ with review_col:
         </div>
         """, unsafe_allow_html=True)
 
-    # Connection status
     st.markdown("---")
     connection = check_sheets_connection()
     if connection['connected']:

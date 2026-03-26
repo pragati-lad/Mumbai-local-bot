@@ -1,6 +1,14 @@
 import json
 import os
 from datetime import datetime
+# google_sheets_reviews.py (add these imports)
+import io
+try:
+    from googleapiclient.discovery import build
+    from googleapiclient.http import MediaIoBaseUpload
+    DRIVE_AVAILABLE = True
+except Exception:
+    DRIVE_AVAILABLE = False
 
 try:
     import gspread

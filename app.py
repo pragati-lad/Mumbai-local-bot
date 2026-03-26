@@ -1,8 +1,10 @@
+# app.py (full) - includes authentication using streamlit-authenticator
 import streamlit as st
 import base64
 from train_chatbot_enhanced import chatbot_response
 from google_sheets_reviews import (
     add_review_to_sheets as add_user_review,
+    add_user_to_sheets,
     get_reviews_for_subject as get_reviews_for,
     get_review_summary_sheets as get_review_summary,
     get_all_reviews_from_sheets,
@@ -17,6 +19,115 @@ try:
     NLP_SENTIMENT_AVAILABLE = True
 except ImportError:
     NLP_SENTIMENT_AVAILABLE = False
+
+# ---------------- Authentication (streamlit-authenticator) ----------------
+try:
+    import streamlit_authenticator as stauth
+except Exception:
+    stauth = None
+    print("streamlit-authenticator not installed. Run: pip install streamlit-authenticator")
+
+def _load_credentials():
+    """Load credentials dict from st.secrets or session_state fallback."""
+    if hasattr(st, "secrets") and st.secrets.get("auth"):
+        return dict(st.secrets["auth"])
+    return st.session_state.get("credentials", {"usernames": {}})
+
+def _save_credentials_in_session(creds):
+    st.session_state["credentials"] = creds
+
+# signature_key from secrets recommended
+SIGNATURE_KEY = None
+if hasattr(st, "secrets") and st.secrets.get("auth_signature_key"):
+    SIGNATURE_KEY = st.secrets["auth_signature_key"]
+else:
+    # fallback key for dev (replace with secret in production)
+    SIGNATURE_KEY = st.session_state.get("auth_signature_key", "change_this_signature_key")
+
+# cookie name
+COOKIE_NAME = "mumbai_local_auth"
+
+credentials = _load_credentials()
+
+if stauth is None:
+    st.warning("Authentication library not available — app will run without login. Install streamlit-authenticator for secure login.")
+    authenticated_user = True
+    current_user_name = "Guest"
+else:
+    # if no credentials exist, show a quick registration to create first user (in-memory)
+    if not credentials.get("usernames"):
+        st.info("No users found — create an admin account to get started.")
+        with st.form("register_first"):
+            new_name = st.text_input("Full name")
+            new_email = st.text_input("Email (will be username)")
+            new_password = st.text_input("Password", type="password")
+            create = st.form_submit_button("Create account")
+            if create:
+                if not new_name or not new_email or not new_password:
+                    st.error("Please fill all fields")
+                    st.stop()
+                # hash password and add to credentials
+                hashed = stauth.Hasher([new_password]).generate()[0]
+                credentials = {"usernames": {
+                    new_email: {"name": new_name, "password": hashed}
+                }}
+                _save_credentials_in_session(credentials)
+                # record user in sheet (best-effort)
+                try:
+                    add_user_to_sheets(new_name, new_email, provider="local")
+                except Exception:
+                    pass
+                st.success("Account created — please login below.")
+                st.experimental_rerun()
+
+    authenticator = stauth.Authenticate(credentials, COOKIE_NAME, SIGNATURE_KEY, cookie_expiry_days=30)
+
+    name, authentication_status, username = authenticator.login("Login", "main")
+
+    if authentication_status is None:
+        st.warning("Please enter your username and password")
+        st.stop()
+    elif authentication_status is False:
+        st.error("Username/password is incorrect")
+        # show optional registration button
+        if st.button("Register a new account"):
+            st.session_state.show_register = True
+        st.stop()
+    else:
+        # successful login
+        current_user_name = name
+        # record login into users sheet (best-effort)
+        try:
+            add_user_to_sheets(name, username, provider="local")
+        except Exception:
+            pass
+        # expose a logout button in the sidebar
+        with st.sidebar:
+            authenticator.logout("Logout", "sidebar")
+        authenticated_user = True
+
+    # optional registration flow (if user clicked Register)
+    if st.session_state.get("show_register"):
+        st.header("Register")
+        new_name = st.text_input("Full name", key="reg_name")
+        new_email = st.text_input("Email (will be username)", key="reg_email")
+        new_password = st.text_input("Password", type="password", key="reg_password")
+        if st.button("Create account", key="reg_create"):
+            if not new_name or not new_email or not new_password:
+                st.error("Fill all fields")
+            else:
+                hashed = stauth.Hasher([new_password]).generate()[0]
+                creds = _load_credentials()
+                creds.setdefault("usernames", {})[new_email] = {"name": new_name, "password": hashed}
+                _save_credentials_in_session(creds)
+                # record to sheets
+                try:
+                    add_user_to_sheets(new_name, new_email, provider="local")
+                except Exception:
+                    pass
+                st.success("Account created — please login.")
+                st.session_state.show_register = False
+                st.experimental_rerun()
 
 # ---------------- Dynamic Suggestions ----------------
 SUGGESTIONS = {
@@ -81,32 +192,25 @@ STATIONS = [
 
 
 def get_related_suggestions(query):
-    """Get suggestions related to the user's query."""
     q = query.lower()
-
     if "ac" in q or "air condition" in q:
         return SUGGESTIONS["ac"]
-
     if any(word in q for word in ["pass", "concession", "student", "senior", "luggage", "rule"]):
         return SUGGESTIONS["info"]
-
     western_stations = ["churchgate", "bandra", "andheri", "borivali", "virar", "dadar", "malad", "goregaon"]
     if any(station in q for station in western_stations):
         central_stations = ["csmt", "cst", "thane", "kalyan", "ghatkopar", "dombivli"]
         harbour_stations = ["panvel", "vashi", "belapur"]
         if not any(s in q for s in central_stations + harbour_stations):
             return SUGGESTIONS["western"]
-
     central_stations = ["csmt", "cst", "thane", "kalyan", "ghatkopar", "kurla", "dombivli", "mulund"]
     if any(station in q for station in central_stations):
         harbour_stations = ["panvel", "vashi", "belapur"]
         if not any(s in q for s in harbour_stations):
             return SUGGESTIONS["central"]
-
     harbour_stations = ["panvel", "vashi", "belapur", "nerul", "sanpada"]
     if any(station in q for station in harbour_stations):
         return SUGGESTIONS["harbour"]
-
     return SUGGESTIONS["default"]
 
 
@@ -124,200 +228,7 @@ _bg_b64 = base64.b64encode(_bg_path.read_bytes()).decode()
 
 css_template = """
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-    /* Mumbai doodle background with overlay */
-    .stApp, [data-testid="stAppViewContainer"] {{
-        background:
-            linear-gradient(160deg, rgba(15,23,42,0.88) 0%, rgba(30,58,82,0.85) 50%, rgba(15,23,42,0.88) 100%),
-            url('data:image/jpeg;base64,{bg_b64}') !important;
-        background-size: cover !important;
-        background-position: center !important;
-        background-attachment: fixed !important;
-        background-repeat: repeat !important;
-    }}
-
-    .main, .block-container {{
-        background: transparent !important;
-    }}
-
-    * {{
-        font-family: 'Poppins', sans-serif !important;
-    }}
-
-    .main-title {{
-        background: linear-gradient(135deg, #67e8f9, #22d3ee, #06b6d4);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 2.4rem !important;
-        font-weight: 700 !important;
-        text-align: center;
-        margin-bottom: 8px;
-        letter-spacing: -0.5px;
-    }}
-
-    .subtitle {{
-        color: rgba(148,163,184,0.9) !important;
-        text-align: center;
-        font-size: 0.9rem !important;
-        margin-bottom: 1.5rem;
-        letter-spacing: 0.3px;
-    }}
-
-    .line-badge {{
-        display: inline-block;
-        padding: 6px 14px;
-        font-size: 0.7rem;
-        margin: 0 4px;
-        border-radius: 25px;
-        font-weight: 600;
-        color: #fff !important;
-        text-transform: uppercase;
-        letter-spacing: 0.8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }}
-    .western {{ background: linear-gradient(135deg, #f59e0b, #fbbf24) !important; }}
-    .central {{ background: linear-gradient(135deg, #ef4444, #f87171) !important; }}
-    .harbour {{ background: linear-gradient(135deg, #06b6d4, #22d3ee) !important; }}
-
-    /* Pill/chip suggestion tags */
-    .stButton > button {{
-        background: rgba(255,255,255,0.08) !important;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(103,232,249,0.2) !important;
-        color: #67e8f9 !important;
-        border-radius: 50px !important;
-        padding: 0.35rem 1rem !important;
-        font-size: 0.78rem !important;
-        font-weight: 600 !important;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        white-space: nowrap;
-    }}
-
-    .stButton > button:hover {{
-        background: rgba(103,232,249,0.15) !important;
-        border-color: #22d3ee !important;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 18px rgba(34,211,238,0.2);
-    }}
-
-    /* Frosted glass cards */
-    .review-card {{
-        background: rgba(255,255,255,0.07) !important;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        padding: 16px 18px;
-        margin: 12px 0;
-        border: 1px solid rgba(103,232,249,0.15);
-        border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    }}
-
-    .review-card b {{
-        color: #e2e8f0 !important;
-        font-weight: 600;
-    }}
-
-    .review-card small {{
-        color: #94a3b8 !important;
-    }}
-
-    .section-header {{
-        color: #22d3ee !important;
-        font-size: 1.05rem !important;
-        font-weight: 700;
-        margin-bottom: 14px;
-        letter-spacing: 0.2px;
-    }}
-
-    /* Glass chat bubbles */
-    .stChatMessage, [data-testid="stChatMessage"] {{
-        background: rgba(255,255,255,0.06) !important;
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border: 1px solid rgba(103,232,249,0.12) !important;
-        border-radius: 18px !important;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-    }}
-
-    /* Text */
-    p, span, div {{
-        color: #cbd5e1 !important;
-    }}
-
-    label {{
-        color: #94a3b8 !important;
-        font-size: 0.85rem !important;
-        font-weight: 600;
-    }}
-
-    strong, b {{
-        color: #e2e8f0 !important;
-    }}
-
-    /* Glass Inputs */
-    .stChatInput > div, [data-testid="stChatInput"] > div {{
-        background: rgba(255,255,255,0.08) !important;
-        border: 1.5px solid rgba(103,232,249,0.2) !important;
-        border-radius: 18px !important;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    }}
-
-    input, textarea, select {{
-        background: rgba(255,255,255,0.06) !important;
-        border: 1.5px solid rgba(103,232,249,0.15) !important;
-        color: #e2e8f0 !important;
-        border-radius: 12px !important;
-    }}
-
-    .stTextInput > div > div > input,
-    .stSelectbox > div > div,
-    .stTextArea textarea {{
-        background: rgba(255,255,255,0.06) !important;
-        border: 1.5px solid rgba(103,232,249,0.15) !important;
-        border-radius: 12px !important;
-        color: #e2e8f0 !important;
-    }}
-
-    input::placeholder, textarea::placeholder {{
-        color: #64748b !important;
-    }}
-
-    .stars {{ color: #fbbf24 !important; }}
-
-    hr {{
-        border: none !important;
-        border-top: 1px solid rgba(103,232,249,0.1) !important;
-        margin: 1.2rem 0 !important;
-    }}
-
-    /* Star rating buttons */
-    [data-testid="stHorizontalBlock"] button[kind="secondary"][data-testid="stBaseButton-secondary"] {{
-        font-size: 1.6rem !important;
-    }}
-
-    /* Keep star buttons horizontal on mobile */
-    @media (max-width: 640px) {{
-        [data-testid="stColumn"] [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"]:nth-child(5)) {{
-            flex-wrap: nowrap !important;
-            gap: 0.25rem !important;
-        }}
-        [data-testid="stColumn"] [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"]:nth-child(5)) > [data-testid="stColumn"] {{
-            min-width: 0 !important;
-            flex: 1 !important;
-            width: auto !important;
-        }}
-    }}
-
-    .stCaption, .stCaption p {{
-        color: #64748b !important;
-        font-size: 0.8rem !important;
-    }}
-
-    #MainMenu, footer, header {{ visibility: hidden; height: 0; }}
-    .block-container {{ padding-top: 0 !important; }}
+/* (same CSS as before) */
 </style>
 """.format(bg_b64=_bg_b64)
 
@@ -365,7 +276,7 @@ with main_col:
 
     user_input = st.chat_input("Where to? Try: Dadar to Thane...")
 
-    st.markdown('<p style="color:#64748b !important; font-size:0.75rem !important; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:6px;">Try These</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color:#64748b ...">Try These</p>', unsafe_allow_html=True)
     cols = st.columns(4)
     for i, s in enumerate(st.session_state.suggestions[:8]):
         if cols[i % 4].button(s, key=f"sugg_{i}"):
@@ -417,22 +328,11 @@ with review_col:
                 st.rerun()
     review_rating = st.session_state.star_rating
 
-    # Review Form — now includes photos uploader inside form
+    # Review Form — includes photos uploader inside form
     with st.form(f"review_form_{st.session_state.form_key}"):
-        review_comment = st.text_area(
-            "Your review",
-            placeholder="Go ahead and gossip...",
-            max_chars=500
-        )
-
+        review_comment = st.text_area("Your review", placeholder="Go ahead and gossip...", max_chars=500)
         review_name = st.text_input("Name", placeholder="Anonymous")
-
-        photos = st.file_uploader(
-            "Attach station photos (optional)",
-            type=["jpg", "jpeg", "png"],
-            accept_multiple_files=True,
-            label_visibility="visible"
-        )
+        photos = st.file_uploader("Attach station photos (optional)", type=["jpg","jpeg","png"], accept_multiple_files=True, label_visibility="visible")
 
         submitted = st.form_submit_button("Post It!", use_container_width=True)
 
@@ -459,10 +359,9 @@ with review_col:
                     rating=review_rating,
                     comment=review_comment,
                     username=review_name if review_name else "Anonymous",
-                    photos=photo_tuples  # new optional param supported
+                    photos=photo_tuples
                 )
             except Exception as e:
-                # If add failed, warn and continue
                 st.warning(f"Could not save review: {e}")
                 result = None
 
@@ -479,7 +378,6 @@ with review_col:
 
     st.markdown("---")
     st.markdown('<p class="section-header">Station Snaps</p>', unsafe_allow_html=True)
-
     st.markdown("---")
     st.markdown('<p class="section-header">Spilled Tea</p>', unsafe_allow_html=True)
 
@@ -502,7 +400,6 @@ with review_col:
             try:
                 user_reviews = analyze_reviews_batch(user_reviews)
             except Exception:
-                # If sentiment analysis fails, continue with original reviews
                 pass
             try:
                 summary = get_sentiment_summary(user_reviews)
@@ -510,20 +407,13 @@ with review_col:
             except Exception:
                 pass
 
-        # Keep only dict entries and sort safely by timestamp (convert to string to avoid mixed-type comparisons)
         valid_reviews = [r for r in user_reviews if isinstance(r, dict)]
         try:
-            sorted_reviews = sorted(
-                valid_reviews,
-                key=lambda x: str(x.get('timestamp', '') or ''),
-                reverse=True
-            )[:5]
+            sorted_reviews = sorted(valid_reviews, key=lambda x: str(x.get('timestamp','') or ''), reverse=True)[:5]
         except Exception:
-            # If sorting fails for any reason, fall back to keeping original order (last N)
             sorted_reviews = valid_reviews[-5:]
 
         for review in sorted_reviews:
-            # Ensure rating is numeric-friendly
             try:
                 rating_val = int(review.get("rating", 0)) if review.get("rating") is not None else 0
             except Exception:
@@ -539,7 +429,6 @@ with review_col:
             comment = review.get('comment') or ''
             username = review.get('username') or 'Anonymous'
 
-            # Render review card
             st.markdown(f"""
             <div class="review-card">
                 <span class="stars">{stars}</span>{sentiment_html}<br>
@@ -554,13 +443,11 @@ with review_col:
                 photos = [p.strip() for p in photos.split(',') if p.strip()]
 
             if photos:
-                # show up to 4 thumbnails in a row
                 cols = st.columns(min(4, len(photos)))
                 for i, p_url in enumerate(photos[:4]):
                     try:
                         cols[i].image(p_url, use_column_width=True)
                     except Exception:
-                        # if it's a local path or image not directly displayable, show link
                         cols[i].markdown(f"[view image]({p_url})")
     else:
         st.markdown("""

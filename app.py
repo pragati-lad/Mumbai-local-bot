@@ -428,7 +428,7 @@ with review_col:
         review_name = st.text_input("Name", placeholder="Anonymous")
 
         photos = st.file_uploader(
-            "Attach station photos (optional)",
+            "Attach station photos snaps  (optional)",
             type=["jpg", "jpeg", "png"],
             accept_multiple_files=True,
             label_visibility="visible"
@@ -476,9 +476,6 @@ with review_col:
             else:
                 st.warning("Could not save review. Try again.")
             st.rerun()
-
-    st.markdown("---")
-    st.markdown('<p class="section-header">Station Snaps</p>', unsafe_allow_html=True)
 
     st.markdown("---")
     st.markdown('<p class="section-header">Spilled Tea</p>', unsafe_allow_html=True)

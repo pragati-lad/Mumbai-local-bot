@@ -31,7 +31,6 @@ SCOPES = [
 
 SPREADSHEET_ID = "1gUX2KN0nMQKsNRe61vo6z89h9b3JQ9eeoNru46lJD3k"
 REVIEWS_SHEET = "reviews"
-USERS_SHEET = "users"
 SCRAPED_SHEET = "Scraped Data"
 
 _sheet_cache = {}
@@ -177,6 +176,7 @@ def add_review_to_sheets(category, subject, rating, comment, username="Anonymous
     timestamp = datetime.now().isoformat()
     if not client:
         # fallback: raise or return local storage structure
+        # keep behavior similar to original: raise to indicate misconfig
         raise RuntimeError("Google Sheets client could not be initialized. Check Streamlit secrets and installed dependencies.")
 
     try:
@@ -236,43 +236,6 @@ def add_review_to_sheets(category, subject, rating, comment, username="Anonymous
     except Exception as e:
         print(f"Error adding to Google Sheets: {e}")
         raise
-
-
-def add_user_to_sheets(name: str, email: str, provider: str = "local"):
-    """Append a user record to a 'users' sheet for audit/lookup."""
-    client = get_client()
-    timestamp = datetime.now().isoformat()
-    if not client:
-        # local fallback: write to a JSON file
-        try:
-            path = os.path.join(os.path.dirname(__file__), "local_users.json")
-            data = []
-            if os.path.exists(path):
-                with open(path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-            data.append({"name": name, "email": email, "provider": provider, "timestamp": timestamp})
-            with open(path, "w", encoding="utf-8") as f:
-                json.dump(data, f, indent=2)
-            return True
-        except Exception as e:
-            print("Failed to save local user:", e)
-            return False
-
-    try:
-        spreadsheet = get_or_create_spreadsheet(client)
-        try:
-            sheet = spreadsheet.worksheet(USERS_SHEET)
-        except Exception:
-            # create and add header
-            sheet = spreadsheet.add_worksheet(USERS_SHEET, rows=1000, cols=10)
-            sheet.append_row(["Timestamp", "Name", "Email", "Provider"])
-
-        row = [timestamp, name, email, provider]
-        sheet.append_row(row)
-        return True
-    except Exception as e:
-        print("Error adding user to sheets:", e)
-        return False
 
 
 def _normalize_header_key(k: str) -> str:

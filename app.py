@@ -122,193 +122,431 @@ import pathlib
 _bg_path = pathlib.Path(__file__).parent / "bg.jpg"
 _bg_b64 = base64.b64encode(_bg_path.read_bytes()).decode()
 
-st.markdown(
-    f"""
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+css_template = """
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-        /* Mumbai doodle background with overlay */
-        .stApp, [data-testid="stAppViewContainer"] {{
-            background:
-                linear-gradient(160deg, rgba(15,23,42,0.88) 0%, rgba(30,58,82,0.85) 50%, rgba(15,23,42,0.88) 100%),
-                url('data:image/jpeg;base64,{_bg_b64}') !important;
-            background-size: cover !important;
-            background-position: center !important;
-            background-attachment: fixed !important;
-            background-repeat: repeat !important;
+    /* Mumbai doodle background with overlay */
+    .stApp, [data-testid="stAppViewContainer"] {{
+        background:
+            linear-gradient(160deg, rgba(15,23,42,0.88) 0%, rgba(30,58,82,0.85) 50%, rgba(15,23,42,0.88) 100%),
+            url('data:image/jpeg;base64,{bg_b64}') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-attachment: fixed !important;
+        background-repeat: repeat !important;
+    }}
+
+    .main, .block-container {{
+        background: transparent !important;
+    }}
+
+    * {{
+        font-family: 'Poppins', sans-serif !important;
+    }}
+
+    .main-title {{
+        background: linear-gradient(135deg, #67e8f9, #22d3ee, #06b6d4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2.4rem !important;
+        font-weight: 700 !important;
+        text-align: center;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+    }}
+
+    .subtitle {{
+        color: rgba(148,163,184,0.9) !important;
+        text-align: center;
+        font-size: 0.9rem !important;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.3px;
+    }}
+
+    .line-badge {{
+        display: inline-block;
+        padding: 6px 14px;
+        font-size: 0.7rem;
+        margin: 0 4px;
+        border-radius: 25px;
+        font-weight: 600;
+        color: #fff !important;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }}
+    .western {{ background: linear-gradient(135deg, #f59e0b, #fbbf24) !important; }}
+    .central {{ background: linear-gradient(135deg, #ef4444, #f87171) !important; }}
+    .harbour {{ background: linear-gradient(135deg, #06b6d4, #22d3ee) !important; }}
+
+    /* Pill/chip suggestion tags */
+    .stButton > button {{
+        background: rgba(255,255,255,0.08) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(103,232,249,0.2) !important;
+        color: #67e8f9 !important;
+        border-radius: 50px !important;
+        padding: 0.35rem 1rem !important;
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        white-space: nowrap;
+    }}
+
+    .stButton > button:hover {{
+        background: rgba(103,232,249,0.15) !important;
+        border-color: #22d3ee !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 18px rgba(34,211,238,0.2);
+    }}
+
+    /* Frosted glass cards */
+    .review-card {{
+        background: rgba(255,255,255,0.07) !important;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: 16px 18px;
+        margin: 12px 0;
+        border: 1px solid rgba(103,232,249,0.15);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }}
+
+    .review-card b {{
+        color: #e2e8f0 !important;
+        font-weight: 600;
+    }}
+
+    .review-card small {{
+        color: #94a3b8 !important;
+    }}
+
+    .section-header {{
+        color: #22d3ee !important;
+        font-size: 1.05rem !important;
+        font-weight: 700;
+        margin-bottom: 14px;
+        letter-spacing: 0.2px;
+    }}
+
+    /* Glass chat bubbles */
+    .stChatMessage, [data-testid="stChatMessage"] {{
+        background: rgba(255,255,255,0.06) !important;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(103,232,249,0.12) !important;
+        border-radius: 18px !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }}
+
+    /* Text */
+    p, span, div {{
+        color: #cbd5e1 !important;
+    }}
+
+    label {{
+        color: #94a3b8 !important;
+        font-size: 0.85rem !important;
+        font-weight: 600;
+    }}
+
+    strong, b {{
+        color: #e2e8f0 !important;
+    }}
+
+    /* Glass Inputs */
+    .stChatInput > div, [data-testid="stChatInput"] > div {{
+        background: rgba(255,255,255,0.08) !important;
+        border: 1.5px solid rgba(103,232,249,0.2) !important;
+        border-radius: 18px !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }}
+
+    input, textarea, select {{
+        background: rgba(255,255,255,0.06) !important;
+        border: 1.5px solid rgba(103,232,249,0.15) !important;
+        color: #e2e8f0 !important;
+        border-radius: 12px !important;
+    }}
+
+    .stTextInput > div > div > input,
+    .stSelectbox > div > div,
+    .stTextArea textarea {{
+        background: rgba(255,255,255,0.06) !important;
+        border: 1.5px solid rgba(103,232,249,0.15) !important;
+        border-radius: 12px !important;
+        color: #e2e8f0 !important;
+    }}
+
+    input::placeholder, textarea::placeholder {{
+        color: #64748b !important;
+    }}
+
+    .stars {{ color: #fbbf24 !important; }}
+
+    hr {{
+        border: none !important;
+        border-top: 1px solid rgba(103,232,249,0.1) !important;
+        margin: 1.2rem 0 !important;
+    }}
+
+    /* Star rating buttons */
+    [data-testid="stHorizontalBlock"] button[kind="secondary"][data-testid="stBaseButton-secondary"] {{
+        font-size: 1.6rem !important;
+    }}
+
+    /* Keep star buttons horizontal on mobile */
+    @media (max-width: 640px) {{
+        [data-testid="stColumn"] [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"]:nth-child(5)) {{
+            flex-wrap: nowrap !important;
+            gap: 0.25rem !important;
         }}
-
-        .main, .block-container {{
-            background: transparent !important;
+        [data-testid="stColumn"] [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"]:nth-child(5)) > [data-testid="stColumn"] {{
+            min-width: 0 !important;
+            flex: 1 !important;
+            width: auto !important;
         }}
+    }}
 
-        * {{
-            font-family: 'Poppins', sans-serif !important;
-        }}
+    .stCaption, .stCaption p {{
+        color: #64748b !important;
+        font-size: 0.8rem !important;
+    }}
 
-        .main-title {{
-            background: linear-gradient(135deg, #67e8f9, #22d3ee, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.4rem !important;
-            font-weight: 700 !important;
-            text-align: center;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-        }}
+    #MainMenu, footer, header {{ visibility: hidden; height: 0; }}
+    .block-container {{ padding-top: 0 !important; }}
+</style>
+""".format(bg_b64=_bg_b64)
 
-        .subtitle {{
-            color: rgba(148,163,184,0.9) !important;
-            text-align: center;
-            font-size: 0.9rem !important;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.3px;
-        }}
+st.markdown(css_template, unsafe_allow_html=True)
 
-        .line-badge {{
-            display: inline-block;
-            padding: 6px 14px;
-            font-size: 0.7rem;
-            margin: 0 4px;
-            border-radius: 25px;
-            font-weight: 600;
-            color: #fff !important;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }}
-        .western {{ background: linear-gradient(135deg, #f59e0b, #fbbf24) !important; }}
-        .central {{ background: linear-gradient(135deg, #ef4444, #f87171) !important; }}
-        .harbour {{ background: linear-gradient(135deg, #06b6d4, #22d3ee) !important; }}
+# ---------------- Layout: Main + Sidebar ----------------
+main_col, review_col = st.columns([2, 1])
 
-        /* Pill/chip suggestion tags */
-        .stButton > button {{
-            background: rgba(255,255,255,0.08) !important;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(103,232,249,0.2) !important;
-            color: #67e8f9 !important;
-            border-radius: 50px !important;
-            padding: 0.35rem 1rem !important;
-            font-size: 0.78rem !important;
-            font-weight: 600 !important;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            white-space: nowrap;
-        }}
+# ==================================================
+# MAIN COLUMN - CHATBOT
+# ==================================================
+with main_col:
+    st.markdown('<div class="main-title">Apna Mumbai Local</div>', unsafe_allow_html=True)
+    st.markdown('''<p class="subtitle">
+        <span class="line-badge western">Western</span>
+        <span class="line-badge central">Central</span>
+        <span class="line-badge harbour">Harbour</span>
+        <br>Your pocket train guide - 7,500+ trains
+    </p>''', unsafe_allow_html=True)
 
-        .stButton > button:hover {{
-            background: rgba(103,232,249,0.15) !important;
-            border-color: #22d3ee !important;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 18px rgba(34,211,238,0.2);
-        }}
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
 
-        /* Frosted glass cards */
-        .review-card {{
-            background: rgba(255,255,255,0.07) !important;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 16px 18px;
-            margin: 12px 0;
-            border: 1px solid rgba(103,232,249,0.15);
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        }}
+    if "suggestions" not in st.session_state:
+        st.session_state.suggestions = SUGGESTIONS["default"]
 
-        .review-card b {{
-            color: #e2e8f0 !important;
-            font-weight: 600;
-        }}
+    if "chat_context" not in st.session_state:
+        st.session_state.chat_context = {}
 
-        .review-card small {{
-            color: #94a3b8 !important;
-        }}
+    if len(st.session_state.messages) == 0:
+        st.session_state.messages.append(
+            {
+                "role": "assistant",
+                "content": (
+                    "Hey! Welcome to Apna Mumbai Local!\n\n"
+                    "Need train timings? Platform info? I got you covered!"
+                )
+            }
+        )
 
-        .section-header {{
-            color: #22d3ee !important;
-            font-size: 1.05rem !important;
-            font-weight: 700;
-            margin-bottom: 14px;
-            letter-spacing: 0.2px;
-        }}
+    for msg in st.session_state.messages:
+        avatar = "🚃" if msg["role"] == "assistant" else "👤"
+        with st.chat_message(msg["role"], avatar=avatar):
+            st.markdown(msg["content"])
 
-        /* Glass chat bubbles */
-        .stChatMessage, [data-testid="stChatMessage"] {{
-            background: rgba(255,255,255,0.06) !important;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(103,232,249,0.12) !important;
-            border-radius: 18px !important;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-        }}
+    user_input = st.chat_input("Where to? Try: Dadar to Thane...")
 
-        /* Text */
-        p, span, div {{
-            color: #cbd5e1 !important;
-        }}
+    st.markdown('<p style="color:#64748b !important; font-size:0.75rem !important; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:6px;">Try These</p>', unsafe_allow_html=True)
+    cols = st.columns(4)
+    for i, s in enumerate(st.session_state.suggestions[:8]):
+        if cols[i % 4].button(s, key=f"sugg_{i}"):
+            user_input = s
 
-        label {{
-            color: #94a3b8 !important;
-            font-size: 0.85rem !important;
-            font-weight: 600;
-        }}
+    if user_input:
+        st.session_state.messages.append({"role": "user", "content": user_input})
 
-        strong, b {{
-            color: #e2e8f0 !important;
-        }}
+        with st.chat_message("user", avatar="👤"):
+            st.markdown(user_input)
 
-        /* Glass Inputs */
-        .stChatInput > div, [data-testid="stChatInput"] > div {{
-            background: rgba(255,255,255,0.08) !important;
-            border: 1.5px solid rgba(103,232,249,0.2) !important;
-            border-radius: 18px !important;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-        }}
+        if "review" in user_input.lower() or "kaisa" in user_input.lower():
+            for station in STATIONS:
+                if station.lower() in user_input.lower():
+                    review_summary = get_review_summary(station)
+                    if review_summary:
+                        response = f"**{station} Station**\n" + review_summary
+                    else:
+                        response = f"No reviews for {station} yet. Be the first!"
+                    break
+            else:
+                response = "Which station? Try: *Reviews for Andheri*"
+        else:
+            response = chatbot_response(user_input, context=st.session_state.chat_context)
 
-        input, textarea, select {{
-            background: rgba(255,255,255,0.06) !important;
-            border: 1.5px solid rgba(103,232,249,0.15) !important;
-            color: #e2e8f0 !important;
-            border-radius: 12px !important;
-        }}
+        with st.chat_message("assistant", avatar="🚃"):
+            st.markdown(response)
 
-        .stTextInput > div > div > input,
-        .stSelectbox > div > div,
-        .stTextArea textarea {{
-            background: rgba(255,255,255,0.06) !important;
-            border: 1.5px solid rgba(103,232,249,0.15) !important;
-            border-radius: 12px !important;
-            color: #e2e8f0 !important;
-        }}
+        st.session_state.messages.append({"role": "assistant", "content": response})
+        st.session_state.suggestions = get_related_suggestions(user_input)
+        st.rerun()
 
-        input::placeholder, textarea::placeholder {{
-            color: #64748b !important;
-        }}
+# ==================================================
+# REVIEW COLUMN - SUBMIT & VIEW REVIEWS
+# ==================================================
+with review_col:
+    st.markdown('<p class="section-header">Spill the Tea!</p>', unsafe_allow_html=True)
 
-        .stars {{ color: #fbbf24 !important; }}
+    if "star_rating" not in st.session_state:
+        st.session_state.star_rating = 4
+    if "form_key" not in st.session_state:
+        st.session_state.form_key = 0
 
-        hr {{
-            border: none !important;
-            border-top: 1px solid rgba(103,232,249,0.1) !important;
-            margin: 1.2rem 0 !important;
-        }}
+    star_cols = st.columns(5)
+    for i in range(5):
+        with star_cols[i]:
+            if st.button("★" if i < st.session_state.star_rating else "☆", key=f"star_{i}"):
+                st.session_state.star_rating = i + 1
+                st.rerun()
+    review_rating = st.session_state.star_rating
 
-        /* Star rating buttons */
-        [data-testid="stHorizontalBlock"] button[kind="secondary"][data-testid="stBaseButton-secondary"] {{
-            font-size: 1.6rem !important;
-        }}
+    with st.form(f"review_form_{st.session_state.form_key}"):
+        review_comment = st.text_area(
+            "Your review",
+            placeholder="Go ahead and gossip...",
+            max_chars=500
+        )
 
-        /* Keep star buttons horizontal on mobile */
-        @media (max-width: 640px) {{
-            [data-testid="stColumn"] [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"]:nth-child(5)) {{
-                flex-wrap: nowrap !important;
-                gap: 0.25rem !important;
-            }}
-            [data-testid="stColumn"] [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"]:nth-child(5)) > [data-testid="stColumn"] {{
-                min-width: 0 !important;
-                flex: 1 !important;
-                width: auto !important;
-            }}
-       *
-
+        review_name = st.text_input("Name", placeholder="Anonymous")
+
+        submitted = st.form_submit_button("Post It!", use_container_width=True)
+
+        if submitted and review_comment:
+            sentiment_data = None
+            if NLP_SENTIMENT_AVAILABLE:
+                sentiment_data = analyze_sentiment(review_comment)
+
+            result = add_user_review(
+                category="general",
+                subject="General",
+                rating=review_rating,
+                comment=review_comment,
+                username=review_name if review_name else "Anonymous"
+            )
+            st.session_state.star_rating = 4
+            st.session_state.form_key += 1
+            if result and isinstance(result, dict) and result.get('id') is not None:
+                if sentiment_data:
+                    st.toast(f"Review added! {sentiment_data['label']}")
+                else:
+                    st.toast("Review added!")
+            else:
+                st.warning("Could not save review. Try again.")
+            st.rerun()
+
+    st.markdown("---")
+    st.markdown('<p class="section-header">Station Snaps</p>', unsafe_allow_html=True)
+
+    photos = st.file_uploader(
+        "Upload station photos",
+        type=["jpg", "jpeg", "png"],
+        accept_multiple_files=True,
+        label_visibility="collapsed"
+    )
+
+    if photos:
+        show_photos = photos[:4]
+        photo_cols = st.columns(2)
+        for i, photo in enumerate(show_photos):
+            photo_cols[i % 2].image(photo, use_container_width=True)
+        if len(photos) > 4:
+            st.caption("Max 4 photos shown")
+
+    st.markdown("---")
+    st.markdown('<p class="section-header">Spilled Tea</p>', unsafe_allow_html=True)
+
+    # Get reviews and coerce/validate to a list of dicts
+    user_reviews = get_all_reviews_from_sheets()
+
+    # Normalize user_reviews to a list so sorting and iteration are safe
+    if not user_reviews:
+        user_reviews = []
+    elif isinstance(user_reviews, dict):
+        user_reviews = [user_reviews]
+    elif not isinstance(user_reviews, list):
+        try:
+            user_reviews = list(user_reviews)
+        except Exception:
+            user_reviews = []
+
+    if user_reviews:
+        if NLP_SENTIMENT_AVAILABLE:
+            try:
+                user_reviews = analyze_reviews_batch(user_reviews)
+            except Exception:
+                # If sentiment analysis fails, continue with original reviews
+                pass
+            try:
+                summary = get_sentiment_summary(user_reviews)
+                st.markdown(format_sentiment_bar(summary), unsafe_allow_html=True)
+            except Exception:
+                pass
+
+        # Keep only dict entries and sort safely by timestamp (convert to string to avoid mixed-type comparisons)
+        valid_reviews = [r for r in user_reviews if isinstance(r, dict)]
+        try:
+            sorted_reviews = sorted(
+                valid_reviews,
+                key=lambda x: str(x.get('timestamp', '') or ''),
+                reverse=True
+            )[:5]
+        except Exception:
+            # If sorting fails for any reason, fall back to keeping original order (last N)
+            sorted_reviews = valid_reviews[-5:]
+
+        for review in sorted_reviews:
+            # Ensure rating is numeric-friendly
+            try:
+                rating_val = int(review.get("rating", 0)) if review.get("rating") is not None else 0
+            except Exception:
+                rating_val = 0
+            rating_val = max(0, min(5, rating_val))
+            stars = "★" * rating_val + "☆" * (5 - rating_val)
+
+            sentiment_html = ""
+            if NLP_SENTIMENT_AVAILABLE and isinstance(review.get("sentiment", None), dict):
+                s = review["sentiment"]
+                sentiment_html = f'<span style="color:{s.get("color","")}; float:right; font-size:0.8rem;">{s.get("label","")}</span>'
+
+            comment = review.get('comment') or ''
+            username = review.get('username') or 'Anonymous'
+
+            st.markdown(f"""
+            <div class="review-card">
+                <span class="stars">{stars}</span>{sentiment_html}<br>
+                <small>{comment[:150]}</small><br>
+                <small>— {username}</small>
+            </div>
+            """, unsafe_allow_html=True)
+    else:
+        st.markdown("""
+        <div class="review-card" style="text-align: center;">
+            No reviews yet!<br>
+            <small style="color: #636e72;">common bro drop a comment!</small>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("---")
+    connection = check_sheets_connection()
+    if connection['connected']:
+        print(f"SHEETS_URL: {connection.get('spreadsheet_url', '')}")
+        st.caption("⟳ synced")
+    else:
+        st.caption("◇ local")
